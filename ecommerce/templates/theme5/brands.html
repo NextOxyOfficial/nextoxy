@@ -1,0 +1,24 @@
+{% load static %}
+<section class="bg-[#f5f5f5] py-[100px]">
+  <div class="sm:flex grid grid-col-3 grid-col-2 justify-center gap-1 brandings">
+    <img class="py-[30px] z-10" src="{% static '/ecommerce/theme5/brands/h2-clients-img-1-h.png' %}" alt="" srcset="">
+    <img class="py-[30px] z-10" src="{% static '/ecommerce/theme5/brands/h2-clients-img-2-h.png' %}" alt="" srcset="">
+    <img class="py-[30px] z-10" src="{% static '/ecommerce/theme5/brands/h2-clients-img-3-h.png' %}" alt="" srcset="">
+    <img class="py-[30px] z-10" src="{% static '/ecommerce/theme5/brands/h2-clients-img-4-h.png' %}" alt="" srcset="">
+    <img class="py-[30px] z-10" src="{% static '/ecommerce/theme5/brands/h2-clients-img-5-h.png' %}" alt="" srcset="">
+  </div>
+</section>
+
+<style>
+  .brandings img{
+    filter: grayscale(100%);
+    max-width: 235px;
+    opacity: .5;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+  }
+  .brandings img:hover{
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+</style>

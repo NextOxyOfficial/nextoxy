@@ -1,0 +1,60 @@
+<!-- collection list -->
+<div class="max-w-[1300px] mx-auto px-[20px] md:px-[40px] mt-12 md:mt-24 mb-20 lg:mb-44">
+    <h2 id="theme14-category-2l3k90234" style="font-family: ITC;" class="editable text text-[#1c1c1c] font-bold text-[23px] md:text-[31.5px]">Category</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
+        {% for sec in sections %}
+        <!--item 1-->
+        <a href="/search_page?section={{sec.id}}" class="group">
+            <div class="relative overflow-hidden bg-cover">
+                <div id="theme14-category-jk3o283424" class="">
+                    {% if sec.image %}
+                    <img src="{{sec.image.url}}" alt="category" class="object-contain sm:h-[200px] md:h-[250px] w-full group-hover:scale-105 transition-all duration-500" />
+                    {% else %}
+                    <img class="object-contain w-full sm:max-h-[200px] md:max-h-[250px] group-hover:scale-105 transition-all duration-500" src="/static/ecommerce/theme14/img/collec-1.webp" alt="">
+                    {% endif %}   
+                </div>
+                <div class="absolute left-0 bottom-0 w-full h-full z-30 flex items-end pl-7 pb-5" style="background: linear-gradient(#ffffff00, #41424277);">
+                    <p id="theme14-category-kiwjeo0234" style="font-family: ITC;" class="relative w-full text-white font-bold text-[12px] sm:text-[18px] md:text-[27px] group-hover:-translate-y-3 transition-all duration-500" >{{sec.name}}
+                        <div class="absolute bottom-5 left-4 h-0.5 w-0 group-hover:w-[224px] transition-all duration-500 bg-white"></div>
+                    </p>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+        {% comment %}  
+        <!--item 2-->
+        <div class="relative group overflow-hidden bg-cover">
+            <div id="theme14-category-jj238424gw" class="editable image">
+                <img class="h-[150px] w-[140px] md:h-[300px] md:w-[305px] object-cover group-hover:scale-105 transition-all duration-500" src="/static/ecommerce/theme14/img/collec-2.webp" alt="">
+            </div>
+            <div class="absolute left-0 bottom-0 w-full h-full z-30 flex items-end px-7 pb-5" style="background: linear-gradient(#ffffff00, #41424277);">
+                <a id="theme14-category-woke82342" style="font-family: ITC;" class="editable link w-full text-white font-bold text-[12px] md:text-[27px] group-hover:-translate-y-3 transition-all duration-500" href="#">Mobile Accessories
+                    <div class="h-0.5 w-0 group-hover:w-full transition-all duration-500 bg-white"></div>
+                </a>
+            </div>
+        </div>
+        <!--item 3-->
+        <div class="relative group overflow-hidden bg-cover">
+            <div id="theme14-category-kmew234234" class="editable image">
+                <img class="h-[150px] w-[140px] md:h-[300px] md:w-[305px] object-cover group-hover:scale-105 transition-all duration-500" src="/static/ecommerce/theme14/img/collec-3.webp" alt="">
+            </div>
+            <div class="absolute left-0 bottom-0 w-full h-full z-30 flex items-end px-7 pb-5" style="background: linear-gradient(#ffffff00, #41424277);">
+                <a id="theme14-category-jkloqo342" style="font-family: ITC;" class="editable link w-full text-white font-bold text-[12px] md:text-[27px] group-hover:-translate-y-3 transition-all duration-500" href="#">Women's Apparel
+                    <div class="h-0.5 w-0 group-hover:w-full transition-all duration-500 bg-white"></div>
+                </a>
+            </div>
+        </div>
+        <!--item 4-->
+        <div class="relative group overflow-hidden bg-cover">
+            <div id="theme14-category-kojo283242" class="editable image">
+                <img class="h-[150px] w-[140px] md:h-[300px] md:w-[305px] object-cover group-hover:scale-105 transition-all duration-500" src="/static/ecommerce/theme14/img/collec-4.webp" alt="">
+            </div>
+            <div class="absolute left-0 bottom-0 w-full h-full z-30 flex items-end px-7 pb-5" style="background: linear-gradient(#ffffff00, #41424277);">
+                <a id="theme14-category-owqo82342" style="font-family: ITC;" class="editable link w-full text-white font-bold text-[12px] md:text-[27px] group-hover:-translate-y-3 transition-all duration-500" href="#">Home & Kitchen
+                    <div class="h-0.5 w-0 group-hover:w-full transition-all duration-500 bg-white"></div>
+                </a>
+            </div>
+                
+        </div>{% endcomment %}
+    </div>
+</div>

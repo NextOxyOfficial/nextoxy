@@ -1,0 +1,118 @@
+<div
+  class="bg-[#5d8c7f] md:flex items-center justify-center gap-12 mt-[130px] pt-8 lg:pt-0 px-4"
+  id="app2"
+>
+  <div class="flex-1">
+    <div class="w-full md:max-w-[500px] md:ml-auto">
+      <p
+        class="text-2xl md:text-4xl font-semibold text-white editable text"
+        id="banner_sadf"
+      >
+        Voted No.1 Home Service App in Singapore
+      </p>
+      <div
+        class="flex flex-col md:flex-row items-center justify-center md:justify-start gap-2 md:gap-6 py-6 md:pt-12"
+      >
+        <input
+          type="text"
+          placeholder="Post Code"
+          class="flex-1 w-full md:max-w-[230px] bg-white text-center rounded px-8 py-2"
+        />
+        <button
+          @click="showModal = true"
+          class="flex-1 bg-[#2E5951] hover:bg-[#21413e] w-full md:max-w-[230px] text-white rounded px-8 py-2 transition delay-300 ease-in-out editable text"
+          id="banner_iwqer"
+        >
+          Book Now
+        </button>
+      </div>
+    </div>
+  </div>
+  <div
+    class="flex-1 max-h-[500px] overflow-hidden editable image"
+    id="banner_098"
+  >
+    <img
+      class="w-full"
+      src="/static/services/services-four/banner_1.webp"
+      alt=""
+    />
+  </div>
+
+  <div v-if="showModal" class="modal-mask">
+    <div class="modal-wrapper relative">
+      <div class="modal-container">
+        <div class="modal-header">
+          <slot name="header"></slot>
+        </div>
+        <div class="modal-body">
+          {% include "commons/lp/lead-form.html" %}
+
+          <slot name="body"></slot>
+        </div>
+        <div class="modal-footer">
+          <slot name="footer"></slot>
+        </div>
+      </div>
+      <button
+        class="absolute -top-2 md:-top-5 -right-2 md:-right-5 rounded-full p-2 bg-slate-600 text-white"
+        slot="footer"
+        @click="showModal = false"
+      >
+        <img
+          class="size-4 md:size-6"
+          src="/static/services/services-four/close.svg"
+          alt=""
+        />
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  Vue.createApp({
+    data() {
+      return {
+        showModal: false,
+      };
+    },
+    delimiters: ["[[", "]]"],
+  }).mount("#app2");
+</script>
+<style>
+  .modal-mask {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-container {
+    width: 300px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .modal-header,
+  .modal-footer {
+    text-align: center;
+  }
+
+  .modal-body {
+    margin: 10px 0;
+  }
+</style>

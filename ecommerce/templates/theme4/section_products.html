@@ -1,0 +1,119 @@
+{% load static %}
+<div class="container mx-auto px-4 mb-6" id="feature-product">
+  <p
+    class="font-bold text-3xl md:text-4xl text-black mb-[30px] editable text"
+    id="section_sdferewj"
+  >
+    New Arrivals.
+    <span class="text-[#545454] editable class" id="homesection_09"
+      >REY backpacks & bags</span
+    >
+  </p>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6">
+    {% for prod in feature_products %}
+    <div
+      data-wow-delay="{{forloop.counter}}00ms"
+      class="wow fadeInRight swiper-slide xs:min-w-[368px] h-full min-w-[300px] border border-slate-50 rounded sm:min-w-[510px] md:min-w-[340px] lg:min-w-[312px] xl:min-w-[282px] 2xl:min-w-[225px] hover:shadow"
+    >
+      <div class="bg-[#F8FAFC] p-4 relative group overflow-hidden">
+        <a href="/details/{{prod.id}}">
+          {% if prod.productimage_set.first %}
+          <div class="w-full mb-4">
+            <img
+              class="w-full md:max-h-[350px]"
+              src="{{prod.productimage_set.first.image.url}}"
+              alt=""
+            />
+            {% else %}
+            <img class="w-full" src="/static/ecommerce/theme4/5.webp" alt="" />
+            {% endif %}
+          </div>
+          <p class="font-bold text-md h-6 overflow-hidden">{{prod.name}}</p>
+          <div class="flex flex-wrap items-center justify-between gap-1">
+            <!-- <p class="text-[14px] font-[500] text-slate-500">Cateogry name for all</p> -->
+            <p class="flex py-1 items-center gap-2 text-sm">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="#FBBF24"
+                  d="m5.825 22l2.325-7.6L2 10h7.6L12 2l2.4 8H22l-6.15 4.4l2.325 7.6L12 17.3L5.825 22Z"
+                />
+              </svg>
+              <span>4.9 (98 reviews)</span>
+            </p>
+          </div>
+          <div class="flex items-center justify-between">
+            {% if prod.discounted_price > 0 %}
+            <div
+              class="w-full flex flex-wrap items-center justify-between gap-1"
+            >
+              <p
+                class="px-2 py-1 mt-1 text-sm border-2 border-[#22C55E] rounded text-[#22C55E]"
+              >
+                {{ shop.currency }}{{ prod.discounted_price }}
+              </p>
+              <p class="px-2 py-1 mt-1 text-sm line-through">
+                {{shop.currency}}{{ prod.sale_price}}
+              </p>
+            </div>
+            {% else %}
+            <p
+              class="px-2 py-1 mt-1 text-sm border-2 border-[#22C55E] rounded text-[#22C55E]"
+            >
+              {{shop.currency}}{{ prod.sale_price}}
+            </p>
+            {% endif %}
+          </div>
+        </a>
+        <button
+          @click="addToCart({{prod.id}})"
+          class="px-6 py-2 bg-black hover:bg-white border border-black text-white hover:text-black font-semibold rounded absolute bottom-[-500px] opacity-0 group-hover:opacity-100 duration-500 group-hover:bottom-3 translate-x-2/4 transition duration-300 ease-in-out"
+          v-if="!incart({{prod.id}})"
+        >
+          Add To Cart
+        </button>
+        <button
+          class="px-6 py-2 bg-black text-white font-semibold rounded absolute bottom-[-500px] opacity-0 group-hover:opacity-100 duration-500 group-hover:bottom-3 translate-x-2/4"
+          v-else
+        >
+          <a href="/cart">In Your Cart</a>
+        </button>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  createApp({
+    data() {
+      return {
+        store: store,
+        category: false,
+      };
+    },
+    delimiters: ["[[", "]]"],
+    methods: {
+      addToCart(id) {
+        console.log(id);
+        this.$store.commit("addToCart", { id: id, quantity: 1 });
+      },
+      delFromCart(id) {
+        this.$store.commit("removeFromCart", { id: id });
+      },
+      addToWish(id) {
+        this.$store.commit("addToWish", { id: id });
+      },
+      incart(id) {
+        return this.$store.state.cart.some((cartItem) => cartItem.id === id);
+      },
+    },
+  })
+    .use(store)
+    .mount("#feature-product");
+</script>

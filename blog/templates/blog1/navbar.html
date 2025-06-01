@@ -1,0 +1,142 @@
+<header class="bg-white relative">
+  <div id="sidebar" class="sidebar border fixed z-[9999999] left-[-700px] bg-white p-4 h-[100%] sm:max-w-[395px] max-w-[300px] w-full">
+    <svg class="absolute right-[-20px] bg-gray-300 cursor-pointer w-[20px] h-[20px]" id="closemenubar" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#000000" d="M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41z"/></svg>
+  </div>
+  <div class="relative">
+    <div id="stickyheaders" class="header shadow-sm bg-slate-200/20">
+      <div class="max-w-[1320px] w-full mx-auto px-2 py-3">
+        <div class="relative flex items-center justify-between">
+          <div class="flex gap-4 items-center">
+            <svg id="toggleIcon" class="lg:hidden flex" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="#333333" stroke-width="2" d="M2 19h20M2 5h20M2 12h20"/></svg>
+            <a href="/">
+              asd
+              {% if blog.logo %}
+              <!-- <img src="{{blog.logo.url}}" class="font-bold text-3xl"> -->
+              <img src="{{blog.logo.url}}" alt="">asd
+              {% endif %}
+            </a>
+          </div>
+
+          <!-- menu -->
+          <div class="sm:flex items-center justify-between px-4">
+            <div class="">
+              <nav id="navbarCollapse"  class="menuBox absolute right-4 top-full hidden  justify-center rounded-lg bg-white px-6 py-5 shadow lg:static lg:flex lg:justify-end lg:bg-transparent lg:px-0 lg:py-0 lg:shadow-none">
+                <ul class="block items-center lg:flex">
+                  
+                 
+                  <li class="">
+                    <a href="/" class="relative text-sm text-dark hover:text-primary flex items-center gap-1 justify-between py-2 text-base font-medium lg:mx-5 lg:inline-flex lg:py-6 2xl:mx-6" style="font-family: 'Open Sans', sans-serif;">  Home </a>
+                  </li>
+                  <li class="hover-link relative ">
+                    <p class="relative cursor-pointer text-sm text-dark hover:text-primary flex items-center gap-1 justify-between py-2 text-base font-medium lg:mx-5 lg:inline-flex lg:py-6 2xl:mx-6" style="font-family: 'Open Sans', sans-serif;">  Categories <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m6 9l6 6l6-6"/></svg></p>
+                      <div class="link absolute top-[58px] opacity-0 z-[-0] max-w-[340px] shadow-sm w-full left-0 bg-white inline-block text-left">
+                        <div class="rounded py-5">
+                          {% for cat in category %}
+                          <a href="/categories/{{cat.id}}/" style="font-family: 'Open Sans', sans-serif;" class="text-body-color hover:bg-primary hover:text-primary block px-5 py-2 text-base font-medium hover:bg-opacity-5"> {{cat.name}} </a>
+                          {% endfor %}
+                        </div>
+                      </div>
+                  </li>
+                  <li class="" style="font-family: 'Open Sans', sans-serif;">
+                    <a href="/about" class="relative text-sm text-dark hover:text-primary flex items-center gap-1 justify-between py-2 text-base font-medium lg:mx-5 lg:inline-flex lg:py-6 2xl:mx-6">  About Us </a>
+                  </li>
+                  <li class="" style="font-family: 'Open Sans', sans-serif;">
+                    <a href="/contact" class="relative text-sm text-dark hover:text-primary flex items-center gap-1 justify-between py-2 text-base font-medium lg:mx-5 lg:inline-flex lg:py-6 2xl:mx-6">  Contact Us</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+
+  
+          <!-- search -->
+          <div class="px-4 cursor-pointer max-w-[300px] min-h-[44px] w-full overflow-hidden" id="searchtab">
+            <div class="flex gap-2 items-center justify-end relative z-0 w-full mt-[14px]">
+              <a href="#">
+                <svg width="8" height="14" viewBox="0 0 8 14" class="fill-current">
+                  <path
+                    d="M7.43902 5.6H6.19918H5.75639V5.14839V3.74839V3.29677H6.19918H7.12906C7.3726 3.29677 7.57186 3.11613 7.57186 2.84516V0.451613C7.57186 0.203226 7.39474 0 7.12906 0H5.51285C3.76379 0 2.54609 1.26452 2.54609 3.13871V5.10323V5.55484H2.10329H0.597778C0.287819 5.55484 0 5.80323 0 6.16452V7.79032C0 8.10645 0.243539 8.4 0.597778 8.4H2.05901H2.50181V8.85161V13.3903C2.50181 13.7065 2.74535 14 3.09959 14H5.18075C5.31359 14 5.42429 13.9323 5.51285 13.8419C5.60141 13.7516 5.66783 13.5935 5.66783 13.4581V8.87419V8.42258H6.13276H7.12906C7.41688 8.42258 7.63828 8.24194 7.68256 7.97097V7.94839V7.92581L7.99252 6.36774C8.01466 6.20968 7.99252 6.02903 7.85968 5.84839C7.8154 5.73548 7.61614 5.62258 7.43902 5.6Z">
+                  </path>
+                </svg>
+              </a>
+              <a href="#">
+                <svg width="14" height="10" viewBox="0 0 14 10" class="fill-current">
+                  <path
+                    d="M12.4419 1.72211L13.3 0.782779C13.5484 0.528376 13.6161 0.332681 13.6387 0.234834C12.9613 0.587084 12.329 0.704501 11.9226 0.704501H11.7645L11.6742 0.626223C11.1323 0.215264 10.4548 0 9.73226 0C8.15161 0 6.90968 1.13503 6.90968 2.44618C6.90968 2.52446 6.90968 2.64188 6.93226 2.72016L7 3.11155L6.52581 3.09198C3.63548 3.0137 1.26452 0.861057 0.880645 0.489237C0.248387 1.46771 0.609677 2.40705 0.993548 2.99413L1.76129 4.09002L0.541936 3.50294C0.564516 4.32485 0.925806 4.97065 1.62581 5.44031L2.23548 5.8317L1.62581 6.04697C2.00968 7.04501 2.86774 7.45597 3.5 7.61252L4.33548 7.80822L3.54516 8.27789C2.28065 9.06067 0.7 9.00196 0 8.94325C1.42258 9.80431 3.11613 10 4.29032 10C5.17097 10 5.82581 9.92172 5.98387 9.86301C12.3065 8.57143 12.6 3.67906 12.6 2.70059V2.5636L12.7355 2.48532C13.5032 1.8591 13.8194 1.52642 14 1.33072C13.9323 1.35029 13.8419 1.38943 13.7516 1.409L12.4419 1.72211Z">
+                  </path>
+                </svg>
+              </a>
+              <a href="#">
+                <svg width="14" height="10" viewBox="0 0 14 10" class="fill-current">
+                  <path
+                    d="M13.7065 1.56682C13.5484 0.9447 13.0742 0.460829 12.4645 0.299539C11.3806 5.49352e-08 7 0 7 0C7 0 2.61935 5.49352e-08 1.53548 0.299539C0.925806 0.460829 0.451613 0.9447 0.293548 1.56682C0 2.69585 0 5 0 5C0 5 0 7.32719 0.293548 8.43318C0.451613 9.0553 0.925806 9.53917 1.53548 9.70046C2.61935 10 7 10 7 10C7 10 11.3806 10 12.4645 9.70046C13.0742 9.53917 13.5484 9.0553 13.7065 8.43318C14 7.32719 14 5 14 5C14 5 14 2.69585 13.7065 1.56682ZM5.6 7.14286V2.85714L9.23548 5L5.6 7.14286Z">
+                  </path>
+                </svg>
+              </a>
+              <a href="#">
+                <svg width="13" height="12" viewBox="0 0 13 12" class="fill-current">
+                  <path
+                    d="M11.9334 0H1.64722C1.16111 0 0.772217 0.387097 0.772217 0.870968V11.129C0.772217 11.5935 1.16111 12 1.64722 12H11.8945C12.3806 12 12.7695 11.6129 12.7695 11.129V0.851613C12.8084 0.387097 12.4195 0 11.9334 0ZM4.33058 10.2H2.56112V4.49032H4.33058V10.2ZM3.43613 3.69677C2.85279 3.69677 2.40556 3.23226 2.40556 2.67097C2.40556 2.10968 2.87223 1.64516 3.43613 1.64516C4.00002 1.64516 4.46669 2.10968 4.46669 2.67097C4.46669 3.23226 4.03891 3.69677 3.43613 3.69677ZM11.039 10.2H9.26951V7.43226C9.26951 6.77419 9.25006 5.90323 8.33617 5.90323C7.40282 5.90323 7.26671 6.63871 7.26671 7.37419V10.2H5.49725V4.49032H7.22782V5.28387H7.24727C7.50005 4.81935 8.06394 4.35484 8.93895 4.35484C10.7473 4.35484 11.0779 5.51613 11.0779 7.10323V10.2H11.039Z">
+                  </path>
+                </svg>
+              </a>
+              <svg id="searchIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="none" stroke="#000000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21l-4.343-4.343m0 0A8 8 0 1 0 5.343 5.343a8 8 0 0 0 11.314 11.314Z"/></svg>                
+
+            </div>
+  
+            <div class="relative ">
+              <div id="searchbox" class="searchbox absolute bg-white  top-[-25px] right-[-10000px] z-[99999] shadow w-[270px] mt-[-4px] rounded-full">
+                <input class="px-6 py-2  outline-none rounded-full w-full" type="search" placeholder="Search here..">
+                <svg id="closeSearch" class="absolute w-[25px] h-[25px] bg-white right-[14px] top-[9px]" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="#333333" stroke-width="2" d="m7 7l10 10M7 17L17 7"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<script >
+
+  // sidebar toggle 
+  togglemenuIcon = document.getElementById("toggleIcon")
+  menuBox = document.getElementById("navbarCollapse")
+  searchIcon = document.getElementById("searchIcon")
+  searchBox = document.getElementById("searchbox")
+  closesearch = document.getElementById("closeSearch")
+
+
+  togglemenuIcon.addEventListener("click", function() {
+    menuBox.classList.toggle("active");
+  });
+
+
+  searchIcon.addEventListener("click", function() {
+    searchBox.classList.toggle("active");
+  });
+  
+  closesearch.addEventListener("click", function() {
+    searchBox.classList.remove("active");
+  });
+</script>
+
+<style>
+  .menuBox.active{
+    display: block !important;
+    position: fixed;
+    z-index: 9999;
+    top: 64px;
+    left: 7px;
+  }
+  .searchbox.active{
+    right: 0px !important;
+  }
+  .hover-link:hover .link {
+    display: block;
+    z-index: 9999999999;
+    top: 80px;
+    opacity: 1;
+}
+</style>

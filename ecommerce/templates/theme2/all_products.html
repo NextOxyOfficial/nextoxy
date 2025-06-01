@@ -1,0 +1,282 @@
+<div class="section-style-one new-products mb-[60px]" id="all-product">
+  <div class="section-wrapper w-full">
+    <div class="container-x mx-auto">
+      <div class="section-title mb-5 flex items-center justify-between">
+        <div>
+          <h1
+            class="font-600 text-qblacktext text-xl leading-none sm:text-3xl editable text"
+            id="homeallproducts5839"
+          >
+            All Products
+          </h1>
+        </div>
+        <div>
+          <a href="/search_page"
+            ><div class="flex items-center space-x-2">
+              <p
+                class="font-600 text-qblack text-base editable text"
+                id="homeallview234"
+              >
+                View More
+              </p>
+              <span class="animate-right-dir"
+                ><svg
+                  width="17"
+                  height="14"
+                  viewBox="0 0 17 14"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M14.0225 6.00243C13.9998 6.03738 13.9772 6.06941 13.9545 6.10436C13.8724 6.10727 13.7904 6.11601 13.7083 6.11601C9.93521 6.11601 6.16215 6.11601 2.38909 6.11601C1.87111 6.11601 1.35313 6.10728 0.835147 6.12475C0.351131 6.14514 0.00863998 6.51501 0.000148475 6.981C-0.00834303 7.45864 0.3483 7.83725 0.837977 7.8722C0.956858 7.88094 1.07857 7.87511 1.20028 7.87511C5.33565 7.87803 9.46818 7.87803 13.6035 7.88094C13.7253 7.88094 13.8498 7.88094 13.9715 7.88094C14.0026 7.93627 14.031 7.9887 14.0621 8.04403C13.9404 8.12267 13.7988 8.18383 13.697 8.28576C12.3355 9.67499 10.9797 11.0671 9.62669 12.4651C9.26155 12.8437 9.25306 13.3767 9.58423 13.732C9.91823 14.0902 10.4419 14.099 10.8127 13.7233C12.7855 11.702 14.7556 9.6779 16.7199 7.64794C17.0907 7.26351 17.0851 6.73053 16.7171 6.34901C14.7697 4.33652 12.8167 2.32987 10.858 0.329035C10.7278 0.195063 10.5466 0.0873038 10.3683 0.0319679C10.0088 -0.0757916 9.63235 0.116428 9.44554 0.451356C9.26438 0.78046 9.31533 1.20859 9.60687 1.51148C10.6768 2.62111 11.7524 3.72492 12.8308 4.82581C13.2271 5.2219 13.6262 5.60925 14.0225 6.00243Z"
+                    fill="white"
+                  ></path>
+                  <path
+                    d="M14.0225 6.00241C13.6262 5.60923 13.2243 5.22188 12.8336 4.82288C11.7552 3.72199 10.6796 2.61818 9.60971 1.50855C9.31816 1.20566 9.26721 0.77753 9.44837 0.448427C9.63518 0.113498 10.0116 -0.0787213 10.3711 0.0290382C10.5466 0.0814617 10.7278 0.192134 10.8608 0.326105C12.8195 2.32694 14.7697 4.33359 16.7199 6.34608C17.0879 6.72469 17.0936 7.26058 16.7228 7.64501C14.7584 9.67497 12.7884 11.6991 10.8155 13.7203C10.4475 14.0989 9.92106 14.0873 9.58706 13.7291C9.25589 13.3737 9.26155 12.8408 9.62952 12.4622C10.9825 11.0642 12.3383 9.67206 13.6998 8.28284C13.8017 8.1809 13.9404 8.11974 14.0649 8.0411C14.0338 7.98577 14.0055 7.93334 13.9743 7.87801C13.8526 7.87801 13.7281 7.87801 13.6064 7.87801C9.47101 7.8751 5.33848 7.8751 1.20311 7.87218C1.0814 7.87218 0.962519 7.87801 0.840808 7.86927C0.3483 7.84015 -0.00834304 7.45862 0.00014847 6.98098C0.00863998 6.515 0.351131 6.14512 0.832316 6.12764C1.3503 6.10726 1.86828 6.11891 2.38626 6.11891C6.16215 6.11599 9.93521 6.11599 13.7083 6.11599C13.7904 6.11599 13.8724 6.10726 13.9574 6.10143C13.9772 6.0694 13.9998 6.03445 14.0225 6.00241Z"
+                    fill="black"
+                  ></path></svg
+              ></span></div
+          ></a>
+        </div>
+      </div>
+      <div class="section-content">
+        <div class="products-section w-full">
+          <div
+            class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-[30px]"
+          >
+            {% for prod in all_products %}
+            <div class="wow fadeInUp" data-wow-delay="{{forloop.counter}}00ms">
+              <div
+                class="product-card-one group relative h-full w-full overflow-hidden bg-white"
+                style="box-shadow: rgba(0, 0, 0, 0.05) 0px 15px 64px 0px"
+              >
+                {% if prod.productimage_set.first %}
+                <a href="/details/{{prod.id}}" class="bg-slate-100 block">
+                  <div
+                    class="product-card-img h-[300px] w-full bg-slate-50"
+                    style='background: url("{{prod.productimage_set.first.image.url}}") center center no-repeat; background-size: contain;'
+                  ></div>
+                  {% else %}
+                  <div
+                    class="product-card-img h-[300px] w-full"
+                    style="
+                      background: url('/static/frontend/images/no_product.png')
+                        center center no-repeat;
+                    "
+                  ></div>
+                  {% endif %}
+                </a>
+                <div class="product-card-details relative px-[30px] pb-[30px]">
+                  <div
+                    class="absolute left-0 top-40 h-10 w-full px-[30px] transition-all duration-300 ease-in-out group-hover:top-[60px]"
+                  >
+                    <button
+                      @click="addToCart({{prod.id}})"
+                      type="button"
+                      class="yellow-btn"
+                      v-if="!incart({{prod.id}})"
+                    >
+                      <div class="flex items-center space-x-3">
+                        <span>
+                          <svg
+                            width="14"
+                            height="16"
+                            viewBox="0 0 14 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="fill-current"
+                          >
+                            <path
+                              d="M12.5664 4.14176C12.4665 3.87701 12.2378 3.85413 11.1135 3.85413H10.1792V3.43576C10.1792 2.78532 10.089 2.33099 9.86993 1.86359C9.47367 1.01704 8.81003 0.425438 7.94986 0.150881C7.53106 0.0201398 6.90607 -0.0354253 6.52592 0.0234083C5.47246 0.193372 4.57364 0.876496 4.11617 1.85052C3.89389 2.32772 3.80368 2.78532 3.80368 3.43576V3.8574H2.8662C1.74187 3.8574 1.51313 3.88028 1.41326 4.15483C1.36172 4.32807 0.878481 8.05093 0.6723 9.65578C0.491891 11.0547 0.324369 12.3752 0.201948 13.3688C-0.0106763 15.0815 -0.00423318 15.1077 0.00220999 15.1371V15.1404C0.0312043 15.2515 0.317925 15.5424 0.404908 15.6274L0.781834 16H13.1785L13.4588 15.7483C13.5844 15.6339 14 15.245 14 15.0521C14 14.9214 12.5922 4.21694 12.5664 4.14176ZM12.982 14.8037C12.9788 14.8266 12.953 14.8952 12.9079 14.9443L12.8435 15.0162H1.13943L0.971907 14.8331L1.63233 9.82901C1.86429 8.04766 2.07047 6.4951 2.19289 5.56684C2.24766 5.16154 2.27343 4.95563 2.28631 4.8543C2.72123 4.85103 4.62196 4.84776 6.98661 4.84776H11.6901L11.6966 4.88372C11.7481 5.1452 12.9594 14.5128 12.982 14.8037ZM4.77338 3.8574V3.48479C4.77338 3.23311 4.80559 2.88664 4.84103 2.72649C5.03111 1.90935 5.67864 1.24584 6.48726 1.03339C6.82553 0.948403 7.37964 0.97782 7.71791 1.10202H7.72113C8.0755 1.22296 8.36545 1.41907 8.63284 1.71978C9.06453 2.19698 9.2095 2.62516 9.2095 3.41615V3.8574H4.77338Z"
+                            ></path>
+                          </svg>
+                        </span>
+                        <span>Add To Cart</span>
+                      </div>
+                    </button>
+                    <a href="/cart" v-else>
+                      <button type="button" class="yellow-btn">
+                        <div class="flex items-center space-x-3">
+                          <span>
+                            <svg
+                              width="14"
+                              height="16"
+                              viewBox="0 0 14 16"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="fill-current"
+                            >
+                              <path
+                                d="M12.5664 4.14176C12.4665 3.87701 12.2378 3.85413 11.1135 3.85413H10.1792V3.43576C10.1792 2.78532 10.089 2.33099 9.86993 1.86359C9.47367 1.01704 8.81003 0.425438 7.94986 0.150881C7.53106 0.0201398 6.90607 -0.0354253 6.52592 0.0234083C5.47246 0.193372 4.57364 0.876496 4.11617 1.85052C3.89389 2.32772 3.80368 2.78532 3.80368 3.43576V3.8574H2.8662C1.74187 3.8574 1.51313 3.88028 1.41326 4.15483C1.36172 4.32807 0.878481 8.05093 0.6723 9.65578C0.491891 11.0547 0.324369 12.3752 0.201948 13.3688C-0.0106763 15.0815 -0.00423318 15.1077 0.00220999 15.1371V15.1404C0.0312043 15.2515 0.317925 15.5424 0.404908 15.6274L0.781834 16H13.1785L13.4588 15.7483C13.5844 15.6339 14 15.245 14 15.0521C14 14.9214 12.5922 4.21694 12.5664 4.14176ZM12.982 14.8037C12.9788 14.8266 12.953 14.8952 12.9079 14.9443L12.8435 15.0162H1.13943L0.971907 14.8331L1.63233 9.82901C1.86429 8.04766 2.07047 6.4951 2.19289 5.56684C2.24766 5.16154 2.27343 4.95563 2.28631 4.8543C2.72123 4.85103 4.62196 4.84776 6.98661 4.84776H11.6901L11.6966 4.88372C11.7481 5.1452 12.9594 14.5128 12.982 14.8037ZM4.77338 3.8574V3.48479C4.77338 3.23311 4.80559 2.88664 4.84103 2.72649C5.03111 1.90935 5.67864 1.24584 6.48726 1.03339C6.82553 0.948403 7.37964 0.97782 7.71791 1.10202H7.72113C8.0755 1.22296 8.36545 1.41907 8.63284 1.71978C9.06453 2.19698 9.2095 2.62516 9.2095 3.41615V3.8574H4.77338Z"
+                              ></path>
+                            </svg>
+                          </span>
+                          <span>In Your Cart</span>
+                        </div>
+                      </button>
+                    </a>
+                  </div>
+                  <div class="reviews mb-3 flex space-x-[1px] mt-4">
+                    <span>
+                      <svg
+                        width="18"
+                        height="17"
+                        viewBox="0 0 18 17"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9 0L11.0206 6.21885H17.5595L12.2694 10.0623L14.2901 16.2812L9 12.4377L3.70993 16.2812L5.73056 10.0623L0.440492 6.21885H6.97937L9 0Z"
+                          fill="#FFA800"
+                        ></path></svg
+                    ></span>
+                    <span
+                      ><svg
+                        width="18"
+                        height="17"
+                        viewBox="0 0 18 17"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9 0L11.0206 6.21885H17.5595L12.2694 10.0623L14.2901 16.2812L9 12.4377L3.70993 16.2812L5.73056 10.0623L0.440492 6.21885H6.97937L9 0Z"
+                          fill="#FFA800"
+                        ></path></svg></span
+                    ><span
+                      ><svg
+                        width="18"
+                        height="17"
+                        viewBox="0 0 18 17"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M9 0L11.0206 6.21885H17.5595L12.2694 10.0623L14.2901 16.2812L9 12.4377L3.70993 16.2812L5.73056 10.0623L0.440492 6.21885H6.97937L9 0Z"
+                          fill="#FFA800"
+                        ></path></svg
+                    ></span>
+                  </div>
+                  <a href="/details/{{prod.id}}">
+                    <p
+                      class="h-6 overflow-hidden title font-semibold text-qblack mb-2 line-clamp-2 text-[15px] leading-[24px] hover:text-blue-600"
+                    >
+                      {{prod.name}}
+                    </p>
+                    <div class="flex gap-2 flex-wrap">
+                      {% if prod.discounted_price > 0 %}
+                      <p class="price">
+                        <span
+                          class="main-price text-qred font-semibold text-[16px]"
+                          >{{shop.currency}}{{ prod.discounted_price}}</span
+                        >
+                      </p>
+                      <p class="price">
+                        <span
+                          class="main-price text-qgray font-semibold text-[16px] line-through"
+                          >{{shop.currency}}{{ prod.sale_price}}
+                        </span>
+                      </p>
+                      {% else %}
+                      <p class="price">
+                        <span
+                          class="offer-price text-qred font-semibold text-[16px]"
+                          >{{shop.currency}}{{ prod.sale_price}}
+                        </span>
+                      </p>
+                      {% endif %}
+                    </div>
+                  </a>
+                </div>
+                <div
+                  class="quick-access-btns absolute -right-10 top-20 flex flex-col space-y-2 transition-all duration-300 ease-in-out group-hover:right-4"
+                >
+                  <button>
+                    <span
+                      @click="addToWish({{prod.id}})"
+                      class="flex h-10 w-10 items-center justify-center rounded-full hover:bg-gray-200"
+                    >
+                      <svg
+                        width="21"
+                        height="18"
+                        viewBox="0 0 21 18"
+                        fill="#EF2647"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M4.97214 0.0251923C3.71435 0.183434 2.6616 0.701674 1.7705 1.60365C0.970091 2.41068 0.489057 3.26519 0.213053 4.37683C-0.275867 6.30342 0.0789948 8.20232 1.25398 9.98649C2.00708 11.1298 2.98097 12.1781 4.76711 13.7764C5.90266 14.7931 9.36848 17.7601 9.53802 17.859C9.69574 17.954 9.75488 17.9658 10.09 17.9658C10.4252 17.9658 10.4843 17.954 10.642 17.859C10.8116 17.7601 14.2853 14.7891 15.413 13.7764C17.207 12.1702 18.173 11.1258 18.9261 9.98649C20.1011 8.20232 20.4559 6.30342 19.967 4.37683C19.691 3.26519 19.21 2.41068 18.4096 1.60365C17.6131 0.800575 16.7614 0.337719 15.6456 0.100357C15.0857 -0.0183239 14.0526 -0.0301933 13.5637 0.0805759C12.1995 0.377279 11.1546 1.06167 10.2004 2.28013L10.09 2.41859L9.98357 2.28013C9.04122 1.08541 8.01212 0.401016 6.69913 0.100357C6.30878 0.00936699 5.4098 -0.0301933 4.97214 0.0251923ZM6.28907 1.23178C7.40885 1.42958 8.37487 2.07837 9.13979 3.15046C9.26991 3.3364 9.43156 3.55793 9.49465 3.64892C9.78643 4.06035 10.3936 4.06035 10.6854 3.64892C10.7485 3.55793 10.9102 3.3364 11.0403 3.15046C12.0851 1.68673 13.5401 0.998377 15.1251 1.21596C16.8837 1.45728 18.2558 2.69156 18.7802 4.50738C19.1942 5.94342 19.0128 7.45067 18.2597 8.80759C17.6289 9.94298 16.5761 11.1337 14.7427 12.7834C13.8555 13.5786 10.1255 16.7988 10.09 16.7988C10.0506 16.7988 6.33638 13.5904 5.4374 12.7834C2.61823 10.2476 1.50633 8.66518 1.23821 6.8098C1.06472 5.61112 1.31312 4.32145 1.91639 3.30475C2.82326 1.77376 4.58968 0.935081 6.28907 1.23178Z"
+                        ></path></svg
+                    ></span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style scoped>
+  .blue-btn,
+  .yellow-btn {
+    --tw-bg-opacity: 1;
+    --tw-text-opacity: 1;
+    align-items: center;
+    display: flex;
+    font-size: 13px;
+    font-weight: 600;
+    height: 100%;
+    justify-content: center;
+    line-height: 0;
+    width: 100%;
+  }
+  .yellow-btn {
+    background-color: rgb(255 187 56 / var(--tw-bg-opacity));
+    color: rgb(29 29 29 / var(--tw-text-opacity));
+  }
+  .text-qgray {
+    --tw-text-opacity: 1;
+    color: rgb(121 121 121 / var(--tw-text-opacity));
+  }
+  .line-through {
+    -webkit-text-decoration-line: line-through;
+    text-decoration-line: line-through;
+  }
+  .text-qred {
+    --tw-text-opacity: 1;
+    color: rgb(239 38 44 / var(--tw-text-opacity));
+  }
+  .background-image {
+    background-size: contain;
+  }
+</style>
+
+<script>
+  createApp({
+    data() {
+      return {
+        store: store,
+      };
+    },
+    delimiters: ["[[", "]]"],
+    methods: {
+      addToCart(id) {
+        console.log(id);
+        this.$store.commit("addToCart", { id: id, quantity: 1 });
+      },
+      delFromCart(id) {
+        this.$store.commit("removeFromCart", { id: id });
+      },
+      addToWish(id) {
+        this.$store.commit("addToWish", { id: id });
+      },
+      incart(id) {
+        return this.$store.state.cart.some((cartItem) => cartItem.id === id);
+      },
+    },
+  })
+    .use(store)
+    .mount("#all-product");
+</script>

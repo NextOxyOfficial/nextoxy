@@ -1,0 +1,31 @@
+
+
+
+
+<!-- jewellary list -->
+<section class="max-w-[1300px] mx-auto px-[20px] md:px-[40px] mt-12 md:mt-24">
+    <h2 id="theme14-collect-eojrt0983245" style="font-family: ITC;" class="editable text text-[#1c1c1c] font-bold text-[27px] md:text-[31.5px]">
+        Jewellery Collection
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-4 mt-12 gap-6">
+        {% for sec in sections %}
+        <!-- item 1 -->
+        <a href="/search_page?section={{sec.id}}" class="group inline-block">
+        <div class="overflow-hidden bg-cover">
+            <div id="theme14-collect-oew02342345g2" class="editable image">
+                {% if prod.productimage_set.first %}
+                <img src="{{sec.image.url}}" alt="product" class="h-[282.5px] w-full hover:scale-105 transition-all duration-500 object-cover"/>
+                {% else %}
+                <img class="h-[282.5px] w-full hover:scale-105 transition-all duration-500 object-cover" src="/static/ecommerce/theme14/img/jewll-collec-2.avif" alt="">
+                {% endif %}
+                
+            </div>
+            <p id="theme14-collect-iu298efgoi23" style="font-family: Futura;" class="editable text w-[282.5px] text-[20px] text-[#1c1d1d] pt-[10px] pb-[6px]">{{sec.name}}</p>
+            
+            {% comment %} <p id="theme14-collect-oefh89w3gmnp92" style="font-family: Futura;" class="editable text text-[15px]">{{ prod.sale_price}}</p> {% endcomment %}
+        </div>
+    </a>
+        {% endfor %}
+    </div>
+</section>
+

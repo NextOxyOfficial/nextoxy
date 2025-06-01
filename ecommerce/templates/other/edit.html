@@ -1,0 +1,398 @@
+<section id="editor">
+  <section
+    v-if="show == 'text'"
+    class="fixed z-[999999] left-0 top-0 overflow-y-scroll bg-slate-900/80 py-10 h-screen w-screen overflow-hidden"
+  >
+    <div
+      class="shadow-two mx-auto max-w-[465px] rounded-[10px] bg-white p-4 animate__animated animate__zoomIn animate__faster"
+      v-if="show == 'text'"
+    >
+      <div class="text-center">
+        <h4
+          class="mb-4 text-2xl font-semibold text-black sm:text-[28px] min-h-400px"
+        >
+          [[ text ]]
+        </h4>
+        <textarea
+          v-model="text"
+          name=""
+          id=""
+          class="w-full border p-3"
+          rows="5"
+        ></textarea>
+        <div class="flex items-center space-x-4">
+          <button
+            @click="show = false"
+            class="text-body-color shadow-card hover:bg-gray-2 h-12 w-full rounded-md bg-white text-center text-base font-medium"
+          >
+            Close
+          </button>
+          <button
+            @click="changeText"
+            class="bg-primary h-12 w-full rounded-md text-center text-base font-medium text-white hover:bg-opacity-90"
+          >
+            Save text
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section
+    v-if="show == 'youtube'"
+    class="fixed z-[999999] left-0 top-0 overflow-y-scroll bg-slate-900/80 py-10 h-screen w-screen overflow-hidden"
+  >
+    <div
+      class="shadow-two mx-auto max-w-[465px] rounded-[10px] bg-white p-4 animate__animated animate__zoomIn animate__faster"
+    >
+      <div class="text-center">
+        <p class="w-full my-1 text-left">Link:</p>
+        <input v-model="link" class="w-full border p-3" type="text" />
+        <div class="flex items-center space-x-4">
+          <button
+            @click="show = false"
+            class="text-body-color shadow-card hover:bg-gray-2 h-12 w-full rounded-md bg-white text-center text-base font-medium"
+          >
+            Close
+          </button>
+          <button
+            @click="changeYoutube"
+            class="bg-primary h-12 w-full rounded-md text-center text-base font-medium text-white hover:bg-opacity-90"
+          >
+            Save text
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section
+    v-if="show == 'link'"
+    class="fixed z-[999999] left-0 top-0 overflow-y-scroll bg-slate-900/80 py-10 h-screen w-screen overflow-hidden"
+  >
+    <div
+      class="shadow-two mx-auto max-w-[465px] rounded-[10px] bg-white p-4 animate__animated animate__zoomIn animate__faster"
+    >
+      <div class="text-center">
+        <p class="w-full my-1 text-left">Text:</p>
+        <input v-model="text" class="w-full border p-3" type="text" />
+        <p class="w-full my-1 text-left">Link:</p>
+        <input v-model="link" class="w-full border p-3" type="text" />
+        <div class="flex items-center space-x-4 mt-2">
+          <button
+            @click="show = false"
+            class="text-body-color shadow-card hover:bg-gray-2 h-12 w-full rounded-md bg-white text-center text-base font-medium"
+          >
+            Close
+          </button>
+          <button
+            @click="changeLink"
+            class="bg-primary h-12 w-full rounded-md text-center text-base font-medium text-white hover:bg-opacity-90"
+          >
+            Save Link
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section
+    v-if="show == 'image'"
+    class="fixed z-[999999] left-0 top-0 overflow-y-scroll bg-slate-900/80 py-10 h-screen w-screen overflow-hidden"
+  >
+    <div
+      class="shadow-two mx-auto max-w-[465px] rounded-[10px] bg-white p-8 animate__animated animate__zoomIn animate__faster"
+      v-if="show == 'image'"
+    >
+      <div class="border-stroke overflow-hidden rounded-md border">
+        <img
+          :src="image"
+          alt="modal image"
+          class="w-full max-h-[400px] object-contain"
+        />
+      </div>
+      <div
+        class="relative border flex flex-col justify-center items-center w-full h-[100px] my-2 rounded text-slate-600 cursor-pointer"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+        >
+          <path
+            fill="currentColor"
+            d="M6 17h12l-3.75-5l-3 4L9 13l-3 4Zm-3 4V3h18v18H3Zm2-2h14V5H5v14ZM5 5v14V5Z"
+          />
+        </svg>
+        <p>Upload New Image</p>
+        <input
+          @change="imageAdded"
+          type="file"
+          alt=""
+          class="w-full h-full absolute z-2 opacity-0 cursor-pointer"
+        />
+      </div>
+      <div class="text-center">
+        <div class="flex items-center space-x-4">
+          <button
+            @click="show = false"
+            class="text-body-color shadow-card hover:bg-gray-2 h-12 w-full rounded-md bg-white text-center text-base font-medium"
+          >
+            Close
+          </button>
+          <button
+            @click="changeImage"
+            class="bg-primary h-12 w-full rounded-md text-center text-base font-medium text-white hover:bg-opacity-90"
+          >
+            Change Image
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<script>
+  const editor = Vue.createApp({
+    data() {
+      return {
+        text: false,
+        image: false,
+        link: false,
+        id: "",
+        show: "",
+        content: "",
+      };
+    },
+    delimiters: ["[[", "]]"],
+    mounted() {
+      this.getContent();
+    },
+    methods: {
+      changeText() {
+        console.log(this.text);
+        fetch("/api/editor", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: this.id,
+            text: this.text,
+            type: "text",
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            this.content = data;
+            this.show = false;
+            this.text = false;
+            this.id = "";
+          })
+          .catch((error) => console.error(error));
+      },
+      changeYoutube() {
+        fetch("/api/editor", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: this.id,
+            link: this.link,
+            type: "youtube",
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            this.content = data;
+            this.show = false;
+            this.link = false;
+            this.id = "";
+          })
+          .catch((error) => console.error(error));
+      },
+      changeLink() {
+        fetch("/api/editor", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: this.id,
+            text: this.text,
+            link: this.link,
+            type: "link",
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            this.content = data;
+            this.show = false;
+            this.text = false;
+            this.id = "";
+          })
+          .catch((error) => console.error(error));
+      },
+      changeImage() {
+        fetch("/api/editor", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: this.id,
+            image: this.image,
+            type: "image",
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            this.content = data;
+            this.show = false;
+            this.image = false;
+            this.id = "";
+          })
+          .catch((error) => console.error(error));
+      },
+      imageAdded(e) {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = (e) => {
+          this.image = e.target.result;
+        };
+      },
+      renderEdit() {
+        // loop this function every 2 sec and log 123
+        setTimeout(() => {
+          this.renderEdit();
+        }, 1000);
+        if (!this.content) {
+          this.getContent();
+          return;
+        }
+        // console.log(this.content)
+        this.content.forEach((content) => {
+          var element = document.getElementById(content.id);
+          if (!element) {
+            return;
+          }
+          if (content.updated) {
+            return;
+          }
+          content.updated = true;
+
+          if (
+            content.type == "text" &&
+            content.id &&
+            document.getElementById(content.id)
+          ) {
+            element.innerText = content.text;
+          } else if (
+            content.type == "link" &&
+            content.id &&
+            document.getElementById(content.id)
+          ) {
+            element.innerText = content.text;
+            element.setAttribute("href", content.link);
+          } else if (
+            content.type == "youtube" &&
+            content.id &&
+            document.getElementById(content.id)
+          ) {
+            let editableYoutubeIframe = element.querySelector("iframe");
+            editableYoutubeIframe.setAttribute("src", content.link);
+          } else if (content.type == "image" && content.id) {
+            var wrapper = document.getElementById(content.id);
+            if (
+              wrapper.querySelector("img").getAttribute("src") != content.image
+            ) {
+              wrapper.querySelector("img").setAttribute("src", content.image);
+            }
+          }
+          if (!element.classList.contains("updated")) {
+            element.classList.add("updated");
+          }
+        });
+      },
+      getContent() {
+        fetch("/api/editor", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            this.content = data;
+            this.renderEdit();
+          })
+          .catch((error) => console.error(error));
+      },
+    },
+  }).mount("#editor");
+  // ====================================
+  let editableTexts = document.querySelectorAll(".editable.text");
+  // console.log(editableTexts);
+  editableTexts.forEach((editableText) => {
+    editableText.addEventListener("click", (e) => {
+      e.preventDefault();
+      let text = editableText.innerText;
+      let id = editableText.getAttribute("id");
+      editor.text = text;
+      editor.id = id;
+      editor.show = "text";
+    });
+  });
+  let editableImages = document.querySelectorAll(".editable.image");
+  // console.log(editableImages);
+  editableImages.forEach((editableImage) => {
+    editableImage.addEventListener("click", (e) => {
+      e.preventDefault();
+      let image = editableImage.querySelector("img").src;
+      let id = editableImage.getAttribute("id");
+      editor.image = image;
+      editor.id = id;
+      editor.show = "image";
+    });
+  });
+
+  let editableLinks = document.querySelectorAll(".editable.link");
+  // console.log(editableLinks);
+  editableLinks.forEach((editableLink) => {
+    // prevent click
+    editableLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      console.log(325);
+      let text = editableLink.innerText;
+      let link = editableLink.getAttribute("href");
+      let id = editableLink.getAttribute("id");
+      editor.text = text;
+      editor.link = link;
+      editor.id = id;
+      editor.show = "link";
+    });
+  });
+
+  let editableYoutubes = document.querySelectorAll(".editable.youtube");
+  console.log(editableYoutubes);
+  editableYoutubes.forEach((editableYoutube) => {
+    // prevent click
+    editableYoutube.addEventListener("click", (e) => {
+      let editableYoutubeIframe = editableYoutube.querySelector("iframe");
+      e.preventDefault();
+      console.log(325);
+      let link = editableYoutubeIframe.getAttribute("src");
+      let id = editableYoutube.getAttribute("id");
+      editor.link = link;
+      editor.id = id;
+      editor.show = "youtube";
+    });
+  });
+</script>
+
+<style>
+  .youtube iframe {
+    position: relative;
+    pointer-events: none;
+  }
+</style>

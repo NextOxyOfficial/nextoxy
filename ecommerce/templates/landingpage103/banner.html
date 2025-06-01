@@ -1,0 +1,134 @@
+<div class="relative" id="banner">
+  <div class="absolute inset-0 flex items-center justify-center w-full">
+    <div class="text-center">
+      <p
+        class="text-xl md:text-6xl font-semibold md:font-bold lg:font-extrabold text-white editable text bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-white"
+        id="homeBannerasdf12"
+      >
+        Professional Landscaping Service in NY
+      </p>
+      <p
+        class="mx-auto text-md md:text-3xl font-semibold md:font-bold text-white py-4 editable text"
+        id="homeBannerasdf"
+      >
+        Professional Service in NY
+      </p>
+      <button
+        class="flex items-center gap-2 justify-center bg-slate-900 hover:bg-white transition ease-in-out duration-300 text-white hover:text-slate-900 mx-auto md:text-2xl font-semibold border border-slate-900 rounded-full px-4 py-3 editable text"
+        id="home_banner_askdfji"
+        @click="showModal = true"
+      >
+        Make an Appointment
+      </button>
+    </div>
+  </div>
+  <div class="max-h-[750px] overflow-hidden editable image" id="banner_123A3">
+    <img
+      class="w-full"
+      src="/static/services/service-three/home-hero-bg.jpg"
+      alt=""
+    />
+  </div>
+  <div class="absolute top-full inset-0 flex items-center justify-center">
+    <div class="hidden md:flex items-center justify-center gap-4">
+      <div class="editable image" id="banner_1243433">
+        <img
+          class="w-full max-w-[150px] lg:max-w-[250px] rounded"
+          src="/static/services/service-three/office_cleaning.avif"
+          alt=""
+        />
+      </div>
+      <div class="editable image" id="banner_1243433f">
+        <img
+          class="w-full max-w-[150px] lg:max-w-[250px] rounded"
+          src="/static/services/service-three/office_cleaning.avif"
+          alt=""
+        />
+      </div>
+      <div class="editable image" id="banner_1243433d">
+        <img
+          class="w-full max-w-[150px] lg:max-w-[250px] rounded"
+          src="/static/services/service-three/office_cleaning.avif"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
+  <!-- form modal -->
+  <div v-if="showModal" class="modal-mask">
+    <div class="modal-wrapper relative">
+      <div class="modal-container">
+        <div class="modal-header">
+          <slot name="header"></slot>
+        </div>
+        <div class="modal-body">
+          {% include "commons/lp/lead-form.html" %}
+
+          <slot name="body"></slot>
+        </div>
+        <div class="modal-footer">
+          <slot name="footer"></slot>
+        </div>
+      </div>
+      <button
+        class="absolute -top-2 md:-top-5 -right-2 md:-right-5 rounded-full p-2 bg-slate-600 text-white"
+        slot="footer"
+        @click="showModal = false"
+      >
+        <img
+          class="size-4 md:size-6"
+          src="/static/services/services-four/close.svg"
+          alt=""
+        />
+      </button>
+    </div>
+  </div>
+  <!-- form modal ends -->
+</div>
+<script>
+  const app2 = Vue.createApp({
+    data() {
+      return {
+        showModal: false,
+      };
+    },
+  }).mount("#banner");
+</script>
+
+<style>
+  .modal-mask {
+    position: fixed;
+    z-index: 9998;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-container {
+    width: 300px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .modal-header,
+  .modal-footer {
+    text-align: center;
+  }
+
+  .modal-body {
+    margin: 10px 0;
+  }
+</style>

@@ -1,0 +1,20 @@
+<section class="bg-white py-12">
+    <div class="container mx-auto">
+      <div class="flex flex-wrap">
+        <div class="swiper" id="product-images-swiper">
+          <div class="swiper-wrapper">
+            {% for brand in brands %}
+            <a href="/search_page?brand={{brand.id}}" data-wow-delay="{{forloop.counter}}00ms" class="wow fadeInRight swiper-slide hover:border-primary flex h-20 min-w-[150px] w-[225px] object-contain items-center justify-center rounded-full border border-transparent px-7 hover:border-opacity-10 hover:bg-[#EAEFFF]">
+                {% if brand.image %}
+                    <img src="{{brand.image.url}}" alt="image" class="h-10 max-w-full object-contain"/>
+                {% endif %}
+            </a>
+            {% endfor %}
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </div>
+  </section>

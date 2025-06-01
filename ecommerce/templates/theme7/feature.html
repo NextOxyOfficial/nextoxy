@@ -1,0 +1,108 @@
+<div class="page-content" id="feature-product">
+    <div class="holder mt-0 py-15 py-md-6 bgcolor">
+        <div class="container">
+            <div class="">
+                <div class="">
+                    <div class="swiper " id="product-swiper">
+                        <div class="row flex-nowrap four-in-row swiper-wrapper" >
+                            {% for prod in feature_products %}
+                            <div class="col swiper-slide">
+                                <div class="prd-img-area relative">
+                                    <a href="/details/{{prod.id}}" class="prd-img prd-img--noequal sm:h-[330px] h-[210px]">
+                                        {% if prod.productimage_set.first %}
+                                        <img src="{{prod.productimage_set.first.image.url}}"
+                                            class="prd-img-first lazyload sm:h-full object-contain sm:h-[210px] h-[187px]" alt="">
+                                            {% else %}
+                                            <img src="/static/ecommerce/theme7/images/banner-fashion-2-02.webp"
+                                                class="prd-img-first lazyload " alt="">
+                                            {% endif %}
+                                    </a>
+                                    {% if prod.discounted_price > 0 %}
+                                    <div class="prd-big-circle-labels absolute bottom-4 right-2">
+                                        <div class="label-sale w-[20px] left-[30px]"><span>{{shop.currency}} {{prod.discount_amount}} <span class="sale-text text-xs">Discount</span></span>
+    
+                                            <div class="countdown-circle">
+                                                <div class="countdown js-countdown" data-countdown="2021/07/01">
+                                                </div>
+                                            </div>
+    
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                <div class="prd-info">
+                                    <h2 class="prd-title"><a href="/details/{{prod.id}}">{{prod.name}}</a></h2>
+                                    <div class="creative-product-carousel-hovers">
+                                        <div class="creative-product-carousel-price">
+                                            {% if prod.discounted_price > 0 %}
+                                            <div class="price-old"> {{shop.currency}}{{ prod.sale_price}}</div>
+                                            <div class="price-new">{{shop.currency}}{{ prod.discounted_price}} </div>
+                                            {% else %}
+                                            <div class="price-new">{{shop.currency}}{{ prod.sale_price}}</div>
+
+                                            {%endif%}
+                                        </div>
+                                        <div class="creative-product-carousel-action">
+                                            <form>
+                                                <button class="btn js-select-add-to-cart" @click="addToCart({{prod.id}})" v-if="!incart({{prod.id}})">Add To Cart</button>
+                                                <a  href="/cart" class="btn js-select-add-to-cart" style="background: #F8357B;" v-else>In Your Cart</a>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}                            
+                    </div>
+                    <div class="creative-product-carousel-text">New<br>Arrival</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    createApp({
+        data() {
+            return {
+                store: store,
+            }
+        },
+        delimiters: ['[[', ']]'],
+        methods: {
+            addToCart(id) {
+                console.log(id)
+                this.$store.commit('addToCart', {
+                    "id": id,
+                    "quantity": 1
+                })
+            },
+            delFromCart(id) {
+                this.$store.commit('removeFromCart', {
+                    "id": id
+                })
+            },
+            addToWish(id) {
+                this.$store.commit('addToWish', {
+                    "id": id
+                })
+            },
+            incart(id) {
+                return this.$store.state.cart.some((cartItem) => cartItem.id === id)
+            },
+        },
+    }).use(store).mount('#feature-product')
+</script>
+
+<style scoped>
+    @media(max-width:500px){
+        .label-sale span{
+            font-size: 14px !important;
+        }
+        .label-sale{
+            width: 80px !important;
+            height: 80px !important;
+            font-size: 14px !important;
+        }
+    }
+</style>

@@ -1,0 +1,235 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% if shop.favicon %}
+    <link rel="shortcut icon" href="{{ shop.favicon.url }}" type="image/x-icon">
+    {% else %}
+    <link rel="shortcut icon" href="{% static '/ecommerce/favicon.png' %}" type="image/x-icon">
+    {% endif %}
+
+    <title>{% block title %}{{ shop.title }}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'ecommerce/theme5/style.css' %}">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vuex@4.0.2"></script>
+    <script src="{% static 'ecommerce/store.js' %}"></script>
+    {% if edit %}
+    <link rel="stylesheet" href="{% static 'ecommerce/edit.css' %}">
+    {% endif %}
+    <link rel="stylesheet" href="/static/animate.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>    
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{{scripts2|safe}}
+
+</head>
+<body>
+    {% include "theme5/navbar.html" %}
+    
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    {% block content %} 
+    {% endblock content %}
+    {% include "other/footers/footer1.html" %}
+{{scripts|safe}}
+
+    <!-- wow  -->
+    <script src="/static/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <!-- slider  -->
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const productSwiper = new Swiper('#product-swiper', {
+            slidesPerView: 5,
+            slidesPerGroup: 5,
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 5,
+                    slidesPerGroup: 5,
+                },
+                100: {
+                    slidesPerView: 2,
+                    slidesPerGroup: 2,
+                },
+            }
+        });
+        const productSmallSwiper = new Swiper('#product-images-swiper', {
+            slidesPerView: 5,
+            slidesPerGroup: 5,
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 5,
+                    slidesPerGroup: 5,
+                },
+                100: {
+                    slidesPerView: 2,
+                    slidesPerGroup: 2,
+                },
+            }
+        });
+        const categorySwiper = new Swiper('#category-swiper', {
+            slidesPerView: 7,
+            slidesPerGroup: 7,
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 5,
+                    slidesPerGroup: 5,
+                },
+                100: {
+                    slidesPerView: 2,
+                    slidesPerGroup: 2,
+                },
+            }
+        });
+        const productImagesSwiper = new Swiper('#review-container', {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            spaceBetween: 1,
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 1,
+                    slidesPerGroup: 1,
+                    spaceBetween: 1,
+                },
+                100: {
+                    slidesPerView: 1,
+                    slidesPerGroup: 2,
+                },
+            }
+        });
+        const heroBanner = new Swiper('#heroBanner', {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            spaceBetween: 1,
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 1,
+                    slidesPerGroup: 1,
+                    spaceBetween: 1,
+                },
+                100: {
+                    slidesPerView: 1,
+                    slidesPerGroup: 2,
+                },
+            }
+        });
+        
+        const bannerSwiper = new Swiper('#banner-swiper', {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+            spaceBetween: 8,
+            autoplay: {
+                delay: 3000,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 1,
+                    slidesPerGroup: 1,
+                    spaceBetween: 8,
+                },
+                100: {
+                    slidesPerView: 1,
+                    slidesPerGroup: 1,
+                },
+            }
+        });
+        const bannerSwiper2 = new Swiper('#banner-swiper2', {
+            slidesPerView: 4,
+            slidesPerGroup: 1,
+            spaceBetween: 0,
+            autoplay: {
+                delay: 2000,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                768: {
+                    slidesPerView: 4,
+                    slidesPerGroup: 1,
+                    spaceBetween: 8,
+                },
+                100: {
+                    slidesPerView: 2,
+                    slidesPerGroup: 1,
+                },
+            }
+        });
+
+    </script>
+
+    {% if edit %}
+    {% include "other/edit.html" %}
+    {% else %}
+    {% include "other/render.html" %}
+    {% endif %}
+</body>
+</html>

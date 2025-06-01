@@ -1,0 +1,103 @@
+<!--footer-->
+{% load static %}
+<footer class="py-14 bg-black">
+  <div class="container max-w-[1140px] px-2 md:px-4 py-4 md:py-32 mx-auto">
+    <div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 px-4">
+      <!-- Logo and Social Media -->
+      <div>
+        <div class="flex gap-2">
+          <div>
+            {% if shop.logo %}
+            <a
+              href="/"
+              class="mb-6 inline-block max-w-[160px] bg-white rounded p-4"
+              ><img src="{{shop.logo.url}}" alt="logo" class="max-w-full"
+            /></a>
+            {% else %}
+            <a href="/" class="mb-6 inline-block max-w-[160px]"
+              ><img
+                src="{% static '/ecommerce/logo.png' %}"
+                alt="logo"
+                class="w-full"
+            /></a>
+            {% endif %}
+          </div>
+        </div>
+
+        <p class="text-gray-400 mb-4">
+          Leo elementum iaculis quam massa vitae odio sed. Morbi tincidunt
+          senectus.
+        </p>
+        <div class="flex space-x-4">
+          <a href="#" class="text-white"
+            ><img src="/static/services/service-one/twitter.png" alt=""
+          /></a>
+          <a href="#" class="text-white"
+            ><img src="/static/services/service-one/instagram.png" alt=""
+          /></a>
+          <a href="#" class="text-white"
+            ><img src="/static/services/service-one/youtube.png" alt=""
+          /></a>
+        </div>
+      </div>
+      <!-- Navigation Links -->
+      <div class="md:col-span-2">
+        <h3 class="text-xl font-semibold text-white mb-4">Navigation</h3>
+        <ul class="space-y-2">
+          {% for menu in footer_menu %}
+          <li>
+            <a
+              href="/page/{{menu.link}}"
+              class="mb-2 inline-block text-base leading-loose text-[#efefef] hover:text-white"
+            >
+              {{menu.name}}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <!-- Services Links -->
+      <!-- <div>
+        <h3 class="text-xl font-semibold text-white mb-4">Services</h3>
+        <ul class="space-y-2">
+          {% for menu in footer_menu %}
+          <li>
+            <a
+              href="/page/{{menu.link}}"
+              class="mb-2 inline-block text-base leading-loose text-[#efefef] hover:text-white"
+            >
+              {{menu.name}}
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div> -->
+      <!-- Newsletter Subscription -->
+      <div>
+        <h3 class="text-xl font-semibold text-white mb-4">
+          Subscribe to Newsletter
+        </h3>
+        <form>
+          <input
+            type="email"
+            placeholder="Enter your email.."
+            class="w-full p-5 mb-4 bg-white border border-gray-600 focus:outline-none focus:border-white rounded-md"
+          />
+          <button class="w-26 p-4 px-8 bg-[#2B8761] text-white rounded-md">
+            Subscribe
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- Footer Bottom -->
+    <div
+      class="container mx-auto px-4 mt-8 border-t border-gray-700 pt-4 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm"
+    >
+      <p>Copyright © 2023 Lensade | Design by TokoTema</p>
+      <div class="flex space-x-4">
+        <a href="#" class="hover:text-white">Terms of Use</a>
+        <a href="#" class="hover:text-white">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>

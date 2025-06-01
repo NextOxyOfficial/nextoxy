@@ -1,0 +1,137 @@
+{% extends "theme5/base.html" %}
+
+{% block content %}
+
+<section class="bg-[#F4F7FF] pt-8 pb-8 lg:pt-8 lg:pb-8" id="wish-product">
+    <div class="container mx-auto ">
+      <div class="flex justify-center">
+        <div class="w-full px-4 ml-4">
+          <div class="mb-[20px]">
+            <h2 class="mb-4 text-3xl font-semibold text-black sm:text-4xl editable text" id="wish-weruoiunklj">Your Favorite Items</h2>
+          </div>
+        </div>
+      </div>
+  
+      <div class="w-full flex justify-center">
+        <div class="w-full px-4">
+          <div class="max-w-full overflow-x-auto rounded-sm border border-[#e7e7e7] bg-white">
+            <table class="w-full table-auto">
+              <thead>
+                <tr class="bg-white text-left">
+                  <th class="text-dark min-w-[300px] py-4 px-4 text-base font-semibold xl:pl-9 editable text" id="wish-woeruasd">Product</th>
+                  <th class="text-dark min-w-[90px] py-4 px-4 text-base font-semibold editable text" id="wishlist-werwer">Price</th>
+                  <th class="text-dark min-w-[150px] py-4 px-4 text-base font-semibold editable text" id="wishlist-askdljfh">Stock Status</th>
+                  <th class="text-dark min-w-[165px] py-4 px-4 text-base font-semibold editable text" id="wishlist-woie">Action</th>
+                  <th class="text-dark min-w-[140px] py-4 px-4 text-center text-base font-semibold xl:pr-9 editable text" id="wishlist-aslkdjfw4">Remove</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="product in products">
+                  <td class="border-t p-4 xl:pl-11">
+                    <div class="flex items-center">
+                      <img :src="product.image" alt="image" class="mr-4 h-[70px] w-[70px] rounded" v-if="product.image" />
+                      <img src="https://via.placeholder.com/70x70" alt="image" class="mr-4 h-[70px] w-[70px] rounded" v-else />
+                      <div>
+                        <h5 class="text-dark text-lg font-semibold max-w-[70%]">
+                          <a href="javascript:void(0)" class="hover:text-primary"> [[product.name]]</a>
+                        </h5>
+                        <p class="text-body-color text-base font-medium"></p>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="border-t p-4">
+                    <p class="text-lg font-semibold text-black whitespace-nowrap">{{shop.currency}}[[product.sale_price]]</p>
+                  </td>
+                  <td class="border-t p-4">
+                    <span class="bg-secondary text-secondary inline-flex items-center justify-center rounded-full bg-opacity-[15%] py-2 px-4 text-xs font-semibold" v-if="product.stock > 0"> In Stock </span>
+                    <span class="bg-red-500 text-red-500 inline-flex items-center justify-center rounded-full bg-opacity-[15%] py-2 px-4 text-xs font-semibold" v-else> Out of Stock </span>
+                  </td>
+                  <td class="border-t p-4">
+                    <button v-if="incart(product.id)" class="bg-slate-300 inline-block rounded py-2 px-5 text-sm font-semibold text-white hover:bg-opacity-90">Added to Cart</button>
+                    <button v-else @click="addToCart(product.id)" class="bg-primary inline-block rounded py-2 px-5 text-sm font-semibold text-white hover:bg-opacity-90">Add to Cart</button>
+                  </td>
+                  <td class="border-t p-4 pr-11 text-center">
+                    <button @click="delFromWish(product.id)" class="text-body-color hover:text-red-600">
+                      <svg width="16" height="20" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.8438 2.6875H10.8125V1.5625C10.8125 0.90625 10.2812 0.375 9.625 0.375H6.375C5.71875 0.40625 5.1875 0.90625 5.1875 1.5625V2.6875H2.15625C1.5 2.6875 0.96875 3.21875 0.96875 3.875V6.15625C0.96875 6.46875 1.21875 6.71875 1.53125 6.71875H2V17.3125C2 18.5938 3.0625 19.6563 4.34375 19.6563H11.6875C12.9688 19.6563 14.0312 18.5938 14.0312 17.3125V6.65625H14.5C14.8125 6.65625 15.0625 6.40625 15.0625 6.09375V3.8125C15 3.1875 14.5 2.6875 13.8438 2.6875ZM6.28125 1.5625C6.28125 1.53125 6.3125 1.46875 6.375 1.46875H9.625C9.65625 1.46875 9.71875 1.5 9.71875 1.5625V2.6875H6.28125V1.5625ZM2.09375 3.84375C2.09375 3.8125 2.125 3.75 2.1875 3.75H5.78125H10.2812H13.875C13.9062 3.75 13.9688 3.78125 13.9688 3.84375V5.5625H2.09375V3.84375ZM12.9062 17.2813C12.9062 17.9688 12.3438 18.5313 11.6562 18.5313H4.34375C3.65625 18.5313 3.09375 17.9688 3.09375 17.2813V6.65625H12.9375V17.2813H12.9062Z" fill="currentColor" />
+                        <path d="M8 15.0938C8.3125 15.0938 8.5625 14.8438 8.5625 14.5313V10.4375C8.5625 10.125 8.3125 9.875 8 9.875C7.6875 9.875 7.4375 10.125 7.4375 10.4375V14.5625C7.46875 14.875 7.6875 15.0938 8 15.0938Z" fill="currentColor" />
+                        <path d="M10.625 15.0938C10.9375 15.0938 11.1875 14.8438 11.1875 14.5313V10.4375C11.1875 10.125 10.9375 9.875 10.625 9.875C10.3125 9.875 10.0625 10.125 10.0625 10.4375V14.5625C10.0938 14.875 10.3438 15.0938 10.625 15.0938Z" fill="currentColor" />
+                        <path d="M5.375 15.0938C5.6875 15.0938 5.9375 14.8438 5.9375 14.5313V10.4375C5.9375 10.125 5.6875 9.875 5.375 9.875C5.0625 9.875 4.8125 10.125 4.8125 10.4375V14.5625C4.8125 14.875 5.0625 15.0938 5.375 15.0938Z" fill="currentColor" />
+                      </svg>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  <script>
+    createApp({
+      data() {
+        return {
+          store: store,
+          products: []
+        }
+      },
+      delimiters: ['[[', ']]'],
+      mounted() {
+        this.getWish()
+      },
+      methods: {
+        getWish() {
+          fetch('/api/wish', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(store.state.wish)
+          })
+          .then(response => response.json())
+          .then(data =>{
+            this.products = data
+            console.log(data)
+          } )
+          .catch(error => console.error(error));
+        },
+        getTotal() {
+          let total = 0
+          this.products.forEach(product => {
+            total += product.sale_price * product.quantity
+          })
+          return total
+        },
+        getDelivery(){
+          return 20
+        },
+        checkout(){
+          window.location.href = '/checkout'
+        },
+        updateQuantity(id, quantity){
+          console.log(id, quantity);
+          this.$store.commit('removeFromWish',{"id":id})
+          this.$store.commit('addToWish',{"id":id, "quantity":quantity})
+        },
+        delFromWish(id){
+          console.log(id);
+          this.$store.commit('removeFromWish',{"id":id})
+          this.products = this.products.filter(product => product.id != id)
+        },
+        addToCart(id) {
+          console.log(id)
+          this.$store.commit('addToCart',{"id":id, "quantity":1})
+        },
+        incart(id){
+          return this.$store.state.cart.some((cartItem) => cartItem.id === id)
+        },
+      },
+    }).use(store).mount('#wish-product')
+  </script>
+  
+  
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "blog1/base.html" %}
+
+{% block content %}
+{% include "blog1/hero.html" %}
+
+<!-- {{latest}}
+<h1>Latest Posts</h1>
+{% for post in latest %}
+<h1>{{post}}</h1>
+{% endfor %}
+<hr>
+{{featured}}
+
+{% for item in featured %}
+    <h2>{{item.name}}</h2>
+
+    {% for post in item.posts|slice:"0:3" %}
+    <h1>{{post}}</h1>
+    {% endfor %}
+    {% for post in item.posts|slice:"4:" %}
+    <h1>{{post}}</h1>
+    {% endfor %}
+{% endfor %} -->
+
+{% include "blog1/blogs.html" %}
+{% endblock %}

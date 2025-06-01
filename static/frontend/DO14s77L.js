@@ -1,0 +1,1 @@
+import{u as r}from"./DrXexQTH.js";import{a1 as e}from"./BVIp9nla.js";import"./BhHPlEQa.js";import"./B4TR0GKN.js";import"./5amPyy6W.js";const c={__name:"blank",setup(p){const{shop:s,getShop:o}=r();return o(),(t,a)=>e(t.$slots,"default")}};export{c as default};

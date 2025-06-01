@@ -1,0 +1,14 @@
+<div class="container-x mx-auto mb-20">
+  <div class="section-title mb-5 flex items-center justify-between">
+    <div><h1 class="font-600 text-qblacktext text-xl sm:text-3xl editable text" id="homebrand54394">Shop by Brand</h1></div>
+  </div>
+  <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 overflow-hidden">
+    {% for brand in brands %}
+    <div class="item wow fadeInUp" data-wow-delay="{{forloop.counter}}00ms">
+      <a href="/search_page?brand={{brand.id}}">
+        <div class="border-primarygray flex h-[130px] w-full items-center justify-center border bg-white"><img class="overflow-hidden h-full w-full object-contain" src="{{brand.image.url}}" alt="logo" /></div>
+      </a>
+    </div>
+    {% endfor %}    
+  </div>
+</div>

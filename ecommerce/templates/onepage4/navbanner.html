@@ -1,0 +1,79 @@
+<section>
+    <div>
+        <header class="header flex w-full items-center bg-white" id="navbar">
+            <div class="max-w-[1000px] w-[100%] px-2 mx-auto">
+                <div class="relative flex items-center py-4 justify-between">
+                    <div class="">
+                        {% if shop.logo %}
+                        <a href="/" class="block w-full">
+                            <img src="{{shop.logo.url}}" alt="logo" class="w-full h-[30px] object-contain" />
+                        </a>
+                        {% else %}
+                        <img src="/static/ecommerce/logo.png" alt="">
+                        {% endif %}
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <p class="text-sm">Having trouble?
+                            <a id="onepage4-nav-23kj52345j4235" href="#prod-container" class="text-blue-500 editable link"> Order Now </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+</section>
+
+
+<style scoped>
+    .header {
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+        border-bottom: 1px solid #dddddd5d;
+    }
+
+    .header.sticky {
+        position: fixed;
+        top: 0px;
+        z-index: 99999;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        margin: 0px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .header.sticky .header-wapper {
+        max-width: 1536px;
+        margin: auto;
+    }
+
+    .menubox.active {
+        position: fixed;
+        display: block !important;
+        padding: 10px;
+        border-radius: 3px;
+        top: 55px;
+        left: 0px;
+        height: max-content;
+        transition: all 4s ease-in-out 1s;
+    }
+</style>
+
+<script>
+    window.onscroll = function () { stickyHeader() };
+
+    var header = document.getElementById("navbar");
+    var sticky = header.offsetTop;
+
+    function stickyHeader() {
+        if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
+        } else {
+            header.classList.remove("sticky");
+        }
+    }
+    const menuButton = document.getElementById('menubtn');
+    const menuBox = document.getElementById('menulist');
+
+    menuButton.onclick = function () {
+        menuBox.classList.toggle('active');
+    }
+</script>

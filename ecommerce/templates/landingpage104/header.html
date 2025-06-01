@@ -1,0 +1,191 @@
+<header class="fixed w-full bg-slate-50 top-0 left-0" id="header">
+  <div
+    class="max-w-[1140px] text-slate-900 px-2 md:px-4 py-5 mx-auto flex justify-between items-center"
+  >
+    <div class="editable image" id="logo_asdfj">
+      <a href="/">
+        <img
+          class="w-full max-h-12"
+          src="/static/services/services-four/logo.svg"
+          alt=""
+        />
+      </a>
+    </div>
+    <nav class="hidden md:block">
+      <ul class="flex gap-2 text-slate-900">
+        <li>
+          <a class="text-lg hover:bg-slate-200 px-2 py-2" href="/">Home</a>
+        </li>
+        <li>
+          <a
+            class="text-lg hover:bg-slate-200 px-2 py-2"
+            href="#about"
+            @click.prevent="scrollToSection('about')"
+            >About</a
+          >
+        </li>
+        <li>
+          <a
+            class="text-lg hover:bg-slate-200 px-2 py-2"
+            href="#services"
+            @click.prevent="scrollToSection('services')"
+            >Services</a
+          >
+        </li>
+
+        <li>
+          <a
+            class="text-lg hover:bg-slate-200 px-2 py-2"
+            href="#faq4"
+            @click.prevent="scrollToSection('faq4')"
+            >FAQ</a
+          >
+        </li>
+        <li>
+          <a
+            class="text-lg hover:bg-slate-200 px-2 py-2"
+            href="#contact"
+            @click.prevent="scrollToSection('contact')"
+            >Contact</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <button
+      class="bg-[#2E5951] border rounded px-6 py-2 text-lg hidden md:block"
+    >
+      <div class="flex items-center justify-center gap-2">
+        <!-- <img src="/static/services/service-three/phone.svg" alt="phone" /> -->
+        <p class="text-base text-white editable text">WhatsApp</p>
+      </div>
+    </button>
+    <button class="md:hidden" @click="toggleMobileMenu">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3.75 5.25h16.5m-16.5 7.5h16.5m-16.5 7.5h16.5"
+        />
+      </svg>
+    </button>
+  </div>
+  <div v-if="mobileMenuOpen" class="md:hidden bg-slate-100 py-4">
+    <ul class="flex flex-col items-center gap-5 text-slate-900">
+      <li>
+        <a
+          class="text-lg hover:bg-slate-200 px-4 py-2"
+          href="#home"
+          @click.prevent="scrollToSection('home')"
+          >Home</a
+        >
+      </li>
+      <li>
+        <a
+          class="text-lg hover:bg-slate-200 px-4 py-2"
+          href="#about"
+          @click.prevent="scrollToSection('about')"
+          >About</a
+        >
+      </li>
+      <li>
+        <a
+          class="text-lg hover:bg-slate-200 px-4 py-2"
+          href="#services"
+          @click.prevent="scrollToSection('services')"
+          >Services</a
+        >
+      </li>
+      <li>
+        <a
+          class="text-lg hover:bg-slate-200 px-4 py-2"
+          href="#gallery"
+          @click.prevent="scrollToSection('gallery')"
+          >Gallery</a
+        >
+      </li>
+      <li>
+        <a
+          class="text-lg hover:bg-slate-200 px-4 py-2"
+          href="#review"
+          @click.prevent="scrollToSection('review')"
+          >Review</a
+        >
+      </li>
+      <li>
+        <a
+          class="text-lg hover:bg-slate-200 px-4 py-2"
+          href="#faq"
+          @click.prevent="scrollToSection('faq')"
+          >FAQ</a
+        >
+      </li>
+      <li>
+        <a
+          class="text-lg hover:bg-slate-200 px-4 py-2"
+          href="#contact"
+          @click.prevent="scrollToSection('contact')"
+          >Contact</a
+        >
+      </li>
+    </ul>
+    <div class="w-max px-4 pt-4 md:px-0 md:pt-0 mx-auto">
+      <button
+        class="bg-[#2e5951] flex items-center gap-2 justify-center text-white rounded px-4 py-2"
+      >
+        <!-- <img src="/static/services/service-three/plus.svg" alt="plus" /> -->
+        <p class="text-base">WhatsApp</p>
+      </button>
+    </div>
+  </div>
+  <div class="bg-[#2e5951] text-white">
+    <div class="max-w-[1140px] mx-auto text-center px-4 py-2">
+      <div class="flex items-center justify-center gap-4 md:gap-6">
+        <div class="editable image" id="banner_we232334">
+          <img
+            class="max-h-8 hidden md:flex"
+            src="/static/services/services-four/hand.png"
+            alt=""
+          />
+        </div>
+        <p class="text-sm md:text-base editable text" id="header_sdfe">
+          Grab $20 OFF + FREE Service Fee Waiver
+        </p>
+        <button
+          class="max-w-max whitespace-nowrap border border-white rounded px-2 md:px-4 py-2 text-sm editable text"
+          id="banner_cmdki"
+        >
+          Claim Now
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  Vue.createApp({
+    data() {
+      return {
+        mobileMenuOpen: false,
+      };
+    },
+    methods: {
+      toggleMobileMenu() {
+        this.mobileMenuOpen = !this.mobileMenuOpen;
+      },
+      scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+          this.mobileMenuOpen = false; // Close the mobile menu after clicking a link
+        }
+      },
+    },
+  }).mount("header");
+</script>

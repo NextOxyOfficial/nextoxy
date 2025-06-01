@@ -1,0 +1,166 @@
+<div class="holder py-4 py-md-10 bgcolor" id="feature-product">
+    <div class="holder">
+        <div class="container">
+            <div class="title-wrap title-md wow fadeInRight" data-wow-delay="{{forloop.counter}}100ms">
+                <h2 class="h2-style editable text" id="title-9-2332sddssn">NEW ARRIVALS</h2>
+            </div>
+            <div class="prd-grid-wrap position-relative">
+                <div class="prd-grid data-to-show-3 data-to-show-lg-3 data-to-show-md-2 data-to-show-sm-2 data-to-show-xs-2 js-category-grid wow fadeInUp" data-wow-delay="{{forloop.counter}}100ms">
+                    {% for prod in feature_products %}
+
+                    <div class="prd prd-hor ">
+                        <div class="prd-inside">
+                            <div class="prd-img-area">
+                                <a href="/details/{{prod.id}}" class="prd-img image-hover-scale image-container">
+                                    {% if prod.productimage_set.first %}
+
+                                    <img src="{{prod.productimage_set.first.image.url}}"
+                                    data-src="{{prob.productimage_set.first.image.url}}"
+                                        class="js-prd-img lazyload">
+                                    {% else %}
+
+                                    <img src="/static/frontend/images/no_product.png"
+                                    style="height: 203px;object-fit: cover;" alt="product"
+                                    class="h-[320px] w-full object-cover" />
+                                    {% endif %}
+                                    <div class="foxic-loader"></div>
+                                    <div class="prd-big-circle-labels">
+
+
+                                    {% if prod.discounted_price > 0 %}
+                                    <div class="foxic-loader"></div>
+                                    <div class="prd-big-circle-labels">
+                                        <div class="label-sale" style="width: 80px; height: 80px;"><span>{{shop.currency}} {{prod.discount_amount}} <span class="sale-text text-xs">Discount</span></span>
+
+                                            <div class="countdown-circle">
+                                                <div class="countdown js-countdown" data-countdown="2021/07/01">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                    </div>
+                                </a>
+                                <div class="prd-circle-labels">
+                                    <a href="#"  @click="addToWish({{prod.id}})"  class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0"   title="Add To Wishlist"><i class="icon-heart-stroke"></i></a>
+
+                                    <!-- <a href="#" class="circle-label-qview js-prd-quickview prd-hide-mobile"
+                                        data-src="ajax/ajax-quickview.html"><i class="icon-eye"></i><span>QUICK
+                                            VIEW</span></a> -->
+                                </div>
+
+                            </div>
+                            <div class="prd-info">
+                                <div class="prd-info-wrap">
+                                    <div class="prd-info-top">
+                                        <div class="prd-rating">
+                                            <a href="/details/{{prod.id}}#Tab5" class="prd-block_reviews flex gap-2 mb-1" data-toggle="tooltip" data-placement="top"
+                                                title="Give Review">
+                                                    {% if prod.rating >= 1 %}<i class="icon-star-fill fill w-[12px] h-[12px]"></i>{% else %}<i class="w-[12px] h-[12px] icon-star"></i>{% endif %}
+                                                    {% if prod.rating >= 2 %}<i class="icon-star-fill fill w-[12px] h-[12px]"></i>{% else %}<i class="w-[12px] h-[12px] icon-star"></i>{% endif %}
+                                                    {% if prod.rating >= 3 %}<i class="icon-star-fill fill w-[12px] h-[12px]"></i>{% else %}<i class="w-[12px] h-[12px] icon-star"></i>{% endif %}
+                                                    {% if prod.rating >= 4 %}<i class="icon-star-fill fill w-[12px] h-[12px]"></i>{% else %}<i class="w-[12px] h-[12px] icon-star"></i>{% endif %}
+                                                    {% if prod.rating >= 5 %}<i class="icon-star-fill fill w-[12px] h-[12px]"></i>{% else %}<i class="w-[12px] h-[12px] icon-star"></i>{% endif %}
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <h2 class="prd-title truncate"><a href="/details/{{prod.id}}">{{prod.name}}</a> </h2>
+
+                                    <div class="prd-description">
+                                        Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora
+                                        torquent per conubia nostra, per inceptos himenaeos. Nam nec ante sed
+                                        lacinia.
+                                    </div>
+                                </div>
+                                <div class="prd-hovers">
+                                    <div class="prd-circle-labels">
+                                        <div><a href="#"
+                                                class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0"
+                                                title="Add To Wishlist"><i class="icon-heart-stroke"></i></a><a
+                                                href="#"
+                                                class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0"
+                                                title="Remove From Wishlist"><i class="icon-heart-hover"></i></a>
+                                        </div>
+                                        <div>
+                                            <!-- <a href="#" class="circle-label-qview prd-hide-mobile js-prd-quickview"
+                                                data-src="ajax/ajax-quickview.html"><i
+                                                    class="icon-eye"></i><span>QUICK VIEW</span></a> -->
+                                                </div>
+                                    </div>
+                                    <div class="prd-price">
+                                        {% if prod.discounted_price > 0 %}
+                                        <div class="">
+                                            <p class="" style="font-size: 13px; text-decoration: line-through;">
+                                            {{shop.currency}} {{ prod.discounted_price}}
+                                            </p>
+                                            <p class="" style="margin-top: 0; font-weight: 600;">
+                                            {{shop.currency}} {{ prod.sale_price}}
+                                            </p>
+                                        </div>
+                                        {% else %}
+                                        <p class="" style="margin-top: 0; font-weight: 600;">
+                                            {{shop.currency}} {{ prod.sale_price}}
+                                        </p>
+                                        {% endif %}
+                                        <!-- <div class="price-old">$ 200</div>
+
+                                        <div class="price-new">$ 180</div> -->
+                                    </div>
+                                    <div class="prd-action">
+                                        <div class="prd-action-left">
+                                            <form action="#">
+                                                <button @click="addToCart({{prod.id}})" v-if="!incart({{prod.id}})" class="btn js-prd-addtocart"
+                                                    data-product='{"name": "iPhone X", "path":"images/skins/electronics/products/product-01-1.jpg", "url":"product.html", "aspect_ratio":0.778}'>Add
+                                                    To Cart</button>
+                                                    <a href="/cart"  v-else class="btn " style="background: #fb4b06;"
+                                                    data-product='{"name": "Telescopic Fishing Rod and Reed", "path":"images/skins/fishing/products/product-01-1.png", "url":"product.html", "aspect_ratio":0.778}'> In Your Cart</a>
+                                            </form>
+                                        </div>
+                                        <div class="prd-action-right">
+                                            <div class="prd-action-right-inside">
+                                                <div class="prd-tag"><a href="#">FOXic</a></div>
+                                                <div class="prd-rating"><i class="icon-star-fill fill"></i><i
+                                                        class="icon-star-fill fill"></i><i
+                                                        class="icon-star-fill fill"></i><i
+                                                        class="icon-star-fill fill"></i><i
+                                                        class="icon-star-fill fill"></i></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    createApp({
+      data() {
+        return {
+          store: store,
+        }
+      },
+      delimiters: ['[[', ']]'],
+      methods: {
+        addToCart(id) {
+          console.log(id)
+          this.$store.commit('addToCart',{"id":id, "quantity":1})
+        },
+        delFromCart(id){
+          this.$store.commit('removeFromCart',{"id":id})
+        },
+        addToWish(id){
+          this.$store.commit('addToWish',{"id":id})
+        },
+        incart(id){
+          return this.$store.state.cart.some((cartItem) => cartItem.id === id)
+        },
+      },
+    }).use(store).mount('#feature-product')
+  </script>

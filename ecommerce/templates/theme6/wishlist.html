@@ -1,0 +1,183 @@
+{% extends "theme6/base.html" %}
+
+{% block content %}
+<div class="page-content" id="wish-product">
+	<div class="holder breadcrumbs-wrap mt-0">
+		<div class="container">
+			<ul class="breadcrumbs">
+				<li><a href="/">Home</a></li>
+				<li><span>My account</span></li>
+			</ul>
+		</div>
+	</div>
+	<div class="holder">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 aside aside--left">
+					<div class="list-group">
+						<a href="/my_account" class="list-group-item">Account Details</a>
+						<a href="/my_account" class="list-group-item">My Addresses</a>
+						<a href="/wishlist" class="list-group-item active">My Wishlist</a>
+						<a href="/my_account" class="list-group-item">My Order History</a>
+					</div>
+				</div>
+				<div class="col-md-14 aside mb-4">
+					<h1 class="mb-3">My Wishlist</h1>
+					<div class="empty-wishlist js-empty-wishlist text-center py-3 py-sm-5 d-none" style="opacity: 0;">
+						<h3>Your Wishlist is empty</h3>
+						<div class="mt-5">
+							<a href="/" class="btn">Continue shopping</a>
+						</div>
+					</div>
+					<div class="prd-grid-wrap position-relative">
+						<div
+							class="prd-grid prd-grid--wishlist data-to-show-3 data-to-show-lg-3 data-to-show-md-2 data-to-show-sm-2 data-to-show-xs-1">
+							<div class="prd prd--in-wishlist prd--style2 prd-labels--max prd-labels-shadow"
+								v-for="product in products">
+								<div class="prd-inside">
+									<div class="prd-img-area">
+										<a :href="'/details/'+[[product.id]]"
+											class="prd-img image-hover-scale image-container">
+											<img v-if="product.image" :src="product.image" :data-src="product.image"
+												alt="Jogger Lounge Pants" class="js-prd-img lazyload fade-up">
+
+											<img src="https://via.placeholder.com/70x70" alt="image"
+												class="mr-4 h-[70px] w-[70px] rounded" v-else />
+
+											<div class="foxic-loader"></div>
+
+										</a>
+										<div class="prd-circle-labels">
+											<a href="#" @click="delFromWish(product.id)" class="circle-label-compare "
+												title="Remove From Wishlist"><i class="icon-recycle"></i></a>
+											<!-- <a href="#" class="circle-label-qview js-prd-quickview prd-hide-mobile"
+												data-src="ajax/ajax-quickview.html"><i class="icon-eye"></i><span>QUICK
+													VIEW</span></a> -->
+
+										</div>
+
+									</div>
+									<div class="prd-info">
+										<div class="prd-info-wrap">
+											<a :href="'/details/'+[[product.id]]" class="prd-block_reviews flex mx-auto"
+												data-toggle="tooltip" data-placement="top" title="Give Review">
+												<i v-if="product.rating >= 1" class="icon-star-fill fill"></i><i v-else
+													class="icon-star"></i>
+												<i v-if="product.rating >= 2" class="icon-star-fill fill"></i><i v-else
+													class="icon-star"></i>
+												<i v-if="product.rating >= 3" class="icon-star-fill fill"></i><i v-else
+													class="icon-star"></i>
+												<i v-if="product.rating >= 4" class="icon-star-fill fill"></i><i v-else
+													class="icon-star"></i>
+												<i v-if="product.rating >= 5" class="icon-star-fill fill"></i><i v-else
+													class="icon-star"></i>
+											</a>
+
+											<h2 class="prd-title"><a
+													:href="'/details/'+[[product.id]]">[[product.name]]</a></h2>
+											<div class="prd-description">
+												Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad
+												litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante
+												sed lacinia.
+											</div>
+										</div>
+										<div class="prd-hovers">
+											<div class="prd-circle-labels">
+												<div>
+													<a href="#"
+														class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0"
+														title="Add To Wishlist"><i class="icon-heart-stroke"></i></a>
+
+													<!-- <div>
+													<a href="#"
+														class="circle-label-qview prd-hide-mobile js-prd-quickview"
+														data-src="ajax/ajax-quickview.html"><i
+															class="icon-eye"></i><span>QUICK VIEW</span></a></div> -->
+												</div>
+												<div class="prd-price">
+
+													<div class="price-old">$ 200</div>
+
+													<div class="price-new">$ 180</div>
+												</div>
+												<div class="prd-action">
+													<div class="prd-action-left">
+														<form action="#">
+															<a :href="'/details/'+[[product.id]]" class="btn">View Full
+																Info</a>
+														</form>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	createApp({
+		data() {
+			return {
+				store: store,
+				products: []
+			}
+		},
+		delimiters: ['[[', ']]'],
+		mounted() {
+			this.getWish();
+		},
+		methods: {
+			getWish() {
+				fetch('/api/wish', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify(store.state.wish)
+				})
+					.then(response => response.json())
+					.then(data => {
+						this.products = data
+					})
+					.catch(error => console.error(error));
+			},
+			getTotal() {
+				let total = 0
+				this.products.forEach(product => {
+					total += product.sale_price * product.quantity
+				})
+				return total
+			},
+			getDelivery() {
+				return 20
+			},
+			checkout() {
+				window.location.href = '/checkout'
+			},
+			updateQuantity(id, quantity) {
+				console.log(id, quantity);
+				this.$store.commit('removeFromWish', { "id": id })
+				this.$store.commit('addToWish', { "id": id, "quantity": quantity })
+			},
+			delFromWish(id) {
+				console.log(id);
+				this.$store.commit('removeFromWish', { "id": id })
+				this.products = this.products.filter(product => product.id != id)
+			},
+			addToCart(id) {
+				console.log(id)
+				this.$store.commit('addToCart', { "id": id, "quantity": 1 })
+			},
+			incart(id) {
+				return this.$store.state.cart.some((cartItem) => cartItem.id === id)
+			},
+		},
+	}).use(store).mount('#wish-product')
+</script>
+	{% endblock %}

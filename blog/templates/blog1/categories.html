@@ -1,0 +1,80 @@
+{% extends 'blog1/base.html' %}
+{% block content %}
+<section>
+  {% for item in featured %}
+    <section class="bg-black text-white">
+        <div class="blog2-container mx-auto category_title">
+            <div class="flex md:flex-row flex-col justify-center items-start gap-4 pt-6">
+              <!-- col row -->
+              <div class="flex justify-center w-full">
+                  <div class="md:text-left text-center">
+                      <p class="text-gray-200 text-xs tracking-widest mb-1">Category Name</p>
+                      <h1 class="mb-2 text-xl font-black text-lg sm:text-2xl lg:text-2xl xl:text-4xl">{{item.name}}</h3>
+                      <div class="mb-8 flex">
+                          <div class="w-full"> 
+                            <p class="mb-2 flex items-center gap-1">{{item.postsnum}} 
+                              {% if item.postsnum > 1 %}
+                              <span>Posts</span>
+                              {% else %}
+                              <span>Post</span>
+                              {% endif %}
+                            </p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="blog2-container mx-auto" style="margin-top: 40px;">
+        <section class="flex lg:flex-row flex-col items-start gap-8 mb-[60px]">
+          <!-- grids -->
+          <div class="grid sm:gap-8 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 justify-center lg:w-[75%] w-[100%]">
+
+            {% for post in item.posts %}
+            <div class="flex flex-col justify-between gap-6 md:mb-0 mb-6">
+              {% if post.image %}
+              <a class="w-[100%]" href="/blog_details?id={{post.id}}">
+                <img class="h-[200px] w-full object-cover" src="{{post.image.url}}" alt="" />
+              </a>
+              {% endif %}
+              <div class="w-[100%]">
+                <p class="mt-3 text-xs font-normal uppercase text-gray-500" style="font-family: 'Open Sans', sans-serif;">{{post.created_at}}</p>
+                <a href="/blog_details?id={{post.id}}"> 
+                  <h1 class="my-2 text-lg font-medium sm:text-xl">{{post.title}}</h1>
+                </a>
+                <p class="mt-4 text-sm font-normal max-h-[60px] overflow-hidden leading-[27px]">{{post.meta}}</p>
+                <!-- <div class="mt-4 flex items-center gap-2">
+                  <img class="h-[30px] w-[30px] rounded-full object-cover" src="https://bootstrapmade.com/demo/templates/ZenBlog/assets/img/person-2.jpg" alt="" />
+                  <p class="text-sm font-normal" style="font-family: 'Open Sans', sans-serif;">Will Smith</p>
+                </div> -->
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+    
+    
+          <section class="w-[100%] lg:w-[25%]" id="sidetool">
+            <h1 class="text-md font-medium uppercase mb-1">Featured</h1>
+            <div class="mb-2 h-[2px] w-full bg-black"></div>
+            <div class="h-max border-gray-200/90">
+              <div class="grid grid-cols-2 lg:block">
+                {% for item in featured %}
+                {% for post in item.posts %}
+                <div class="border-b px-4 py-6 font-medium">
+                  <a href="/blog_details?id={{post.id}}">
+                    <h2 class="text-xl font-medium">{{post.title}}</h2>
+                  </a>
+                  <p class="mb-4 mt-3 text-xs font-normal uppercase text-gray-500" style="font-family: 'Open Sans', sans-serif;">{{post.created_at}}</p>
+                </div>
+                {% endfor %}
+                {% endfor %}
+              </div>
+            </div>
+          </section>
+        </section>
+    </section>
+  {% endfor %}
+</section>
+{% endblock %}

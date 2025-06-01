@@ -1,0 +1,623 @@
+{% load static %}
+<section class="" id="navbar">
+    <header class="hdr-wrap">
+        <div class="hdr-content hdr-content-sticky">
+            <div class="container">
+                <div class="row">
+                    <div class="col-auto show-mobile">
+                        <!-- Menu Toggle -->
+                        <div class="menu-toggle"> <a href="#" class="mobilemenu-toggle"><i class="icon-menu"></i></a>
+                        </div>
+                        <!-- /Menu Toggle -->
+                    </div>
+                    <div class="col-auto hdr-logo">
+                        {% if shop.logo %}
+                        <a href="/" class="logo"><img src="{{shop.logo.url}}"  class="logo max-h-[26px] sm:max-h-[50px]" alt="Logo"></a>
+                        {% else %}
+                        <a class="ttnc-logo inline-block flex-shrink-0 text-slate-600" href="/">
+                            <img alt="Logo-Light" fetchpriority="high" decoding="async" data-nimg="1"    class="w-auto dark:block h-9"    style="max-height: 60px;"    src="/static/ecommerce/theme6/images/logo.14d0e71d.svg"   />
+                        </a>
+                        {% endif %}
+                    </div>
+                    <!--navigation-->
+                    <div class="hdr-nav hide-mobile nav-holder-s">
+                    </div>
+                    <!--//navigation-->
+                    <div class="hdr-links-wrap col-auto ml-auto">
+                        <div class="hdr-inline-link">
+                            <!-- Header Search -->
+                            <div class="search_container_desktop">
+                                <div class="dropdn dropdn_search dropdn_fullwidth">
+                                    <a href="#" class="dropdn-link  js-dropdn-link only-icon"><i
+                                            class="icon-search"></i><span class="dropdn-link-txt">Search</span></a>
+                                    <div class="dropdn-content">
+                                        <div class="container">
+                                            <div class="search search-off-popular">
+                                                <input v-model="searchTerm" @keydown.enter="goToUrl('/search_page?search='+searchTerm)" name="search" type="text" class="search-input input-empty"
+                                                    placeholder="What are you looking for?">
+                                                <a :href="'/search_page?search='+searchTerm" class="search-button"><i
+                                                        class="icon-search"></i></a>
+                                                <a href="#" class="search-close js-dropdn-close"><i
+                                                        class="icon-close-thin"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Header Search -->
+                            <!-- Header Wishlist -->
+                            <div class="dropdn dropdn_wishlist">
+                                <a href="/wishlist" class="dropdn-link only-icon wishlist-link ">
+                                    <i class="icon-heart"></i><span class="dropdn-link-txt">Wishlist</span><span
+                                        class="wishlist-qty">[[store.state.wish.length]]</span>
+                                </a>
+                            </div>
+                            <!-- /Header Wishlist -->
+                            <!-- Header Account -->
+                            <div class="dropdn dropdn_account dropdn_fullheight">
+                                {% if user.is_authenticated %}
+
+                                <a href="/my_account" class="dropdn-link js-dropdn-link js-dropdn-link only-icon"
+                                    data-panel=""><i class="icon-user"></i><span
+                                        class="dropdn-link-txt">Account</span>
+                            {% else %}
+                                <a href="#" class="dropdn-link js-dropdn-link js-dropdn-link only-icon"
+                                    data-panel="#dropdnAccount"><i class="icon-user"></i><span
+                                        class="dropdn-link-txt">Account</span>
+                                </a>
+                            {% endif %}
+                            </div>
+                            <!-- /Header Account -->
+                            <div class="dropdn dropdn_fullheight minicart">
+                                <a href="/cart" class="dropdn-link minicart-link only-icon"
+                                    >
+                                    <i class="icon-basket"></i>
+                                    <span class="minicart-qty">[[store.state.cart.length]]</span>
+                                  
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hdr hdr-style4">
+            <div class="hdr-topline hdr-topline--dark js-hdr-top">
+                <div class="container">
+                    <div class="row flex-nowrap">
+                        <div class="col hdr-topline-center mx-auto">
+                            <div class="custom-text js-custom-text-carousel"
+                                data-slick='{"speed": 1000, "autoplaySpeed": 3000}'>
+                                <div class="custom-text-item editable text" id="nav-sd8ahh232h"><i class="icon-fox"></i> Use promocode <span>NextOxy</span>
+                                    to get 15% discount!</div>
+                                <div class="custom-text-item editable text" id="nav-s88wnh2"><i class="icon-air-freight"></i> <span>Free</span> plane
+                                    shipping over <span>$250</span></div>
+                                <div class="custom-text-item editable text" id="nav-99s7yuweb"><i class="icon-gift"></i> Today only! Post
+                                    <span>holiday</span> Flash Sale! 2 for $20</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hdr-content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-auto show-mobile">
+                            <!-- Menu Toggle -->
+                            <div class="menu-toggle"> <a href="#" class="mobilemenu-toggle"><i
+                                        class="icon-menu"></i></a> </div>
+                            <!-- /Menu Toggle -->
+                        </div>
+                        <div class="col-auto hdr-logo">
+                            {% if shop.logo %}
+                        <a href="/" class="logo"><img src="{{shop.logo.url}}"  class="logo max-h-[26px] sm:max-h-[50px]" alt="Logo"></a>
+                        {% else %}
+                        <a class="ttnc-logo inline-block flex-shrink-0 text-slate-600" href="/">
+                            <img alt="Logo-Light" fetchpriority="high" decoding="async" data-nimg="1"    class="w-auto dark:block h-9"    style="max-height: 60px;"    src="/static/ecommerce/theme6/images/logo.14d0e71d.svg"   />
+                        </a>
+                        {% endif %}
+                        </div>
+                        <div class="col hdr-banner">
+                            <a href="#" class="bnr bnr--middle bnr--left" data-fontratio="7.95">
+                                <div class="bnr-img editable image"><img src="/static/ecommerce/theme9/images/header-banner.png" alt=""></div>
+                                <div class="bnr-caption bnr-caption-carousel js-bnr-caption-carousel"
+                                    style="padding: 0 0 0 45%">
+                                    <div class="bnr-caption-carousel-item">
+                                        <div class="bnr-text9 editable text" style="font-weight: 300">Up to <span
+                                                style="color: #d63434; font-weight: 600">50%</span> off</div>
+                                        <div class="bnr-text10 editable text">MEGA COLLECTION <span class="custom-color">SALE</span>
+                                        </div>
+                                    </div>
+                                    <div class="bnr-caption-carousel-item">
+                                        <div class="bnr-text10 editable text">MEGA COLLECTION <span class="custom-color">SALE</span>
+                                        </div>
+                                        <div class="bnr-text9 editable text" style="font-weight: 300">Up to <span
+                                                style="color: #fb317d; font-weight: 600">50%</span> off</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="hdr-links-wrap col-auto ml-auto">
+                            <div class="hdr-group-link hide-mobile">
+                                <div class="hdr-inline-link">
+
+                                    <!-- Header Language -->
+                                    <!-- <div class="dropdn_language">
+                                        <div class="dropdn dropdn_language dropdn_language--noimg dropdn_caret">
+                                            <a href="#" class="dropdn-link js-dropdn-link"><span
+                                                    class="js-dropdn-select-current">English</span><i
+                                                    class="icon-angle-down"></i></a>
+                                            <div class="dropdn-content">
+                                                <ul>
+                                                    <li class="active"><a href="#"><img src="images/flags/en.png"
+                                                                alt="">English</a></li>
+                                                    <li><a href="#"><img src="images/flags/sp.png" alt="">Spanish</a>
+                                                    </li>
+                                                    <li><a href="#"><img src="images/flags/de.png" alt="">German</a>
+                                                    </li>
+                                                    <li><a href="#"><img src="images/flags/fr.png" alt="">French</a>
+                                                    </li>
+                                                </ul>
+                                                sadfsd
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <!-- /Header Language -->
+                                    <!-- Header Currency -->
+                                    <!-- <div class="dropdn_currency">
+                                        <div class="dropdn dropdn_caret">
+                                            <a href="#" class="dropdn-link js-dropdn-link">US dollars<i
+                                                    class="icon-angle-down"></i></a>
+                                            <div class="dropdn-content">
+                                                <ul>
+                                                    <li class="active"><a href="#"><span>US dollars</span></a></li>
+                                                    <li><a href="#"><span>Euro</span></a></li>
+                                                    <li><a href="#"><span>UK pounds</span></a></li>
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <!-- /Header Currency -->
+
+                                    {% if user.is_authenticated %}
+                                <div class="hdr_container_desktop">
+                                    <div class="dropdn dropdn_account dropdn_fullheight">
+                                        <a href="/my_account" class="dropdn-link js-dropdn-link"><span class="dropdn-link-txt">Account</span></a>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class="hdr_container_desktop">
+                                    <div class="dropdn dropdn_account dropdn_fullheight">
+                                        <a href="/signin" class="dropdn-link js-dropdn-link" data-panel="#dropdnAccount"><i
+                                                class="icon-user"></i><span class="dropdn-link-txt">Sign in</span></a>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% if user.is_authenticated %}
+                                <div class="dropdn dropdn_account dropdn_fullheight">
+                                    <a href="/contact_us" class="dropdn-link js-dropdn-link"><span class="dropdn-link-txt">Contact Us</span></a>
+                                </div>
+                                {% endif %}
+                                </div>
+
+                            </div>
+                            <div class="hdr-inline-link">
+                                <!-- Header Search -->
+                                <div class="search_container_desktop">
+                                    <div class="dropdn dropdn_search dropdn_fullwidth">
+                                        <a href="#" class="dropdn-link  js-dropdn-link only-icon"><i
+                                                class="icon-search"></i><span class="dropdn-link-txt">Search</span></a>
+                                        <div class="dropdn-content">
+                                            <div class="container">
+                                                <div class="search search-off-popular">
+                                                    <input v-model="searchTerm" @keydown.enter="goToUrl('/search_page?search='+searchTerm)" name="search" type="text" class="search-input input-empty"
+                                                        placeholder="What are you looking for?">
+                                                    <a :href="'/search_page?search='+searchTerm" class="search-button"><i
+                                                            class="icon-search"></i></a>
+                                                    <a href="#" class="search-close js-dropdn-close"><i
+                                                            class="icon-close-thin"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /Header Search -->
+                                <!-- Header Account -->
+                                <div class="dropdn dropdn_account dropdn_fullheight">
+                                {% if user.is_authenticated %}
+                                <a href="/my_account" class="dropdn-link js-dropdn-link js-dropdn-link only-icon"
+                                    data-panel=""><i class="icon-user"></i><span
+                                        class="dropdn-link-txt">Account</span>
+                                {% else %}
+                                    <a href="#" class="dropdn-link js-dropdn-link js-dropdn-link only-icon"
+                                        data-panel="#dropdnAccount"><i class="icon-user"></i><span
+                                            class="dropdn-link-txt">Account</span>
+                                    </a>
+                                {% endif %}
+                                </div>
+                                <!-- /Header Account -->
+                                <!-- Header Compare -->
+                                <div class="dropdn dropdn_wishlist">
+                                    <a href="/wishlist" class="dropdn-link only-icon wishlist-link ">
+                                        <i class="icon-heart"></i><span class="dropdn-link-txt">Wishlist</span><span
+                                            class="wishlist-qty">[[store.state.wish.length]]</span>
+                                    </a>
+                                </div>
+                                <!-- /Header Compare -->
+                                <div class="dropdn dropdn_fullheight minicart">
+                                    <a href="/cart" class="dropdn-link minicart-link"
+                                       >
+                                        <i class="icon-basket"></i>
+                                        <span class="minicart-qty">[[store.state.cart.length]]</span>
+                            
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="hdr-navline hdr-navline--light">
+                <div class="container">
+                    <div class="row">
+                        <div class="col hdr-navline-left">
+                            <!--navigation-->
+                            <div class="hdr-nav hide-mobile nav-holder">
+                                <!--mmenu-->
+                                <ul class="mmenu mmenu-js">
+                                    <li class="mmenu-item--simple"><a href="/" class="active"><span>Home</span></a>
+                                    </li>
+                                    {% for menu in main_menu %}
+                                    <li class="mmenu-item--simple"><a href="/page/{{menu.link}}">{{menu.name}}</a>
+                                    </li>
+                                    {% endfor %}
+                                    <li class="mmenu-item--mega"><a href="#"><span>Category</span></a>
+                                        <div class="mmenu-submenu mmenu-submenu--has-bottom">
+                                            <div class="mmenu-submenu-inside">
+                                                <div class="container">
+                                                    
+                                                    <div class="mmenu-cols column-4">
+                                                        <div class="mmenu-col mb-4">
+                                                            <h3 class="submenu-title">    <a    href="#">Categories</a></h3>
+                                                                <ul class="submenu-list">
+                                                                    {% for sec in sections %}
+
+                                                                    <li>
+                                                                        <a  href="/search_page?section={{sec.id}}" class="active" style="display: flex; gap: 5px; align-items: center;">
+                                                                            {% if sec.image %}
+                                                                            <img style="height: 30px; width: 30px;object-fit: cover;" src="{{sec.image.url}}" alt="category" class="cat-image w-[240px] h-[168px] object-cover bg-slate-50 hover:shadow" />
+                                                                            {% else %}
+                                                                            <img style="height: 30px; width: 30px;object-fit: cover;" src="/static/ecommerce/no_product.png" alt="category" class="cat-image w-[240px] h-[168px] object-cover border border-slate-50 hover:shadow" />
+                                                                            {% endif %}
+                                                                            {{sec.name}}
+                                                                        </a>
+
+                                                                        <ul class="sub-level">
+                                                                        {% for sub in sec.category_set.all %}
+
+                                                                            <li><a href="/search_page?category={{sub.id}}">{{sub}}</a>
+                                                                            </li>
+                                                                            {% endfor %}
+                                                                        
+                                                                            
+                                                                        </ul>
+                                                                    </li>
+
+                                                                    {% endfor %}
+
+                                                                </ul>
+                                                        </div>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <!--/mmenu-->
+                            </div>
+                            <!--//navigation-->
+                        </div>
+                        <div class="col-auto hdr-navline-right">
+                            <!-- Header Social -->
+                            <div class="hdr-line-separate">
+                                <ul class="social-list list-unstyled">
+                                    <li>
+                                        <a href="#"><i class="icon-facebook"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icon-twitter"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icon-google"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icon-instagram"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icon-vimeo"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icon-linkedin"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- /Header Social -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="header-side-panel">
+        <!-- Mobile Menu -->
+        <div class="mobilemenu js-push-mbmenu">
+            <div class="mobilemenu-content">
+                <div class="mobilemenu-close mobilemenu-toggle">Close</div>
+                <div class="mobilemenu-scroll">
+                    <div class="mobilemenu-search"></div>
+                    <div class="nav-wrapper show-menu">
+                        <div class="nav-toggle">
+                            <span class="nav-back"><i class="icon-angle-left"></i></span>
+                            <span class="nav-title"></span>
+                            <a href="#" class="nav-viewall">view all</a>
+                        </div>
+                        <ul class="nav nav-level-1">
+                            {% for menu in main_menu %}
+                            <li>
+                                <a href="/page/{{menu.link}}">{{menu.name}}</a>
+                            </li>
+                            {% endfor %}
+    
+                            <li><a href="#">Cateogries<span class="arrow"><i class="icon-angle-right"></i></span></a>
+                                <ul class="nav-level-2">
+                                    {% for sec in sections %}
+                                    <li style="display: flex;gap: 10px;">
+                                        <a href="/search_page?section={{sec.id}}">{{sec.name}}</a>
+                                        {% if sec.image %}
+                                        <img style="height: 30px; width: 30px;object-fit: cover;" src="{{sec.image.url}}" alt="category" class="cat-image w-[240px] h-[168px] m-auto object-cover bg-slate-50 hover:shadow" />
+                                        {% else %}
+                                        <img style="height: 30px; width: 30px;object-fit: cover;" src="/static/ecommerce/no_product.png" alt="category" class="cat-image w-[240px] h-[168px] m-auto object-cover border border-slate-50 hover:shadow" />
+                                        {% endif %}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mobilemenu-bottom">
+                        <div class="mobilemenu-currency">
+                            <!-- Header Currency -->
+                            <div class="dropdn_currency">
+                                <div class="dropdn dropdn_caret">
+                                    <a href="#" class="dropdn-link js-dropdn-link">US dollars<i
+                                            class="icon-angle-down"></i></a>
+                                    <div class="dropdn-content">
+                                        <ul>
+                                            <li class="active"><a href="#"><span>US dollars</span></a></li>
+                                            <li><a href="#"><span>Euro</span></a></li>
+                                            <li><a href="#"><span>UK pounds</span></a></li>
+    
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Header Currency -->
+                        </div>
+                        <div class="mobilemenu-language">
+                            <!-- Header Language -->
+                            <div class="dropdn_language">
+                                <div class="dropdn dropdn_language dropdn_language--noimg dropdn_caret">
+                                    <a href="#" class="dropdn-link js-dropdn-link"><span
+                                            class="js-dropdn-select-current">English</span><i
+                                            class="icon-angle-down"></i></a>
+                                    <div class="dropdn-content">
+                                        <ul>
+                                            <li class="active"><a href="#"><img src="images/flags/en.png" alt="">English</a>
+                                            </li>
+                                            <li><a href="#"><img src="images/flags/sp.png" alt="">Spanish</a></li>
+                                            <li><a href="#"><img src="images/flags/de.png" alt="">German</a></li>
+                                            <li><a href="#"><img src="images/flags/fr.png" alt="">French</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Header Language -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Mobile Menu -->
+        <div class="dropdn-content account-drop" id="dropdnAccount">
+            <div class="dropdn-content-block">
+                <div class="dropdn-close"><span class="js-dropdn-close">Close</span></div>
+                <ul>
+                    <li><a href="/signin"><span>Log In</span><i class="icon-login"></i></a></li>
+                    <li><a href="/signin"><span>Register</span><i class="icon-user2"></i></a></li>
+                    <li><a href="/checkout"><span>Checkout</span><i class="icon-card"></i></a></li>
+                </ul>
+
+                <!-- <div class="dropdn-form-wrapper">
+                    <h5>Quick Login</h5>
+                    <form action="#">
+                        <div class="form-group">
+                            <input type="text" class="form-control form-control--sm is-invalid"
+                                placeholder="Enter your e-mail">
+                            <div class="invalid-feedback">Can't be blank</div>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control form-control--sm" placeholder="Enter your password">
+                        </div>
+                        <button type="submit" class="btn">Enter</button>
+                    </form>
+                </div> -->
+
+            </div>  
+            <div class="drop-overlay js-dropdn-close"></div>
+        </div>
+        <div class="dropdn-content minicart-drop" id="dropdnMinicart">
+            <div class="dropdn-content-block">
+                <div class="dropdn-close"><span class="js-dropdn-close">Close</span></div>
+                <div class="minicart-drop-content js-dropdn-content-scroll">
+    
+                    <div class="minicart-prd row" v-for="product in products">
+                        <div class="minicart-prd-image image-hover-scale-circle col">
+                            <a :href="'/details/'+[[product.id]]">
+                                <img class="lazyload fade-up"
+                                v-if="product.image"
+                                :src="product.image"
+                                :data-src="product.image" alt="" >
+                                <img v-else src="https://via.placeholder.com/70x70" alt="image" class="mr-4 h-[70px] w-[70px] rounded"/>
+                            </a>
+                        </div>
+                        <div class="minicart-prd-info col">
+                            <h2 class="minicart-prd-name"><a :href="'/details/'+[[product.id]]">[[product.name]]</a></h2>
+                            <div class=" prd-price" style="margin-top: 10px;">
+                                <div class="cart-table-prd-price">
+                                    <div style="display: flex;gap: 4px;align-items: center;" v-if="product.discounted_price">
+                                         Unit Price <div class="price-old">{{shop.currency}}[[product.discounted_price]]</div> 
+                                    </div>
+                                    <div style="display: flex;gap: 4px;align-items: center;" v-else>
+                                        Unit Price <div class="price-old">{{shop.currency}}[[product.sale_price]]</div>
+                                    </div>
+                                </div>
+                                <div class="cart-table-prd-price-total" v-if="product.discounted_price">
+                                    {{shop.currency}}[[ product.discounted_price *product.quantity ]]
+                                </div>
+                                <div class="cart-table-prd-price-total" v-else>
+                                    {{shop.currency}}[[ product.sale_price *product.quantity ]]
+                                </div>
+                            </div>
+                        </div>
+                        <div class="minicart-prd-action">
+                            <a href="#" @click="delFromCart(product.id)" class="js-product-remove"><i class="icon-recycle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="minicart-drop-fixed js-hide-empty">
+                    <div class="loader-horizontal-sm js-loader-horizontal-sm" data-loader-horizontal=""><span></span></div>
+                    <!-- <div class="minicart-drop-total js-minicart-drop-total row no-gutters align-items-center">
+                        <div class="minicart-drop-total-txt col-auto heading-font">Subtotal</div>
+                        <div class="minicart-drop-total-price col" data-header-cart-total="">{{shop.currency}}[[getTotal()]]</div>
+                    </div> -->
+                    <div class="minicart-drop-actions">
+                        <a href="/cart" class="btn btn--md btn--grey"><i class="icon-basket"></i><span>Cart
+                                Page</span></a>
+                        <a href="/checkout" class="btn btn--md"><i class="icon-checkout"></i><span>Check out</span></a>
+                    </div>
+                    <ul class="payment-link mb-2">
+                        <li><i class="icon-amazon-logo"></i></li>
+                        <li><i class="icon-visa-pay-logo"></i></li>
+                        <li><i class="icon-skrill-logo"></i></li>
+                        <li><i class="icon-klarna-logo"></i></li>
+                        <li><i class="icon-paypal-logo"></i></li>
+                        <li><i class="icon-apple-pay-logo"></i></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="drop-overlay js-dropdn-close"></div>
+        </div>
+
+    </div>
+</section>
+
+<style>
+    .sub-cat {
+        display: none;
+        position: absolute;
+        left: 245px;
+        min-width: 210px;
+        border: 1px solid #dddddd4a;
+        background: #fff;
+        border-radius: 5px;
+        top: -15px !important;
+    }
+
+    .main-cat:hover .sub-cat {
+        display: block !important;
+    }
+</style>
+<script>
+    const { createApp } = Vue
+    const app = createApp({
+        data() {
+            return {
+                category: false,
+                store: store,
+                menuToggle: false,
+                searchTerm: '',
+                products: []
+            }
+        },
+        delimiters: ['[[', ']]'],
+        mounted() {
+            this.getCart()
+        },
+        methods: {
+            getCart() {
+                fetch('/api/cart', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(store.state.cart)
+                })
+                    .then(response => response.json())
+                    .then(data => this.products = data)
+                    .catch(error => console.error(error));
+            },
+            getTotal() {
+                let total = 0
+                this.products.forEach(product => {
+                    if (product.discounted_price) {
+                        total += product.discounted_price * product.quantity
+                    } else {
+                        total += product.sale_price * product.quantity
+                    }
+                })
+                return total
+            },
+            getDelivery() {
+                return 20
+            },
+            checkout() {
+                window.location.href = '/checkout'
+            },
+            updateQuantity(id, quantity) {
+                console.log(id, quantity);
+                this.$store.commit('removeFromCart', { "id": id })
+                this.$store.commit('addToCart', { "id": id, "quantity": quantity })
+            },
+            delFromCart(id) {
+                this.$store.commit('removeFromCart', { "id": id })
+                this.products = this.products.filter(product => product.id != id)
+            },
+
+
+            addToCart(item) {
+                this.$store.commit('addToCart', item)
+            },
+            delFromCart(item) {
+                this.$store.commit('removeFromCart', item)
+            },
+            closeCartItem(item) {
+                this.delFromCart(item)
+                item.close = true
+                this.addToCart(item)
+            },
+            goToCart() {
+                for (let i = 0; i < this.store.state.cart.length; i++) {
+                    const item = this.store.state.cart[i];
+                    this.closeCartItem(item)
+                }
+                window.location.href = '/cart'
+            },
+            goToUrl(url) {
+                window.location.href = url
+            }
+        },
+    })
+    app.use(store).mount('#navbar')
+</script>

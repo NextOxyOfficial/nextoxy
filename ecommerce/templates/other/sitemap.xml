@@ -1,0 +1,30 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>{{base_url}}</loc>
+        <lastmod>{{date}}</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>{{base_url}}/contact_us</loc>
+        <lastmod>{{date}}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    {% for page in pages %}
+    <url>
+        <loc>{{base_url}}/{{page.slug}}</loc>
+        <lastmod>{{date}}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    {% endfor %}
+    {% for product in products %}
+    <url>
+        <loc>{{base_url}}/details/{{product.id}}</loc>
+        <lastmod>{{date}}</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    {% endfor %}
+</urlset>

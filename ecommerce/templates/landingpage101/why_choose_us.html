@@ -1,0 +1,143 @@
+<div class="my-14" id="why-us">
+  <div class="container max-w-7xl px-2 md:px-4 mx-auto">
+    <div class="flex flex-col md:flex-row items-center">
+      <div
+        class="w-full md:w-1/2 mx-auto editable image"
+        id="landing-page-101-82"
+      >
+        <img
+          src="/static/services/service-one/why-us.png"
+          class=""
+          alt="Why Us"
+        />
+      </div>
+      <div class="w-full md:w-1/2">
+        <div
+          class="flex gap-2 mb-3 items-center editable image"
+          id="landing-page-101-83"
+        >
+          <img
+            src="/static/services/service-one/star.png"
+            class="size-4"
+            alt="star"
+          />
+          <p
+            class="editable text text-base md:text-lg font-semibold text-[#2B8761]"
+            id="landing-page-101-84"
+          >
+            Why Choose Us
+          </p>
+        </div>
+        <h2
+          class="editable text text-xl md:text-3xl font-semibold text-black"
+          id="landing-page-101-85"
+        >
+          Providing Friendly, Reliable Cleaning Services
+        </h2>
+        <p class="editable text my-5" id="landing-page-101-86">
+          Serving
+          <span class="text-[#2B8761] editable text" id="landing-page-101-87"
+            >4 000+</span
+          >
+          properties every month.
+        </p>
+        <div class="flex gap-4 mb-4">
+          <div>
+            <img
+              src="/static/services/service-one/right-arrow.png"
+              class="editable image"
+              alt=""
+            />
+          </div>
+          <div>
+            <h5
+              class="editable text text-base md:text-lg text-black font-semibold mb-2"
+              id="landing-page-101-88"
+            >
+              High-Quality Cleaning Services
+            </h5>
+            <p
+              class="editable text text-sm leading-snug md:text-base"
+              id="landing-page-101-89"
+            >
+              Sem dictum at viverra nibh odio egestas nunc augue sed. Etiam
+              purus et molestie scelerisque. Vel tempus at.
+            </p>
+          </div>
+        </div>
+        <div class="flex gap-4 mb-4">
+          <div>
+            <img
+              src="/static/services/service-one/right-arrow.png"
+              class="editable image"
+              alt=""
+            />
+          </div>
+          <div>
+            <h5
+              class="editable text text-base md:text-lg text-black font-semibold mb-2"
+              id="landing-page-101-90"
+            >
+              High-Quality Cleaning Services
+            </h5>
+            <p
+              class="editable text text-sm leading-snug md:text-base"
+              id="landing-page-101-91"
+            >
+              Sem dictum at viverra nibh odio egestas nunc augue sed. Etiam
+              purus et molestie scelerisque. Vel tempus at.
+            </p>
+          </div>
+        </div>
+        <div class="flex gap-4 mb-4">
+          <div>
+            <img
+              src="/static/services/service-one/right-arrow.png"
+              class="editable image"
+              alt=""
+            />
+          </div>
+          <div>
+            <h5
+              class="editable text text-base md:text-lg text-black font-semibold mb-2"
+              id="landing-page-101-92"
+            >
+              High-Quality Cleaning Services
+            </h5>
+            <p
+              class="editable text text-sm leading-snug md:text-base"
+              id="landing-page-101-93"
+            >
+              Sem dictum at viverra nibh odio egestas nunc augue sed. Etiam
+              purus et molestie scelerisque. Vel tempus at.
+            </p>
+          </div>
+        </div>
+        <div class="flex justify-center md:items-start">
+          <button
+            class="editable text bg-black text-white px-10 py-2 text-sm md:text-lg mt-4"
+            id="landing-page-101-94"
+            @click.prevent="scrollToSection('appointment')"
+          >
+            Book An Appointment
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  Vue.createApp({
+    data() {
+      return {};
+    },
+    methods: {
+      scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+      },
+    },
+  }).mount("#why-us");
+</script>

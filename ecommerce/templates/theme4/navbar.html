@@ -1,0 +1,324 @@
+{% load static %}
+<header>
+  <div class="nc-HeaderLogged top-0 z-40 w-full relative" id="navbar">
+    <div
+      class="nc-MainNav2Logged relative z-10 border-b border-slate-100 bg-white dark:border-slate-700"
+    >
+      <div class="container mx-auto px-4">
+        <div class="flex gap-2 h-20 justify-between relative">
+          <div class="flex items-center lg:hidden">
+            <button
+              @click="menuToggle=!menuToggle"
+              class="flex items-center justify-center rounded-lg text-neutral-700 focus:outline-none dark:text-neutral-300"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-7 w-7"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                  clip-rule="evenodd"
+                ></path>
+              </svg>
+            </button>
+          </div>
+          <div class="flex items-center flex-1">
+            {% if shop.logo %}
+            <a
+              class="ttnc-logo inline-block flex-shrink-0 text-slate-600"
+              href="/"
+            >
+              <img
+                alt="Logo-Light"
+                fetchpriority="high"
+                decoding="async"
+                data-nimg="1"
+                class="max-h-9 w-auto"
+                style="color: transparent"
+                src="{{shop.logo.url}}"
+              />
+            </a>
+            {% else %}
+            <a
+              class="ttnc-logo inline-block flex-shrink-0 text-slate-600"
+              href="/"
+            >
+              <img
+                alt="Logo-Light"
+                fetchpriority="high"
+                decoding="async"
+                data-nimg="1"
+                class="w-auto dark:block h-9"
+                style="color: transparent"
+                src="/static/ecommerce/theme4/logo.14d0e71d.svg"
+              />
+            </a>
+            {% endif %}
+          </div>
+          <div
+            :class="{'expaned':menuToggle}"
+            class="main-menu lg:mx-4 flex-[2] justify-center absolute w-full lg:w-auto left-0 top-[100%] lg:static lg:flex border-t lg:border-t-0"
+          >
+            <ul class="nc-Navigation block lg:flex items-center px-4 bg-white">
+              <li class="menu-item flex-shrink-0">
+                <div class="flex lg:h-20 flex-shrink-0 items-center">
+                  <a
+                    class="w-full inline-flex items-center lg:rounded-full px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 lg:text-[15px] xl:px-5"
+                    href="/"
+                    >Home</a
+                  >
+                </div>
+              </li>
+              {% for menu in main_menu %}
+              <li class="menu-item flex-shrink-0">
+                <div class="flex lg:h-20 flex-shrink-0 items-center">
+                  <a
+                    class="w-full inline-flex items-center lg:rounded-full px-4 py-2.5 text-sm font-medium text-slate-700 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 lg:text-[15px] xl:px-5"
+                    href="/page/{{menu.link}}"
+                    >{{menu.name}}</a
+                  >
+                </div>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div
+            :class="{'expaned':searchTag}"
+            class="search-search absolute top-full left-0 xl:static flex-[2] justify-center xl:flex w-full"
+          >
+            <div class="flex-1 py-2 text-slate-900 dark:text-slate-100">
+              <div
+                class="flex h-full min-h-[50px] items-center space-x-1.5 rounded bg-slate-50 px-5 border"
+              >
+                <input
+                  v-model="searchTerm"
+                  @keydown.enter="goToUrl('/search_page?search='+searchTerm)"
+                  placeholder="Type and press enter"
+                  class="w-full border-none bg-transparent text-base focus:outline-none focus:ring-0"
+                  type="text"
+                />
+                <button>
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
+                      stroke="black"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                    <path
+                      d="M22 22L20 20"
+                      stroke="black"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </svg>
+                </button>
+                {% comment %}
+                <button type="button">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                    class="h-5 w-5"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
+                    ></path>
+                  </svg>
+                </button>
+                {% endcomment %}
+              </div>
+              <input hidden="" type="submit" value="" />
+            </div>
+          </div>
+
+          <div
+            class="flex flex-1 items-center justify-end text-slate-700 gap-2 md:gap-4"
+          >
+            <button
+              @click="searchTag=!searchTag"
+              class="flex xl:hidden sm:w-12 sm:h-12 rounded-full text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none items-center justify-center"
+            >
+              <svg
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+                <path
+                  d="M22 22L20 20"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+            </button>
+
+            <div
+              class="AvatarDropdown flex sm:w-12 sm:h-12 rounded-full text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none items-center justify-center"
+            >
+              <a class="" href="/my_account">
+                <svg
+                  class="h-6 w-6"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                  <path
+                    d="M20.5899 22C20.5899 18.13 16.7399 15 11.9999 15C7.25991 15 3.40991 18.13 3.40991 22"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                </svg>
+              </a>
+            </div>
+            <div
+              class="relative flex sm:w-12 sm:h-12 rounded-full text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none items-center justify-center"
+            >
+              <a href="/cart">
+                <svg
+                  class="h-6 w-6"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M2 2H3.74001C4.82001 2 5.67 2.93 5.58 4L4.75 13.96C4.61 15.59 5.89999 16.99 7.53999 16.99H18.19C19.63 16.99 20.89 15.81 21 14.38L21.54 6.88C21.66 5.22 20.4 3.87 18.73 3.87H5.82001"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-miterlimit="10"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                  <path
+                    d="M16.25 22C16.9404 22 17.5 21.4404 17.5 20.75C17.5 20.0596 16.9404 19.5 16.25 19.5C15.5596 19.5 15 20.0596 15 20.75C15 21.4404 15.5596 22 16.25 22Z"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-miterlimit="10"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                  <path
+                    d="M8.25 22C8.94036 22 9.5 21.4404 9.5 20.75C9.5 20.0596 8.94036 19.5 8.25 19.5C7.55964 19.5 7 20.0596 7 20.75C7 21.4404 7.55964 22 8.25 22Z"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-miterlimit="10"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                  <path
+                    d="M9 8H21"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-miterlimit="10"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  ></path>
+                </svg>
+                <span
+                  class="absolute top-[-18px] sm:top-[-5px] right-[-5px] sm:right-2 bg-[#EEC6C9] w-5 h-5 text-center text-black rounded-full"
+                >
+                  [[store.state.cart.length]]</span
+                >
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const { createApp } = Vue;
+  const app = createApp({
+    data() {
+      return {
+        category: false,
+        store: store,
+        menuToggle: false,
+        searchTerm: "",
+        searchTag: false,
+      };
+    },
+    delimiters: ["[[", "]]"],
+    methods: {
+      addToCart(item) {
+        this.$store.commit("addToCart", item);
+      },
+      delFromCart(item) {
+        this.$store.commit("removeFromCart", item);
+      },
+      closeCartItem(item) {
+        this.delFromCart(item);
+        item.close = true;
+        this.addToCart(item);
+      },
+      goToCart() {
+        for (let i = 0; i < this.store.state.cart.length; i++) {
+          const item = this.store.state.cart[i];
+          this.closeCartItem(item);
+        }
+        window.location.href = "/cart";
+      },
+      goToUrl(url) {
+        window.location.href = url;
+      },
+    },
+  });
+  app.use(store);
+  app.mount("#navbar");
+</script>
+<style>
+  .container {
+    max-width: 1536px;
+  }
+  @media screen and (max-width: 1023px) {
+    .main-menu {
+      display: none;
+    }
+    .main-menu.expaned {
+      display: block;
+    }
+    .search-search {
+      display: none;
+    }
+    .search-search.expaned {
+      display: block;
+    }
+  }
+</style>

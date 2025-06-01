@@ -1,0 +1,364 @@
+<section class="pt-8 max-w-6xl w-full mx-auto" id="product-checkout">
+    <!-- products -->
+    <div class="sm:px-8 px-2 py-4 rounded-xl mx-auto">
+      <div class="">
+        <div class="flex items-center justify-between">
+          <h3 class="mb-5 text-xl font-bold text-black editable text" id="onepage5-cart-kjh4235kj324kh5">Buy Products Now</h3>
+          <div class="flex gap-2">
+            <svg class="list-view-button cursor-pointer border border-gray-600/40 p-[2px] rounded" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="#332828" d="M5.55 19L2 15.45l1.4-1.4l2.125 2.125l4.25-4.25l1.4 1.425L5.55 19Zm0-8L2 7.45l1.4-1.4l2.125 2.125l4.25-4.25l1.4 1.425L5.55 11ZM13 17v-2h9v2h-9Zm0-8V7h9v2h-9Z"/></svg>
+            <svg class="grid-view-button cursor-pointer border border-gray-600/40 p-[2px] rounded" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="#332828" d="M5 11q-.825 0-1.413-.588T3 9V5q0-.825.588-1.413T5 3h4q.825 0 1.413.588T11 5v4q0 .825-.588 1.413T9 11H5Zm0 10q-.825 0-1.413-.588T3 19v-4q0-.825.588-1.413T5 13h4q.825 0 1.413.588T11 15v4q0 .825-.588 1.413T9 21H5Zm10-10q-.825 0-1.413-.588T13 9V5q0-.825.588-1.413T15 3h4q.825 0 1.413.588T21 5v4q0 .825-.588 1.413T19 11h-4Zm0 10q-.825 0-1.413-.588T13 19v-4q0-.825.588-1.413T15 13h4q.825 0 1.413.588T21 15v4q0 .825-.588 1.413T19 21h-4ZM5 9h4V5H5v4Zm10 0h4V5h-4v4Zm0 10h4v-4h-4v4ZM5 19h4v-4H5v4ZM15 9Zm0 6Zm-6 0Zm0-6Z"/></svg>
+          </div>
+        </div>
+        <div class="">
+          <div id="prod-container" class="flex lg:grid-cols-2 md:grid-cols-2 grid-cols-2 justify-between gap-4 items-center grid-view-filter">
+            <div v-for="prod in products" class="relative items-center overflow-hidden w-full h-max border rounded sm:px-9 px-0 sm:pl-auto pl-6 prod" :class="{'border border-rose-500': prod.selected}">
+              <input class="absolute" type="checkbox" id="" v-model="prod.selected" style="left: 12px; top: 26px; width: 16px; height: 16px; cursor: pointer;">
+              <label :for="prod.id" class=" cursor-pointer max-w-[500px] w-full py-4 px-6">
+                <div class="flex sm:flex-row flex-col gap-2 items-start w-full">
+                  <img class="w-[85px] rounded h-[93px] border object-cover" :src="prod.image" alt="">
+                  <div class="">
+                    <p class="mb-2 w-full font-bold h-[46px] overflow-hidden">[[prod.name]]</p>
+                    <div class="flex sm:flex-row flex-col sm:items-center items-start">
+                      <div class="flex gap-2 items-center">
+                        <div class="mr-3 inline-flex items-center rounded border border-[#e7e7e7] text-base font-medium text-black" >
+                          <span v-if="prod.quantity>1" @click.prevent="prod.quantity--" class="w-[35px] inline-block cursor-pointer select-none py-[7px] text-center"> -</span>
+                          <span v-else class="bg-slate-100 w-[35px] inline-block opacity-50 cursor-pointer select-none py-[7px] text-center"> -</span>
+                          <span class="inline-block py-[7px] px-4 bg-white">[[prod.quantity]]</span>
+                          <span @click.prevent="prod.quantity++" class="w-[35px] inline-block cursor-pointer select-none py-[7px] text-center" > +</span>
+                        </div>
+                      </div>
+                      <p class="mb-2 h-[20px] overflow-hidden italic sm:mt-auto mt-2"><span class="text-xs">{{shop.currency}}</span> <span class="font-bold">[[prod.sale_price]]</span></p>
+                    </div>
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+    <!-- coupon box -->
+    <div class="w-full sm:px-8 px-2">
+      <div class="mb-4 overflow-hidden rounded-lg border border-[#e7e7e7] py-6 px-4 sm:px-6 lg:px-8 2xl:px-10">
+  
+        <div class="mb-2  pb-2">
+          <h3 class="mb-2 text-sm font-semibold text-black">Coupon Code</h3>
+          <p class="text-body-color text-xs font-medium">Enter code to get discount instantly</p>
+        </div>
+        <p class="text-rose-700 my-4" v-if="coupon.invalid">Coupon is invalid</p>
+        <p class="text-lime-700 my-4" v-if="coupon.valid">Coupon applied</p>
+        <div class="relative">
+          <input v-model="coupon.code" type="text" placeholder="Coupon code" class="border-form-stroke text-body-color placeholder-body-color focus:border-primary active:border-primary w-full rounded-lg border py-[14px] px-6 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]" />
+          <button @click="applyCoupon" class="bg-primary absolute right-3 top-1/2 mb-3 h-[34px] -translate-y-1/2 rounded px-5 text-sm font-medium text-white transition hover:bg-opacity-90">Apply</button>
+        </div>
+  
+         
+        <div class="mb-8 mt-6">
+          <p class="flex items-center justify-between text-xs"><span class="font-medium">SubTotal:</span><span class="font-semibold text-sm"> {{shop.currency}} [[ getTotal() ]]</span></p>
+          <p class="flex items-center justify-betweengit text-xs"><span class="font-medium">Discount:</span><span class="font-semibold text-sm"> {{shop.currency}} 0.00</span></p>
+          <p class="mt-2 flex items-center justify-between border-t pt-1 text-lg font-bold"><span class="font-bold">Total Amount</span><span class="font-semibold"> {{shop.currency}} [[ getTotal() ]]</span></p>
+        </div>
+      </div>
+    </div> 
+  
+  
+  
+    <!-- checkout -->
+    <section class="pb-8">
+      <div class="max-w-6xl sm:px-8 px-2 mx-auto">
+        <div class="-mx-4 flex flex-wrap">
+          <div class="w-full px-4 ">
+              <div class="overflow-hidden rounded-lg border border-[#e7e7e7] py-10 px-6 sm:px-10">
+                <div class="my-3 flex flex-wrap gap-2">
+                  <div class="flex-1 flex flex-col">
+                      <label for="" class="text-body-color mb-[10px] block text-base font-medium"> First Name </label>
+                      <input v-model="shipping.first_name" type="text" placeholder="John Doe" class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]" />
+                  </div>
+                  <div class="flex-1 flex flex-col">
+                      <label for="" class="text-body-color mb-[10px] block text-base font-medium"> Last Name </label>
+                      <input v-model="shipping.last_name" type="text" placeholder="John Doe" class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]" />
+                  </div>
+                </div>
+                <div class="my-3 flex flex-wrap gap-2">
+                  <div class="flex-1 flex flex-col">
+                      <label for="" class="text-body-color mb-[10px] block text-base font-medium"> Phone </label>
+                      <input v-model="shipping.phone" type="text" placeholder="" class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]" />
+                  </div>
+                  <div class="flex-1 flex flex-col">
+                      <label for="" class="text-body-color mb-[10px] block text-base font-medium"> Email </label>
+                      <input v-model="shipping.email" type="text" placeholder="" class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]" />
+                  </div>
+                </div>
+                <div class="my-3 flex flex-wrap gap-2">
+                  <div class="flex-1 flex flex-col">
+                      <label for="" class="text-body-color mb-[10px] block text-base font-medium"> Address </label>
+                      <input v-model="shipping.address" type="text" placeholder="" class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]" />
+                  </div>
+                </div>
+                <div class="my-3 flex flex-wrap gap-2">
+                  <div class="flex-1 flex flex-col">
+                    <label for="" class="text-body-color mb-[10px] block text-base font-medium"> Country </label>
+                    <select v-model="shipping.country" @change="getState" name="" id="" class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]">
+                      <option value="">Select Country</option>
+                      <option :value="country.name" v-for="country in countries">[[country.name]]</option>
+                    </select>
+                  </div>
+                  <div class="flex-1 flex flex-col">
+                      <label for="" class="text-body-color mb-[10px] block text-base font-medium"> State </label>
+                      <select v-model="shipping.state"  @change="getCity" name="" id="" class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]">
+                        <option value="">Select State</option>
+                        <option :value="state.name" v-for="state in states">[[state.name]]</option>
+                      </select>
+                  </div>
+                </div>
+                <div class="my-3 flex flex-wrap gap-2">
+                  <div class="flex-1 flex flex-col">
+                    <label for="" class="text-body-color mb-[10px] block text-base font-medium"> City </label>
+                    <select v-model="shipping.city" @change="getDelivery" name="" id="" class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]">
+                      <option value="">Select City</option>
+                      <option :value="city.name" v-for="city in cities">[[city.name]]</option>
+                    </select>
+                  </div>
+                  <div class="flex-1 flex flex-col">
+                      <label for="" class="text-body-color mb-[10px] block text-base font-medium"> Zip Code </label>
+                      <input v-model="shipping.zip_code" type="text" placeholder="" class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]" />
+                  </div>
+                </div>
+                <div class="-mx-3 flex flex-wrap">
+                  </div>
+                  <div class="mb-4">
+                    {% for method in payment_methods %}
+                    <div class="flex items-center gap-2 cursor-pointer my-2">
+                      <input v-model="method" type="radio" id="id-{{method.id}}" name="payment" value="{{method.id}}">
+                      <label for="id-{{method.id}}" class="cursor-pointer text-lg">
+                        <img class="h-14" src="{{method.plugin.extra_image_1.url}}" alt="" srcset="">
+                      </label>
+                    </div>
+                    {% endfor %}
+                  </div>
+  
+                  <div class="w-full">
+                    <div>
+                      <button @click="checkout" class="bg-primary inline-flex items-center justify-center rounded-md py-3 px-6 text-center text-sm font-semibold text-white hover:bg-opacity-90 editable text" id="onepage5-cart-34j6jknh342kjn5523">Confirm Payment</button>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+          </div>
+  
+          <div class="rounded-md mt-4 bg-[#FFF0F0] p-4" v-if="error">
+            <p class="flex items-center text-sm font-medium text-[#BC1C21]">
+               <span class="pr-3">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                     <circle cx="10" cy="10" r="10" fill="#BC1C21"></circle>
+                     <path fill-rule="evenodd" clip-rule="evenodd" d="M10.0002 5.54922C7.54253 5.54922 5.5502 7.54155 5.5502 9.99922C5.5502 12.4569 7.54253 14.4492 10.0002 14.4492C12.4579 14.4492 14.4502 12.4569 14.4502 9.99922C14.4502 7.54155 12.4579 5.54922 10.0002 5.54922ZM4.4502 9.99922C4.4502 6.93404 6.93502 4.44922 10.0002 4.44922C13.0654 4.44922 15.5502 6.93404 15.5502 9.99922C15.5502 13.0644 13.0654 15.5492 10.0002 15.5492C6.93502 15.5492 4.4502 13.0644 4.4502 9.99922Z" fill="white"></path>
+                     <path fill-rule="evenodd" clip-rule="evenodd" d="M10.0002 7.44922C10.304 7.44922 10.5502 7.69546 10.5502 7.99922V9.99922C10.5502 10.303 10.304 10.5492 10.0002 10.5492C9.69644 10.5492 9.4502 10.303 9.4502 9.99922V7.99922C9.4502 7.69546 9.69644 7.44922 10.0002 7.44922Z" fill="white"></path>
+                     <path fill-rule="evenodd" clip-rule="evenodd" d="M9.4502 11.9992C9.4502 11.6955 9.69644 11.4492 10.0002 11.4492H10.0052C10.309 11.4492 10.5552 11.6955 10.5552 11.9992C10.5552 12.303 10.309 12.5492 10.0052 12.5492H10.0002C9.69644 12.5492 9.4502 12.303 9.4502 11.9992Z" fill="white"></path>
+                  </svg>
+               </span>
+               [[error]]
+            </p>
+          </div>
+          <!-- <p v-else></p> -->
+          <div class="rounded-md bg-[#C4F9E2] p-4 mt-4" v-if="success">
+            <p class="flex items-center text-sm font-medium text-[#004434]">
+              <span class="pr-3">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="10" cy="10" r="10" fill="#00B078"></circle>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M14.1203 6.78954C14.3865 7.05581 14.3865 7.48751 14.1203 7.75378L9.12026 12.7538C8.85399 13.02 8.42229 13.02 8.15602 12.7538L5.88329 10.4811C5.61703 10.2148 5.61703 9.78308 5.88329 9.51682C6.14956 9.25055 6.58126 9.25055 6.84753 9.51682L8.63814 11.3074L13.156 6.78954C13.4223 6.52328 13.854 6.52328 14.1203 6.78954Z" fill="white"></path>
+                </svg>
+              </span>
+              [[success]]
+            </p>
+          </div>
+  
+        </div>
+      </div>
+    </section>
+  </section>
+  
+  
+  
+  <!-- for product -->
+  <script>
+    const { createApp } = Vue
+    const app = createApp({
+      data() {
+        return {
+          store: store,
+          products: [],
+          shipping: {
+            first_name: '',
+            last_name: '',
+            email: '',
+            phone: '',
+            address: '',
+            city: '',
+            state: '',
+            zip_code: '',
+            country: '',
+          },
+          shipping_charge: '',
+          countries: [],
+          states: [],
+          cities: [],
+          coupon: {
+            code: '',
+            valid: '',
+            invalid: false,
+          },
+          success: '',
+          error: '',
+   
+        }
+      },
+      delimiters: ['[[', ']]'],
+      mounted() {
+        this.getProducts()
+        this.getCountries()
+      },
+      methods: {
+        addToCart(id) {
+          console.log(id)
+          this.$store.commit('addToCart',{"id":id, "quantity":1})
+        },
+        getProducts() {
+          fetch('/api/filter_products', {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'}
+          })
+          .then(response => response.json())
+          .then(data => {
+            this.products = data;
+          })
+          .catch(error => console.error(error));
+        },
+        getCountries() {
+          fetch('https://nextoxy.com/api/utils/countries/', {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'}
+          })
+          .then(response => response.json())
+          .then(data => {
+            this.countries = data;
+            this.shipping.state = ''
+            this.shipping.city = ''
+          })
+          .catch(error => console.error(error));
+        },
+        getState(){
+          fetch('https://nextoxy.com/api/utils/states/?country='+this.shipping.country, {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'}
+          })
+          .then(response => response.json())
+          .then(data => {
+            this.states = data;
+            this.shipping.city = ''
+          })
+          .catch(error => console.error(error));
+        },
+        getCity(){
+          fetch('https://nextoxy.com/api/utils/cities/?state='+this.shipping.state+'&country='+this.shipping.country, {
+            method: 'GET',
+            headers: {'Content-Type': 'application/json'}
+          })
+          .then(response => response.json())
+          .then(data => {
+            this.cities = data;
+          })
+          .catch(error => console.error(error));
+        },
+        getTotal(){
+          var total = 0
+          var selected = this.products.filter((prod) => prod.selected);
+          selected.forEach((prod) => {
+            total += prod.sale_price * prod.quantity
+          })
+          return total
+        },
+        checkout(){
+          var selected = this.products.filter((prod) => prod.selected);
+  
+          
+          var data = {}
+          data.shipping = this.shipping
+          data.cart = []
+          data.delivery = 0
+          data.total = this.getTotal()
+          data.coupon = ""
+          data.method = ""
+          selected.forEach(item => {
+            var dt = {
+              id: item.id,
+              quantity: item.quantity,
+            }
+            data.cart.push(dt)
+          });
+  
+          if (selected.length === 0 || !this.shipping.first_name || !this.shipping.last_name || !this.shipping.email || !this.shipping.phone || !this.shipping.address || !this.shipping.city || !this.shipping.state || !this.shipping.zip_code || !this.shipping.country){
+            this.error = "Please select product and fill in all shipping fields.";
+            setTimeout(() => {
+              this.error = "";
+            }, 3000);
+            return;
+          }else{
+            this.success = "Order completed successfully"
+            setTimeout(() => {
+              this.success = "";
+            }, 4000);
+          }
+  
+          fetch('/api/checkout', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+          })
+          .then(response => response.json())
+          .then(data => {
+  
+            console.log(data);
+          })
+          .catch(error => console.error(error));
+        }
+      },
+    })
+    app.use(store)
+    app.mount('#product-checkout')
+  </script>
+  
+  
+  <!-- normal style and js -->
+  <style scoped>
+    .list-view-filter{
+      flex-direction: column !important;
+      align-items: start;
+    }
+    .list-view-filter .prod{
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    .grid-view-filter{
+      display: grid !important;
+    }
+  
+  </style>
+  
+  <script>
+  const listViewButton = document.querySelector('.list-view-button');
+  const gridViewButton = document.querySelector('.grid-view-button');
+  const list = document.getElementById('prod-container');
+  
+  listViewButton.onclick = function () {
+    list.classList.remove('grid-view-filter');
+    list.classList.add('list-view-filter');
+  }
+  
+  gridViewButton.onclick = function () {
+    list.classList.remove('list-view-filter');
+    list.classList.add('grid-view-filter');
+  }
+  </script>

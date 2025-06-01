@@ -1,0 +1,161 @@
+<section
+  class="bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-300 text-slate-900 sticky top-0 left-0 right-0 z-50"
+  id="header"
+>
+  <div
+    class="container px-2 md:px-4 py-5 mx-auto flex justify-between items-center"
+  >
+    <div class="editable image" id="header_e343">
+      <a href="/">
+        <img
+          class="max-w-[100px]"
+          src="/static/services/service-one/logo.png"
+          alt="Logo"
+        />
+      </a>
+    </div>
+    <nav class="hidden md:block">
+      <ul class="flex gap-2 text-slate-900">
+        <li>
+          <a
+            class="text-lg hover:bg-slate-200 px-2 py-2 rounded"
+            href="#banner"
+            @click.prevent="scrollToSection('home')"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            class="text-lg hover:bg-slate-200 px-2 py-2 rounded"
+            href="#about3"
+            @click.prevent="scrollToSection('about')"
+            >About</a
+          >
+        </li>
+        <li>
+          <a
+            class="text-lg hover:bg-slate-200 px-2 py-2 rounded"
+            href="#services"
+            @click.prevent="scrollToSection('services')"
+            >Services</a
+          >
+        </li>
+
+        <li>
+          <a
+            class="text-lg hover:bg-slate-200 px-2 py-2 rounded"
+            href="#faq"
+            @click.prevent="scrollToSection('faq')"
+            >FAQ</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <div class="border rounded-full px-10 py-2 text-lg hidden md:block">
+      <div class="flex items-center justify-center gap-2">
+        <div class="editable image" id="header_e34k">
+          <img src="/static/services/service-three/phone.svg" alt="phone" />
+        </div>
+        <p class="editable text">+01706616588</p>
+      </div>
+    </div>
+    <button class="md:hidden" @click="toggleMobileMenu">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3.75 5.25h16.5m-16.5 7.5h16.5m-16.5 7.5h16.5"
+        />
+      </svg>
+    </button>
+  </div>
+  <div v-if="mobileMenuOpen" class="md:hidden bg-slate-100 py-4">
+    <ul class="flex flex-col items-center gap-5 text-slate-900">
+      <li>
+        <a
+          class="text-lg hover:bg-slate-200 px-4 py-2"
+          href="#home"
+          @click.prevent="scrollToSection('home')"
+          >Home</a
+        >
+      </li>
+      <li>
+        <a
+          class="text-lg hover:bg-slate-200 px-4 py-2"
+          href="#about"
+          @click.prevent="scrollToSection('about')"
+          >About</a
+        >
+      </li>
+      <li>
+        <a
+          class="text-lg hover:bg-slate-200 px-4 py-2"
+          href="#services"
+          @click.prevent="scrollToSection('services')"
+          >Services</a
+        >
+      </li>
+      <li>
+        <a
+          class="text-lg hover:bg-slate-200 px-4 py-2"
+          href="#gallery"
+          @click.prevent="scrollToSection('gallery')"
+          >Gallery</a
+        >
+      </li>
+      <li>
+        <a
+          class="text-lg hover:bg-slate-200 px-4 py-2"
+          href="#review"
+          @click.prevent="scrollToSection('review')"
+          >Review</a
+        >
+      </li>
+      <li>
+        <a
+          class="text-lg hover:bg-slate-200 px-4 py-2"
+          href="#faq"
+          @click.prevent="scrollToSection('faq')"
+          >FAQ</a
+        >
+      </li>
+    </ul>
+    <div class="px-4 pt-4 md:px-0 md:pt-0">
+      <button
+        class="flex items-center gap-2 justify-center bg-slate-900 hover:bg-white transition ease-in-out duration-300 text-white hover:text-slate-900 mx-auto md:text-2xl font-semibold border border-slate-900 rounded-full px-4 py-3"
+      >
+        <img src="/static/services/service-three/plus.svg" alt="plus" />
+        Make an Appointment
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  Vue.createApp({
+    data() {
+      return {
+        mobileMenuOpen: false,
+      };
+    },
+    methods: {
+      toggleMobileMenu() {
+        this.mobileMenuOpen = !this.mobileMenuOpen;
+      },
+      scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+          this.mobileMenuOpen = false; // Close the mobile menu after clicking a link
+        }
+      },
+    },
+  }).mount("header");
+</script>

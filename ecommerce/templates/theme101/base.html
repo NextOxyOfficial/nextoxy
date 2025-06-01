@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    />
+
+    <title>Riode - Ultimate eCommerce Template</title>
+
+    <meta name="keywords" content="HTML5 Template" />
+    <meta name="description" content="Riode - Ultimate eCommerce Template" />
+    <meta name="author" content="D-THEMES" />
+
+    <!-- Favicon -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="/static/ecommerce/rd/images/icons/favicon.png"
+    />
+    <!-- Preload Font -->
+    <link
+      rel="preload"
+      href="/static/ecommerce/rd/fonts/riode.ttf?5gap68"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/static/ecommerce/rd/vendor/fontawesome-free/webfonts/fa-solid-900.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="/static/ecommerce/rd/vendor/fontawesome-free/webfonts/fa-brands-400.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <script>
+      WebFontConfig = {
+        google: { families: ["Jost:400,500,600,700,800,900"] },
+      };
+      (function (d) {
+        var wf = d.createElement("script"),
+          s = d.scripts[0];
+        wf.src = "/static/ecommerce/rd/js/webfont.js";
+        wf.async = true;
+        s.parentNode.insertBefore(wf, s);
+      })(document);
+    </script>
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/ecommerce/rd/vendor/fontawesome-free/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/ecommerce/rd/vendor/animate/animate.min.css"
+    />
+
+    <!-- Plugins CSS File -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/ecommerce/rd/vendor/magnific-popup/magnific-popup.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/ecommerce/rd/vendor/owl-carousel/owl.carousel.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/ecommerce/rd/vendor/sticky-icon/stickyicon.css"
+    />
+
+    <!-- Main CSS File -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/ecommerce/rd/css/demo6.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/static/ecommerce/rd/css/account.css"
+    />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vuex@4.0.2"></script>
+    <script>
+      const { createApp } = Vue;
+    </script>
+  </head>
+  <body class="home">
+    <div class="page-wrapper">
+      {% include "other/headers/header1.html" %}
+      <!--   -->
+      {% block content %} {% endblock content %}
+      <!--   -->
+      {% include "other/footers/footer2.html" %}
+      <!-- End of Footer -->
+    </div>
+    <!-- Sticky Footer -->
+    <div class="sticky-footer sticky-content fix-bottom">
+      <a href="/" class="sticky-link">
+        <i class="d-icon-home"></i>
+        <span>Home</span>
+      </a>
+      <a href="shop-grid-3cols.html" class="sticky-link">
+        <i class="d-icon-volume"></i>
+        <span>Categories</span>
+      </a>
+      <a href="wishlist.html" class="sticky-link">
+        <i class="d-icon-heart"></i>
+        <span>Wishlist</span>
+      </a>
+      <a href="account.html" class="sticky-link">
+        <i class="d-icon-user"></i>
+        <span>Account</span>
+      </a>
+      <div class="header-search hs-toggle dir-up">
+        <a href="#" class="search-toggle sticky-link">
+          <i class="d-icon-search"></i>
+          <span>Search</span>
+        </a>
+        <form action="#" class="input-wrapper">
+          <input
+            type="text"
+            class="form-control"
+            name="search"
+            autocomplete="off"
+            placeholder="Search your keyword..."
+            required
+          />
+          <button class="btn btn-search" type="submit" title="submit-button">
+            <i class="d-icon-search"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Scroll Top -->
+    <a id="scroll-top" href="#top" title="Top" role="button" class="scroll-top"
+      ><i class="d-icon-arrow-up"></i
+    ></a>
+
+    <!-- newsletter-popup type2 -->
+    <div
+      class="newsletter-popup newsletter-pop2 mfp-hide"
+      id="newsletter-popup"
+    >
+      <figure>
+        <img
+          src="/static/ecommerce/rd/images/newsletter-popup2.jpg"
+          width="500"
+          height="264"
+          alt="newsletter2"
+        />
+      </figure>
+      <div class="newsletter-content">
+        <h2 class="font-weight-bolder">Join Our Mailing List</h2>
+        <p class="text-grey">Stay Informed!Monthly Tips and Discount.</p>
+        <form
+          action="#"
+          method="get"
+          class="input-wrapper input-wrapper-inline input-wrapper-round"
+        >
+          <input
+            type="email"
+            class="form-control email"
+            name="email"
+            id="email2"
+            placeholder="Email address here..."
+            required=""
+          />
+          <button class="btn btn-dark" type="submit">SUBMIT</button>
+        </form>
+        <div class="form-checkbox justify-content-center">
+          <input
+            type="checkbox"
+            class="custom-checkbox"
+            id="hide-newsletter-popup"
+            name="hide-newsletter-popup"
+            required
+          />
+          <label for="hide-newsletter-popup">Don't show this popup again</label>
+        </div>
+        <div class="social-links">
+          <a
+            href="#"
+            title="social-link"
+            class="social-link social-facebook fab fa-facebook-f"
+          ></a>
+          <a
+            href="#"
+            title="social-link"
+            class="social-link social-twitter fab fa-twitter"
+          ></a>
+          <a
+            href="#"
+            title="social-link"
+            class="social-link social-linkedin fab fa-linkedin-in"
+          ></a>
+        </div>
+      </div>
+    </div>
+    <!-- Plugins JS File -->
+    <script src="/static/ecommerce/rd/vendor/jquery/jquery.min.js"></script>
+    <script src="/static/ecommerce/rd/vendor/elevatezoom/jquery.elevatezoom.min.js"></script>
+    <script src="/static/ecommerce/rd/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="/static/ecommerce/rd/vendor/jquery.floating/jquery.floating.min.js"></script>
+    <script src="/static/ecommerce/rd/vendor/owl-carousel/owl.carousel.min.js"></script>
+    <script src="/static/ecommerce/rd/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="/static/ecommerce/rd/vendor/isotope/isotope.pkgd.min.js"></script>
+    <!-- Main JS File -->
+    <script src="/static/ecommerce/rd/js/main.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,312 @@
+{% extends "theme5/base.html" %}
+{% load static %}
+{% block title %}Bike{% endblock %}
+{% block content %}
+
+<script>
+  document.getElementById('navbar').classList.remove('static-mode')
+</script>
+<style scoped>
+    #navbar a{
+        color: white ;
+    }
+    #navbar a:hover{
+        color: black ;
+    }
+</style>
+    <!-- Modification Banner -->
+    <section style="background-image: url(/static/ecommerce/theme5/race-banner.jpg);background-position: center center;background-size: cover;" class="md:h-[70vh] h-[90vh]">
+      <div class="container m-auto flex  px-4">
+          <div class="md:w-[66%] sm:w-[30%] w-[0]"></div>
+          <div class="md:w-[35%] sm:w-[70%] w-[100%] py-4 sm:mt-14 mt-2 relative overflow-hidden">
+              <div class="container mx-auto px-0">
+                  <div class="flex-1 flex flex-col md:flex-row justify-between relative px-10 sm:py-16 py-8 cursor-pointer h2-banner overflow-hidden">
+                      <div class="flex flex-col justify-center flex-1 max-w-[490px]">
+                          <div>
+                              <span class="text-primary text-sm font-bold uppercase" style="letter-spacing: 8px;">ADRENALINE</span>
+                              <h1 class="text-[45px] mt-1 mb-[19px] font-bold text-white" style="line-height: 50px;">DYNAMIC RACING EXPERIENCE</h1>
+                              <p class="my-[10px] text-white">
+                              Aliquam lorem ante, dapibus in, viverra quis, feugiat Phasellus viverra nulla ut metus varius laoreet srtrum aenean imperdiet. Etiam ultricies nisi vel augue.
+                              </p>
+                              <ul class="mt-6">
+                                  <li class="text-gray-300 flex gap-1 items-center my-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#da292f" d="M9 16.17L4.83 12l-1.42 1.41L9 19L21 7l-1.41-1.41L9 16.17z"/></svg> Lorem ipsum dolor sit amet consectetur adipisicing elit</li>
+                                  <li class="text-gray-300 flex gap-1 items-center my-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#da292f" d="M9 16.17L4.83 12l-1.42 1.41L9 19L21 7l-1.41-1.41L9 16.17z"/></svg> Lorem ipsum dolor sit amet </li>
+                                  <li class="text-gray-300 flex gap-1 items-center my-2"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#da292f" d="M9 16.17L4.83 12l-1.42 1.41L9 19L21 7l-1.41-1.41L9 16.17z"/></svg> Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet.</li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+
+        <!-- Modification Points -->
+        <section class="container m-auto px-4 mb-20 mt-[135px]">
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-2 max-w-[900px] w-full m-auto">
+                <div class="md:w-[50%] w-[100%]">
+                    <h1 class="text-[45px] w-auto sm:text-right text-center mt-1 mb-[19px] font-bold sm:pr-8 pr-auto" style="line-height: 50px;">IMPROVE GENERAL RIDEABILITY</h1>
+                </div>
+                <div class="h-20 w-[1px] bg-gray-400 sm:flex hidden"></div>
+                <div class="md:w-[50%] w-[100%]">
+                    <span class="text-primary text-[15px] font-bold uppercase pl-8 pr-20 w-full" style="letter-spacing: 8px;">PERFORMANCE</span>
+                </div>
+            </div>
+            <section class="overflow-hidden py-10">
+              <div class="container mx-auto">
+                <!-- <div class="-mx-4 flex flex-wrap">
+                  <div class="w-full px-4">
+                    <div class="mx-auto mb-[60px] max-w-[770px] text-center">
+                      <h2 class="mb-3 text-center text-3xl font-bold leading-tight text-black md:text-4xl md:leading-tight xl:text-[45px] xl:leading-tight">Need Help? Open a Ticket</h2>
+                      <p class="text-body-color text-base font-medium leading-relaxed md:text-lg md:leading-relaxed">Submit Your Support Ticket, We will be with you as soon as we are able.</p>
+                    </div>
+                  </div>
+                </div> -->
+                <div class="-mx-4 flex">
+                  <div class="w-full px-4">
+                    <div class="shadow-card border-form-stroke relative mx-auto w-full max-w-[770px] border bg-white px-6 py-10 sm:px-[65px] sm:py-[60px] md:p-10 lg:px-[65px] lg:py-[60px]">
+
+
+                      <form method="POST" action="">
+                        {% csrf_token %}
+                        <div class="mb-6">
+                          <input name="name" type="text" placeholder="Your Name" class="text-body-color focus:border-primary w-full rounded border border-[f0f0f0] py-3 px-[14px] text-base outline-none focus-visible:shadow-none" />
+                        </div>
+                        <div class="mb-6">
+                          <input name="email" type="email" placeholder="Your Email" class="text-body-color focus:border-primary w-full rounded border border-[f0f0f0] py-3 px-[14px] text-base outline-none focus-visible:shadow-none" />
+                        </div>
+                        <div class="mb-6">
+                          <input name="phone" type="text" placeholder="Your Phone" class="text-body-color focus:border-primary w-full rounded border border-[f0f0f0] py-3 px-[14px] text-base outline-none focus-visible:shadow-none" />
+                        </div>
+                        <div class="mb-6">
+                          <textarea rows="6" name="message" placeholder="Your Message" class="text-body-color focus:border-primary w-full resize-none rounded border border-[f0f0f0] py-3 px-[14px] text-base outline-none focus-visible:shadow-none"></textarea>
+                        </div>
+                        <p class="text-green-500">
+                          {{success}}
+                        </p>
+                        <div>
+                          <button type="submit" class="bg-primary border-primary w-full rounded border p-3 mt-4 transition hover:bg-opacity-90 editable text" id="contactus-sdlrizxcfgwe">Send  Message</button>
+                        </div>
+                      </form>
+
+
+                      <div>
+                        <span class="absolute -right-5 -top-5 -z-10">
+                          <svg width="57" height="121" viewBox="0 0 57 121" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="23.0992" cy="1.62854" r="1.62854" fill="#3056D3" />
+                            <circle cx="12.3649" cy="1.62854" r="1.62854" fill="#3056D3" />
+                            <circle cx="1.62854" cy="1.62854" r="1.62854" fill="#3056D3" />
+                            <circle cx="23.0992" cy="12.3864" r="1.62854" fill="#3056D3" />
+                            <circle cx="12.3649" cy="12.3864" r="1.62854" fill="#3056D3" />
+                            <circle cx="1.62854" cy="12.3864" r="1.62854" fill="#3056D3" />
+                            <circle cx="23.0992" cy="23.1422" r="1.62854" fill="#3056D3" />
+                            <circle cx="12.3649" cy="23.1422" r="1.62854" fill="#3056D3" />
+                            <circle cx="1.62854" cy="23.1422" r="1.62854" fill="#3056D3" />
+                            <circle cx="23.0992" cy="33.9005" r="1.62854" fill="#3056D3" />
+                            <circle cx="12.3649" cy="33.9005" r="1.62854" fill="#3056D3" />
+                            <circle cx="1.62854" cy="33.9005" r="1.62854" fill="#3056D3" />
+                            <circle cx="23.0992" cy="44.6515" r="1.62854" fill="#3056D3" />
+                            <circle cx="12.3649" cy="44.6515" r="1.62854" fill="#3056D3" />
+                            <circle cx="1.62854" cy="44.6515" r="1.62854" fill="#3056D3" />
+                            <circle cx="23.0992" cy="55.4049" r="1.62854" fill="#3056D3" />
+                            <circle cx="12.3649" cy="55.4049" r="1.62854" fill="#3056D3" />
+                            <circle cx="1.62854" cy="55.4049" r="1.62854" fill="#3056D3" />
+                            <circle cx="23.0992" cy="66.1559" r="1.62854" fill="#3056D3" />
+                            <circle cx="23.0992" cy="76.6744" r="1.62854" fill="#3056D3" />
+                            <circle cx="23.0992" cy="87.193" r="1.62854" fill="#3056D3" />
+                            <circle cx="23.0992" cy="97.7111" r="1.62854" fill="#3056D3" />
+                            <circle cx="23.0992" cy="108.227" r="1.62854" fill="#3056D3" />
+                            <circle cx="23.0992" cy="118.746" r="1.62854" fill="#3056D3" />
+                            <circle cx="12.3629" cy="66.1559" r="1.62854" fill="#3056D3" />
+                            <circle cx="12.3629" cy="76.6744" r="1.62854" fill="#3056D3" />
+                            <circle cx="12.3629" cy="87.193" r="1.62854" fill="#3056D3" />
+                            <circle cx="12.3629" cy="97.7111" r="1.62854" fill="#3056D3" />
+                            <circle cx="12.3629" cy="108.227" r="1.62854" fill="#3056D3" />
+                            <circle cx="12.3629" cy="118.746" r="1.62854" fill="#3056D3" />
+                            <circle cx="1.62854" cy="66.1559" r="1.62854" fill="#3056D3" />
+                            <circle cx="1.62854" cy="76.6744" r="1.62854" fill="#3056D3" />
+                            <circle cx="1.62854" cy="87.193" r="1.62854" fill="#3056D3" />
+                            <circle cx="1.62854" cy="97.7111" r="1.62854" fill="#3056D3" />
+                            <circle cx="1.62854" cy="108.227" r="1.62854" fill="#3056D3" />
+                            <circle cx="1.62854" cy="118.746" r="1.62854" fill="#3056D3" />
+                            <circle cx="33.8571" cy="1.62854" r="1.62854" fill="#3056D3" />
+                            <circle cx="33.8571" cy="12.3864" r="1.62854" fill="#3056D3" />
+                            <circle cx="33.8571" cy="23.1422" r="1.62854" fill="#3056D3" />
+                            <circle cx="33.8571" cy="33.9005" r="1.62854" fill="#3056D3" />
+                            <circle cx="33.8571" cy="44.6515" r="1.62854" fill="#3056D3" />
+                            <circle cx="33.8571" cy="55.4049" r="1.62854" fill="#3056D3" />
+                            <circle cx="33.8571" cy="66.1559" r="1.62854" fill="#3056D3" />
+                            <circle cx="33.8571" cy="76.6744" r="1.62854" fill="#3056D3" />
+                            <circle cx="33.8571" cy="87.193" r="1.62854" fill="#3056D3" />
+                            <circle cx="33.8571" cy="97.7111" r="1.62854" fill="#3056D3" />
+                            <circle cx="33.8571" cy="108.227" r="1.62854" fill="#3056D3" />
+                            <circle cx="33.8571" cy="118.746" r="1.62854" fill="#3056D3" />
+                            <circle cx="44.6149" cy="1.62854" r="1.62854" fill="#3056D3" />
+                            <circle cx="44.6149" cy="12.3864" r="1.62854" fill="#3056D3" />
+                            <circle cx="44.6149" cy="23.1422" r="1.62854" fill="#3056D3" />
+                            <circle cx="44.6149" cy="33.9005" r="1.62854" fill="#3056D3" />
+                            <circle cx="44.6149" cy="44.6515" r="1.62854" fill="#3056D3" />
+                            <circle cx="44.6149" cy="55.4049" r="1.62854" fill="#3056D3" />
+                            <circle cx="44.6149" cy="66.1559" r="1.62854" fill="#3056D3" />
+                            <circle cx="44.6149" cy="76.6744" r="1.62854" fill="#3056D3" />
+                            <circle cx="44.6149" cy="87.193" r="1.62854" fill="#3056D3" />
+                            <circle cx="44.6149" cy="97.7111" r="1.62854" fill="#3056D3" />
+                            <circle cx="44.6149" cy="108.227" r="1.62854" fill="#3056D3" />
+                            <circle cx="44.6149" cy="118.746" r="1.62854" fill="#3056D3" />
+                            <circle cx="55.3707" cy="1.62854" r="1.62854" fill="#3056D3" />
+                            <circle cx="55.3707" cy="12.3864" r="1.62854" fill="#3056D3" />
+                            <circle cx="55.3707" cy="23.1422" r="1.62854" fill="#3056D3" />
+                            <circle cx="55.3707" cy="33.9005" r="1.62854" fill="#3056D3" />
+                            <circle cx="55.3707" cy="44.6515" r="1.62854" fill="#3056D3" />
+                            <circle cx="55.3707" cy="55.4049" r="1.62854" fill="#3056D3" />
+                            <circle cx="55.3707" cy="66.1559" r="1.62854" fill="#3056D3" />
+                            <circle cx="55.3707" cy="76.6744" r="1.62854" fill="#3056D3" />
+                            <circle cx="55.3707" cy="87.193" r="1.62854" fill="#3056D3" />
+                            <circle cx="55.3707" cy="97.7111" r="1.62854" fill="#3056D3" />
+                            <circle cx="55.3707" cy="108.227" r="1.62854" fill="#3056D3" />
+                            <circle cx="55.3707" cy="118.746" r="1.62854" fill="#3056D3" />
+                          </svg>
+                        </span>
+                        
+                        <span class="absolute -bottom-5 -left-5 -z-10">
+                          <svg width="57" height="121" viewBox="0 0 57 121" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="23.0992" cy="1.62854" r="1.62854" fill="#3056D3" />
+                            <circle cx="12.3649" cy="1.62854" r="1.62854" fill="#3056D3" />
+                            <circle cx="1.62854" cy="1.62854" r="1.62854" fill="#3056D3" />
+                            <circle cx="23.0992" cy="12.3864" r="1.62854" fill="#3056D3" />
+                            <circle cx="12.3649" cy="12.3864" r="1.62854" fill="#3056D3" />
+                            <circle cx="1.62854" cy="12.3864" r="1.62854" fill="#3056D3" />
+                            <circle cx="23.0992" cy="23.1422" r="1.62854" fill="#3056D3" />
+                            <circle cx="12.3649" cy="23.1422" r="1.62854" fill="#3056D3" />
+                            <circle cx="1.62854" cy="23.1422" r="1.62854" fill="#3056D3" />
+                            <circle cx="23.0992" cy="33.9005" r="1.62854" fill="#3056D3" />
+                            <circle cx="12.3649" cy="33.9005" r="1.62854" fill="#3056D3" />
+                            <circle cx="1.62854" cy="33.9005" r="1.62854" fill="#3056D3" />
+                            <circle cx="23.0992" cy="44.6515" r="1.62854" fill="#3056D3" />
+                            <circle cx="12.3649" cy="44.6515" r="1.62854" fill="#3056D3" />
+                            <circle cx="1.62854" cy="44.6515" r="1.62854" fill="#3056D3" />
+                            <circle cx="23.0992" cy="55.4049" r="1.62854" fill="#3056D3" />
+                            <circle cx="12.3649" cy="55.4049" r="1.62854" fill="#3056D3" />
+                            <circle cx="1.62854" cy="55.4049" r="1.62854" fill="#3056D3" />
+                            <circle cx="23.0992" cy="66.1559" r="1.62854" fill="#3056D3" />
+                            <circle cx="23.0992" cy="76.6744" r="1.62854" fill="#3056D3" />
+                            <circle cx="23.0992" cy="87.193" r="1.62854" fill="#3056D3" />
+                            <circle cx="23.0992" cy="97.7111" r="1.62854" fill="#3056D3" />
+                            <circle cx="23.0992" cy="108.227" r="1.62854" fill="#3056D3" />
+                            <circle cx="23.0992" cy="118.746" r="1.62854" fill="#3056D3" />
+                            <circle cx="12.3629" cy="66.1559" r="1.62854" fill="#3056D3" />
+                            <circle cx="12.3629" cy="76.6744" r="1.62854" fill="#3056D3" />
+                            <circle cx="12.3629" cy="87.193" r="1.62854" fill="#3056D3" />
+                            <circle cx="12.3629" cy="97.7111" r="1.62854" fill="#3056D3" />
+                            <circle cx="12.3629" cy="108.227" r="1.62854" fill="#3056D3" />
+                            <circle cx="12.3629" cy="118.746" r="1.62854" fill="#3056D3" />
+                            <circle cx="1.62854" cy="66.1559" r="1.62854" fill="#3056D3" />
+                            <circle cx="1.62854" cy="76.6744" r="1.62854" fill="#3056D3" />
+                            <circle cx="1.62854" cy="87.193" r="1.62854" fill="#3056D3" />
+                            <circle cx="1.62854" cy="97.7111" r="1.62854" fill="#3056D3" />
+                            <circle cx="1.62854" cy="108.227" r="1.62854" fill="#3056D3" />
+                            <circle cx="1.62854" cy="118.746" r="1.62854" fill="#3056D3" />
+                            <circle cx="33.8571" cy="1.62854" r="1.62854" fill="#3056D3" />
+                            <circle cx="33.8571" cy="12.3864" r="1.62854" fill="#3056D3" />
+                            <circle cx="33.8571" cy="23.1422" r="1.62854" fill="#3056D3" />
+                            <circle cx="33.8571" cy="33.9005" r="1.62854" fill="#3056D3" />
+                            <circle cx="33.8571" cy="44.6515" r="1.62854" fill="#3056D3" />
+                            <circle cx="33.8571" cy="55.4049" r="1.62854" fill="#3056D3" />
+                            <circle cx="33.8571" cy="66.1559" r="1.62854" fill="#3056D3" />
+                            <circle cx="33.8571" cy="76.6744" r="1.62854" fill="#3056D3" />
+                            <circle cx="33.8571" cy="87.193" r="1.62854" fill="#3056D3" />
+                            <circle cx="33.8571" cy="97.7111" r="1.62854" fill="#3056D3" />
+                            <circle cx="33.8571" cy="108.227" r="1.62854" fill="#3056D3" />
+                            <circle cx="33.8571" cy="118.746" r="1.62854" fill="#3056D3" />
+                            <circle cx="44.6149" cy="1.62854" r="1.62854" fill="#3056D3" />
+                            <circle cx="44.6149" cy="12.3864" r="1.62854" fill="#3056D3" />
+                            <circle cx="44.6149" cy="23.1422" r="1.62854" fill="#3056D3" />
+                            <circle cx="44.6149" cy="33.9005" r="1.62854" fill="#3056D3" />
+                            <circle cx="44.6149" cy="44.6515" r="1.62854" fill="#3056D3" />
+                            <circle cx="44.6149" cy="55.4049" r="1.62854" fill="#3056D3" />
+                            <circle cx="44.6149" cy="66.1559" r="1.62854" fill="#3056D3" />
+                            <circle cx="44.6149" cy="76.6744" r="1.62854" fill="#3056D3" />
+                            <circle cx="44.6149" cy="87.193" r="1.62854" fill="#3056D3" />
+                            <circle cx="44.6149" cy="97.7111" r="1.62854" fill="#3056D3" />
+                            <circle cx="44.6149" cy="108.227" r="1.62854" fill="#3056D3" />
+                            <circle cx="44.6149" cy="118.746" r="1.62854" fill="#3056D3" />
+                            <circle cx="55.3707" cy="1.62854" r="1.62854" fill="#3056D3" />
+                            <circle cx="55.3707" cy="12.3864" r="1.62854" fill="#3056D3" />
+                            <circle cx="55.3707" cy="23.1422" r="1.62854" fill="#3056D3" />
+                            <circle cx="55.3707" cy="33.9005" r="1.62854" fill="#3056D3" />
+                            <circle cx="55.3707" cy="44.6515" r="1.62854" fill="#3056D3" />
+                            <circle cx="55.3707" cy="55.4049" r="1.62854" fill="#3056D3" />
+                            <circle cx="55.3707" cy="66.1559" r="1.62854" fill="#3056D3" />
+                            <circle cx="55.3707" cy="76.6744" r="1.62854" fill="#3056D3" />
+                            <circle cx="55.3707" cy="87.193" r="1.62854" fill="#3056D3" />
+                            <circle cx="55.3707" cy="97.7111" r="1.62854" fill="#3056D3" />
+                            <circle cx="55.3707" cy="108.227" r="1.62854" fill="#3056D3" />
+                            <circle cx="55.3707" cy="118.746" r="1.62854" fill="#3056D3" />
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+        <!-- Engineen Details -->
+        <section class="my-24 container m-auto px-4">
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-2 max-w-[900px] w-full m-auto">
+              <div class="md:w-[50%] w-[100%]">
+                  <h1 class="text-[45px] w-auto sm:text-right text-center mt-1 mb-[19px] font-bold sm:pr-8 pr-auto editable text" id="theme5-title-34r4jsdfhn" style="line-height: 50px;">TRY PROFESSIONAL EQUIPMENT</h1>
+              </div>
+              <div class="h-20 w-[1px] bg-gray-400 sm:flex hidden"></div>
+              <div class="md:w-[50%] w-[100%]">
+                  <span class="text-primary text-[15px] font-bold uppercase pl-8 pr-20 w-full editable text" id="theme5-title-34r4jsdfhn23" style="letter-spacing: 8px;">PERFORMANCE</span>
+              </div>
+            </div>
+            <div class="flex md:justify-center justify-evenly items-center md:flex-row flex-col sm:gap-8 gap-6 max-w-6xl m-auto mt-10">
+              <div class="">
+                <div class="flex flex-col gap-2 items-end sm:mt-14 mt-4">
+                    <h2 class="font-bold text-2xl font-semibold uppercase hover:text-red-500 editable text" id="theme5-title-34r4jsdfhn23">New Standards</h2>
+                    <p class="text-gray-700 text-right editable text" id="theme5-title-34r4jsdfhn2334">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat blanditiis iusto, a quae culpa dolor praesentium </p>
+                </div>
+                <div class="flex flex-col gap-2 items-end sm:mt-14 mt-4">
+                    <h2 class="font-bold text-2xl font-semibold uppercase hover:text-red-500 editable text" id="theme5-title-34r4jsd122fhn">New Standards</h2>
+                    <p class="text-gray-700 text-right editable text" id="theme5-title-34r4jsdf23ehn">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat blanditiis iusto, a quae culpa dolor praesentium </p>
+                </div>
+                <div class="flex flex-col gap-2 items-end sm:mt-14 mt-4">
+                  <h2 class="font-bold text-2xl font-semibold uppercase hover:text-red-500 editable text" id="theme5-title-34r4jsd1231n">New Standards</h2>
+                  <p class="text-gray-700 text-right editable text" id="theme5-title-34r4jsd434fhn">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat blanditiis iusto, a quae culpa dolor praesentium </p>
+                </div>
+              </div>
+              <div class="md:w-[50%] sm:w-[70%] w-[90%]">
+                <img class="editable image" id="theme5-image-23fdn" src="/static/ecommerce/theme5/h1-img-6.png" alt="">
+              </div>
+              <div class="">
+                <div class="flex flex-col gap-2 items-start sm:mt-14 mt-4">
+                    <h2 class="font-bold text-2xl font-semibold uppercase hover:text-red-500 editable text" id="theme5-title-34r4j1232sdfhn">New Standards</h2>
+                    <p class="text-gray-700 text-left editable text" id="theme5-title-34r4jsd34dffhn">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat blanditiis iusto, a quae culpa dolor praesentium </p>
+                </div>
+                <div class="flex flex-col gap-2 items-start sm:mt-14 mt-4">
+                    <h2 class="font-bold text-2xl font-semibold uppercase hover:text-red-500" id="theme5-title-34r4j1232sdfav3dfhn">New Standards</h2>
+                    <p class="text-gray-700 text-left" id="theme5-title-34r4jfgvv32sdfhn">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat blanditiis iusto, a quae culpa dolor praesentium </p>
+                </div>
+                <div class="flex flex-col gap-2 items-start sm:mt-14 mt-4">
+                    <h2 class="font-bold text-2xl font-semibold uppercase hover:text-red-500 editable text" id="theme5-title-34r23eccc4jsd1231n">New Standards</h2>
+                    <p class="text-gray-700 text-left editable text" id="theme5-title-34r4asd33jsd1231n">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat blanditiis iusto, a quae culpa dolor praesentium </p>
+                </div>
+              </div>
+          </div>
+        </section>
+
+        <!-- Brand Section -->
+        <section class=" bg-[#f5f5f5] py-[100px]">
+          <div class="flex justify-center gap-1 brandings container overflow-hidden px-4 m-auto">
+            <img class="py-[30px] z-10" src="{% static '/ecommerce/theme5/brands/h2-clients-img-1-h.png' %}" alt="" srcset="">
+            <img class="py-[30px] z-10" src="{% static '/ecommerce/theme5/brands/h2-clients-img-2-h.png' %}" alt="" srcset="">
+            <img class="py-[30px] z-10" src="{% static '/ecommerce/theme5/brands/h2-clients-img-3-h.png' %}" alt="" srcset="">
+            <img class="py-[30px] z-10" src="{% static '/ecommerce/theme5/brands/h2-clients-img-4-h.png' %}" alt="" srcset="">
+            <img class="py-[30px] z-10" src="{% static '/ecommerce/theme5/brands/h2-clients-img-5-h.png' %}" alt="" srcset="">
+          </div>
+        </section>
+    </section>
+    {% endblock %}

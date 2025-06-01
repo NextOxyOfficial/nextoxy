@@ -1,0 +1,148 @@
+{% load static %}
+
+<!-- navbar -->
+<section id="navbar">
+    <div class="w-screen bg-white h-auto" id="navbarmenu" >
+        <div class="flex items-center justify-between my-2" >
+            <div class="p-4">
+                <ul class="flex gap-6 items-center">
+                    <li>
+                        {% if shop.logo  %}
+                        <a href="#">
+                            <img src="{{shop.logo.url}}" alt="logo">
+                        </a>
+                        {% else %}
+                          <a href="/"><img class="h-[43px]" src="{% static '/ecommerce/logo.png' %}" alt="logo" /></a>
+                        {% endif %}
+                    </li>
+                    <li class="hidden md:block">
+                        <a class="flex items-center gap-1" href="#">
+                            <span id="theme12-navbar-kj2354kj234" class="editable text font-normal text-[#212121]">Demos</span>
+                            <svg class="opacity-30" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m17 10l-5 5l-5-5"/></svg>
+                        </a>
+                    </li>
+                    <li class="hidden md:block">
+                        <a class="flex items-center gap-1" href="#">
+                            <span id="theme12-navbar-k2345kj321k33" class="editable text font-normal text-[#212121]">Men Wear</span>
+                            <svg class="opacity-30" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m17 10l-5 5l-5-5"/></svg>
+                        </a>
+                    </li>
+                    <li class="hidden md:block">
+                        <a class="flex items-center gap-1" href="#">
+                            <span id="theme12-navabar-k145kj35g42j3h" class="editable text font-normal text-[#212121]">Women Wear</span>
+                            <svg class="opacity-30" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m17 10l-5 5l-5-5"/></svg>
+                        </a>
+                    </li>
+                    <li class="hidden md:block">
+                        <a class="flex items-center gap-1" href="#">
+                            <span id="theme12-navbar-21jb42m34n334" class="editable text font-normal text-[#212121]">Search</span>
+                            <svg class="opacity-30" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m17 10l-5 5l-5-5"/></svg>
+                        </a>
+                    </li>
+                    <li class="hidden md:block">
+                        <a class="flex items-center gap-1" href="#">
+                            <span id="theme12-navbar-j124jh34jh34" class="editable text font-normal text-[#212121]">Shops</span>
+                            <svg class="opacity-30" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m17 10l-5 5l-5-5"/></svg>
+                        </a>
+                    </li>
+                    <li class="hidden md:block">
+                        <a class="flex items-center gap-1" href="#">
+                            <span id="theme12-navbar-jh34k2j3kj23" class="editable text font-normal text-[#212121]">Pages</span>
+                            <svg class="opacity-30" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m17 10l-5 5l-5-5"/></svg>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="p-4">
+                <ul class="flex items-center gap-10 text-[#212121] font-semibold">
+                    <li class="border border-x-[1px] border-y-[1px] px-3 py-2 rounded-lg">
+                        <a id="theme12-nav-23kiy72k3j4nb23" class="editable link flex items-center gap-1" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 72 72"><path fill="#fff" d="M5 17h62v38H5z"/><path fill="#d22f27" d="M5 17h62v5H5zm0 9h62v4H5zm0 8h62v4H5z"/><path fill="#1e50a0" d="M5 17h32v21H5z"/><path fill="#d22f27" d="M5 42h62v4H5z"/><circle cx="9" cy="22" r="1.75" fill="#fff"/><circle cx="17" cy="22" r="1.75" fill="#fff"/><circle cx="25" cy="22" r="1.75" fill="#fff"/><circle cx="33" cy="22" r="1.75" fill="#fff"/><circle cx="29" cy="26" r="1.75" fill="#fff"/><circle cx="21" cy="26" r="1.75" fill="#fff"/><circle cx="13" cy="26" r="1.75" fill="#fff"/><circle cx="9" cy="30" r="1.75" fill="#fff"/><circle cx="17" cy="30" r="1.75" fill="#fff"/><circle cx="25" cy="30" r="1.75" fill="#fff"/><circle cx="33" cy="30" r="1.75" fill="#fff"/><circle cx="29" cy="34" r="1.75" fill="#fff"/><circle cx="21" cy="34" r="1.75" fill="#fff"/><circle cx="13" cy="34" r="1.75" fill="#fff"/><path fill="#d22f27" d="M5 50h62v5H5z"/><path fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 17h62v38H5z"/></svg>
+                            <span class="text-xs md:text-base">English-US</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="m136 208l120-104l120 104m-240 96l120 104l120-104"/></svg>
+                        </a>
+                    </li>
+                    <li class="hidden md:block">
+                        <a id="theme12-nav-21kjbhi27342" class="editable link" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 15 15"><path fill="currentColor" fill-rule="evenodd" d="M10 6.5a3.5 3.5 0 1 1-7 0a3.5 3.5 0 0 1 7 0Zm-.691 3.516a4.5 4.5 0 1 1 .707-.707l2.838 2.837a.5.5 0 0 1-.708.708L9.31 10.016Z" clip-rule="evenodd"/></svg>
+                        </a>
+                    </li>
+                    <li class="hidden md:block">
+                        <a id="theme12-nav-kj23h4iuh2j342" class="editable link text-base" href="/signin">Sign In</a>
+                    </li>
+                    <li class="hidden md:block">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 256 256"><path fill="currentColor" d="M216 44H40a12 12 0 0 0-12 12v144a12 12 0 0 0 12 12h176a12 12 0 0 0 12-12V56a12 12 0 0 0-12-12Zm4 156a4 4 0 0 1-4 4H40a4 4 0 0 1-4-4V56a4 4 0 0 1 4-4h176a4 4 0 0 1 4 4ZM172 88a44 44 0 0 1-88 0a4 4 0 0 1 8 0a36 36 0 0 0 72 0a4 4 0 0 1 8 0Z"/></svg>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<script>
+  const { createApp } = Vue
+  const app = createApp({
+    data() {
+      return {
+        category: false,
+        store: store,
+        menuToggle: false,
+        searchTerm: '',
+      }
+    },
+    delimiters: ['[[', ']]'],
+    methods: {
+      addToCart(item) {
+        this.$store.commit('addToCart',item)
+      },
+      delFromCart(item){
+        this.$store.commit('removeFromCart',item)
+      },
+      closeCartItem(item){
+        this.delFromCart(item)
+        item.close = true
+        this.addToCart(item)
+      },
+      goToCart(){
+        for (let i = 0; i < this.store.state.cart.length; i++) {
+          const item = this.store.state.cart[i];
+          this.closeCartItem(item)
+        }
+        window.location.href = '/cart'
+      },
+      goToUrl(url){
+        window.location.href = url
+      }
+    },
+  })
+  app.use(store)
+  app.mount('#navbar')
+</script>
+
+<script>
+  window.onscroll = function() {stickyheader()};
+  var header = document.getElementById("navbarmenu");
+  var sticky = header.offsetTop;
+
+  function stickyheader() {
+      if (window.pageYOffset > sticky) {
+      header.classList.add("sticky");
+      } else {
+      header.classList.remove("sticky");
+      }
+  }
+</script>
+
+
+<style>
+  #navbarmenu.sticky{
+    position: fixed;
+    z-index: 9999;
+    background-color: #fff;
+    max-width: 100% ;
+    width: 100% ;
+    top: 0px !important;
+  }
+</style>

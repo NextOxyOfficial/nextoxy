@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% if shop.favicon %}
+    <link rel="shortcut icon" href="{{ shop.favicon.url }}" type="image/x-icon">
+    {% else %}
+    <link rel="shortcut icon" href="{% static '/ecommerce/favicon.png' %}" type="image/x-icon">
+    {% endif %}
+
+    <title>{{ shop.title }}</title>
+    <link rel="stylesheet" href="{% static 'ecommerce/style.css' %}">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vuex@4.0.2"></script>
+    <script src="{% static 'ecommerce/store.js' %}"></script>
+    {% if edit %}
+    <link rel="stylesheet" href="{% static 'ecommerce/edit.css' %}">
+    {% endif %}
+    <link rel="stylesheet" href="/static/animate.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>   
+</head>
+<body style="min-height: 100vh">
+    
+    {% include "onepage4/navbanner.html" %}
+    {% block content %} 
+    {% endblock content %}
+    {% include "onepage4/footer.html" %}
+    <!-- wow  -->
+
+    <script src="/static/wow.min.js"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    {% if edit %}
+    <style>
+        .data1, .data2{
+            display: none;
+        }
+    </style>
+    {% include "other/edit.html" %}
+    {% else %}
+    {% include "other/render.html" %}
+    {% endif %}
+</body>
+</html>
+<style scoped>
+    html {
+        background-color: #ffffff;
+        font-family: Inter,sans-serif;
+    }
+</style>
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+</style>

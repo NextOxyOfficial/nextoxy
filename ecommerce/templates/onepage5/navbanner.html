@@ -1,0 +1,107 @@
+<section class="header container m-auto sm:py-8 py-4 mx-auto" id="navbar">
+    <div
+        class="header-wapper flex justify-between relative max-w-6xl w-full mx-auto"
+        style="align-items: center"
+    >
+        <div class="flex md:gap-0 gap-2 items-center">
+            <div class="menubtn sm:hidden h-8 w-8 text-black ml-2" id="menubtn">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                >
+                    <path
+                        fill="none"
+                        stroke="#332828"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h12"
+                    />
+                </svg>
+            </div>
+            <a class="focus:outline-none" href="/">
+                {% if shop.logo %}
+                <img
+                    alt="Upload"
+                    srcset=""
+                    src="{{shop.logo.url}}"
+                    decoding="async"
+                    data-nimg="fixed"
+                    class="h-16"
+                />
+                {% else %}
+                <img src="/static/ecommerce/logo.png" alt=""/>
+                {% endif %}
+            </a>
+        </div>
+        <ul class="menubox sm:flex hidden gap-4" id="menulist">
+            {% for menu in main_menu %}
+            <li>
+                <a href="/page/{{menu.link}}">{{menu.name}}</a>
+            </li>
+            {% endfor %}
+        </ul>
+        <a
+            href="#product-checkout"
+            class="bg-red-500 font-bold text-white sm:px-6 px-2 text-center rounded-xl py-2 sm:text-base text-sm editable link"
+            id="onepage5-nav-8732iijsdhnn"
+        >
+            Want To Order
+        </a>
+    </div>
+</section>
+
+<style scoped>
+    .header.sticky {
+        position: fixed;
+        background-color: white;
+        padding: 10px;
+        top: 0px;
+        z-index: 99999;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        margin: 0px;
+        width: 100%;
+        max-width: 100%;
+    }
+    .header.sticky .header-wapper {
+        max-width: 1152px;
+        margin: auto;
+    }
+    .menubox.active {
+        position: fixed;
+        display: block !important;
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 3px;
+        top: 55px;
+        left: 0px;
+        height: max-content;
+        transition: all 4s ease-in-out 1s;
+        z-index: 9999999;
+    }
+</style>
+
+<script>
+    window.onscroll = function () {
+        stickyHeader();
+    };
+
+    var header = document.getElementById("navbar");
+    var sticky = header.offsetTop;
+
+    function stickyHeader() {
+        if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
+        } else {
+            header.classList.remove("sticky");
+        }
+    }
+    const menuButton = document.getElementById("menubtn");
+    const menuBox = document.getElementById("menulist");
+
+    menuButton.onclick = function () {
+        menuBox.classList.toggle("active");
+    };
+</script>

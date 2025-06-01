@@ -1,0 +1,1 @@
+import{g as r}from"./D-4_jwRW.js";import{a as l,E as s}from"./BVIp9nla.js";function i(){const o=l(0),e=l(0);return r(window,"scroll",()=>{o.value=window.scrollX,e.value=window.scrollY},{capture:!1,passive:!0}),s(()=>{o.value=window.scrollX,e.value=window.scrollY}),{x:o,y:e}}export{i as u};

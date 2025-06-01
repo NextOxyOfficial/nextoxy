@@ -1,0 +1,222 @@
+{% load static %}
+<div id="navbar" class="nav sm:p-[35px] p-[15px] sm:h-[140px] h-[80px] flex items-center justify-between w-full absolute top-0 z-[998] {%if request.path != '/' %} static-mode {%endif%} ">
+  <div class="flex items-center">
+    {% if shop.logo %}
+    <a href="/" class="logo"><img src="{{shop.logo.url}}"  class="logo sm:h-[60px] h-[37px]" alt="Logo"></a>
+    {% else %}
+    <a class="ttnc-logo inline-block flex-shrink-0 text-slate-600" href="/">
+        <img alt="Logo-Light" fetchpriority="high" decoding="async" data-nimg="1"
+            class="w-auto dark:block h-9" 
+            style="height: 60px;"
+            src="/static/ecommerce/theme6/images/logo.14d0e71d.svg" 
+        />
+    </a>
+    {% endif %}
+  </div>
+  <ul class="lg:flex hidden font-bold text-[17px] h-full max-h-[80px] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+    <li class="flex items-center rounded-sm hover:bg-white hover:text-black text-white border border-slate-100/20">
+      <a href="/" class="py-[1.75rem] xl:px-[35px] px-[20px]">HOME</a>
+    </li>
+    <li class="shop-class flex items-center rounded-sm hover:bg-white hover:text-black text-white relative">
+      <a href="/search_page" class="shop-title py-[1.75rem] xl:px-[35px] px-[20px]  ">SHOP</a>
+      <div class="categories absolute hidden bg-white text-black top-[80px]">
+        <ul class="submenu-list mb-3 ">
+          {% for sec in sections %}
+          <li>
+              <a style="display: flex;align-items: center;" href="/search_page?section={{sec.id}}" class="active flex gap-1 items-center " style="display: flex; gap: 5px; align-items: center;">
+                  {% if sec.image %}
+                  <img style="height: 30px; width: 30px;object-fit: cover;" src="{{sec.image.url}}" alt="category" class="cat-image w-[240px] h-[168px] object-cover bg-slate-50 hover:shadow" />
+                  {% else %}
+                  <img style="height: 30px; width: 30px;object-fit: cover;" src="/static/ecommerce/no_product.png" alt="category" class="cat-image w-[240px] h-[168px] object-cover border border-slate-50 hover:shadow" />
+                  {% endif %}
+                  <p class="text-black">{{sec.name}} </p> 
+              </a>
+
+
+              <ul class="sub-level">
+                  {% for sub in sec.category_set.all %}
+                  <li><a class="submenu-p" href="/search_page?category={{sub.id}}">{{sub}}</a></li>
+                  {% endfor %}
+              </ul>
+          </li>
+          {% endfor %}
+      </ul>
+      </div>
+    </li>
+    <li class="flex items-center rounded-sm hover:bg-white hover:text-black text-white">
+      <a href="/pages/engineering" class="py-[1.75rem] xl:px-[35px] px-[20px]">ENGINEERING</a>
+    </li>
+    <li class="flex items-center rounded-sm hover:bg-white">
+      <a href="/pages/bike" class="py-[1.75rem] xl:px-[35px] px-[20px] black-menu">BIKES</a>
+    </li>
+    <li class="flex items-center rounded-sm hover:bg-white">
+      <a href="/pages/modification" class="py-[1.75rem] xl:px-[35px] px-[20px] black-menu">MODIFICATION</a>
+    </li>
+    <li class="flex items-center rounded-sm hover:bg-white">
+      <a href="/contact_us" class="py-[1.75rem] xl:px-[35px] px-[20px] black-menu">Contact Us</a>
+    </li>
+  </ul>
+  <div class="right flex items-center h-full gap-3">
+    <div class="relative">
+      <input v-model="searchTerm" @keydown.enter="goToUrl('/search_page?search='+searchTerm)" type="text" placeholder="SEARCH" class="xl:block hidden bg-slate-50/10 border-rose-500 border-b text-right px-3 pr-[62px] py-1 outline-none font-bold">
+      <a :href="'/search_page?search='+searchTerm" class="sm:block hidden px-2 py-[5px] absolute xl:h-full h-max right-0 xl:top-0 top-[-17px] cursor-pointer bg-[#fd393f] z-10 text-white">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 256 256"><path fill="currentColor" d="m229.66 218.34l-50.07-50.06a88.11 88.11 0 1 0-11.31 11.31l50.06 50.07a8 8 0 0 0 11.32-11.32ZM40 112a72 72 0 1 1 72 72a72.08 72.08 0 0 1-72-72Z"/></svg>
+        <div class="w-full h-[1px] absolute bottom-[1px] bg-white left-0"></div>
+      </a>
+    </div>
+    <div class="cart font-bold">
+      <a href="/cart">CART</a>  
+      <span class="m-1 px-1 rounded bg-slate-100 border">[[store.state.cart.length]]</span>
+    </div>
+    <div class="burger h-full bg-[#fd393f] rounded-sm flex flex-col items-center justify-center sm:px-6 px-2">
+      <div class="flex gap-1">
+        <span class="bg-white w-1 h-1 bg-rose-500 rounded"></span>
+        <span class="bg-white w-1 h-1 bg-rose-500 rounded"></span>
+        <span class="bg-white w-1 h-1 bg-rose-500 rounded"></span>
+        <span class="bg-white w-1 h-1 bg-rose-500 rounded"></span>
+      </div>
+      <div class="flex gap-1 my-1">
+        <span class="bg-white w-1 h-1 bg-rose-500 rounded"></span>
+        <span class="bg-white w-1 h-1 bg-rose-500 rounded"></span>
+        <span class="bg-white w-1 h-1 bg-rose-500 rounded"></span>
+        <span class="bg-white w-1 h-1 bg-rose-500 rounded"></span>
+      </div>
+      <div class="flex gap-1">
+        <span class="bg-white w-1 h-1 bg-rose-500 rounded"></span>
+        <span class="bg-white w-1 h-1 bg-rose-500 rounded"></span>
+        <span class="bg-white w-1 h-1 bg-rose-500 rounded"></span>
+        <span class="bg-white w-1 h-1 bg-rose-500 rounded"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // When the user scrolls the page, execute myFunction
+window.onscroll = function() {myFunction()};
+
+// Get the header
+var header = document.getElementById("navbar");
+
+// Get the offset position of the navbar
+var sticky = header.offsetTop;
+
+// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
+</script>
+<script>
+  const { createApp } = Vue
+  const app = createApp({
+    data() {
+      return {
+        category: false,
+        store: store,
+        menuToggle: true,
+        searchTerm: '',
+      }
+    },
+    delimiters: ['[[', ']]'],
+    methods: {
+      addToCart(item) {
+        this.$store.commit('addToCart',item)
+      },
+      delFromCart(item){
+        this.$store.commit('removeFromCart',item)
+      },
+      closeCartItem(item){
+        this.delFromCart(item)
+        item.close = true
+        this.addToCart(item)
+      },
+      goToCart(){
+        for (let i = 0; i < this.store.state.cart.length; i++) {
+          const item = this.store.state.cart[i];
+          this.closeCartItem(item)
+        }
+        window.location.href = '/cart'
+      },
+      goToUrl(url){
+        window.location.href = url
+      }
+    },
+  })
+  app.use(store)
+  app.mount('#navbar')
+</script>
+
+<style>
+  .static-mode{
+    position: static !important;
+  }
+  .static-mode li a{
+    color: black !important;
+  }
+  .static-mode ul.absolute{
+    position: relative !important;
+    top: auto;
+    left: auto;
+    transform: none;
+  }
+  .static-mode .logo .black{
+    display: block !important;
+  }
+  .static-mode .logo .white{
+    display: none !important;
+  }
+  .shop-class:hover .categories{
+    display: block;
+  }
+  .shop-class:hover .shop-title{
+    color: black !important;
+  }
+  .categories{
+    width: 400px;
+  }
+  .sub-level{
+    background-color: #fff;
+    display: none;
+  }
+  .sub-level li{
+    border-bottom:1px solid #dddddd4a ;
+  }
+  .submenu-list li:hover .sub-level {
+    display: block;
+    position: absolute;
+    right: -100px;
+    z-index: 99;
+    width: 200px;
+    top: 0;
+  }
+  .submenu-list  li{
+    border-bottom:1px solid #dddddd4a ;
+    padding: 5px 10px;
+    position: relative;
+  }
+  .submenu-p{
+    color: black !important;
+  }
+  .sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color:#ed1d24 ;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    transition: background-color 0.5s ease;
+  }
+  .nav.sticky{
+    padding: 10px 35px;
+    height: 85px;
+  }
+  .nav.sticky .black-menu{
+    color: #fff;
+  }
+  .nav.sticky .black-menu:hover{
+    color: black !important;
+  }
+</style>

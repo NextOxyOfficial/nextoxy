@@ -1,0 +1,23 @@
+
+<div class="holder holder-mt-medium">
+    <div class="container">
+        <div class="title-wrap text-left wow fadeInRight" data-wow-delay="{{forloop.counter}}100ms">
+            <h2 class="h2-style editable text" id="title-9-siis8n2323sn">OUR PARTNERS</h2>
+        </div>
+        <ul class="brand-carousel js-brand-carousel slick-arrows-aside-simple wow fadeInUp" data-wow-delay="{{forloop.counter}}100ms"
+            data-slick='{"slidesToShow": 5,  "responsive": [{"breakpoint": 992,"settings": {"slidesToShow": 4 }},{"breakpoint": 480,"settings": {"slidesToShow": 2 }}]}'>
+            {% for brand in brands %}
+
+            <li>
+                <div>
+                    <a  href="/search_page?brand={{brand.id}}">
+                        <img class="lazyload lazypreload sm:h-[40px] h-[30px] object-contain" src="{{brand.image.url}}" data-src="{{brand.image.url}}"
+                            data-sizes="auto" alt="Brand">
+                    </a>
+                </div>
+            </li>
+            {% endfor %}
+
+        </ul>
+    </div>
+</div>

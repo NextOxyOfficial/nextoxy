@@ -1,0 +1,1 @@
+import{l as e,L as t,X as o,Y as s}from"./BVIp9nla.js";const a=s("section",{class:"mx-auto w-full max-w-7xl px-4 pt-32"},"aa",-1),n=[a],p=e({__name:"tos",setup(c){return(_,l)=>(t(),o("div",null,n))}});export{p as default};

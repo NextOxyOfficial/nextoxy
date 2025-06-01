@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@tiptap/starter-kit": "^2.1.6",
+    "gsap": "^3.12.2"
+  }
+}

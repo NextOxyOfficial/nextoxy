@@ -1,0 +1,381 @@
+{% extends "theme6/base.html" %}
+
+{% block content %}
+<div class="page-content" id="cart_product">
+	<div class="holder breadcrumbs-wrap mt-0">
+		<div class="container">
+			<ul class="breadcrumbs">
+				<li><a href="/">Home</a></li>
+				<li><span>Cart</span></li>
+			</ul>
+		</div>
+	</div>
+	<div class="holder">
+		<div class="container">
+			<div class="page-title text-center">
+				<h1>Shopping Cart</h1>
+			</div>
+			<div class="row mb-8">
+				<div class="col-lg-11 col-xl-13">
+					<div class="cart-table">
+						<div class="cart-table-prd cart-table-prd--head py-1 d-none d-md-flex">
+							<div class="cart-table-prd-image text-center">
+								Image
+							</div>
+							<div class="cart-table-prd-content-wrap">
+								<div class="cart-table-prd-info">Name</div>
+								<div class="cart-table-prd-qty">Qty</div>
+								<div class="cart-table-prd-price">Price</div>
+								<div class="cart-table-prd-action">&nbsp;</div>
+							</div>
+						</div>
+
+						<!-- cart product -->
+						<div class="md:h-[800px] overflow-x-scroll">
+							<div class="cart-table-prd" v-for="product in products">
+								<div class="cart-table-prd-image">
+									<a  :href="'/details/'+product.id" class="">
+										<img class="lazyload fade-up sm:h-[100px] h-[60px]"
+										style="object-fit: cover;"
+										:src="product.image"
+										:data-src="product.image" alt="" v-if="product.image">
+										<img src="https://via.placeholder.com/70x70" alt="image" class="mr-4 h-[70px] w-[70px] rounded" v-else/>
+	
+									</a>
+								</div>
+								<div class="cart-table-prd-content-wrap">
+									<div class="cart-table-prd-info">
+										<div class="cart-table-prd-price">
+											<div style="display: flex;gap: 4px;align-items: center;" v-if="product.discounted_price">
+												 Unit Price <div class="price-old">{{shop.currency}}[[product.discounted_price]]</div> 
+											</div>
+											<div style="display: flex;gap: 4px;align-items: center;" v-else>
+												Unit Price <div class="price-old">{{shop.currency}}[[product.sale_price]]</div>
+											</div>
+										</div>
+										<h2 class="cart-table-prd-name"><a :href="'/details/'+product.id">[[product.name]]</a></h2>
+									</div>
+									<div class="cart-table-prd-qty">
+										<div class="qty qty-changer">
+											<button class="decrease" @click=" product.quantity > 1 && product.quantity-- && updateQuantity(product.id, product.quantity)"></button>
+											<input type="text" class="qty-input" :value="[[product.quantity]]" :data-min="[[product.quantity]]" data-max="1000">
+											<button class="increase" @click=" product.quantity++ && updateQuantity(product.id, product.quantity)"></button>
+										</div>
+									</div>
+									<div class="cart-table-prd-price-total" v-if="product.discounted_price">
+										{{shop.currency}}[[ product.discounted_price *product.quantity ]]
+									</div>
+									<div class="cart-table-prd-price-total" v-else>
+										{{shop.currency}}[[ product.sale_price *product.quantity ]]
+									</div>
+								</div>
+								<div class="cart-table-prd-action">
+									<a href="#" class="cart-table-prd-remove" @click="delFromCart(product.id)" data-tooltip="Remove Product"><i
+										class="icon-recycle"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+					<!-- relative product  -->
+					<!-- <div class="text-center mt-1"><a href="#" class="btn btn--grey">Clear All</a></div> -->
+
+
+
+					<!-- <div class="d-none d-lg-block" style="margin-bottom: 60px;">
+						<div class="mt-4"></div>
+						<div class="holder">
+							<div class="container">
+								<div class="title-wrap text-center">
+									<h2 class="h1-style">You may also like</h2>
+									<div class="carousel-arrows carousel-arrows--center"></div>
+								</div>
+								<div class="prd-grid prd-carousel js-prd-carousel slick-arrows-aside-simple slick-arrows-mobile-lg data-to-show-4 data-to-show-md-3 data-to-show-sm-3 data-to-show-xs-2"
+									data-slick='{"slidesToShow": 4, "slidesToScroll": 2, "responsive": [{"breakpoint": 992,"settings": {"slidesToShow": 3, "slidesToScroll": 1}},{"breakpoint": 768,"settings": {"slidesToShow": 2, "slidesToScroll": 1}},{"breakpoint": 480,"settings": {"slidesToShow": 2, "slidesToScroll": 1}}]}'>
+
+									{% for prod in feature_products %}
+									<div class="prd prd--style2 prd-labels--max prd-labels-shadow ">
+										<div class="prd-inside">
+											<div class="prd-img-area">
+												<a href="/details/{{prod.id}}" class="prd-img image-hover-scale image-container" style="height: 200px;">
+													{% if prod.productimage_set.first %}
+													<img src="{{prod.productimage_set.first.image.url}}"
+														data-src="{{prob.productimage_set.first.image.url}}"
+														alt="Telescopic Fishing Rod and Reed" class="js-prd-img lazyload fade-up"
+														style="height: 100%;object-fit: cover;"
+														>
+													{% else %}
+													<img src="/static/frontend/images/no_product.png"
+														style="height: 203px;object-fit: cover;" alt="product"
+														class="h-[320px] w-full object-cover" />
+													{% endif %}
+					
+													<div class="foxic-loader"></div>
+												</a>
+												<div class="prd-circle-labels">
+													<a href="#"
+														@click="addToWish({{prod.id}})"
+														class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0"
+														title="Add To Wishlist"><i class="icon-heart-stroke"></i></a><a href="#"
+														class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0"
+														title="Remove From Wishlist"><i class="icon-heart-hover"></i></a>
+					
+												</div>
+					
+											</div>
+					
+											<div class="prd-info prd-info--pad">
+												<div class="prd-info-wrap">
+													<div class="prd-rating justify-content-center"><i class="icon-star-fill fill"></i><i
+															class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i><i
+															class="icon-star-fill fill"></i><i class="icon-star-fill fill"></i></div>
+													<h2 class="prd-title"><a href="/details/{{prod.id}}">{{prod.name}}</a>
+													</h2>
+												</div>
+												<div class="prd-hovers">
+													<div class="prd-circle-labels">
+														<div><a href="#"
+																class="circle-label-compare circle-label-wishlist--add js-add-wishlist mt-0"
+																title="Add To Wishlist"><i class="icon-heart-stroke"></i></a><a href="#"
+																class="circle-label-compare circle-label-wishlist--off js-remove-wishlist mt-0"
+																title="Remove From Wishlist"><i class="icon-heart-hover"></i></a>
+														</div>
+													</div>
+													<div class="prd-price">
+														{% if prod.discounted_price > 0 %}
+														<div class="">
+															<p class="" style="font-size: 13px; text-decoration: line-through;">
+															{{shop.currency}} {{ prod.discounted_price}}
+															</p>
+															<p class="" style="margin-top: 0; font-weight: 600;">
+															{{shop.currency}} {{ prod.sale_price}}
+															</p>
+														</div>
+														{% else %}
+														<p class="" style="margin-top: 0; font-weight: 600;">
+															{{shop.currency}} {{ prod.sale_price}}
+														</p>
+														{% endif %}
+													</div>
+													<div class="prd-action">
+														<div class="prd-action-left">
+															<form action="#"> 
+																<button  @click="addToCart({{prod.id}})" class="btn js-prd-addtocart" v-if="!incart({{prod.id}})"
+																	data-product='{"name": "Telescopic Fishing Rod and Reed", "path":"images/skins/fishing/products/product-01-1.png", "url":"product.html", "aspect_ratio":0.778}'>Add
+																	To Cart</button>
+																<a href="/cart"  v-else class="btn " style="background: #fb4b06;"
+																	data-product='{"name": "Telescopic Fishing Rod and Reed", "path":"images/skins/fishing/products/product-01-1.png", "url":"product.html", "aspect_ratio":0.778}'> In Your Cart</a>
+															</form>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+					</div> -->
+
+
+					
+				</div>
+				<div class="col-lg-7 col-xl-5 mt-3 mt-md-0">
+					<div class="cart-promo-banner">
+						<div class="cart-promo-banner-inside">
+							<div class="txt1 editable text">Save 50%</div>
+							<div class="txt2 editable text">Only Today!</div>
+						</div>
+					</div>
+					<div class="card-total">
+						<div class="row d-flex">
+							<div class="col card-total-txt">Total</div>
+							<div class="col-auto card-total-price text-right">{{shop.currency}}[[getTotal()]]</div>
+						</div>
+						<button @click="checkout()" class="btn btn--full btn--lg"><span>Checkout</span></button>
+						<div class="card-text-info text-right">
+							<h5 class="editable text">Standart shipping</h5>
+							<p class="editable text"><b>10 - 11 business days</b><br>1 item ships from the U.S. and will be delivered in 10 -
+								11 business days</p>
+						</div>
+					</div>
+
+					<div class="mt-2"></div>
+
+					<div class="panel-group panel-group--style1 prd-block_accordion" id="productAccordion">
+						
+						<!-- <div class="panel">
+							<div class="panel-heading active">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#productAccordion" href="#collapse1">Shipping
+										options</a>
+									<span class="toggle-arrow"><span></span><span></span></span>
+								</h4>
+							</div>
+							<div id="collapse1" class="panel-collapse collapse show">
+								<div class="panel-body">
+									<label>Country:</label>
+									<div class="form-group select-wrapper select-wrapper-sm">
+										<select class="form-control form-control--sm">
+											<option value="United States">United States</option>
+											<option value="Canada">Canada</option>
+											<option value="China">China</option>
+											<option value="India">India</option>
+											<option value="Italy">Italy</option>
+											<option value="Mexico">Mexico</option>
+										</select>
+									</div>
+									<label>State:</label>
+									<div class="form-group select-wrapper select-wrapper-sm">
+										<select class="form-control form-control--sm">
+											<option value="AL">Alabama</option>
+											<option value="AK">Alaska</option>
+											<option value="AZ">Arizona</option>
+											<option value="AR">Arkansas</option>
+											<option value="CA">California</option>
+											<option value="CO">Colorado</option>
+											<option value="CT">Connecticut</option>
+											<option value="DE">Delaware</option>
+											<option value="DC">District Of Columbia</option>
+											<option value="FL">Florida</option>
+											<option value="GA">Georgia</option>
+											<option value="HI">Hawaii</option>
+											<option value="ID">Idaho</option>
+											<option value="IL">Illinois</option>
+											<option value="IN">Indiana</option>
+											<option value="IA">Iowa</option>
+											<option value="KS">Kansas</option>
+											<option value="KY">Kentucky</option>
+											<option value="LA">Louisiana</option>
+										</select>
+									</div>
+									<label>Zip/Postal code:</label>
+									<div class="form-group">
+										<input type="text" class="form-control form-control--sm">
+									</div>
+								</div>
+							</div>
+						</div> -->
+
+
+						<!-- <div class="panel" style="margin-bottom: 40px;">
+							<div class="panel-heading active">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#productAccordion" href="#collapse2">Discount
+										Code</a>
+									<span class="toggle-arrow"><span></span><span></span></span>
+								</h4>
+							</div>
+							<div id="collapse2" class="panel-collapse collapse show">
+								<div class="panel-body">
+									<p>Got a promo code? Then you're a few randomly combined numbers & letters away from
+										fab savings!</p>
+									<div class="form-inline mt-2">
+										<input type="text" class="form-control form-control--sm"
+											placeholder="Promotion/Discount Code">
+										<button type="submit" class="btn">Apply</button>
+									</div>
+								</div>
+							</div>
+						</div> -->
+
+
+						<!-- <div class="panel">
+							<div class="panel-heading active">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#productAccordion" href="#collapse3">Note for
+										the seller</a>
+									<span class="toggle-arrow"><span></span><span></span></span>
+								</h4>
+							</div>
+							<div id="collapse3" class="panel-collapse collapse show">
+								<div class="panel-body">
+									<textarea class="form-control form-control--sm textarea--height-100"
+										placeholder="Text here"></textarea>
+									<div class="card-text-info mt-2">
+										<p>*Savings include promotions, coupons, rueBUCKS, and shipping (if applicable).
+										</p>
+									</div>
+								</div>
+							</div>
+						</div> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+    createApp({
+      data() {
+        return {
+          store: store,
+          products: []
+        }
+      },
+      delimiters: ['[[', ']]'],
+      mounted() {
+        this.getCart()
+      },
+      methods: {
+		addToCart(id) {
+          console.log(id)
+          this.$store.commit('addToCart',{"id":id, "quantity":1})
+        },
+        delFromCart(id){
+          this.$store.commit('removeFromCart',{"id":id})
+        },
+        addToWish(id){
+          this.$store.commit('addToWish',{"id":id})
+        },
+        incart(id){
+          return this.$store.state.cart.some((cartItem) => cartItem.id === id)
+        },
+
+		
+        getCart() {
+          fetch('/api/cart', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(store.state.cart)
+          })
+          .then(response => response.json())
+          .then(data => this.products = data)
+          .catch(error => console.error(error));
+        },
+        getTotal() {
+          let total = 0
+          this.products.forEach(product => {
+            if(product.discounted_price){
+              total += product.discounted_price * product.quantity
+            }else{
+              total += product.sale_price * product.quantity
+            }
+          })
+          return total
+        },
+        getDelivery(){
+          return 20
+        },
+        checkout(){
+          window.location.href = '/checkout'
+        },
+        updateQuantity(id, quantity){
+          console.log(id, quantity);
+          this.$store.commit('removeFromCart',{"id":id})
+          this.$store.commit('addToCart',{"id":id, "quantity":quantity})
+        },
+        delFromCart(id){
+          this.$store.commit('removeFromCart',{"id":id})
+          this.products = this.products.filter(product => product.id != id)
+        },
+      },
+    }).use(store).mount('#cart_product')
+  </script>
+{% endblock %}

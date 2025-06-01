@@ -1,0 +1,194 @@
+<section class="product-wrapper mb-10 pb-8 appear-animate">
+  <div class="container">
+    <div class="toolbox">
+      <div class="toolbox-left">
+        <ul class="nav-filters product-filters" data-target="#products-grid">
+          <li>
+            <a
+              href="#"
+              class="nav-filter active font-weight-semi-bold"
+              data-filter="*"
+              >All</a
+            >
+          </li>
+          {% for section in sections%}
+          <li>
+            <a
+              href="/search_page?section={{section.id}}"
+              class="font-weight-semi-bold"
+              >{{section.name}}</a
+            >
+          </li>
+          {% endfor %}
+        </ul>
+        <span class="divider"></span>
+        <div class="header-search hs-toggle">
+          <a href="#" class="search-toggle">
+            <i class="d-icon-search"></i>Search
+          </a>
+          <form action="/search_page" class="input-wrapper">
+            <input
+              type="text"
+              class="form-control"
+              name="search"
+              autocomplete="off"
+              placeholder="Search your keyword..."
+              required
+            />
+            <button class="btn btn-search" type="submit" title="submit-button">
+              <i class="d-icon-search"></i>
+            </button>
+          </form>
+        </div>
+        <!-- End of Header Search -->
+      </div>
+      <div class="toolbox-right">
+        <a
+          href="#"
+          class="btn btn-link right-sidebar-toggle font-weight-semi-bold mr-0"
+          ><i class="d-icon-filter-3"></i>Filter</a
+        >
+      </div>
+    </div>
+    <div
+      class="row grid products-grid mb-2"
+      id="products-grid"
+      data-grid-options="{
+                            'masonry': {
+                                'columnWidth': ''
+                            }
+                        }"
+    >
+      {% for product in all_products %}
+      <div class="col-md-3 col-sm-4 col-6 grid-item electronics essentials">
+        <div class="product text-center">
+          <figure class="product-media" style="background-color: #f9f9f9">
+            <a href="/details/{{product.id}}">
+              {% if product.productimage_set.first %}
+              <img
+                src="{{product.productimage_set.first.image.url}}"
+                alt="product"
+                width="280"
+                height="315"
+              />
+              {% else %}
+              <img
+                src="/static/ecommerce/no_product.png"
+                alt="product"
+                width="280"
+                height="315"
+              />
+              {% endif %}
+            </a>
+            <div class="product-action-vertical">
+              <a
+                href="#"
+                class="btn-product-icon btn-cart"
+                data-toggle="modal"
+                data-target="#addCartModal"
+                title="Add to cart"
+                ><i class="d-icon-bag"></i
+              ></a>
+              <a
+                href="#"
+                class="btn-product-icon btn-wishlist"
+                title="Add to wishlist"
+                ><i class="d-icon-heart"></i
+              ></a>
+            </div>
+            <div class="product-action">
+              <a
+                pid="{{product.id}}"
+                onclick="localStorage.setItem('quick-view', '{{product.id}}');"
+                class="btn-product btn-quickview"
+                title="Quick View"
+                >Quick View</a
+              >
+            </div>
+          </figure>
+          <div class="product-details">
+            <div class="product-cat">
+              <a href="shop-grid-3cols.html">Electronics</a>
+            </div>
+            <h3 class="product-name">
+              <a href="demo6-product.html">{{product.name}}</a>
+            </h3>
+            <div class="product-price">
+              <span class="price"
+                >{{shop.currency}}{{ product.sale_price}}</span
+              >
+            </div>
+            <div class="ratings-container">
+              <div class="ratings-full">
+                <span class="ratings" style="width: 100%"></span>
+                <span class="tooltiptext tooltip-top"></span>
+              </div>
+              <a href="demo6-product.html" class="rating-reviews"
+                >( 8 reviews )</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="text-center">
+      <a
+        class="btn btn-outline btn-dark btn-load"
+        href="/static/ecommerce/rd/ajax/ajax-products-demo6.html"
+        data-load-to="#products-grid"
+        >Load more</a
+      >
+    </div>
+  </div>
+</section>
+<aside class="right-sidebar shop-sidebar">
+  <div class="sidebar-overlay"></div>
+  <div class="sidebar-content">
+    <div class="filter-actions mb-4">
+      <a
+        href="#"
+        class="sidebar-toggle-btn toggle-remain btn btn-outline btn-primary text-uppercase btn-icon-right"
+        >Filter<i class="d-icon-arrow-right"></i
+      ></a>
+      <a href="#" class="filter-clean">Clean All</a>
+    </div>
+    <div class="widget widget-collapsible price-with-count">
+      <h3 class="widget-title">Filter by price</h3>
+      <ul class="widget-body filter-items filter-price">
+        <li><a href="#">$0.00 - $50.00</a><span>(0)</span></li>
+        <li><a href="#">$50.00 - $100.00</a><span>(7)</span></li>
+        <li><a href="#">$100.00 - $200.00</a><span>(18)</span></li>
+        <li><a href="#">$200.00+</a><span>(5)</span></li>
+      </ul>
+    </div>
+    <div class="widget widget-collapsible">
+      <h3 class="widget-title">Size</h3>
+      <ul class="widget-body filter-items">
+        <li><a href="#">Extra Large</a></li>
+        <li><a href="#">Large</a></li>
+        <li><a href="#">Medium</a></li>
+        <li><a href="#">Small</a></li>
+      </ul>
+    </div>
+    <div class="widget widget-collapsible">
+      <h3 class="widget-title">Color</h3>
+      <ul class="widget-body filter-items">
+        <li><a href="#">Black</a></li>
+        <li><a href="#">Blue</a></li>
+        <li><a href="#">Green</a></li>
+        <li><a href="#">White</a></li>
+      </ul>
+    </div>
+    <div class="widget widget-collapsible">
+      <h3 class="widget-title">Brands</h3>
+      <ul class="widget-body filter-items">
+        <li><a href="#">Cinderella</a></li>
+        <li><a href="#">Comedy</a></li>
+        <li><a href="#">Rightcheck</a></li>
+        <li><a href="#">SkillStar</a></li>
+        <li><a href="#">SLS</a></li>
+      </ul>
+    </div>
+  </div>
+</aside>

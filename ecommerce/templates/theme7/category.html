@@ -1,0 +1,36 @@
+<div class="holder mt-0 holder-with-bg holder-pt-small holder-pb-medium bgcolor">
+    <div class="container">
+        <div class="title-wrap text-center title-with-behind">
+            <h2 class="h1-style">CATEGORIES</h2>
+            <div class="h-behind">OUR PRODUCTION</div>
+        </div>
+        <div class="collection-grid-2 row justify-content-center">
+            {% for sec in sections %}
+
+            <div class="collection-grid-2-item col-9 col-md-6 col-lg-up-onefive">
+                <a href="/search_page?section={{sec.id}}" class="bnr-wrap collection-grid-2-item-inside">
+                    <div class="collection-grid-2-img image-hover-scale">
+                        {% if sec.image %}
+                        <img src="{{sec.image.url}}"
+                            data-src="{{sec.image.url}}" class="lazyload fade-up cat-image w-[250px] h-[182px] m-auto object-cover"
+                            alt=""
+                            style="height: 182px;object-fit: cover;"
+                            >
+                        {% else %}
+                        <img src="/static/ecommerce/no_product.png" alt="category" class="cat-image w-[240px] h-[168px] m-auto object-cover border border-slate-50 hover:shadow" 
+                        style="height: 182px;object-fit: cover;"
+                        />
+                        {% endif %}
+                    </div>
+                    <h3 class="collection-grid-2-title">{{sec.name}}</h3>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="holder mt-0 holder-with-bg pt-0">
+    <div class="container-fluid px-0">
+        <div class="line-divider"></div>
+    </div>
+</div>

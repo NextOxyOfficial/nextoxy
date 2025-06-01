@@ -1,0 +1,27 @@
+<div class="mx-auto max-w-[1870px] px-4 md:px-6 lg:px-8 2xl:px-20">
+    <div class="mb-8 lg:mb-12">
+        <div class="mb-0 block-title">
+            <h2 class="text-skin-base text-[20px] xl:text-[20px] font-medium xl:leading-8">
+              <div>Popular Brands</div>
+            </h2>
+          </div>
+        <div class="carouselWrapper relative rounded border-t border-black/10  py-5  md:py-10  dotsCircleNone">
+            <div class="swiper w-full" id="product-images-swiper">
+                <div class="swiper-wrapper">
+                  {% for brand in brands %}
+                  <div class="wow fadeInRight swiper-slide hover:border-primary items-center justify-center rounded-full max-w-[300px]">
+                    <a href="/search_page?brand={{brand.id}}" data-wow-delay="{{forloop.counter}}00ms">
+                      <img src="{{brand.image.url}}" alt="image" class=" h-20 mx-auto object-contain"/>
+                    </a>
+                  </div>
+                  {% endfor %}
+                </div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-pagination "></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style></style>

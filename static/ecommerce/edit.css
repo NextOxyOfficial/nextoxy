@@ -1,0 +1,76 @@
+.editable{
+    position: relative;
+}
+.editable::after{
+    content: "";
+    position: absolute;
+    right: -5px;
+    left: -5px;
+    top: -5px;
+    bottom: -5px;
+    border-radius: 5px;
+    border: 1px dashed rgb(14, 101, 141);
+    z-index: 98;
+    cursor: pointer;
+}
+.editable.text::before{
+    content: "Click To Edit Text";
+}
+.editable.image::before{
+    content: "Click To Edit Image";
+}
+.editable.image::after{
+    font-size: 10px;
+    cursor: pointer;
+    z-index: 999;
+    background-color: rgb(14, 101, 141);
+    width: max-content;
+    height: max-content;
+    color: #fff;
+    margin-top: 5px;
+    margin: 10px;
+    content: "Click To Edit Image";
+}
+.editable.image{
+    cursor: pointer;
+}
+.editable.youtube::after{
+    font-size: 10px;
+    cursor: pointer;
+    z-index: 999;
+    background-color: rgb(14, 101, 141);
+    width: max-content;
+    height: max-content;
+    color: #fff;
+    margin-top: 5px;
+    margin: 10px;
+    content: "Add video link";
+    cursor: pointer;
+}
+.editable.youtube{
+    cursor: pointer;
+}
+
+.editable::before{
+    position: absolute;
+    top: -25px;
+    right: 5px;
+    line-height: 13px;
+    color: white;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 5px;
+    background: rgb(40, 130, 165);
+    transition: all 0.3s ease;
+    z-index: 99;
+    box-shadow: -2px 0px 4px rgba(43, 40, 40, 0.685);
+    display: none;
+}
+.editable:hover::after{
+    border: 1px solid rgba(58, 139, 206, 0.842);
+    border-style: inset;
+}
+.editable:hover::before{
+    display: block;
+    cursor: pointer;
+}

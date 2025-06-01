@@ -1,0 +1,1 @@
+import{u as e}from"./BhHPlEQa.js";import{e as a}from"./B4TR0GKN.js";function u(){const s=e(),o=a("shop",()=>null);return{shop:o,getShop:async()=>{const t=await s.get("/api/ecommerce/dash/shop");t.data&&(o.value=t.data)}}}export{u};

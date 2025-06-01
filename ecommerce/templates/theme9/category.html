@@ -1,0 +1,36 @@
+<div class="holder holder-mt-small" id="holderCollectionGrid">
+    <div class="container">
+        <div class="collection-grid-2 row justify-content-center  wow fadeInUp" data-wow-delay="{{forloop.counter}}100ms">
+            {% for sec in sections %}
+
+            <div class="collection-grid-2-item col-9 col-md-quarter col-lg-3">
+                <a href="/search_page?section={{sec.id}}" target="_self" class="bnr-wrap collection-grid-2-item-inside">
+                    {% if sec.image %}
+                    <div class="collection-grid-2-img image-container image-hover-scale"
+                        style="height: 175px; object-fit: contain; padding-bottom: 77.778%;background-image: url('{{sec.image.url}}');"><img class="lazyload fade-up"
+                        data-src="{{sec.image.url}}" data-sizes="auto"
+                            alt="Office equipment"></div>
+                            {% else %}
+                            <img src="/static/ecommerce/no_product.png" alt="category" class="cat-image w-[240px] h-[168px] m-auto object-contain border border-slate-50 hover:shadow" 
+                            style="height: 175px;object-fit: contain;"
+                            />
+                            {% endif %}
+                    <h3 class="collection-grid-2-title pb-15 heading-font">{{sec.name}}</h3>
+                </a>
+            </div>
+
+            {% endfor %}
+        </div>
+        <style>
+            #holderCollectionGrid .collection-grid-2-title {
+                font-size: 16px;
+                font-weight: 600;
+                color: #464b5c
+            }
+
+            #holderCollectionGrid .collection-grid-2-title:hover {
+                color: #464b5c
+            }
+        </style>
+    </div>
+</div>

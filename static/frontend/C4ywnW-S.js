@@ -1,0 +1,1 @@
+import{l as e,L as t,X as a,Y as o}from"./BVIp9nla.js";const s=o("section",{class:"mx-auto w-full max-w-7xl px-4 pt-32"},"Hello Affliate",-1),l=[s],f=e({__name:"affliate",setup(n){return(c,_)=>(t(),a("div",null,l))}});export{f as default};

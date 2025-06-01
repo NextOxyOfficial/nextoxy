@@ -1,0 +1,99 @@
+<div class="" id="faq">
+  <div class="container max-w-[1140px] px-2 md:px-4 py-12 md:py-32 mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_490px] gap-16">
+      <!-- FAQ Section -->
+      <div class="lg:order-2 px-4 md:px-0">
+        <h2
+          class="editable text text-sm md:text-lg font-bold mb-2 text-[#2937B1]"
+        >
+          Frequently Asked Questions
+        </h2>
+        <h3 class="editable text text-xl md:text-3xl font-bold mb-4">
+          Answers to Your Most Common Questions
+        </h3>
+        <p class="editable text mb-8 text-sm md:text-base">
+          Velit tincidunt neque libero id cras enim pharetra. Sociis viverra
+          aenean aliquam urna cras consectetur mollis eleifend. Viverrra
+          ultrices commodo erat eu quis morbi in. Tristique ac.
+        </p>
+
+        <div class="space-y-4">
+          <div
+            v-for="(faq, index) in faqs"
+            :key="index"
+            class="border-b border-[#2937B1] pb-4"
+          >
+            <button
+              @click="toggleFAQ(index)"
+              class="w-full text-left flex justify-between items-center text-sm md:text-xl font-semibold"
+              :class="faq.open?'text-[#2937B1]':'text-gray-600'"
+            >
+              [[faq.question]]
+              <span :id="'faq' + index + '-icon'">
+                <img
+                  :src="faq.open ? '/static/services/service-one/arrow-up.png' : '/static/services/service-one/arrow-down.png'"
+                  alt="arrow"
+                />
+              </span>
+            </button>
+            <div :id="'faq' + index" v-if="faq.open" class="mt-2 text-gray-600">
+              <p class="text-sm md:text-base">[[faq.answer]]</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Help Box Section -->
+      <div class="relative rounded-ss-lg rounded-se-lg overflow-hidden">
+        <img
+          src="/static/services/service-two/faq.png"
+          alt="Cleaning Service"
+          class="w-full md:w-[90%] object-cover editable image"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  Vue.createApp({
+    data() {
+      return {
+        faqs: [
+          {
+            question: "Do you clean homes?",
+            answer:
+              "Enim vulputate dui laoreet eu cum tortor aliquam pretium. Nisl molestie id viverra tellus suscipit. Eget vel integer odio dolor sollicitudin nec. Amet lorem cursus gravida proin lectus varius nisl sagittis netus. Nisi semper lacus velit.",
+            open: false,
+          },
+          {
+            question: "How can I book your cleaning service?",
+            answer: "Detailed answer for how to book cleaning service.",
+            open: false,
+          },
+          {
+            question: "What's the cost for a one-time home cleaning?",
+            answer: "Detailed answer for the cost of one-time home cleaning.",
+            open: false,
+          },
+          {
+            question: "Do you use eco-friendly cleaning products?",
+            answer: "Detailed answer for eco-friendly cleaning products.",
+            open: false,
+          },
+        ],
+      };
+    },
+    delimiters: ["[[", "]]"],
+    methods: {
+      toggleFAQ(index) {
+        this.faqs[index].open = !this.faqs[index].open;
+      },
+      scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+      },
+    },
+  }).mount("#faq");
+</script>

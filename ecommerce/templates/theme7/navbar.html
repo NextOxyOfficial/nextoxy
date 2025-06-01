@@ -1,0 +1,505 @@
+{% load static %}
+
+<!--header-->
+<div class="wraper" id="navbar">
+	<header class="hdr-wrap">
+		<div class="hdr-content hdr-content-sticky">
+			<div class="container">
+				<div class="row">
+					<div class="col-auto show-mobile">
+						<div class="menu-toggle"> <a href="#" class="mobilemenu-toggle"><i class="icon-menu"></i></a> </div>
+					</div>
+					<div class="col-auto hdr-logo">
+						{% if shop.logo %}
+						<a href="/" class="logo"><img  src="{{shop.logo.url}}" alt="Logo"></a>
+						{% else %}
+						<a href="/" class="logo"><img  src="/static/ecommerce/theme7/images/logo.webp" alt="Logo"></a>
+						{% endif %}
+					</div>
+					<div class="hdr-phone hide-mobile">
+						<i class="icon-phone"></i><span>{{shop.phone}}</span>
+					</div>
+					<div class="hdr-nav hide-mobile nav-holder-s">
+					</div>
+					<div class="hdr-links-wrap col-auto ml-auto">
+						<div class="hdr-inline-link">
+							
+							<div class="search_container_desktop">
+                                    <div class="dropdn dropdn_search dropdn_fullwidth">
+                                        <a :href="'/search_page?search='+searchTerm" class="dropdn-link  js-dropdn-link only-icon"><i class="icon-search"></i><span class="dropdn-link-txt">Search</span></a>
+                                        <div class="dropdn-content">
+                                            <div class="container">
+                                                <div class="search search-off-popular">
+                                                    <input v-model="searchTerm"  @keydown.enter="goToUrl('/search_page?search='+searchTerm)"  name="search" type="text" class="search-input input-empty"
+                                                        placeholder="What are you looking for?">
+                                                    <a :href="'/search_page?search='+searchTerm" class="search-button"> <i
+                                                            class="icon-search"></i></a>
+                                                    <a href="#" class="search-close js-dropdn-close"><i
+                                                            class="icon-close-thin"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+							<div class="dropdn dropdn_wishlist" v-if>
+								<a href="/wishlist" class="dropdn-link only-icon wishlist-link ">
+									<i class="icon-heart"></i><span class="dropdn-link-txt">Wishlist</span><span
+										class="wishlist-qty">[[store.state.wish.length]]</span>
+								</a>
+							</div>
+							{% if user.is_authenticated %}
+							<div class="dropdn dropdn_account dropdn_fullheight">
+								<a href="/my_account" class="dropdn-link js-dropdn-link js-dropdn-link only-icon"><span>Account</span>
+								</a>
+							</div>
+							{% else %}
+							<div class="hdr_container_desktop">
+								<div class="dropdn dropdn_account dropdn_fullheight">
+									<a href="/signin" class="dropdn-link js-dropdn-link" data-panel="#dropdnAccount"><i	class="icon-user"></i>
+									</a>
+								</div>
+							</div>
+							{% endif %}
+							<div class="dropdn dropdn_fullheight minicart">
+								<a href="/cart" class="dropdn-link js-dropdn-link minicart-link only-icon">
+									<i class="icon-basket"></i>
+									<span class="minicart-qty">[[store.state.cart.length]]</span>
+									<span class="minicart-total hide-mobile">[[store.state.cart.total]]</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="hdr">
+			<div class="hdr-topline hdr-topline--dark js-hdr-top">
+				<div class="container">
+					<div class="row flex-nowrap">
+						<div class="col hdr-topline-left hide-mobile">
+							<div class="hdr-line-separate">
+								<ul class="social-list list-unstyled">
+									<li>
+										<a href="#"><i class="icon-facebook"></i></a>
+									</li>
+									<li>
+										<a href="#"><i class="icon-twitter"></i></a>
+									</li>
+									<li>
+										<a href="#"><i class="icon-google"></i></a>
+									</li>
+									<li>
+										<a href="#"><i class="icon-instagram"></i></a>
+									</li>
+									<li>
+										<a href="#"><i class="icon-vimeo"></i></a>
+									</li>
+									<li>
+										<a href="#"><i class="icon-linkedin"></i></a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!-- <div class="col hdr-topline-center">
+							<div class="custom-text js-custom-text-carousel"
+								data-slick='{"speed": 1000, "autoplaySpeed": 3000}'>
+								<div class="custom-text-item"><i class="icon-fox"></i> Use promocode <span>FOXIC</span> to
+									get 15% discount!</div>
+								<div class="custom-text-item"><i class="icon-air-freight"></i> <span>Free</span> plane
+									shipping over <span>$250</span></div>
+								<div class="custom-text-item"><i class="icon-gift"></i> Today only! Post
+									<span>holiday</span> Flash Sale! 2 for $20</div>
+							</div>
+						</div> -->
+						<div class="col hdr-topline-right hide-mobile">
+							<div class="hdr-inline-link">
+	
+								<!-- <div class="dropdn_language">
+									<div class="dropdn dropdn_language dropdn_language--noimg dropdn_caret">
+										<a href="#" class="dropdn-link js-dropdn-link"><span
+												class="js-dropdn-select-current">English</span><i
+												class="icon-angle-down"></i></a>
+										<div class="dropdn-content">
+											<ul>
+												<li class="active"><a href="#"><img src="images/flags/en.png"
+															alt="">English</a></li>
+												<li><a href="#"><img src="images/flags/sp.png" alt="">Spanish</a></li>
+												<li><a href="#"><img src="images/flags/de.png" alt="">German</a></li>
+												<li><a href="#"><img src="images/flags/fr.png" alt="">French</a></li>
+											</ul>
+										</div>
+									</div>
+								</div> -->
+								<!-- <div class="dropdn_currency">
+									<div class="dropdn dropdn_caret">
+										<a href="#" class="dropdn-link js-dropdn-link">US dollars<i
+												class="icon-angle-down"></i></a>
+										<div class="dropdn-content">
+											<ul>
+												<li class="active"><a href="#"><span>US dollars</span></a></li>
+												<li><a href="#"><span>Euro</span></a></li>
+												<li><a href="#"><span>UK pounds</span></a></li>
+	
+											</ul>
+										</div>
+									</div>
+								</div> -->
+								<div class="hdr_container_desktop">
+									{% if user.is_authenticated %}
+									<div class="dropdn dropdn_account dropdn_fullheight">
+										<a href="/my_account" class="dropdn-link only-icon">
+											<span class="">Account</span>
+										</a>
+									</div>
+									{% else %}
+									<div class="hdr_container_desktop">
+										<div class="dropdn dropdn_account dropdn_fullheight">
+											<a href="/signin" class="dropdn-link js-dropdn-link" data-panel="#dropdnAccount">
+												<span class="dropdn-link-txt">Sign in</span>
+											</a>
+										</div>
+									</div>
+									{% endif %}
+								</div>
+								{% if user.is_authenticated %}
+                                <div class="dropdn dropdn_account dropdn_fullheight">
+                                    <a href="/contact_us" class="text-sm dropdn-link only-icon"><span class="">Contact Us</span></a>
+                                </div>
+                                {% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="hdr-content">
+				<div class="container">
+					<div class="row">
+						<div class="col-auto show-mobile">
+							<div class="menu-toggle"> <a href="#" class="mobilemenu-toggle"><i class="icon-menu"></i></a>
+							</div>
+						</div>
+						<div class="col-auto hdr-logo">
+							{% if shop.logo %}
+							<a href="/" class="logo"><img src="{{shop.logo.url}}" alt="Logo"></a>
+							{% else %}
+							<a href="/" class="logo"><img src="/static/ecommerce/theme7/images/logo.webp" alt="Logo"></a>
+							{% endif %}
+						</div>
+						<div class="hdr-phone">
+							<i class="icon-phone"></i><span>{{shop.phone}}</span>
+						</div>
+						<div class="hdr-nav hide-mobile nav-holder justify-content-start">
+							<ul class="mmenu mmenu-js">
+								{% for menu in main_menu %}
+								<li class="mmenu-item--simple"><a href="/page/{{menu.link}}"
+										class="active">{{menu.name}}</a></li>
+								{% endfor %}	
+								<li class="mmenu-item--mega"><a href="#">Categories</a>
+									<div class="mmenu-submenu mmenu-submenu--has-bottom">
+										<div class="mmenu-submenu-inside">
+											<div class="container">
+												<div class="mmenu-cols column-4">
+													<div class="mmenu-col">
+														<h3 class="submenu-title"><a href="/">Categories</a>
+														</h3>
+														<ul class="submenu-list">
+															{% for sec in sections %}
+															<li style="margin-bottom: 8px;">
+																<a style="display: flex; align-items: center; gap: 16px;" href="/search_page?section={{sec.id}}" class="active flex gap-1 items-center " style="display: flex; gap: 5px; align-items: center;">
+																	{% if sec.image %}
+																	<img style="height: 30px; width: 30px;object-fit: cover;" src="{{sec.image.url}}" alt="category" class="cat-image w-[240px] h-[168px] object-cover bg-slate-50 hover:shadow" />
+																	{% else %}
+																	<img style="height: 30px; width: 30px;object-fit: cover;" src="/static/ecommerce/no_product.png" alt="category" class="cat-image w-[240px] h-[168px] object-cover border border-slate-50 hover:shadow" />
+																	{% endif %}
+																	<p style="font-size: small;">{{sec.name}} </p> 
+																</a>
+
+																<ul class="sub-level">
+																	{% for sub in sec.category_set.all %}
+																	<li><a style="font-size: small;" href="/search_page?category={{sub.id}}">{{sub}}</a></li>
+																	{% endfor %}
+																</ul>
+															</li>
+															{% endfor %}
+														</ul>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+	
+							</ul>
+						</div>
+						<div class="hdr-links-wrap col-auto ml-auto">
+							<div class="hdr-inline-link">
+								<div class="search_container_desktop">
+									<div class="dropdn dropdn_search dropdn_fullwidth">
+										<a href="'/search_page?search='+searchTerm" class="dropdn-link  js-dropdn-link only-icon"><i
+												class="icon-search"></i><span class="dropdn-link-txt">Search</span></a>
+										<div class="dropdn-content">
+											<div class="container">												
+												<div class="search search-off-popular">
+                                                    <input v-model="searchTerm" @keydown.enter="goToUrl('/search_page?search='+searchTerm)"  name="search" type="text" class="search-input input-empty"
+                                                        placeholder="What are you looking for?">
+                                                    <a :href="'/search_page?search='+searchTerm" class="search-button"> <i
+                                                            class="icon-search"></i></a>
+                                                    <a href="#" class="search-close js-dropdn-close"><i
+                                                            class="icon-close-thin"></i></a>
+                                                </div>												
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="dropdn dropdn_wishlist" v-if>
+									<a href="/wishlist" class="dropdn-link only-icon wishlist-link ">
+										<i class="icon-heart"></i><span class="dropdn-link-txt">Wishlist</span><span
+											class="wishlist-qty">[[store.state.wish.length]]</span>
+									</a>
+								</div>
+								<div class="account-icon">
+									{% if user.is_authenticated %}
+										<div class="dropdn dropdn_account dropdn_fullheight">
+											<a href="/my_account" class="dropdn-link js-dropdn-link js-dropdn-link only-icon"><span>Account</span>
+											</a>
+										</div>
+										{% else %}
+										<div class="hdr_container_desktop">
+											<div class="dropdn dropdn_account dropdn_fullheight">
+												<a href="/signin" class="dropdn-link js-dropdn-link" data-panel="#dropdnAccount"><span>Account</span>
+												</a>
+											</div>
+										</div>
+									{% endif %}
+								</div>
+								<div class="hdr_container_mobile show-mobile">
+									{% if user.is_authenticated %}
+									<div class="dropdn dropdn_account dropdn_fullheight">
+										<a href="/my_account" class="dropdn-link only-icon">
+											<span class="dropdn-link-txt">Account</span>
+										</a>
+									</div>
+									{% else %}
+									<div class="hdr_container_desktop">
+										<div class="dropdn dropdn_account dropdn_fullheight">
+											<a href="/signin" class="dropdn-link js-dropdn-link" data-panel="#dropdnAccount"><i	class="icon-user"></i>
+												<span class="dropdn-link-txt">Sign in</span>
+											</a>
+										</div>
+									</div>
+									{% endif %}
+								</div>
+								<div class="dropdn dropdn_fullheight minicart">
+									<a href="/cart" class="dropdn-link minicart-link"
+										>
+										<i class="icon-basket"></i>
+										<span class="minicart-qty">[[store.state.cart.length]]</span>
+										<span class="minicart-total hide-mobile">[[store.state.cart.total]]</span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+	<div class="header-side-panel">
+        <!-- Mobile Menu -->
+        <div class="mobilemenu js-push-mbmenu">
+            <div class="mobilemenu-content">
+                <div class="mobilemenu-close mobilemenu-toggle">Close</div>
+                <div class="mobilemenu-scroll">
+                    <div class="mobilemenu-search"></div>
+                    <div class="nav-wrapper show-menu">
+                        <div class="nav-toggle">
+                            <span class="nav-back"><i class="icon-angle-left"></i></span>
+                            <span class="nav-title"></span>
+                            <a href="#" class="nav-viewall">view all</a>
+                        </div>
+                        <ul class="nav nav-level-1">
+                            {% for menu in main_menu %}
+                            <li>
+                                <a href="/page/{{menu.link}}">{{menu.name}}</a>
+                            </li>
+                            {% endfor %}
+    
+                            <li><a href="#">Cateogries<span class="arrow"><i class="icon-angle-right"></i></span></a>
+                                <ul class="nav-level-2">
+                                    {% for sec in sections %}
+                                    <li style="display: flex;gap: 10px;">
+                                        <a href="/search_page?section={{sec.id}}">{{sec.name}}</a>
+                                        {% if sec.image %}
+                                        <img style="height: 30px; width: 30px;object-fit: cover;" src="{{sec.image.url}}" alt="category" class="cat-image w-[240px] h-[168px] m-auto object-cover bg-slate-50 hover:shadow" />
+                                        {% else %}
+                                        <img style="height: 30px; width: 30px;object-fit: cover;" src="/static/ecommerce/no_product.png" alt="category" class="cat-image w-[240px] h-[168px] m-auto object-cover border border-slate-50 hover:shadow" />
+                                        {% endif %}
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mobilemenu-bottom">
+                        <div class="mobilemenu-currency">
+                            <!-- Header Currency -->
+                            <div class="dropdn_currency">
+                                <div class="dropdn dropdn_caret">
+                                    <a href="#" class="dropdn-link js-dropdn-link">US dollars<i
+                                            class="icon-angle-down"></i></a>
+                                    <div class="dropdn-content">
+                                        <ul>
+                                            <li class="active"><a href="#"><span>US dollars</span></a></li>
+                                            <li><a href="#"><span>Euro</span></a></li>
+                                            <li><a href="#"><span>UK pounds</span></a></li>
+    
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Header Currency -->
+                        </div>
+                        <div class="mobilemenu-language">
+                            <!-- Header Language -->
+                            <div class="dropdn_language">
+                                <div class="dropdn dropdn_language dropdn_language--noimg dropdn_caret">
+                                    <a href="#" class="dropdn-link js-dropdn-link"><span
+                                            class="js-dropdn-select-current">English</span><i
+                                            class="icon-angle-down"></i></a>
+                                    <div class="dropdn-content">
+                                        <ul>
+                                            <li class="active"><a href="#"><img src="images/flags/en.png" alt="">English</a>
+                                            </li>
+                                            <li><a href="#"><img src="images/flags/sp.png" alt="">Spanish</a></li>
+                                            <li><a href="#"><img src="images/flags/de.png" alt="">German</a></li>
+                                            <li><a href="#"><img src="images/flags/fr.png" alt="">French</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Header Language -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<div class="dropdn-content account-drop" id="dropdnAccount">
+			<div class="dropdn-content-block">
+				<div class="dropdn-close"><span class="js-dropdn-close">Close</span></div>
+				<ul>
+					<li><a href="/signin"><span>Log In</span><i class="icon-login"></i></a></li>
+                    <li><a href="/signin"><span>Register</span><i class="icon-user2"></i></a></li>
+                    <li><a href="/checkout"><span>Checkout</span><i class="icon-card"></i></a></li>
+				</ul>
+				<div class="dropdn-form-wrapper">
+					<h5>Quick Login</h5>
+					<form action="#">
+						<div class="form-group">
+							<input type="text" class="form-control form-control--sm is-invalid"
+								placeholder="Enter your e-mail">
+							<div class="invalid-feedback">Can't be blank</div>
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control form-control--sm" placeholder="Enter your password">
+						</div>
+						<button type="submit" class="btn">Enter</button>
+					</form>
+				</div>
+			</div>
+			<div class="drop-overlay js-dropdn-close"></div>
+		</div>
+		
+	
+	</div>
+</div>
+
+<script>
+    const { createApp } = Vue
+    const app = createApp({
+        data() {
+            return {
+                category: false,
+                store: store,
+                menuToggle: false,
+                searchTerm: '',
+                products: []
+            }
+        },
+        delimiters: ['[[', ']]'],
+        mounted() {
+            this.getCart()
+        },
+        methods: {
+            getCart() {
+                fetch('/api/cart', {
+                    method: 'POST',
+                    headers: {
+                    'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(store.state.cart)
+                })
+                .then(response => response.json())
+                .then(data => this.products = data)
+                .catch(error => console.error(error));
+            },
+            getTotal() {
+                let total = 0
+                this.products.forEach(product => {
+                    if(product.discounted_price){
+                    total += product.discounted_price * product.quantity
+                    }else{
+                    total += product.sale_price * product.quantity
+                    }
+                })
+                return total
+            },
+            getDelivery(){
+                return 20
+            },
+            checkout(){
+                window.location.href = '/checkout'
+            },
+            updateQuantity(id, quantity){
+                console.log(id, quantity);
+                this.$store.commit('removeFromCart',{"id":id})
+                this.$store.commit('addToCart',{"id":id, "quantity":quantity})
+            },
+            delFromCart(id){
+                this.$store.commit('removeFromCart',{"id":id})
+                this.products = this.products.filter(product => product.id != id)
+            },
+            addToCart(item) {
+                this.$store.commit('addToCart',item)
+            },
+            delFromCart(item){
+                this.$store.commit('removeFromCart',item)
+            },
+            closeCartItem(item){
+                this.delFromCart(item)
+                item.close = true
+                this.addToCart(item)
+            },
+            goToCart(){
+                for (let i = 0; i < this.store.state.cart.length; i++) {
+                const item = this.store.state.cart[i];
+                this.closeCartItem(item)
+                }
+                window.location.href = '/cart'
+            },
+            goToUrl(url){
+                window.location.href = url
+				console.log(this.searchTerm);
+				
+            }
+        },
+    })
+    app.use(store).mount('#navbar')
+</script>
+
+<style>
+	@media(max-width:1025px){
+		.account-icon{
+			display: none;
+		}
+	}
+</style>

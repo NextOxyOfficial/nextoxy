@@ -1,0 +1,305 @@
+{% extends 'blog2/base.html' %}
+{% block content %}
+<section class="max-w-[1200px] mx-auto mb-12">
+    <section class="overflow-hidden shadow-lg p-4">
+        <div class="container mx-auto">
+          <div class="flex sm:flex-row flex-col items-center gap-4 justify-between">
+            <div class="w-full lg:w-6/12">
+              <div class="relative">
+                <div class="">
+                  <img src="/static/blog/blog1/images/ban1.jpg" alt="about image" class="w-full max-h-[435px] rounded" />
+                </div>
+              </div>
+            </div>
+            <div class="w-full px-4 lg:w-1/2 2xl:w-6/12">
+              <div class="mt-10 lg:mt-0">
+                <p class="bg-green-200 w-max px-3 py-[3px] rounded-full text-[11px] uppercase mb-3">Travel</p>
+
+                <h2 class="text-2xl font-bold leading-tight text-black sm:text-2xl sm:leading-tight md:text-3xl lg:text-4xl lg:leading-tight xl:text-5xl">Day advantages end sufficient eat expression</h2>
+
+                <div class="flex items-center gap-4">
+                  <div class="flex gap-1 items-center my-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><path d="M463 192H315.9L271.2 58.6C269 52.1 262.9 48 256 48s-13 4.1-15.2 10.6L196.1 192H48c-8.8 0-16 7.2-16 16 0 .9.1 1.9.3 2.7.2 3.5 1.8 7.4 6.7 11.3l120.9 85.2-46.4 134.9c-2.3 6.5 0 13.8 5.5 18 2.9 2.1 5.6 3.9 9 3.9 3.3 0 7.2-1.7 10-3.6l118-84.1 118 84.1c2.8 2 6.7 3.6 10 3.6 3.4 0 6.1-1.7 8.9-3.9 5.6-4.2 7.8-11.4 5.5-18L352 307.2l119.9-86 2.9-2.5c2.6-2.8 5.2-6.6 5.2-10.7 0-8.8-8.2-16-17-16z" fill="#e97c16"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><path d="M463 192H315.9L271.2 58.6C269 52.1 262.9 48 256 48s-13 4.1-15.2 10.6L196.1 192H48c-8.8 0-16 7.2-16 16 0 .9.1 1.9.3 2.7.2 3.5 1.8 7.4 6.7 11.3l120.9 85.2-46.4 134.9c-2.3 6.5 0 13.8 5.5 18 2.9 2.1 5.6 3.9 9 3.9 3.3 0 7.2-1.7 10-3.6l118-84.1 118 84.1c2.8 2 6.7 3.6 10 3.6 3.4 0 6.1-1.7 8.9-3.9 5.6-4.2 7.8-11.4 5.5-18L352 307.2l119.9-86 2.9-2.5c2.6-2.8 5.2-6.6 5.2-10.7 0-8.8-8.2-16-17-16z" fill="#e97c16"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><path d="M463 192H315.9L271.2 58.6C269 52.1 262.9 48 256 48s-13 4.1-15.2 10.6L196.1 192H48c-8.8 0-16 7.2-16 16 0 .9.1 1.9.3 2.7.2 3.5 1.8 7.4 6.7 11.3l120.9 85.2-46.4 134.9c-2.3 6.5 0 13.8 5.5 18 2.9 2.1 5.6 3.9 9 3.9 3.3 0 7.2-1.7 10-3.6l118-84.1 118 84.1c2.8 2 6.7 3.6 10 3.6 3.4 0 6.1-1.7 8.9-3.9 5.6-4.2 7.8-11.4 5.5-18L352 307.2l119.9-86 2.9-2.5c2.6-2.8 5.2-6.6 5.2-10.7 0-8.8-8.2-16-17-16z" fill="#e97c16"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><path d="M463 192H315.9L271.2 58.6C269 52.1 262.9 48 256 48s-13 4.1-15.2 10.6L196.1 192H48c-8.8 0-16 7.2-16 16 0 .9.1 1.9.3 2.7.2 3.5 1.8 7.4 6.7 11.3l120.9 85.2-46.4 134.9c-2.3 6.5 0 13.8 5.5 18 2.9 2.1 5.6 3.9 9 3.9 3.3 0 7.2-1.7 10-3.6l118-84.1 118 84.1c2.8 2 6.7 3.6 10 3.6 3.4 0 6.1-1.7 8.9-3.9 5.6-4.2 7.8-11.4 5.5-18L352 307.2l119.9-86 2.9-2.5c2.6-2.8 5.2-6.6 5.2-10.7 0-8.8-8.2-16-17-16zm-47.4 35.2l-79.8 57.3c-10 7.2-14.2 20.2-10.2 31.8l30.1 87.7c1.3 3.7-2.9 6.8-6.1 4.6l-77.4-55.2-.1-.1c-10-7-16.1-18.3-16.1-30.5V113.3c0-2.2 3.1-2.7 3.8-.6l29.6 88.2c3.8 11.4 14.5 19.1 26.5 19.1h97.3c3.9 0 5.5 5 2.4 7.2z" fill="#e97c16"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512"><path d="M463 192H315.9L271.2 58.6C269 52.1 262.9 48 256 48s-13 4.1-15.2 10.6L196.1 192H48c-8.8 0-16 7.2-16 16 0 .9.1 1.9.3 2.7.2 3.5 1.8 7.4 6.7 11.3l120.9 85.2-46.4 134.9c-2.3 6.5 0 13.8 5.5 18 2.9 2.1 5.6 3.9 9 3.9 3.3 0 7.2-1.7 10-3.6l118-84.1 118 84.1c2.8 2 6.7 3.6 10 3.6 3.4 0 6.1-1.7 8.9-3.9 5.6-4.2 7.8-11.4 5.5-18L352 307.2l119.9-86 2.9-2.5c2.6-2.8 5.2-6.6 5.2-10.7 0-8.8-8.2-16-17-16zm-127.2 92.5c-10 7.2-14.2 20.2-10.2 31.8l30.1 87.7c1.3 3.7-2.9 6.8-6.1 4.6l-77.4-55.2c-4.9-3.5-10.6-5.2-16.3-5.2-5.7 0-11.4 1.7-16.2 5.2l-77.4 55.1c-3.2 2.3-7.4-.9-6.1-4.6l30.1-87.7c4-11.8-.2-24.8-10.3-32l-81-57.1c-3.2-2.2-1.6-7.3 2.3-7.3H196c12 0 22.7-7.7 26.5-19.1l29.6-88.2c1.2-3.6 6.4-3.6 7.6 0l29.6 88.2c3.8 11.4 14.5 19.1 26.5 19.1h97.3c3.9 0 5.5 5 2.3 7.2l-79.6 57.5z" fill="#e97c16"/></svg>
+                  </div>
+                  <p class="text-sm">4.5/5</p>
+                </div>
+
+                <div class="flex items-center mb-5">
+                  <div class="mr-3 h-[60px] w-full max-w-[60px] overflow-hidden rounded-full">
+                    <img src="https://cdn.tailgrids.com/2.0/image/application/images/cards/card-09/author-01.png" alt="image" class="w-full" />
+                  </div>
+                  <div class="w-full mt-2">
+                    <h5 class="text-dark text-sm font-normal"><span class="font-normal text-gray-400 italic pr-1">by</span> Naimur Rahman</h5>
+                    <div class="text-gray-400 text-xs font-medium flex items-center gap-1">
+                      <p>March 28, 2022 -</p>
+                       <p class="flex items-center text-slate-900">
+                         <svg class="pr-1" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"><g fill="none" fill-rule="evenodd"><path d="M24 0v24H0V0h24ZM12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427c-.002-.01-.009-.017-.017-.018Zm.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093c.012.004.023 0 .029-.008l.004-.014l-.034-.614c-.003-.012-.01-.02-.02-.022Zm-.715.002a.023.023 0 0 0-.027.006l-.006.014l-.034.614c0 .012.007.02.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01l-.184-.092Z"/><path fill="#a9a8a7" d="M12 5c-4.597 0-8 3.073-8 6.5c0 2.014 1.141 3.872 3.042 5.096c.738.476.939 1.403.972 2.222c.753-.31 1.258-1.16 2.172-.986c.582.11 1.189.168 1.814.168c4.597 0 8-3.073 8-6.5S16.597 5 12 5ZM2 11.5C2 6.643 6.656 3 12 3s10 3.643 10 8.5S17.344 20 12 20c-.653 0-1.292-.053-1.911-.155c-.093.073-.253.205-.45.344C9.07 20.59 8.249 21 7 21a1 1 0 0 1-1-1c0-.55.143-1.234-.094-1.756C3.577 16.723 2 14.298 2 11.5Z"/></g></svg>
+                        <a href="#">
+                          0 comment
+                        </a> 
+                       </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex gap-2 items-center space-x-3">
+                  <a href="#">
+                    <svg width="8" height="14" viewBox="0 0 8 14" class="fill-current">
+                      <path
+                        d="M7.43902 5.6H6.19918H5.75639V5.14839V3.74839V3.29677H6.19918H7.12906C7.3726 3.29677 7.57186 3.11613 7.57186 2.84516V0.451613C7.57186 0.203226 7.39474 0 7.12906 0H5.51285C3.76379 0 2.54609 1.26452 2.54609 3.13871V5.10323V5.55484H2.10329H0.597778C0.287819 5.55484 0 5.80323 0 6.16452V7.79032C0 8.10645 0.243539 8.4 0.597778 8.4H2.05901H2.50181V8.85161V13.3903C2.50181 13.7065 2.74535 14 3.09959 14H5.18075C5.31359 14 5.42429 13.9323 5.51285 13.8419C5.60141 13.7516 5.66783 13.5935 5.66783 13.4581V8.87419V8.42258H6.13276H7.12906C7.41688 8.42258 7.63828 8.24194 7.68256 7.97097V7.94839V7.92581L7.99252 6.36774C8.01466 6.20968 7.99252 6.02903 7.85968 5.84839C7.8154 5.73548 7.61614 5.62258 7.43902 5.6Z">
+                      </path>
+                    </svg>
+                  </a>
+                  <a href="#">
+                    <svg width="14" height="10" viewBox="0 0 14 10" class="fill-current">
+                      <path
+                        d="M12.4419 1.72211L13.3 0.782779C13.5484 0.528376 13.6161 0.332681 13.6387 0.234834C12.9613 0.587084 12.329 0.704501 11.9226 0.704501H11.7645L11.6742 0.626223C11.1323 0.215264 10.4548 0 9.73226 0C8.15161 0 6.90968 1.13503 6.90968 2.44618C6.90968 2.52446 6.90968 2.64188 6.93226 2.72016L7 3.11155L6.52581 3.09198C3.63548 3.0137 1.26452 0.861057 0.880645 0.489237C0.248387 1.46771 0.609677 2.40705 0.993548 2.99413L1.76129 4.09002L0.541936 3.50294C0.564516 4.32485 0.925806 4.97065 1.62581 5.44031L2.23548 5.8317L1.62581 6.04697C2.00968 7.04501 2.86774 7.45597 3.5 7.61252L4.33548 7.80822L3.54516 8.27789C2.28065 9.06067 0.7 9.00196 0 8.94325C1.42258 9.80431 3.11613 10 4.29032 10C5.17097 10 5.82581 9.92172 5.98387 9.86301C12.3065 8.57143 12.6 3.67906 12.6 2.70059V2.5636L12.7355 2.48532C13.5032 1.8591 13.8194 1.52642 14 1.33072C13.9323 1.35029 13.8419 1.38943 13.7516 1.409L12.4419 1.72211Z">
+                      </path>
+                    </svg>
+                  </a>
+                  <a href="#">
+                    <svg width="14" height="10" viewBox="0 0 14 10" class="fill-current">
+                      <path
+                        d="M13.7065 1.56682C13.5484 0.9447 13.0742 0.460829 12.4645 0.299539C11.3806 5.49352e-08 7 0 7 0C7 0 2.61935 5.49352e-08 1.53548 0.299539C0.925806 0.460829 0.451613 0.9447 0.293548 1.56682C0 2.69585 0 5 0 5C0 5 0 7.32719 0.293548 8.43318C0.451613 9.0553 0.925806 9.53917 1.53548 9.70046C2.61935 10 7 10 7 10C7 10 11.3806 10 12.4645 9.70046C13.0742 9.53917 13.5484 9.0553 13.7065 8.43318C14 7.32719 14 5 14 5C14 5 14 2.69585 13.7065 1.56682ZM5.6 7.14286V2.85714L9.23548 5L5.6 7.14286Z">
+                      </path>
+                    </svg>
+                  </a>
+                  <a href="#">
+                    <svg width="13" height="12" viewBox="0 0 13 12" class="fill-current">
+                      <path
+                        d="M11.9334 0H1.64722C1.16111 0 0.772217 0.387097 0.772217 0.870968V11.129C0.772217 11.5935 1.16111 12 1.64722 12H11.8945C12.3806 12 12.7695 11.6129 12.7695 11.129V0.851613C12.8084 0.387097 12.4195 0 11.9334 0ZM4.33058 10.2H2.56112V4.49032H4.33058V10.2ZM3.43613 3.69677C2.85279 3.69677 2.40556 3.23226 2.40556 2.67097C2.40556 2.10968 2.87223 1.64516 3.43613 1.64516C4.00002 1.64516 4.46669 2.10968 4.46669 2.67097C4.46669 3.23226 4.03891 3.69677 3.43613 3.69677ZM11.039 10.2H9.26951V7.43226C9.26951 6.77419 9.25006 5.90323 8.33617 5.90323C7.40282 5.90323 7.26671 6.63871 7.26671 7.37419V10.2H5.49725V4.49032H7.22782V5.28387H7.24727C7.50005 4.81935 8.06394 4.35484 8.93895 4.35484C10.7473 4.35484 11.0779 5.51613 11.0779 7.10323V10.2H11.039Z">
+                      </path>
+                    </svg>
+                  </a>
+                  <a href="#">
+                    <svg width="8" height="14" viewBox="0 0 8 14" class="fill-current">
+                      <path
+                        d="M7.43902 5.6H6.19918H5.75639V5.14839V3.74839V3.29677H6.19918H7.12906C7.3726 3.29677 7.57186 3.11613 7.57186 2.84516V0.451613C7.57186 0.203226 7.39474 0 7.12906 0H5.51285C3.76379 0 2.54609 1.26452 2.54609 3.13871V5.10323V5.55484H2.10329H0.597778C0.287819 5.55484 0 5.80323 0 6.16452V7.79032C0 8.10645 0.243539 8.4 0.597778 8.4H2.05901H2.50181V8.85161V13.3903C2.50181 13.7065 2.74535 14 3.09959 14H5.18075C5.31359 14 5.42429 13.9323 5.51285 13.8419C5.60141 13.7516 5.66783 13.5935 5.66783 13.4581V8.87419V8.42258H6.13276H7.12906C7.41688 8.42258 7.63828 8.24194 7.68256 7.97097V7.94839V7.92581L7.99252 6.36774C8.01466 6.20968 7.99252 6.02903 7.85968 5.84839C7.8154 5.73548 7.61614 5.62258 7.43902 5.6Z">
+                      </path>
+                    </svg>
+                  </a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <div class="max-w-3xl mx-auto text-xl my-20 px-2">
+      Its sometimes her behaviour are contented. Do listening am eagerness oh objection collected. Together happy feelings continue juvenile had off one. Unknown may service subject her letters one bed.
+      <br><br>
+      Oh acceptance apartments up sympathize astonished delightful. Waiting him new lasting towards. Continuing melancholy especially so to. Me unpleasing impossible in attachment announcing so astonished.
+
+      <h2 class="mt-10 font-bold text-3xl mb-4">Me unpleasing impossible</h2>
+      <p>Assure polite his really and others figure though. Day age advantages end sufficient eat expression travelling</p>
+      <img class="my-6" src="/static/blog/blog1/images/ban2.jpg" alt="">
+      <p>Assure polite his really and others figure though. Day age advantages end sufficient eat expression travelling</p>
+    </div>
+
+    <section class="max-w-3xl mx-auto">
+      <div class="h-[1px] bg-gray-200 w-full px-4 my-6"></div>
+      <div class="comment-box">
+        <p class="text-gray-400 text-sm">
+          Share this article
+        </p>
+        <div class="flex gap-2 items-center space-x-3 py-4 mb-4">
+          <a href="#">
+            <svg width="8" height="14" viewBox="0 0 8 14" class="fill-current">
+              <path
+                d="M7.43902 5.6H6.19918H5.75639V5.14839V3.74839V3.29677H6.19918H7.12906C7.3726 3.29677 7.57186 3.11613 7.57186 2.84516V0.451613C7.57186 0.203226 7.39474 0 7.12906 0H5.51285C3.76379 0 2.54609 1.26452 2.54609 3.13871V5.10323V5.55484H2.10329H0.597778C0.287819 5.55484 0 5.80323 0 6.16452V7.79032C0 8.10645 0.243539 8.4 0.597778 8.4H2.05901H2.50181V8.85161V13.3903C2.50181 13.7065 2.74535 14 3.09959 14H5.18075C5.31359 14 5.42429 13.9323 5.51285 13.8419C5.60141 13.7516 5.66783 13.5935 5.66783 13.4581V8.87419V8.42258H6.13276H7.12906C7.41688 8.42258 7.63828 8.24194 7.68256 7.97097V7.94839V7.92581L7.99252 6.36774C8.01466 6.20968 7.99252 6.02903 7.85968 5.84839C7.8154 5.73548 7.61614 5.62258 7.43902 5.6Z">
+              </path>
+            </svg>
+          </a>
+          <a href="#">
+            <svg width="14" height="10" viewBox="0 0 14 10" class="fill-current">
+              <path
+                d="M12.4419 1.72211L13.3 0.782779C13.5484 0.528376 13.6161 0.332681 13.6387 0.234834C12.9613 0.587084 12.329 0.704501 11.9226 0.704501H11.7645L11.6742 0.626223C11.1323 0.215264 10.4548 0 9.73226 0C8.15161 0 6.90968 1.13503 6.90968 2.44618C6.90968 2.52446 6.90968 2.64188 6.93226 2.72016L7 3.11155L6.52581 3.09198C3.63548 3.0137 1.26452 0.861057 0.880645 0.489237C0.248387 1.46771 0.609677 2.40705 0.993548 2.99413L1.76129 4.09002L0.541936 3.50294C0.564516 4.32485 0.925806 4.97065 1.62581 5.44031L2.23548 5.8317L1.62581 6.04697C2.00968 7.04501 2.86774 7.45597 3.5 7.61252L4.33548 7.80822L3.54516 8.27789C2.28065 9.06067 0.7 9.00196 0 8.94325C1.42258 9.80431 3.11613 10 4.29032 10C5.17097 10 5.82581 9.92172 5.98387 9.86301C12.3065 8.57143 12.6 3.67906 12.6 2.70059V2.5636L12.7355 2.48532C13.5032 1.8591 13.8194 1.52642 14 1.33072C13.9323 1.35029 13.8419 1.38943 13.7516 1.409L12.4419 1.72211Z">
+              </path>
+            </svg>
+          </a>
+          <a href="#">
+            <svg width="14" height="10" viewBox="0 0 14 10" class="fill-current">
+              <path
+                d="M13.7065 1.56682C13.5484 0.9447 13.0742 0.460829 12.4645 0.299539C11.3806 5.49352e-08 7 0 7 0C7 0 2.61935 5.49352e-08 1.53548 0.299539C0.925806 0.460829 0.451613 0.9447 0.293548 1.56682C0 2.69585 0 5 0 5C0 5 0 7.32719 0.293548 8.43318C0.451613 9.0553 0.925806 9.53917 1.53548 9.70046C2.61935 10 7 10 7 10C7 10 11.3806 10 12.4645 9.70046C13.0742 9.53917 13.5484 9.0553 13.7065 8.43318C14 7.32719 14 5 14 5C14 5 14 2.69585 13.7065 1.56682ZM5.6 7.14286V2.85714L9.23548 5L5.6 7.14286Z">
+              </path>
+            </svg>
+          </a>
+          <a href="#">
+            <svg width="13" height="12" viewBox="0 0 13 12" class="fill-current">
+              <path
+                d="M11.9334 0H1.64722C1.16111 0 0.772217 0.387097 0.772217 0.870968V11.129C0.772217 11.5935 1.16111 12 1.64722 12H11.8945C12.3806 12 12.7695 11.6129 12.7695 11.129V0.851613C12.8084 0.387097 12.4195 0 11.9334 0ZM4.33058 10.2H2.56112V4.49032H4.33058V10.2ZM3.43613 3.69677C2.85279 3.69677 2.40556 3.23226 2.40556 2.67097C2.40556 2.10968 2.87223 1.64516 3.43613 1.64516C4.00002 1.64516 4.46669 2.10968 4.46669 2.67097C4.46669 3.23226 4.03891 3.69677 3.43613 3.69677ZM11.039 10.2H9.26951V7.43226C9.26951 6.77419 9.25006 5.90323 8.33617 5.90323C7.40282 5.90323 7.26671 6.63871 7.26671 7.37419V10.2H5.49725V4.49032H7.22782V5.28387H7.24727C7.50005 4.81935 8.06394 4.35484 8.93895 4.35484C10.7473 4.35484 11.0779 5.51613 11.0779 7.10323V10.2H11.039Z">
+              </path>
+            </svg>
+          </a>
+          <a href="#">
+            <svg width="8" height="14" viewBox="0 0 8 14" class="fill-current">
+              <path
+                d="M7.43902 5.6H6.19918H5.75639V5.14839V3.74839V3.29677H6.19918H7.12906C7.3726 3.29677 7.57186 3.11613 7.57186 2.84516V0.451613C7.57186 0.203226 7.39474 0 7.12906 0H5.51285C3.76379 0 2.54609 1.26452 2.54609 3.13871V5.10323V5.55484H2.10329H0.597778C0.287819 5.55484 0 5.80323 0 6.16452V7.79032C0 8.10645 0.243539 8.4 0.597778 8.4H2.05901H2.50181V8.85161V13.3903C2.50181 13.7065 2.74535 14 3.09959 14H5.18075C5.31359 14 5.42429 13.9323 5.51285 13.8419C5.60141 13.7516 5.66783 13.5935 5.66783 13.4581V8.87419V8.42258H6.13276H7.12906C7.41688 8.42258 7.63828 8.24194 7.68256 7.97097V7.94839V7.92581L7.99252 6.36774C8.01466 6.20968 7.99252 6.02903 7.85968 5.84839C7.8154 5.73548 7.61614 5.62258 7.43902 5.6Z">
+              </path>
+            </svg>
+          </a>
+        </div>
+        
+      </div>
+      <div class="flex items-center mb-5 ">
+        <div class="mr-3 h-[90px] w-full max-w-[90px] overflow-hidden rounded-full">
+          <img src="https://cdn.tailgrids.com/2.0/image/application/images/cards/card-09/author-01.png" alt="image" class="w-full" />
+        </div>
+        <div class="w-full mt-2">
+          <p class="text-gray-400 text-sm mb-2">Written by</p>
+          <h5 class="text-dark text-xl font-bold">Naimur Rahman</h5>
+          <p class="mt-2 text-gray-600">Oh acceptance apartments up sympathize astonished delightful. Waiting him new lasting towards</p>
+        </div>
+      </div>
+      <div class="mt-8">
+        <p class="text-gray-500 text-xs tracking-widest">popular posts</p>
+        <h1 class="mb-4 text-xl font-black text-lg sm:text-2xl lg:text-2xl xl:text-2xl">Popular</h3>
+      </div>
+      <div class="grid gap-2 lg:grid-cols-2 md:grid-cols-2 sm:grid-cols-2 justify-center">
+        <div class="shadow-card-2 rounded-lg px-6 py-8 sm:px-8 lg:px-6 xl:px-8 shadow-lg">
+        <p class="bg-gray-200 w-max px-3 py-[3px] rounded-full text-[11px] uppercase mb-3">Travel</p>
+        <h3>
+            <a href="javascript:void(0)" class="my-4 block text-lg font-bold leading-tight text-black sm:text-xl sm:leading-tight lg:text-lg lg:leading-tight xl:text-xl xl:leading-tight"> Ready  Crafted by TailGrids Websites Crafted by TailGrids</a>
+        </h3>
+        <div class="flex items-center">
+            <div class="mr-3 h-[40px] w-full max-w-[40px] overflow-hidden rounded-full">
+            <img src="https://cdn.tailgrids.com/2.0/image/application/images/cards/card-09/author-01.png" alt="image" class="w-full" />
+            </div>
+            <div class="w-full mt-2">
+            <h5 class="text-dark text-sm font-normal"><span class="font-normal text-gray-400 italic pr-1">by</span> Naimur Rahman</h5>
+            <p class="text-gray-400 text-xs font-medium">March 28, 2022</p>
+            </div>
+        </div>
+        <p class="my-4 text-[15px] text-gray-500 mb-8">Its sometimes her behaviour are contented. Do listening am eagerness oh objection collected. Together happy feelings continue juvenile had off...    </p>
+
+        <div class="h-[1px] bg-gray-200 w-full px-4 my-6"></div>
+        <div class="flex justify-between items-center gap-4">
+            <a href="#">
+                <p class="text-xs font-medium flex gap-1 items-center text-gray-600 tracking-widest">CONTINUE READING <svg class="font-semibold" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 512 512"><path d="M294.1 256L167 129c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.3 34 0L345 239c9.1 9.1 9.3 23.7.7 33.1L201.1 417c-4.7 4.7-10.9 7-17 7s-12.3-2.3-17-7c-9.4-9.4-9.4-24.6 0-33.9l127-127.1z" fill="#6b6b6b"/></svg></p>
+            </a>
+            <p class="text-xs text-gray-500 flex gap-1 items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 512 512"><g fill-opacity=".9"><path d="M255.8 48C141 48 48 141.2 48 256s93 208 207.8 208c115 0 208.2-93.2 208.2-208S370.8 48 255.8 48zm.2 374.4c-91.9 0-166.4-74.5-166.4-166.4S164.1 89.6 256 89.6 422.4 164.1 422.4 256 347.9 422.4 256 422.4z" fill="#6b6b6b"/><path d="M266.4 152h-31.2v124.8l109.2 65.5 15.6-25.6-93.6-55.5V152z" fill="#6b6b6b"/></g></svg>
+                2 mins
+            </p>
+        </div>
+        </div>
+        <div class="shadow-card-2 rounded-lg px-6 py-8 sm:px-8 lg:px-6 xl:px-8 shadow-lg">
+        <p class="bg-gray-200 w-max px-3 py-[3px] rounded-full text-[11px] uppercase mb-3">Travel</p>
+        <h3>
+            <a href="javascript:void(0)" class="my-4 block text-lg font-bold leading-tight text-black sm:text-xl sm:leading-tight lg:text-lg lg:leading-tight xl:text-xl xl:leading-tight"> Ready  Crafted by TailGrids Websites Crafted by TailGrids</a>
+        </h3>
+        <div class="flex items-center">
+            <div class="mr-3 h-[40px] w-full max-w-[40px] overflow-hidden rounded-full">
+            <img src="https://cdn.tailgrids.com/2.0/image/application/images/cards/card-09/author-01.png" alt="image" class="w-full" />
+            </div>
+            <div class="w-full mt-2">
+            <h5 class="text-dark text-sm font-normal"><span class="font-normal text-gray-400 italic pr-1">by</span> Naimur Rahman</h5>
+            <p class="text-gray-400 text-xs font-medium">March 28, 2022</p>
+            </div>
+        </div>
+        <p class="my-4 text-[15px] text-gray-500 mb-8">Its sometimes her behaviour are contented. Do listening am eagerness oh objection collected. Together happy feelings continue juvenile had off...    </p>
+
+        <div class="h-[1px] bg-gray-200 w-full px-4 my-6"></div>
+        <div class="flex justify-between items-center gap-4">
+            <a href="#">
+                <p class="text-xs font-medium flex gap-1 items-center text-gray-600 tracking-widest">CONTINUE READING <svg class="font-semibold" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 512 512"><path d="M294.1 256L167 129c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.3 34 0L345 239c9.1 9.1 9.3 23.7.7 33.1L201.1 417c-4.7 4.7-10.9 7-17 7s-12.3-2.3-17-7c-9.4-9.4-9.4-24.6 0-33.9l127-127.1z" fill="#6b6b6b"/></svg></p>
+            </a>
+            <p class="text-xs text-gray-500 flex gap-1 items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 512 512"><g fill-opacity=".9"><path d="M255.8 48C141 48 48 141.2 48 256s93 208 207.8 208c115 0 208.2-93.2 208.2-208S370.8 48 255.8 48zm.2 374.4c-91.9 0-166.4-74.5-166.4-166.4S164.1 89.6 256 89.6 422.4 164.1 422.4 256 347.9 422.4 256 422.4z" fill="#6b6b6b"/><path d="M266.4 152h-31.2v124.8l109.2 65.5 15.6-25.6-93.6-55.5V152z" fill="#6b6b6b"/></g></svg>
+                2 mins
+            </p>
+        </div>
+        </div>
+        <div class="shadow-card-2 rounded-lg px-6 py-8 sm:px-8 lg:px-6 xl:px-8 shadow-lg">
+        <p class="bg-gray-200 w-max px-3 py-[3px] rounded-full text-[11px] uppercase mb-3">Travel</p>
+        <h3>
+            <a href="javascript:void(0)" class="my-4 block text-lg font-bold leading-tight text-black sm:text-xl sm:leading-tight lg:text-lg lg:leading-tight xl:text-xl xl:leading-tight"> Ready  Crafted by TailGrids Websites Crafted by TailGrids</a>
+        </h3>
+        <div class="flex items-center">
+            <div class="mr-3 h-[40px] w-full max-w-[40px] overflow-hidden rounded-full">
+            <img src="https://cdn.tailgrids.com/2.0/image/application/images/cards/card-09/author-01.png" alt="image" class="w-full" />
+            </div>
+            <div class="w-full mt-2">
+            <h5 class="text-dark text-sm font-normal"><span class="font-normal text-gray-400 italic pr-1">by</span> Naimur Rahman</h5>
+            <p class="text-gray-400 text-xs font-medium">March 28, 2022</p>
+            </div>
+        </div>
+        <p class="my-4 text-[15px] text-gray-500 mb-8">Its sometimes her behaviour are contented. Do listening am eagerness oh objection collected. Together happy feelings continue juvenile had off...    </p>
+
+        <div class="h-[1px] bg-gray-200 w-full px-4 my-6"></div>
+        <div class="flex justify-between items-center gap-4">
+            <a href="#">
+                <p class="text-xs font-medium flex gap-1 items-center text-gray-600 tracking-widest">CONTINUE READING <svg class="font-semibold" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 512 512"><path d="M294.1 256L167 129c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.3 34 0L345 239c9.1 9.1 9.3 23.7.7 33.1L201.1 417c-4.7 4.7-10.9 7-17 7s-12.3-2.3-17-7c-9.4-9.4-9.4-24.6 0-33.9l127-127.1z" fill="#6b6b6b"/></svg></p>
+            </a>
+            <p class="text-xs text-gray-500 flex gap-1 items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 512 512"><g fill-opacity=".9"><path d="M255.8 48C141 48 48 141.2 48 256s93 208 207.8 208c115 0 208.2-93.2 208.2-208S370.8 48 255.8 48zm.2 374.4c-91.9 0-166.4-74.5-166.4-166.4S164.1 89.6 256 89.6 422.4 164.1 422.4 256 347.9 422.4 256 422.4z" fill="#6b6b6b"/><path d="M266.4 152h-31.2v124.8l109.2 65.5 15.6-25.6-93.6-55.5V152z" fill="#6b6b6b"/></g></svg>
+                2 mins
+            </p>
+        </div>
+        </div>
+
+      </div>
+
+      <div class="comment-btn shadow-xl mt-6 tracking-widest p-4 flex items-center gap-2 justify-center items-center border border-slate-200/40 cursor-pointer">
+        Leave a comment <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#000000" d="M12 14.975q-.2 0-.375-.062T11.3 14.7l-4.6-4.6q-.275-.275-.275-.7t.275-.7q.275-.275.7-.275t.7.275l3.9 3.9l3.9-3.9q.275-.275.7-.275t.7.275q.275.275.275.7t-.275.7l-4.6 4.6q-.15.15-.325.213t-.375.062Z"/></svg>
+      </div>
+      <section class="overflow-hidden py-10">
+        <div class="container mx-auto">
+          <div class="-mx-4 flex">
+            <div class="w-full px-4">
+              <div class="shadow-card border-form-stroke relative mx-auto w-full max-w-[770px] bg-slate-100/60 px-2 py-10 sm:px-[65px] sm:py-[60px] md:p-10 lg:px-8 lg:py-[60px]">
+                <form>
+                  <div class="mb-6">
+                    <h2 class="mb-3 text-left text-2xl font-bold leading-tight text-black md:text-2xl md:leading-tight xl:text-[25px] xl:leading-tight">Leave a Reply</h2>
+                    <p class="text-sm text-gray-400">Your email address will not be published. Required fields are marked</p>
+                  </div>
+                  <div class="w-full ">
+                    <div class="mb-7">
+                      <label for="message" class="text-dark mb-3 block text-base font-semibold"> Comment </label>
+                      <textarea id="message" name="message" placeholder="Type your message here" rows="6" class="focus:border-primary shadow-input w-full resize-none border bg-white px-6 py-4 placeholder-[#9699A6] outline-none"></textarea>
+                    </div>
+                  </div>
+                  <div class="-mx-4 flex flex-wrap">
+                    <div class="w-full px-4 md:w-1/2">
+                      <div class="mb-7">
+                        <label for="Name" class="text-dark mb-3 block text-base font-semibold"> Name </label>
+                        <input id="Name" type="text" name="Name" placeholder="Enter your name" class="border-form-stroke focus:border-primary shadow-input w-full border bg-white px-6 py-4 placeholder-[#9699A6] outline-none rounded-full" />
+                      </div>
+                    </div>
+                    <div class="w-full px-4 md:w-1/2">
+                      <div class="mb-7">
+                        <label for="email" class="text-dark mb-3 block text-base font-semibold"> Email </label>
+                        <input id="email" type="text" name="email" placeholder="Enter your email" class="border-form-stroke focus:border-primary shadow-input w-full border bg-white px-6 py-4 placeholder-[#9699A6] outline-none rounded-full" />
+                      </div>
+                    </div>
+                    <div class="w-full px-4">
+                      <div class="mb-7">
+                        <label for="email" class="text-dark mb-3 block text-base font-semibold"> Website </label>
+                        <input id="email" type="text" name="email" placeholder="Enter your Email" class="border-form-stroke focus:border-primary shadow-input w-full border bg-white px-6 py-4 placeholder-[#9699A6] outline-none rounded-full" />
+                      </div>
+                    </div>
+                    <div class="w-full px-4">
+                      <div class="text-center">
+                        <div class="flex items-center justify-start gap-2">
+                          <input type="checkbox" name="comment" id="comment">
+                          <label for="comment" class="text-sm cursor-pointer text-gray-600">Save my name, email, and website in this browser for the next time I comment.</label>
+                        </div>
+                        <button type="submit" class="btn-primary px-10 py-1 my-4 flex justify- text-base font-semibold text-white hover:bg-opacity-90">Submit Ticket</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+</section>
+
+{% endblock %}

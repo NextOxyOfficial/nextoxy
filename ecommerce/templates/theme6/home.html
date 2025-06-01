@@ -1,0 +1,118 @@
+{% extends "theme6/base.html" %} {% block content %}
+<!--header-->
+
+<!--//header-->
+<div class="page-content">
+  <!-- prettier-ignore -->
+  {% include "theme6/hero.html" %} 
+   {% include "theme6/banner.html" %} 
+   {% include "theme6/category.html" %} 
+   {% include "theme6/all_products.html"%}
+   {% include "theme6/banner_2.html"%}
+
+  <!-- Irrelavent Section -->
+  <div class="holder holder-mt-medium boxed">
+    <div class="container">
+      <div
+        class="row product-hot wow fadeInRight"
+        data-wow-delay="{{forloop.counter}}100ms"
+      >
+        <div class="col-md-9 product-hot-img">
+          <div class="editable image" id="suspdnnshdssd39sj">
+            <img
+              class="fade-up lazyload img-fluid"
+              alt="Product"
+              src="/static/ecommerce/theme6/images/product-promo.jpg"
+            />
+          </div>
+          <div
+            class="product-hot-label editable text"
+            id="susphhdys65has"
+            style="z-index: 99"
+          >
+            <span>HOT<br />OFFERS</span>
+          </div>
+          <!-- <div class="product-hot-price">
+						<div class="price-text">ONLY TODAY</div>
+						<div class="price-new">$149</div>
+					</div> -->
+        </div>
+        <div class="col-md-9 mt-3 mt-md-0">
+          <div class="product-hot-info">
+            <h2 class="product-hot-title editable text" id="suspdjkuusy6">
+              <a href="">Metanium Baitcasting Reels</a>
+            </h2>
+            <div class="product-hot-description d-none d-md-block">
+              <p class="editable text" id="suspkjshgd666">
+                Model is 5'9" wearing Size XS TallAnd without further ado, we
+                give you our finest Shopify Theme FOXic! It is a subtle, complex
+                and yet an extremely easy to use template for anyone, who wants
+                to create own website in ANY area of expertise.
+              </p>
+              <div class="mt-1"></div>
+              <div class="row vert-margin-less">
+                <div class="col-sm">
+                  <ul class="list-marker editable text" id="suspdnnsh77uyh">
+                    <li>100% Polyester</li>
+                    <li>Lining:100% Viscose</li>
+                  </ul>
+                </div>
+                <div class="col-sm">
+                  <ul class="list-marker editable text" id="suspdnjnsy6600">
+                    <li>Do not dry clean</li>
+                    <li>Only non-chlorine</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="btn-wrap">
+              <a
+                href="/search_page"
+                class="btn btn--lg js-prd-addtocart"
+                title="Add To Cart"
+                >See more</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% include "theme6/section_products.html" %}
+
+  <!-- editional section -->
+  <div class="holder holder-mt-medium">
+    <div class="container">
+      <div
+        class="row vert-margin wow fadeInUp"
+        data-wow-delay="{{forloop.counter}}100ms"
+      >
+        <div class="col">
+          <div class="title-wrap text-center">
+            <h2 class="lookbook-bnr-title1 editable text" id="suspdwwjksd723">
+              UPGRADE YOUR SPINNING
+            </h2>
+            <h3 class="lookbook-bnr-title2 editable text" id="suspdwwjksd72312">
+              2024
+            </h3>
+          </div>
+          <div class="lookbook-bnr">
+            <div
+              class="lookbook-bnr-image image-container editable image"
+              id="sasd2ppdkksh22"
+              style="padding-bottom: 18.72%"
+            >
+              <img
+                class="fade-up w-100 lazyload"
+                src="/static/ecommerce/theme6/images/lookbook-fish.jpg"
+                alt="Product"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

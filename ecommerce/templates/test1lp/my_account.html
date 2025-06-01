@@ -1,0 +1,554 @@
+<!-- prettier-ignore -->
+{% extends "theme102/base.html" %}
+
+{% block content %}
+
+<section id="my_account" class="px-4 container mx-auto">
+  <div
+    class="border md:hidden flex p-1 px-2 justify-between gap-1 items-center cursor-pointer rounded"
+    @click="barToggle=!barToggle"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+    >
+      <path
+        fill="none"
+        stroke="#383838"
+        stroke-width="2"
+        d="M17 3v4m0 3v4m0 3v4m4-17v2a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1zm0 7v2a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1zm0 7v2a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-2a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1z"
+      />
+    </svg>
+    <p class="text-center text-[16px] font-medium pr-1">My Account</p>
+  </div>
+  <section class="container mx-auto my-4 border flex gap-2 rounded relative">
+    <section v-if="barToggle==true" class="bg-gray-2 w-3/4 absolute z-30">
+      <div
+        class="flex w-full max-w-[280px] h-[90vh] flex-col justify-between border-r bg-white shadow-card"
+      >
+        <div>
+          <div class="mt-2 p-4 pt-0">
+            <form class="relative">
+              <input
+                type="text"
+                placeholder="Search here..."
+                class="h-11 w-full rounded border-[.5px] border-stroke bg-gray-2 pl-4 pr-9 text-sm font-medium text-black placeholder-body-color outline-none focus:border-primary"
+              />
+              <button class="absolute top-1/2 right-4 -translate-y-1/2">
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 18 18"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M8.25 3C5.3505 3 3 5.3505 3 8.25C3 11.1495 5.3505 13.5 8.25 13.5C11.1495 13.5 13.5 11.1495 13.5 8.25C13.5 5.3505 11.1495 3 8.25 3ZM1.5 8.25C1.5 4.52208 4.52208 1.5 8.25 1.5C11.9779 1.5 15 4.52208 15 8.25C15 11.9779 11.9779 15 8.25 15C4.52208 15 1.5 11.9779 1.5 8.25Z"
+                    fill="#637381"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M11.958 11.958C12.2508 11.6651 12.7257 11.6651 13.0186 11.958L16.2811 15.2205C16.574 15.5133 16.574 15.9882 16.2811 16.2811C15.9882 16.574 15.5133 16.574 15.2205 16.2811L11.958 13.0186C11.6651 12.7257 11.6651 12.2508 11.958 11.958Z"
+                    fill="#637381"
+                  />
+                </svg>
+              </button>
+            </form>
+          </div>
+          <div class="px-4">
+            <nav>
+              <ul>
+                <h4
+                  class="font-semibold text-xs px-4 py-2 border-b uppercase text-gray-700"
+                >
+                  My Account
+                </h4>
+                <li>
+                  <a
+                    href="#"
+                    @click="page='profile'"
+                    :class="{'bg-slate-100':page=='profile'}"
+                    class="cursor-pointer relative mb-[2px] flex items-center rounded py-[10px] px-4 text-base font-medium text-body-color duration-200 hover:text-gray-700"
+                  >
+                    <span class="pr-[10px]">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="22"
+                        height="22"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          fill="#303030"
+                          d="M172 120a44 44 0 1 1-44-44a44.05 44.05 0 0 1 44 44Zm60 8A104 104 0 1 1 128 24a104.11 104.11 0 0 1 104 104Zm-16 0a88.09 88.09 0 0 0-91.47-87.93C77.43 41.89 39.87 81.12 40 128.25a87.65 87.65 0 0 0 22.24 58.16A79.71 79.71 0 0 1 84 165.1a4 4 0 0 1 4.83.32a59.83 59.83 0 0 0 78.28 0a4 4 0 0 1 4.83-.32a79.71 79.71 0 0 1 21.79 21.31A87.62 87.62 0 0 0 216 128Z"
+                        />
+                      </svg>
+                    </span>
+                    Profile
+                  </a>
+                </li>
+                <li>
+                  <a
+                    @click="page='order'"
+                    :class="{'bg-slate-100':page=='order'}"
+                    class="cursor-pointer relative mb-[2px] flex items-center rounded py-[10px] px-4 text-base font-medium text-body-color duration-200 hover:text-gray"
+                  >
+                    <span class="pr-[10px]">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="22"
+                        height="22"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          fill="#303030"
+                          d="M224 50H32a14 14 0 0 0-14 14v24a14 14 0 0 0 14 14h2v90a14 14 0 0 0 14 14h160a14 14 0 0 0 14-14v-90h2a14 14 0 0 0 14-14V64a14 14 0 0 0-14-14Zm-14 142a2 2 0 0 1-2 2H48a2 2 0 0 1-2-2v-90h164Zm16-104a2 2 0 0 1-2 2H32a2 2 0 0 1-2-2V64a2 2 0 0 1 2-2h192a2 2 0 0 1 2 2ZM98 136a6 6 0 0 1 6-6h48a6 6 0 0 1 0 12h-48a6 6 0 0 1-6-6Z"
+                        />
+                      </svg>
+                    </span>
+                    Orders
+                  </a>
+                </li>
+                <li>
+                  <a
+                    @click="page='address'"
+                    :class="{'bg-slate-100':page=='address'}"
+                    class="cursor-pointer relative mb-[2px] flex items-center rounded py-[10px] px-4 text-base font-medium text-body-color duration-200 hover:text-gray-700"
+                  >
+                    <span class="pr-[10px]">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="22"
+                        height="22"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          fill="#303030"
+                          d="M83.2 174.4A7.7 7.7 0 0 0 88 176a8 8 0 0 0 6.4-3.2a52 52 0 0 1 83.2 0a8.1 8.1 0 0 0 11.2 1.6a8 8 0 0 0 1.6-11.2a67.8 67.8 0 0 0-27.4-21.7a40 40 0 1 0-54 0a67.8 67.8 0 0 0-27.4 21.7a8 8 0 0 0 1.6 11.2ZM112 112a24 24 0 1 1 24 24a24.1 24.1 0 0 1-24-24Zm96-88H64a16 16 0 0 0-16 16v20H32a8 8 0 0 0 0 16h16v24H32a8 8 0 0 0 0 16h16v24H32a8 8 0 0 0 0 16h16v24H32a8 8 0 0 0 0 16h16v20a16 16 0 0 0 16 16h144a16 16 0 0 0 16-16V40a16 16 0 0 0-16-16Zm0 192H64V40h144Z"
+                        />
+                      </svg>
+                    </span>
+                    Address Book
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/wishlist"
+                    class="cursor-pointer relative mb-[2px] flex items-center justify-between rounded py-[10px] px-4 text-base font-medium text-body-color duration-200 hover:text-gray-700"
+                  >
+                    <span class="flex items-center">
+                      <span class="pr-[10px]">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="22"
+                          height="22"
+                          viewBox="0 0 256 256"
+                        >
+                          <path
+                            fill="#303030"
+                            d="M178 28c-20.09 0-37.92 7.93-50 21.56C115.92 35.93 98.09 28 78 28a66.08 66.08 0 0 0-66 66c0 72.34 105.81 130.14 110.31 132.57a12 12 0 0 0 11.38 0C138.19 224.14 244 166.34 244 94a66.08 66.08 0 0 0-66-66Zm-5.49 142.36a328.69 328.69 0 0 1-44.51 31.8a328.69 328.69 0 0 1-44.51-31.8C61.82 151.77 36 123.42 36 94a42 42 0 0 1 42-42c17.8 0 32.7 9.4 38.89 24.54a12 12 0 0 0 22.22 0C145.3 61.4 160.2 52 178 52a42 42 0 0 1 42 42c0 29.42-25.82 57.77-47.49 76.36Z"
+                          />
+                        </svg>
+                      </span>
+                      Wishlist
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <div class="py-4 mx-2 my-2 border-t border-stroke">
+          <div class="flex items-center justify-evenly">
+            <a
+              href="/signin?logout=true"
+              class="text-sm font-medium text-body-color hover:text-primary"
+            >
+              Log out
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="bg-gray-2 w-1/4 relative hidden md:block">
+      <div
+        class="flex w-full max-w-[280px] h-[90vh] flex-col justify-between border-r bg-white shadow-card"
+      >
+        <div>
+          <div class="px-4 my-8">
+            <nav>
+              <ul>
+                <h4
+                  class="font-semibold text-xs px-4 py-2 border-b uppercase text-gray-700"
+                >
+                  My Account
+                </h4>
+                <li>
+                  <a
+                    href="#"
+                    @click="page='profile'"
+                    :class="{'bg-slate-100':page=='profile'}"
+                    class="cursor-pointer relative mb-[2px] flex items-center rounded py-[10px] px-4 text-base font-medium text-body-color duration-200 hover:text-gray-700"
+                  >
+                    <span class="pr-[10px]">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="22"
+                        height="22"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          fill="#303030"
+                          d="M172 120a44 44 0 1 1-44-44a44.05 44.05 0 0 1 44 44Zm60 8A104 104 0 1 1 128 24a104.11 104.11 0 0 1 104 104Zm-16 0a88.09 88.09 0 0 0-91.47-87.93C77.43 41.89 39.87 81.12 40 128.25a87.65 87.65 0 0 0 22.24 58.16A79.71 79.71 0 0 1 84 165.1a4 4 0 0 1 4.83.32a59.83 59.83 0 0 0 78.28 0a4 4 0 0 1 4.83-.32a79.71 79.71 0 0 1 21.79 21.31A87.62 87.62 0 0 0 216 128Z"
+                        />
+                      </svg>
+                    </span>
+                    Profile
+                  </a>
+                </li>
+                <li>
+                  <a
+                    @click="page='order'"
+                    :class="{'bg-slate-100':page=='order'}"
+                    class="cursor-pointer relative mb-[2px] flex items-center rounded py-[10px] px-4 text-base font-medium text-body-color duration-200 hover:text-gray"
+                  >
+                    <span class="pr-[10px]">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="22"
+                        height="22"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          fill="#303030"
+                          d="M224 50H32a14 14 0 0 0-14 14v24a14 14 0 0 0 14 14h2v90a14 14 0 0 0 14 14h160a14 14 0 0 0 14-14v-90h2a14 14 0 0 0 14-14V64a14 14 0 0 0-14-14Zm-14 142a2 2 0 0 1-2 2H48a2 2 0 0 1-2-2v-90h164Zm16-104a2 2 0 0 1-2 2H32a2 2 0 0 1-2-2V64a2 2 0 0 1 2-2h192a2 2 0 0 1 2 2ZM98 136a6 6 0 0 1 6-6h48a6 6 0 0 1 0 12h-48a6 6 0 0 1-6-6Z"
+                        />
+                      </svg>
+                    </span>
+                    Orders
+                  </a>
+                </li>
+                <li>
+                  <a
+                    @click="page='address'"
+                    :class="{'bg-slate-100':page=='address'}"
+                    class="cursor-pointer relative mb-[2px] flex items-center rounded py-[10px] px-4 text-base font-medium text-body-color duration-200 hover:text-gray-700"
+                  >
+                    <span class="pr-[10px]">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="22"
+                        height="22"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          fill="#303030"
+                          d="M83.2 174.4A7.7 7.7 0 0 0 88 176a8 8 0 0 0 6.4-3.2a52 52 0 0 1 83.2 0a8.1 8.1 0 0 0 11.2 1.6a8 8 0 0 0 1.6-11.2a67.8 67.8 0 0 0-27.4-21.7a40 40 0 1 0-54 0a67.8 67.8 0 0 0-27.4 21.7a8 8 0 0 0 1.6 11.2ZM112 112a24 24 0 1 1 24 24a24.1 24.1 0 0 1-24-24Zm96-88H64a16 16 0 0 0-16 16v20H32a8 8 0 0 0 0 16h16v24H32a8 8 0 0 0 0 16h16v24H32a8 8 0 0 0 0 16h16v24H32a8 8 0 0 0 0 16h16v20a16 16 0 0 0 16 16h144a16 16 0 0 0 16-16V40a16 16 0 0 0-16-16Zm0 192H64V40h144Z"
+                        />
+                      </svg>
+                    </span>
+                    Address Book
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="/wishlist"
+                    class="cursor-pointer relative mb-[2px] flex items-center justify-between rounded py-[10px] px-4 text-base font-medium text-body-color duration-200 hover:text-gray-700"
+                  >
+                    <span class="flex items-center">
+                      <span class="pr-[10px]">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="22"
+                          height="22"
+                          viewBox="0 0 256 256"
+                        >
+                          <path
+                            fill="#303030"
+                            d="M178 28c-20.09 0-37.92 7.93-50 21.56C115.92 35.93 98.09 28 78 28a66.08 66.08 0 0 0-66 66c0 72.34 105.81 130.14 110.31 132.57a12 12 0 0 0 11.38 0C138.19 224.14 244 166.34 244 94a66.08 66.08 0 0 0-66-66Zm-5.49 142.36a328.69 328.69 0 0 1-44.51 31.8a328.69 328.69 0 0 1-44.51-31.8C61.82 151.77 36 123.42 36 94a42 42 0 0 1 42-42c17.8 0 32.7 9.4 38.89 24.54a12 12 0 0 0 22.22 0C145.3 61.4 160.2 52 178 52a42 42 0 0 1 42 42c0 29.42-25.82 57.77-47.49 76.36Z"
+                          />
+                        </svg>
+                      </span>
+                      Wishlist
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <div class="py-4 mx-2 my-2 border-t border-stroke">
+          <div class="flex items-center justify-evenly">
+            <a
+              href="/signin?logout=true"
+              class="text-sm font-medium text-body-color hover:text-primary"
+            >
+              Log out
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- right side  -->
+    <section class="body-content p-4 w-full flex-1">
+      <!-- Account Details -->
+      <form
+        action="/my_account"
+        method="post"
+        class="account-box w-full"
+        v-if="page=='profile'"
+      >
+        {% csrf_token %}
+        <h2 class="border-b text-2xl font-medium my-4 pb-2">Account Details</h2>
+        <div class="mb-4">
+          <label
+            for="ac_name"
+            class="mb-2 pl-2 block text-base font-medium text-black"
+          >
+            Name*
+          </label>
+          <input
+            name="name"
+            value="{{request.user.customer.name}}"
+            type="text"
+            placeholder="Your Name"
+            class="border-form-stroke text-body-color placeholder-body-color focus:border-primary active:border-primary w-full rounded-lg border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]"
+            id="ac_name"
+          />
+        </div>
+        <div class="mb-4">
+          <label
+            for="ac_phone"
+            class="mb-2 pl-2 block text-base font-medium text-black"
+          >
+            Phone*
+          </label>
+          <input
+            name="phone"
+            value="{{request.user.customer.phone}}"
+            type="text"
+            placeholder="012 3456 987"
+            class="border-form-stroke text-body-color placeholder-body-color focus:border-primary active:border-primary w-full rounded-lg border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]"
+            id="ac_phone"
+          />
+        </div>
+        <div class="mb-4">
+          <label
+            for="ac_email"
+            class="mb-2 pl-2 block text-base font-medium text-black"
+          >
+            Email*
+          </label>
+          <input
+            name="email"
+            value="{{request.user.customer.email}}"
+            type="email"
+            placeholder="test@mail.com"
+            class="border-form-stroke text-body-color placeholder-body-color focus:border-primary active:border-primary w-full rounded-lg border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]"
+            id="ac_email"
+          />
+        </div>
+        <div class="flex justify-end mt-4">
+          <button
+            type="submit"
+            class="bg-blue-700 inline-flex items-center justify-center rounded-md py-2 px-6 text-center text-base font-normal text-white hover:bg-opacity-90"
+          >
+            Save
+          </button>
+        </div>
+        <br />
+        <div class="password p-4 border rounded">
+          <div class="mb-4">
+            <label
+              for="ac_pass"
+              class="mb-2 pl-2 block text-base font-medium text-black"
+            >
+              Current Password*
+            </label>
+            <input
+              name="pass"
+              type="password"
+              placeholder="*****"
+              class="border-form-stroke text-body-color placeholder-body-color focus:border-primary active:border-primary w-full rounded-lg border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]"
+              id="ac_pass"
+            />
+          </div>
+          <div class="mb-4">
+            <label
+              for="ac_new_pass"
+              class="mb-2 pl-2 block text-base font-medium text-black"
+            >
+              New Password*
+            </label>
+            <input
+              name="pass1"
+              type="password"
+              placeholder="*****"
+              class="border-form-stroke text-body-color placeholder-body-color focus:border-primary active:border-primary w-full rounded-lg border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]"
+              id="ac_new_pass"
+            />
+          </div>
+          <div class="mb-4">
+            <label
+              for="ac_conf_pass"
+              class="mb-2 pl-2 block text-base font-medium text-black"
+            >
+              Confirm New Password*
+            </label>
+            <input
+              name="pass2"
+              type="password"
+              placeholder="*****"
+              class="border-form-stroke text-body-color placeholder-body-color focus:border-primary active:border-primary w-full rounded-lg border-[1.5px] py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]"
+              id="ac_conf_pass"
+            />
+          </div>
+        </div>
+        <div class="flex justify-end mt-4">
+          <button
+            type="submit"
+            class="bg-blue-700 inline-flex items-center justify-center rounded-md py-2 px-6 text-center text-base font-normal text-white hover:bg-opacity-90"
+          >
+            Save
+          </button>
+        </div>
+      </form>
+
+      <!-- Address Details -->
+      <div class="account-box" v-if="page=='address'">
+        <h2 class="border-b text-2xl font-medium my-4 pb-2">Address Book</h2>
+        <div class="">
+          <p>
+            The following addresses will be used on the checkout page by
+            default.
+          </p>
+          <div class="flex flex-col justify-between md:flex-row">
+            <div class="my-2 w-full md:w-2/4">
+              <h3 class="font-medium mb-2">Billing address</h3>
+              <button
+                class="bg-primary inline-flex items-center justify-center py-2 px-4 text-center text-base font-normal text-white hover:bg-opacity-90 lg:px-4 xl:px-4"
+              >
+                Add Address
+              </button>
+            </div>
+            <div class="my-2 w-full md:w-2/4">
+              <h3 class="font-medium mb-2">Shipping address</h3>
+              <p class="pb-2">
+                Lalon Shah mazar chewria Kushtia Illinois Lalon Shah mazar
+                chewria BD 7000
+              </p>
+              <button
+                class="bg-primary inline-flex items-center justify-center py-2 px-4 text-center text-base font-normal text-white hover:bg-opacity-90 lg:px-4 xl:px-4"
+              >
+                Add Address
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Order Details -->
+      <div class="account-box" v-if="page=='order'">
+        <h2 class="border-b text-2xl font-medium my-4 pb-2">Order Details</h2>
+        <section class="bg-gray-2 py-2 lg:py-2">
+          <div class="mx-auto lg:container">
+            <div class="rounded-lg bg-white shadow-card">
+              <div class="max-w-full overflow-x-auto">
+                <table class="w-full table-auto overflow-x-auto">
+                  <thead>
+                    <tr class="bg-[#F6F8FB]">
+                      <th class="w-[60px] py-3 pl-10 pr-4">
+                        <p
+                          class="w-max m-0 text-left text-base font-medium text-body-color"
+                        >
+                          Order ID
+                        </p>
+                      </th>
+                      <th class="min-w-[260px] py-3 pl-10 pr-4">
+                        <p
+                          class="text-left text-base font-medium text-body-color"
+                        >
+                          Date
+                        </p>
+                      </th>
+
+                      <th class="min-w-[250px] py-3 px-4">
+                        <p
+                          class="text-left text-base font-medium text-body-color"
+                        >
+                          Total
+                        </p>
+                      </th>
+
+                      <th class="min-w-[130px] py-3 px-4">
+                        <p
+                          class="text-left text-base font-medium text-body-color"
+                        >
+                          Status
+                        </p>
+                      </th>
+                    </tr>
+                  </thead>
+
+                  <tbody class="overflow-x-auto">
+                    {% for ord in orders %}
+                    <tr class="border-b border-stroke">
+                      <td class="py-5 px-4 w-[60px]">
+                        <p class="w-max text-base m-auto text-body-color">
+                          {{ord.id}}
+                        </p>
+                      </td>
+
+                      <td class="py-5 pl-10 pr-3">
+                        <div class="flex items-center space-x-4">
+                          <p class="text-base text-body-color">
+                            {{ord.created_at}}
+                          </p>
+                        </div>
+                      </td>
+
+                      <td class="py-5 px-4">
+                        <p class="text-base text-body-color">
+                          {{shop.currency}}{{ord.total}}
+                          <span class="bg-gray-200 px-2 rounded">Paid</span>
+                        </p>
+                      </td>
+
+                      <td class="py-5 px-4 flex gap-2">
+                        <p class="text-base text-body-color">{{ord.status}}</p>
+                        <a
+                          href="/tracking?tracking={{ord.id}}"
+                          class="text-indigo-600"
+                          >View</a
+                        >
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </section>
+</section>
+
+<script>
+  createApp({
+    data() {
+      return {
+        page: "profile",
+        barToggle: false,
+      };
+    },
+    delimiters: ["[[", "]]"],
+  }).mount("#my_account");
+</script>
+
+{% endblock %}

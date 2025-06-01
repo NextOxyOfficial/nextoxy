@@ -1,0 +1,297 @@
+{% extends "theme5/base.html" %}
+{% load static %}
+{% block title %}Bike{% endblock %}
+
+    {% block content %}
+    <script>
+        document.getElementById('navbar').classList.remove('static-mode')
+    </script>
+    <style scoped>
+        #navbar a{
+            color: white ;
+        }
+        #navbar a:hover{
+            color: black ;
+        }
+    </style>
+
+    <section class="py-4 bg-black text-white">
+        <!-- Hero Section -->
+        <section class="relative">
+            <div class="container mx-auto px-0 sm:my-20 my-10 sm:mt-auto mt-0 overflow-hidden">
+                <h6 class="absolute md:left-[50%] sm:left-[40%] left-[30%] top-[26%] translate-x-[-50%] translate-y-[-50%] md:text-[350px] text-[150px] font-bold text-slate-100/20">READY</h6>
+                <img class="absolute w-full left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]" src="{% static '/ecommerce/theme5/lines-2.png' %}" alt="" srcset="">
+                <svg class="absolute w-full left-[50%] sm:top-[-5%] top-[20%] translate-x-[-50%]" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1920 700" enable-background="new 0 0 1920 700" xml:space="preserve" class="mkdf-appear">
+                <path style="fill: none; stroke: rgb(255, 0, 0); stroke-miterlimit: 10; stroke-dasharray: 2236px; stroke-dashoffset: 0px;" d="M0,375.9c1.63-3.15,3.3-6.29,5.01-9.41c25.56-46.68,59.97-88.83,99.5-121.92
+                    c45.51-38.09,97.13-64.94,153.44-79.81c47.35-12.51,95.67-16.34,143.6-11.41c107.38,11.06,210.71,62.77,290.97,145.6 c20.82,21.39,41,45.95,60.51,69.71c20.05,24.41,40.78,49.64,62.73,72.18c33.83,34.74,66.53,59.51,98.16,83.47 c2.02,1.53,4.04,3.06,6.05,4.59c58.63,44.48,124.45,87.18,208.33,98.33c101.98,13.46,204.14-27.23,271.89-63.73 c34.1-18.47,67.87-40.03,100.53-60.87c32.01-20.44,65.12-41.57,98.39-59.69c17.71-9.56,36.45-18.75,57.31-28.09 c33.97-15.21,71.14-29.47,116.98-44.89c49.4-16.61,98.53-30.86,146.6-43.25"></path>
+                </svg>
+
+                <!-- rihal -->
+                <div class="carouselWrapper  rounded border-t border-black/10 py-5  md:py-10  dotsCircleNone">
+                    
+                <div class="swiper w-full" id="heroBanner">
+                        <div class="swiper-wrapper">
+
+
+                            <div class="wow fadeInRight swiper-slide max-w-[1200px] w-full flex-1 flex flex-col md:flex-row justify-center gap-1 relative px-10 sm:py-16 py-8 cursor-pointer h2-banner md:mt-[30px] sm:mt-[0px] " >
+                                <div class="relative max-w-2xl w-full flex justify-center items-center mt-16">
+                                    <img class="py-[30px] z-10 lg:h-[640px] mg:h-[490px] sm:h-[300]" src="{% static '/ecommerce/theme5/white_helmet.png' %}" alt="" srcset="">
+                                </div>
+                                <div class="flex flex-col justify-center flex-1 max-w-[600px]">
+                                <div>
+                                    <span class="text-primary font-bold uppercase" style="letter-spacing: 8px;">ADRENALINE</span>
+                                    <h1 class="sm:text-[70px] text-[56px] mt-1 mb-[19px] font-bold" style="line-height: 80px;">DYNAMIC RACING EXPERIENCE</h1>
+                                    <p class="my-[10px]">
+                                    Aliquam lorem ante, dapibus in, viverra quis, feugiat Phasellus viverra nulla ut metus varius laoreet srtrum aenean imperdiet. Etiam ultricies nisi vel augue.
+                                    </p>
+                                </div>
+                                <div class="flex font-bold cursor-pointer gap-1 items-center mt-[40px] bg-[#fd393f] w-max px-10 py-4 rounded">
+                                    <p class="uppercase">Call Us </p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M12.7 17.925q-.35.2-.625-.063T12 17.25L14.425 13H3q-.425 0-.713-.288T2 12q0-.425.288-.713T3 11h11.425L12 6.75q-.2-.35.075-.613t.625-.062l7.975 5.075q.475.3.475.85t-.475.85L12.7 17.925Z"/></svg>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key points -->
+        <section class="container mx-auto px-6">
+            <div class="my-10 flex gap-6 justify-center items-center flex-wrap wow fadeInUp">
+                <h2 class="text-dark mb-0 text-3xl font-bold sm:text-4xl md:text-[40px] editable text-right pr-6 border-r border-slate-500" id="secadsfww2">IMPROVE GENERAL <br> RIDEABILITY</h2>
+                <h6 class="text-[18px] font-semibold spacing-[40px] text-primary editable text" id="theme5-title-334cv34fffxc" style="letter-spacing: 10px;">SPECIFICATIONS</h6>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <div class="flex items-center gap-8">
+                    <div class="border border-slate-500/30 bg-slate-800/10 rounded-full flex items-center justify-center" data-percent="75" data-bar-color="#ed1d24" style="width: 160px; height: 160px; line-height: 160px;">
+                        <span class="text-[50px] font-bold text-primary">75%</span>
+                    </div>
+                    <div class="max-w-[200px]">
+                        <h4 class="text-[24px] font-bold mb-3" >max power</h4>
+                        <p class="mkdf-pc-text" style="color: #b2b2b2">Lorem ipsum dolor amet sociis dolor messa due.</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-8">
+                    <div class="border border-slate-500/30 bg-slate-800/10 rounded-full flex items-center justify-center" data-percent="75" data-bar-color="#ed1d24" style="width: 160px; height: 160px; line-height: 160px;">
+                        <span class="text-[50px] font-bold text-primary">75%</span>
+                    </div>
+                    <div class="max-w-[200px]">
+                        <h4 class="text-[24px] font-bold mb-3" >max power</h4>
+                        <p class="mkdf-pc-text" style="color: #b2b2b2">Lorem ipsum dolor amet sociis dolor messa due.</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-8">
+                    <div class="border border-slate-500/30 bg-slate-800/10 rounded-full flex items-center justify-center" data-percent="75" data-bar-color="#ed1d24" style="width: 160px; height: 160px; line-height: 160px;">
+                        <span class="text-[50px] font-bold text-primary">75%</span>
+                    </div>
+                    <div class="max-w-[200px]">
+                        <h4 class="text-[24px] font-bold mb-3" >max power</h4>
+                        <p class="mkdf-pc-text" style="color: #b2b2b2">Lorem ipsum dolor amet sociis dolor messa due.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Details -->
+        <section class="py-4 sm:mt-14 mt-2 relative overflow-hidden">
+            <!-- <img class="absolute w-[100vw] bg-cover left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%]" src="{% static '/ecommerce/theme5/lines-1.png' %}" alt="" srcset=""> -->
+            <div class="container mx-auto px-0">
+                <div class="flex-1 flex flex-col md:flex-row justify-between relative px-10 sm:py-16 py-8 cursor-pointer h2-banner overflow-hidden">
+                    <div class="flex flex-col justify-center flex-1 max-w-[490px]">
+                        <div>
+                            <span class="text-primary text-sm font-bold uppercase" style="letter-spacing: 8px;">ADRENALINE</span>
+                            <h1 class="text-[45px] mt-1 mb-[19px] font-bold" style="line-height: 50px;">DYNAMIC RACING EXPERIENCE</h1>
+                            <p class="my-[10px]">
+                            Aliquam lorem ante, dapibus in, viverra quis, feugiat Phasellus viverra nulla ut metus varius laoreet srtrum aenean imperdiet. Etiam ultricies nisi vel augue.
+                            </p>
+                        </div>
+                        <div class="flex font-bold cursor-pointer gap-1 items-center mt-[40px]">
+                            <p>READ MORE </p>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="currentColor" d="M12.7 17.925q-.35.2-.625-.063T12 17.25L14.425 13H3q-.425 0-.713-.288T2 12q0-.425.288-.713T3 11h11.425L12 6.75q-.2-.35.075-.613t.625-.062l7.975 5.075q.475.3.475.85t-.475.85L12.7 17.925Z"/></svg>
+                        </div>
+                    </div>
+                    <div class="relative flex-1 flex justify-center items-center">
+                        <img class="py-[30px] z-10" src="{% static '/ecommerce/theme5/white_helmet.png' %}" alt="" srcset="">
+                        <h6 class="absolute md:left-[50%] sm:left-[40%] left-[25%] top-[50%] translate-x-[-50%] translate-y-[-50%] sm:text-[350px] text-[150px] font-bold text-slate-100/20">READY</h6>
+                        <svg class="absolute w-[100vw] md:left-[50%] sm:left-[20%] top-[50%] translate-x-[-64%] translate-y-[-54%]" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1920 700" enable-background="new 0 0 1920 700" xml:space="preserve" class="mkdf-appear">
+                            <path style="fill: none; stroke: rgba(255, 0, 0, 0.397); stroke-miterlimit: 10; stroke-dasharray: 2236px; stroke-dashoffset: 0px;" d="M0,375.9c1.63-3.15,3.3-6.29,5.01-9.41c25.56-46.68,59.97-88.83,99.5-121.92
+                            c45.51-38.09,97.13-64.94,153.44-79.81c47.35-12.51,95.67-16.34,143.6-11.41c107.38,11.06,210.71,62.77,290.97,145.6 c20.82,21.39,41,45.95,60.51,69.71c20.05,24.41,40.78,49.64,62.73,72.18c33.83,34.74,66.53,59.51,98.16,83.47 c2.02,1.53,4.04,3.06,6.05,4.59c58.63,44.48,124.45,87.18,208.33,98.33c101.98,13.46,204.14-27.23,271.89-63.73 c34.1-18.47,67.87-40.03,100.53-60.87c32.01-20.44,65.12-41.57,98.39-59.69c17.71-9.56,36.45-18.75,57.31-28.09 c33.97-15.21,71.14-29.47,116.98-44.89c49.4-16.61,98.53-30.86,146.6-43.25"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Review Slider -->
+        <section class="mx-auto max-w-[1870px] px-4 md:px-6 lg:px-8 2xl:px-20 relative">
+            <div class="mb-8 lg:mb-12">
+                <div class="review-container max-w-4xl mx-auto">
+                    <div class="carouselWrapper  rounded border-t border-black/10 py-5  md:py-10  dotsCircleNone">
+                        <div class="swiper w-full" id="review-container">
+                            <div class="swiper-wrapper sm:h-auto h-">
+                                <div class="wow fadeInRight swiper-slide hover:border-primary items-center justify-center rounded-full max-w-[100%] m-auto ">
+                                    <a href="#" data-wow-delay="{{forloop.counter}}00ms">
+                                      <img  src="https://grandprix.qodeinteractive.com/wp-content/uploads/2019/09/h1-testimonials-img-1.png" alt="image" class=" h-20 object-cover m-auto"/>
+                                    </a>
+                                    <h3 class="text-center sm:text-5xl text-3xl mt-6 font-bold">
+                                        Aliquam ex lorem, congue nec lacus eget, vehicula placerat augue. Aliquam libero velit, imperdiet vel lorem sit amet, consequat.
+                                    </h3>
+                                    <div class="mt-5">
+                                        <p class="text-primary text-center font-semibold">Offical Rider</p>
+                                        <h4 class="font-bold uppercase text-center text-lg">Rihal Ahmed</h4>
+                                    </div>
+                                </div>
+                                <div class="wow fadeInRight swiper-slide hover:border-primary items-center justify-center rounded-full max-w-[100%] m-auto">
+                                    <a href="#" data-wow-delay="{{forloop.counter}}00ms">
+                                      <img  src="https://grandprix.qodeinteractive.com/wp-content/uploads/2019/09/h1-testimonials-img-1.png" alt="image" class=" h-20 object-cover m-auto"/>
+                                    </a>
+                                    <h3 class="text-center sm:text-5xl text-3xl mt-6 font-bold">
+                                        Aliquam ex lorem, congue nec lacus eget, vehicula placerat augue. Aliquam libero velit, imperdiet vel lorem sit amet, consequat.
+                                    </h3>
+                                    <div class="mt-5">
+                                        <p class="text-primary text-center font-semibold">Offical Rider</p>
+                                        <h4 class="font-bold uppercase text-center text-lg">Rihal Ahmed</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-prev absolute sm:left-36 left-6 text-white font-bold"></div>
+                    <div class="swiper-button-next absolute sm:right-36 right-6 text-white font-bold"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video player  -->
+        <section class="m-auto container m-auto mt-[80px]">
+            <div class="editable image" id="theme5-image-23fdn33">
+                <img class="h-[650px] w-full rounded object-cover" src="{% static '/ecommerce/theme5/bikebanner.png' %}" alt="">
+            </div>
+        </section>
+        
+        <!-- Feature Points -->
+        <section class="container m-auto px-4">
+            <div class="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 sm:gap-4 gap-0">
+                <div class="flex gap-6 items-start sm:mt-20 mt-8">
+                    <img class="w-10 h-10 object-contain" src="/static/ecommerce/theme5/iconone.png" alt="">
+                    <div>
+                        <h2 class="text-white text-3xl font-semibold uppercase hover:text-red-500 editable text" id="theme5-title-34r23e23dcvc">New Standards</h2>
+                        <p class="mt-4 text-gray-300 editable text" id="theme5-title-34r23ec324vv">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat blanditiis iusto, a quae culpa dolor praesentium </p>
+                    </div>
+                </div>
+                <div class="flex gap-6 items-start sm:mt-20 mt-8">
+                    <img class="w-10 h-10 object-contain" src="/static/ecommerce/theme5/icontwo.png" alt="">
+                    <div>
+                        <h2 class="text-white text-3xl font-semibold uppercase hover:text-red-500 editable text" id="theme5-title-34r2332v2322">New Standards</h2>
+                        <p class="mt-4 text-gray-300 editable text" id="theme5-title-34r2332dfdx">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat blanditiis iusto, a quae culpa dolor praesentium </p>
+                    </div>
+                </div>
+                <div class="flex gap-6 items-start sm:mt-20 mt-8">
+                    <img class="w-10 h-10 object-contain" src="/static/ecommerce/theme5/iconthree.png" alt="">
+                    <div>
+                        <h2 class="text-white text-3xl font-semibold uppercase hover:text-red-500 editable text" id="theme5-title-334cvx332dfdx">New Standards</h2>
+                        <p class="mt-4 text-gray-300 editable text" id="theme5-title-34r2332231jhihx">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat blanditiis iusto, a quae culpa dolor praesentium </p>
+                    </div>
+                </div>
+                <div class="flex gap-6 items-start sm:mt-20 mt-8">
+                    <img class="w-10 h-10 object-contain" src="/static/ecommerce/theme5/iconfour.png" alt="">
+                    <div>
+                        <h2 class="text-white text-3xl font-semibold uppercase hover:text-red-500 editable text" id="theme5-title-34r23ec324vv23df">New Standards</h2>
+                        <p class="mt-4 text-gray-300 editable text" id="theme5-title-34r23ec324vv54sd">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat blanditiis iusto, a quae culpa dolor praesentium </p>
+                    </div>
+                </div>
+                <div class="flex gap-6 items-start sm:mt-20 mt-8">
+                    <img class="w-10 h-10 object-contain" src="/static/ecommerce/theme5/iconfive.png" alt="">
+                    <div>
+                        <h2 class="text-white text-3xl font-semibold uppercase hover:text-red-500 editable text" id="theme5-title-34r432sdjfgvv32sdfhn">New Standards</h2>
+                        <p class="mt-4 text-gray-300 editable text" id="theme5-title-34r4jfgvv343dfd22sdfhn">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat blanditiis iusto, a quae culpa dolor praesentium </p>
+                    </div>
+                </div>
+                <div class="flex gap-6 items-start sm:mt-20 mt-8">
+                    <img class="w-10 h-10 object-contain" src="/static/ecommerce/theme5/iconsix.png" alt="">
+                    <div>
+                        <h2 class="text-white text-3xl font-semibold uppercase hover:text-red-500 editable text" id="theme5-title-34r23ec32432sdvv">New Standards</h2>
+                        <p class="mt-4 text-gray-300 editable text" id="theme5-title-34r23ec32fgc34vv">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat blanditiis iusto, a quae culpa dolor praesentium </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Product grid  -->
+        <section class="container m-auto mt-20 overflow-hidden">
+            <div class="container mx-auto px-0">
+                <div class="flex-1 flex flex-col md:flex-row justify-between relative px-10 py-16 cursor-pointer h2-banner overflow-hidden">
+                    <div class="relative flex-1 flex justify-center items-center md:max-w-[68%] max-w-[100%]">
+                        <img class="py-[30px] sm:h-[628px] h-[200px] w-full z-10 object-contain" src="{% static '/ecommerce/theme5/healmat1.png' %}" alt="" srcset="">
+                        <h6 class="absolute md:left-[50%] sm:left-[40%] left-[25%] top-[50%] translate-x-[-50%] translate-y-[-50%] sm:text-[350px] text-[150px] font-bold text-slate-100/20">READY</h6>
+                        <svg class="absolute w-[100vw] left-[50%] top-[50%] translate-x-[-64%] translate-y-[-54%]" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1920 700" enable-background="new 0 0 1920 700" xml:space="preserve" class="mkdf-appear">
+                        <path class="z-[-10]" style="fill: none; stroke: rgba(255, 0, 0, 0.397); stroke-miterlimit: 10; stroke-dasharray: 2236px; stroke-dashoffset: 0px;" d="M0,375.9c1.63-3.15,3.3-6.29,5.01-9.41c25.56-46.68,59.97-88.83,99.5-121.92
+                            c45.51-38.09,97.13-64.94,153.44-79.81c47.35-12.51,95.67-16.34,143.6-11.41c107.38,11.06,210.71,62.77,290.97,145.6 c20.82,21.39,41,45.95,60.51,69.71c20.05,24.41,40.78,49.64,62.73,72.18c33.83,34.74,66.53,59.51,98.16,83.47 c2.02,1.53,4.04,3.06,6.05,4.59c58.63,44.48,124.45,87.18,208.33,98.33c101.98,13.46,204.14-27.23,271.89-63.73 c34.1-18.47,67.87-40.03,100.53-60.87c32.01-20.44,65.12-41.57,98.39-59.69c17.71-9.56,36.45-18.75,57.31-28.09 c33.97-15.21,71.14-29.47,116.98-44.89c49.4-16.61,98.53-30.86,146.6-43.25"></path>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col justify-center flex-1 md:max-w-[38%] max-w-[100%]">
+                        <div class="border border-gray-900 grid grid-cols-2 z-10">
+                            <div class="bg-black border border-gray-800 p-2">
+                                <img src="{% static '/ecommerce/theme5/healmat4.png' %}" alt="">
+                            </div>
+                            <div class="bg-black border border-gray-800 p-2">
+                                <img src="{% static '/ecommerce/theme5/healmat1.png' %}" alt="">
+                            </div>
+                            <div class="bg-black border border-gray-800 p-2">
+                                <img src="{% static '/ecommerce/theme5/healmat3.png' %}" alt="">
+                            </div>
+                            <div class="bg-black border border-gray-800 p-2">
+                                <img src="{% static '/ecommerce/theme5/healmat1.png' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timer -->
+        <section class="container m-auto my-14 px-4">
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-2 max-w-[900px] w-full m-auto">
+                <div class="w-[50%]">
+                    <h1 class="text-[45px] w-auto sm:text-right text-center mt-1 mb-[19px] font-bold sm:pr-8 pr-auto editable text" id="theme5-title-34dmndcj767" style="line-height: 50px;">IMPROVE GENERAL RIDEABILITY</h1>
+                </div>
+                <div class="h-40 w-[1px] bg-gray-400 sm:flex hidden"></div>
+                <div class="w-[50%]">
+                    <span class="text-primary text-[15px] font-bold uppercase pl-8 pr-20 w-full editable text" id="theme5-title-34dmndcj76723s" style="letter-spacing: 8px;">PERFORMANCE</span>
+                </div>
+            </div>
+            <div class="flex flex-wrap justify-between w-full mt-10">
+                <div class="border border-gray-500 rounded px-10 py-6 sm:max-w-[290px] max-w-[100%] w-full h-auto">
+                    <span class="text-primary text-left text-[15px] font-bold uppercase sm:block flex justify-center" style="letter-spacing: 8px;">Months</span>
+                    <h1 class="font-bold text-8xl sm:text-left text-center">03</h1>
+                </div>
+                <div class="border border-gray-500 rounded px-10 py-6 sm:max-w-[290px] max-w-[100%] w-full h-auto">
+                    <span class="text-primary text-left text-[15px] font-bold uppercase sm:block flex justify-center" style="letter-spacing: 8px;">Days</span>
+                    <h1 class="font-bold text-8xl sm:text-left text-center">03</h1>
+                </div>
+                <div class="border border-gray-500 rounded px-10 py-6 sm:max-w-[290px] max-w-[100%] w-full h-auto">
+                    <span class="text-primary text-left text-[15px] font-bold uppercase sm:block flex justify-center" style="letter-spacing: 8px;">Hours</span>
+                    <h1 class="font-bold text-8xl sm:text-left text-center">03</h1>
+                </div>
+                <div class="border border-gray-500 rounded px-10 py-6 sm:max-w-[290px] max-w-[100%] w-full h-auto">
+                    <span class="text-primary text-left text-[15px] font-bold uppercase sm:block flex justify-center" style="letter-spacing: 8px;">Minutes</span>
+                    <h1 class="font-bold text-8xl sm:text-left text-center">03</h1>
+                </div>
+                <div class="border border-gray-500 rounded px-10 py-6 sm:max-w-[290px] max-w-[100%] w-full h-auto">
+                    <span class="text-primary text-left text-[15px] font-bold uppercase sm:block flex justify-center" style="letter-spacing: 8px;">Seconds</span>
+                    <h1 class="font-bold text-8xl sm:text-left text-center">03</h1>
+                </div>
+            </div>
+        </section>
+    </section>
+
+<script>
+    
+</script>    
+
+{% endblock %}

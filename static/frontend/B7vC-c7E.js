@@ -1,0 +1,1 @@
+import{X as e,L as s,Y as a}from"./BVIp9nla.js";const t={class:"mx-auto w-full max-w-screen-xl my-5 min-h-[70vh]"},o=a("div",null,"aaaaas",-1),n=[o],i={__name:"index",props:{something:Number},setup(c){return(_,r)=>(s(),e("div",t,n))}};export{i as default};

@@ -1,0 +1,280 @@
+{% load static %}
+<div class="bg-[#AED6DC]" id="footer">
+  <div
+    class="container mx-auto py-6 px-4 flex items-center justify-between gap-5"
+  >
+    <div class="hidden flex-1 md:flex items-center gap-5">
+      <img src="{% static '/ecommerce/news.png' %}" alt="" />
+      <div>
+        <p class="text-3xl font-bold text-black uppercase">NewsLetter</p>
+        <p class="text-md text-black">
+          Signup Our newsletter And get latest updates!
+        </p>
+      </div>
+    </div>
+    <div class="flex-1 flex items-center gap-4">
+      <input
+        class="w-full px-6 py-2 focus:outline-none"
+        type="text"
+        placeholder="Your Email Address"
+        name=""
+        id=""
+        v-model="subscribeEmail"
+      />
+      <button
+        @click="subscribe"
+        type="submit"
+        class="text-white px-3 py-2 rounded bg-[#333] hover:bg-white uppercase hover:text-black transition duration-300 ease-in-out"
+      >
+        <span v-if="subscribed">Subscribed!</span>
+        <span v-else>Subscribe</span>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="bg-[#EEC6C9] text-black">
+  <div
+    class="container mx-auto md:flex flex-wrap gap-6 justify-between py-6 px-4"
+  >
+    <div class="basis-0 grow-2 min-w-[250px] my-4">
+      {% if shop.logo %}
+      <a href="#"
+        ><img class="bg-white max-h-[45px]" src="{{shop.logo.url}}" alt="logo"
+      /></a>
+      {% else %}
+      <a href="#">
+        <img
+          class="bg-white max-h-[45px]"
+          src="{% static '/ecommerce/logo.png' %}"
+          alt="logo"
+        />
+      </a>
+      {% endif %}
+
+      <p
+        class="text-justify text-sm py-4 editable text"
+        id="footerid@oifuasio#234"
+      >
+        Welcome to our online shop! We are dedicated to providing you with a
+        seamless shopping experience. Our extensive range of high-quality
+        products is carefully curated to cater to your needs
+      </p>
+      <div class="flex items-center gap-2">
+        {% for social in socials%}
+        <a
+          class="bg-[#333] rounded p-2 leading-10 text-center hover:bg-[#27ae61]"
+          href="{{social.link}}"
+          target="_blank"
+        >
+          <img
+            class="w-6 h-6 object-contain m-auto"
+            src="{{social.image.url}}"
+            alt=""
+            srcset=""
+          />
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="basis-0 grow min-w-[180px]">
+      <h3
+        class="link-title text-white btn1 font-bold flex items-center justify-between mb-2"
+        onclick="link1()"
+      >
+        Useful Links <i class="fa-solid fa-plus plus1 md:hidden"></i>
+        <i class="fa-solid fa-minus minus1 hidden"></i>
+      </h3>
+      <div class="w-8 h-0.5 mb-2 hidden md:block bg-[#000]"></div>
+      <ul class="hidden md:block" id="link1">
+        {% for menu in footer_menu %}
+        <li class="hover:ml-2 transition-all delay-100">
+          <a href="/page/{{menu.link}}">{{menu.name}}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="basis-0 grow min-w-[180px]">
+      <h3
+        class="link-title font-bold flex items-center justify-between mb-2 text-white"
+        onclick="link2()"
+      >
+        Category <i class="fa-solid fa-plus plus2 md:hidden"></i>
+        <i class="fa-solid fa-minus minus2 hidden"></i>
+      </h3>
+      <div class="w-8 h-0.5 mb-2 hidden md:block bg-[#000]"></div>
+      <ul class="hidden md:block" id="link2">
+        {% for sec in sections %}
+        <li class="hover:ml-2 transition-all delay-100">
+          <a href="{{sec.id}}">{{sec.name}}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="basis-0 grow min-w-[180px]">
+      <h3
+        onclick="link3()"
+        class="link-title font-bold flex items-center justify-between mb-2 text-white"
+      >
+        My Account <i class="fa-solid fa-plus plus3 md:hidden"></i>
+        <i class="fa-solid fa-minus minus3 hidden"></i>
+      </h3>
+      <div class="w-8 h-0.5 mb-2 hidden md:block bg-[#000]"></div>
+      <ul class="hidden md:block" id="link3">
+        <li class="hover:ml-2 transition-all delay-100">
+          <a href="/my_account">My Account</a>
+        </li>
+        <li class="hover:ml-2 transition-all delay-100">
+          <a href="/wishlist">Wish List</a>
+        </li>
+        <li class="hover:ml-2 transition-all delay-100">
+          <a href="/cart">My Cart</a>
+        </li>
+        <li class="hover:ml-2 transition-all delay-100">
+          <a href="/tracking">Order Tracking</a>
+        </li>
+      </ul>
+    </div>
+    <div class="basis-0 grow min-w-[180px]">
+      <h3
+        class="link-title font-bold flex items-center justify-between mb-2 text-white"
+        onclick="link4()"
+      >
+        Contact Info <i class="fa-solid fa-plus plus4 md:hidden"></i>
+        <i class="fa-solid fa-minus minus4 hidden"></i>
+      </h3>
+      <div class="w-8 h-0.5 mb-2 hidden md:block bg-[#000]"></div>
+      <div class="hidden md:block" id="link4" class="div">
+        <p>
+          <i class="fa-solid fa-location-dot"></i> {{shop.street}} {{shop.city}}
+          {{shop.state}} {{shop.zip_code}} {{shop.country}}
+        </p>
+        <p><i class="fa-solid fa-envelope"></i> {{shop.email}}</p>
+        <p><i class="fa-solid fa-location-dot"></i> {{shop.phone}}</p>
+      </div>
+    </div>
+  </div>
+  <!-- payments card -->
+  <div class="container mx-auto px-4">
+    <div class="md:flex items-center justify-center gap-5">
+      {% if shop.android_app_link or shop.ios_app_link %}
+      <div class="flex items-center justify-center md:justify-between gap-5">
+        <p class="uppercase text-xl font-bold hidden lg:block">
+          Download Our App
+        </p>
+        <div class="flex items-center gap-3">
+          {% if shop.ios_app_link %}
+          <a href="{{shop.ios_app_link}}"
+            ><img
+              class="max-h-[40px]"
+              src="/static/ecommerce/other/ios.png"
+              alt=""
+          /></a>
+          {% endif %} {% if shop.android_app_link %}
+          <a href="{{shop.android_app_link}}"
+            ><img
+              class="max-h-[40px]"
+              src="/static/ecommerce/other/android.png"
+              alt=""
+          /></a>
+          {% endif %}
+        </div>
+      </div>
+
+      {% endif %} {% if shop.payment_image %}
+      <div class="flex items-center justify-center">
+        <img
+          class="flex items-center justify-center max-h-[35px] object-contain"
+          src="{{ shop.payment_image.url }}"
+          alt=""
+        />
+      </div>
+      {% else %}
+      <div class="flex items-center justify-center">
+        <img
+          class="flex items-center justify-center max-h-[35px] object-contain"
+          src="/static/ecommerce/other/payment.png"
+          alt=""
+        />
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  <p class="text-center pt-4 pb-6 editable text" id="footereditoxy#234ewr">
+    myshop© 2024
+  </p>
+</div>
+
+<script>
+  // ==========footer link toggle=========
+  function link1() {
+    var link1 = document.getElementById("link1");
+    var plus1 = document.querySelector(".plus1");
+    var minus1 = document.querySelector(".minus1");
+
+    link1.classList.toggle("hidden");
+    plus1.classList.toggle("hidden");
+    minus1.classList.toggle("hidden");
+  }
+  function link2() {
+    var link2 = document.getElementById("link2");
+    var plus2 = document.querySelector(".plus2");
+    var minus2 = document.querySelector(".minus2");
+
+    link2.classList.toggle("hidden");
+    plus2.classList.toggle("hidden");
+    minus2.classList.toggle("hidden");
+  }
+  function link3() {
+    var link3 = document.getElementById("link3");
+    var plus3 = document.querySelector(".plus3");
+    var minus3 = document.querySelector(".minus3");
+
+    link3.classList.toggle("hidden");
+    plus3.classList.toggle("hidden");
+    minus3.classList.toggle("hidden");
+  }
+  function link4() {
+    var link4 = document.getElementById("link4");
+    var plus4 = document.querySelector(".plus4");
+    var minus4 = document.querySelector(".minus4");
+
+    link4.classList.toggle("hidden");
+    plus4.classList.toggle("hidden");
+    minus4.classList.toggle("hidden");
+  }
+</script>
+<script>
+  createApp({
+    data() {
+      return {
+        store: store,
+        subscribeEmail: "",
+        subscribed: false,
+      };
+    },
+    delimiters: ["[[", "]]"],
+
+    methods: {
+      subscribe() {
+        if (this.subscribeEmail) {
+          fetch("/api/subscribe", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: this.subscribeEmail,
+            }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              this.subscribed = true;
+            })
+            .catch((error) => console.error(error));
+        }
+      },
+    },
+  })
+    .use(store)
+    .mount("#footer");
+</script>

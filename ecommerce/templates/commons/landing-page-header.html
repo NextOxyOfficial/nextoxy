@@ -1,0 +1,138 @@
+{% load static %}
+<header class="bg-[#2a2a2a] text-white" id="header">
+  <div
+    class="container max-w-7xl px-2 md:px-4 py-5 mx-auto flex justify-between items-center"
+  >
+    {% if shop.logo %}
+    <a href="/" class="block w-full py-5 lg:py-3 max-w-[90px] md:max-w-[120px]"
+      ><img src="{{shop.logo.url}}" alt="logo" class="w-full"
+    /></a>
+    {% else %}
+    <a class="max-w-[90px] md:max-w-[120px]" href="/"
+      ><img src="{% static '/ecommerce/logo.png' %}" alt="logo" class="w-full"
+    /></a>
+    {% endif %}
+    <nav class="hidden md:block">
+      <ul class="flex gap-5 text-white">
+        {% for menu in main_menu %}
+        <li>
+          <a
+            href="/page/{{menu.link}}"
+            class="text-dark hover:text-primary flex justify-between py-2 text-base font-medium lg:mx-5 lg:inline-flex lg:py-6 2xl:mx-6"
+          >
+            {{menu.name}}
+          </a>
+        </li>
+        {% endfor %}
+        <!-- <li>
+          <a
+            class="text-lg"
+            href="#contact"
+            @click.prevent="scrollToSection('contact')"
+            >Contact</a
+          >
+        </li> -->
+      </ul>
+    </nav>
+    <button
+      class="bg-black text-white px-10 py-2 text-lg hidden md:block"
+      @click.prevent="scrollToSection('appointment')"
+    >
+      Get Appointment
+    </button>
+    <button class="md:hidden" @click="toggleMobileMenu">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-6 h-6"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3.75 5.25h16.5m-16.5 7.5h16.5m-16.5 7.5h16.5"
+        />
+      </svg>
+    </button>
+  </div>
+  <div v-if="mobileMenuOpen" class="md:hidden">
+    <ul class="flex flex-col items-center gap-5 text-white">
+      <li>
+        <a class="text-lg" href="#home" @click.prevent="scrollToSection('home')"
+          >Home</a
+        >
+      </li>
+      <li>
+        <a
+          class="text-lg"
+          href="#about"
+          @click.prevent="scrollToSection('about')"
+          >About</a
+        >
+      </li>
+      <li>
+        <a
+          class="text-lg"
+          href="#services"
+          @click.prevent="scrollToSection('services')"
+          >Services</a
+        >
+      </li>
+      <li>
+        <a
+          class="text-lg"
+          href="#gallery"
+          @click.prevent="scrollToSection('gallery')"
+          >Gallery</a
+        >
+      </li>
+      <li>
+        <a
+          class="text-lg"
+          href="#review"
+          @click.prevent="scrollToSection('review')"
+          >Review</a
+        >
+      </li>
+      <li>
+        <a class="text-lg" href="#faq" @click.prevent="scrollToSection('faq')"
+          >FAQ</a
+        >
+      </li>
+      <li>
+        <a class="text-lg" href="#contact" @click="scrollToSection('contact')"
+          >Contact</a
+        >
+      </li>
+    </ul>
+    <div class="px-4 mb-5 md:px-0 md:mb-0">
+      <button class="bg-black text-white px-10 py-2 text-lg mt-4 w-full">
+        Get Appointment
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  Vue.createApp({
+    data() {
+      return {
+        mobileMenuOpen: false,
+      };
+    },
+    methods: {
+      toggleMobileMenu() {
+        this.mobileMenuOpen = !this.mobileMenuOpen;
+      },
+      scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+          this.mobileMenuOpen = false; // Close the mobile menu after clicking a link
+        }
+      },
+    },
+  }).mount("header");
+</script>

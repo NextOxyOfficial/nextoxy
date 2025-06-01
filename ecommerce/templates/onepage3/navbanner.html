@@ -1,0 +1,101 @@
+<section>
+    <div>
+        <div class="from-orange-500 to-orange-400 w-full bg-gradient-to-r py-3">
+            <div class="container mx-auto">
+            <div class="relative w-full">
+                <p class="text-center text-sm font-medium text-white editable text" id="onepage3-navbanner-sookoekimnheaderosojej">50% Flat Discount on TailGrids UI - Grab it Now!</p>
+            </div>
+            </div>
+        </div>
+        <header class="header flex w-full items-center bg-white" id="navbar">
+            <div class="container mx-auto">
+            <div class="relative flex items-center justify-between">
+                <div class="w-60 max-w-full px-4">
+                {% if shop.logo %}
+                <a href="/" class="block w-full">
+                    <img src="{{shop.logo.url}}" alt="logo" class="w-full h-16 object-contain" />
+                </a>
+                {% else %}
+                <img src="/static/ecommerce/logo.png" alt="">
+                {% endif %}
+                </div>
+                <div class="flex w-full items-center justify-between px-4">
+                <div class="w-full">
+                    <button @click="navbarOpen = !navbarOpen" :class="navbarOpen && 'navbarTogglerActive' " id="navbarToggler" class="ring-secondary absolute right-4 top-1/2 block -translate-y-1/2 rounded-lg px-3 py-[6px] focus:ring-2 lg:hidden">
+                    <span class="bg-body-color relative my-[6px] block h-[2px] w-[30px]"></span>
+                    <span class="bg-body-color relative my-[6px] block h-[2px] w-[30px]"></span>
+                    <span class="bg-body-color relative my-[6px] block h-[2px] w-[30px]"></span>
+                    </button>
+                    <nav :class="!navbarOpen && 'hidden' " id="navbarCollapse" class="lg:flex hidden absolute right-4 top-full w-full max-w-[250px] justify-center rounded-lg bg-white px-6 py-5 shadow lg:static lg:flex lg:w-full lg:max-w-full lg:bg-transparent lg:py-0 lg:shadow-none">
+                    <ul class="block lg:flex">
+                        {% for menu in main_menu %}
+                        <li>
+                        <a href="/page/{{menu.link}}" class="text-dark capitalize hover:text-secondary flex py-2 text-base font-medium lg:mx-6 lg:inline-flex lg:py-6"> {{menu.link}} </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    </nav>
+                </div>
+                <div class="hidden justify-end pr-16 sm:flex lg:pr-0">
+                    <div class="flex justify-end">
+                    <a id="onepage3-nav-1ljkn342j334" href="#prod-container" class="border-secondary text-secondary hover:bg-secondary inline-block whitespace-nowrap rounded-md border px-6 py-2 text-base font-medium transition editable link"> Order Now </a>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </header>
+    </div>
+</section>
+
+
+<style scoped>
+.header{
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+    border-bottom: 1px solid #dddddd5d;
+}
+.header.sticky {
+    position: fixed;
+    top: 0px;
+    z-index: 99999;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    margin: 0px;
+    width: 100%;
+    max-width: 100%;
+}
+.header.sticky .header-wapper{
+    max-width: 1536px;
+    margin: auto;
+}
+.menubox.active {
+    position: fixed;
+    display: block !important;
+    padding: 10px;
+    border-radius: 3px;
+    top: 55px;
+    left: 0px;
+    height: max-content;
+    transition: all 4s ease-in-out 1s;
+}
+</style>
+  
+<script>
+    window.onscroll = function() {stickyHeader()};
+
+    var header = document.getElementById("navbar");
+    var sticky = header.offsetTop;
+
+    function stickyHeader() {
+    if (window.pageYOffset > sticky) {
+        header.classList.add("sticky");
+    } else {
+        header.classList.remove("sticky");
+    }
+    }
+    const menuButton = document.getElementById('menubtn');
+    const menuBox = document.getElementById('menulist');
+
+    menuButton.onclick = function () {
+    menuBox.classList.toggle('active');
+    }
+</script>

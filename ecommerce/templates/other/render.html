@@ -1,0 +1,72 @@
+<div class="render hidden" id="render"></div>
+
+<script>
+  const render = Vue.createApp({
+    data() {
+      return {
+        content: "",
+      };
+    },
+    delimiters: ["[[", "]]"],
+    mounted() {
+      this.getContent();
+    },
+    methods: {
+      renderEdit() {
+        // loop this function every 2 sec and log 123
+        setTimeout(() => {
+          this.renderEdit();
+        }, 1000);
+        if (!this.content) {
+          this.getContent();
+          return;
+        }
+        this.content.forEach((content) => {
+          var element = document.getElementById(content.id);
+          if (!element || element.classList.contains("updated")) {
+            return;
+          }
+          if (
+            content.type == "text" &&
+            content.id &&
+            document.getElementById(content.id)
+          ) {
+            element.innerText = content.text;
+          } else if (
+            content.type == "link" &&
+            content.id &&
+            document.getElementById(content.id)
+          ) {
+            element.innerText = content.text;
+            element.setAttribute("href", content.link);
+          } else if (
+            content.type == "youtube" &&
+            content.id &&
+            document.getElementById(content.id)
+          ) {
+            let editableYoutubeIframe = element.querySelector("iframe");
+            editableYoutubeIframe.setAttribute("src", content.link);
+          } else if (content.type == "image" && content.id) {
+            var wrapper = document.getElementById(content.id);
+            wrapper.querySelector("img").setAttribute("src", content.image);
+          }
+          element.classList.add("updated");
+        });
+      },
+      getContent() {
+        fetch("/api/editor", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            this.content = data;
+            this.renderEdit();
+          })
+          .catch((error) => console.error(error));
+      },
+    },
+  }).mount("#render");
+</script>

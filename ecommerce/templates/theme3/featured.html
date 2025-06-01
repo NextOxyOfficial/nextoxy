@@ -1,0 +1,223 @@
+<div class="mx-auto max-w-[1870px] px-4 md:px-6 lg:px-8 2xl:px-20" id="feature-product">
+  
+  <div class="relative mb-8">
+    <div class="mb-5 md:mb-6">
+      <div class="mb-0 block-title">
+        <h2 class="text-skin-base text-[20px] xl:text-[20px] font-medium xl:leading-8">
+          <div class="editable text relative" id="featured_weruew12">Featured Products</div>
+        </h2>
+      </div>
+    </div>
+    <div id="product-swiper" class="swiper w-full">
+      <div class="swiper-wrapper w-full">
+        {% for prod in feature_products %}
+        <div class="swiper-slide wow fadeInRight" data-wow-delay="{{forloop.counter}}00ms">
+          <article
+            class="flex flex-col product-card relative card-image--jump px-2 sm:px-3 h-full"
+            title="Fog Linen Chambray Towel - Beige Stripe"
+          >
+            <div class=" flex-shrink-0 mt-4">
+              <a href="/details/{{prod.id}}" class="bg-slate-100 block">
+                <div class="card-img-container overflow-hidden relative">
+                  <div class="block overflow-hidden relative m-0" style="display: block; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;">
+                    <div style="display: block; box-sizing: border-box; padding-top: 86.9565%;">
+                    </div>
+                    {% if prod.productimage_set.first %}
+                    <img
+                      alt=""
+                      src="{{prod.productimage_set.first.image.url}}"
+                      decoding="async"
+                      data-nimg="responsive"
+                      class="object-contain bg-skin-thumbnail shadow w-full"
+                      style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                      sizes="(max-width: 768px) 15vw,10vw"
+                      srcset=" "
+                    />
+                    {% else %}
+                    <img alt="" src="/static/ecommerce/no_product.png" decoding="async" data-nimg="responsive" class="object-cover bg-skin-thumbnail shadow"
+                      style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                      sizes="(max-width: 768px) 15vw,10vw"
+                      srcset=" "
+                    />
+                    {% endif %}
+                    <div>
+                      {% if prod.discount_type == 'flat' %}
+                      <span class="bg-[#FF7E00] absolute left-5 top-5 inline-flex items-center justify-center px-3 py-1 text-sm font-semibold text-white rounded"> -{{prod.discount_f}}{{shop.currency}} </span>
+                      {% elif prod.discount_type == 'percentage' %}
+                      <span class="bg-[#FF7E00] absolute left-5 top-5 inline-flex items-center justify-center px-3 py-1 text-sm font-semibold text-white rounded"> -{{prod.discount_p}}% </span>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div class="flex flex-col mb-2 h-full overflow-hidden text-center relative">
+              <div class="prd-block_reviews flex items-center justify-center mt-4">
+                {% if prod.rating >= 1 %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#f8c612" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21L12 17.27z"/></svg>
+                {% else %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#a3a3a3" d="m22 9.24l-7.19-.62L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21L12 17.27L18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27l1-4.28l-3.32-2.88l4.38-.38L12 6.1l1.71 4.04l4.38.38l-3.32 2.88l1 4.28L12 15.4z"/></svg>
+                {% endif %}
+  
+                {% if prod.rating >= 2 %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#f8c612" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21L12 17.27z"/></svg>
+                {% else %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#a3a3a3" d="m22 9.24l-7.19-.62L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21L12 17.27L18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27l1-4.28l-3.32-2.88l4.38-.38L12 6.1l1.71 4.04l4.38.38l-3.32 2.88l1 4.28L12 15.4z"/></svg>
+                {% endif %}
+  
+                {% if prod.rating >= 3 %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#f8c612" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21L12 17.27z"/></svg>
+                {% else %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#a3a3a3" d="m22 9.24l-7.19-.62L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21L12 17.27L18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27l1-4.28l-3.32-2.88l4.38-.38L12 6.1l1.71 4.04l4.38.38l-3.32 2.88l1 4.28L12 15.4z"/></svg>
+                {% endif %}
+  
+                {% if prod.rating >= 4 %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#f8c612" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21L12 17.27z"/></svg>
+                {% else %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#a3a3a3" d="m22 9.24l-7.19-.62L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21L12 17.27L18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27l1-4.28l-3.32-2.88l4.38-.38L12 6.1l1.71 4.04l4.38.38l-3.32 2.88l1 4.28L12 15.4z"/></svg>
+                {% endif %}
+  
+                {% if prod.rating >= 5 %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#f8c612" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21L12 17.27z"/></svg>
+                {% else %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#a3a3a3" d="m22 9.24l-7.19-.62L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21L12 17.27L18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27l1-4.28l-3.32-2.88l4.38-.38L12 6.1l1.71 4.04l4.38.38l-3.32 2.88l1 4.28L12 15.4z"/></svg>
+                {% endif %}
+              </div>
+              <a class="text-skin-base mt-4 text-sm leading-5 line-clamp-2 mb-2 hover:text-[#ff7e00]" href="/details/{{prod.id}}">
+                <h3 class="max-h-6 mb-2 overflow-hidden font-semibold">{{prod.name}}</h3>            
+              <div class="space-s-2 mb-4 lg:mb-4">
+                {% if prod.discounted_price > 0 %}
+                  <div class="flex gap-1 items-center justify-center">
+                    <p class="mb-3 text-sm md:text-lg font-semibold text-black">
+                      {{shop.currency}}{{ prod.discounted_price}}
+                    </p>
+                    <p class="mb-3 text-sm md:text-lg font-semibold line-through text-orange-400">
+                      {{shop.currency}}{{ prod.sale_price}}
+                    </p>
+                  </div>
+                  {% else %}
+                  <p class="mb-3 text-sm md:text-lg font-semibold text-black">
+                    {{shop.currency}}{{ prod.sale_price}}
+                  </p>
+                {% endif %}              
+              </div>
+            </a>
+              <div class="inline-block">
+                <div class="inline-block">
+                  <button @click="addToCart({{prod.id}})" class="text-white min-w-[120px] md:min-w-[150px] px-4 py-2 bg-[#FF7E00] rounded-full text-skin-inverted text-[13px] items-center justify-center focus:outline-none focus-visible:outline-none" v-if="!incart({{prod.id}})">
+                    Add to cart
+                  </button>
+                  <div class="mb-2" v-else>
+                    <a href="/cart" class="text-white min-w-[150px] px-4 py-2 font-semibold  text-[#FF7E00] border-2 border-[#FF7E00] rounded-full text-skin-inverted text-[13px] items-center justify-center focus:outline-none focus-visible:outline-none ">
+                      In Your Cart
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</div>
+
+<style scoped>
+  .block-title {
+    border-bottom: 2px solid #ebebeb;
+    padding: 0 0 12px;
+    position: relative;
+    z-index: 10;
+    text-transform: capitalize;
+}
+.block-title:before {
+    content: "";
+    background-color: #ff7e00;
+    width: 50px;
+    height: 2px;
+    position: absolute;
+    z-index: 2;
+    bottom: -2px;
+    display: inline-block;
+}
+.product-card:hover .buttons--quickview {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) scale(1);
+}
+.product-card .buttons--quickview {
+    display: block;
+    position: absolute;
+    z-index: 5;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%) scale(0);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    line-height: 48px;
+    opacity: 0;
+    text-align: center;
+    box-shadow: 0 3px 6px 1px rgba(0,0,0,.2);
+    transition: all .3s ease-in-out 0s;
+    background-color: #fff;
+}
+.product-card .buttons--quickview:hover{
+  background: #FF7E00;
+}
+.product-card:before {
+    height: calc(100% - 60px);
+    width: 1px;
+    top: 30px;
+    right: 0;
+}
+.product-card:before, .products-category .product-card:after {
+    content: "";
+    background: #f5f5f5;
+    display: block;
+    position: absolute;
+    z-index: 5;
+}
+.product-card .product-cart-button {
+    position: absolute;
+    width: 100%;
+    bottom: -50px;
+    left: 0;
+    z-index: 15;
+    transition: bottom .3s ease-in-out;
+}
+.product-card:hover .product-cart-button {
+    opacity: 1;
+    bottom: 0px;    
+}
+
+</style>
+<script>
+  createApp({
+    data() {
+      return {
+        store: store,
+      }
+    },
+    delimiters: ['[[', ']]'],
+    methods: {
+      addToCart(id) {
+        console.log(id)
+        this.$store.commit('addToCart',{"id":id, "quantity":1})
+      },
+      delFromCart(id){
+        this.$store.commit('removeFromCart',{"id":id})
+      },
+      addToWish(id){
+        this.$store.commit('addToWish',{"id":id})
+      },
+      incart(id){
+        return this.$store.state.cart.some((cartItem) => cartItem.id === id)
+      },
+    },
+  }).use(store).mount('#feature-product')
+</script>

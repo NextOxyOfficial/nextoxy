@@ -1,0 +1,356 @@
+{% load static %}
+<header id="navbar" class="header-five sticky-header sticky top-0 z-50 lg:relative w-full mb-8">
+  <div class="bg-skin-footer bg-[#232F3F] innerSticky w-screen lg:w-full transition-all duration-200 ease-in-out body-font bg-skin-fill z-50">
+    <div class="w-full transition-all duration-200 ease-in-out top-bar-search hidden lg:max-w-[600px] absolute z-30 px-4 md:px-6 top-12 xl:top-1">
+      <div class="overlay cursor-pointer"></div>
+      <div class="w-full flex flex-col justify-center flex-shrink-0 relative z-30">
+        <div class="flex flex-col mx-auto w-full">
+          <div class="flex w-full relative" novalidate="" role="search">
+            <label for="mobile-search" class="flex flex-1 items-center py-0.5">
+              <input v-model="searchTerm" @keydown.enter="goToUrl('/search_page?search='+searchTerm)" id="mobile-search" class="text-heading outline-none w-full h-[45px] ps-5 md:ps-6 pe-14 md:pe-16 bg-skin-full text-skin-base text-sm rounded-full transition-all duration-200 focus:border-skin-primary focus:ring-1 focus:ring-skin-form border border-skin-base" placeholder="Search the store" aria-label="mobile-search" autocomplete="off" value="" name="search" type="text" />
+              </label>
+              <a :href="'/search_page?search='+searchTerm">
+                <span class="w-14 md:w-16 h-full absolute top-0 end-0 flex flex-shrink-0 justify-center items-center focus:outline-none" >
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="w-5 h-5 text-skin-base text-opacity-40">
+                    <path d="M19.0144 17.9256L13.759 12.6703C14.777 11.4129 15.3899 9.81507 15.3899 8.07486C15.3899 4.04156 12.1081 0.759766 8.07483 0.759766C4.04152 0.759766 0.759766 4.04152 0.759766 8.07483C0.759766 12.1081 4.04156 15.3899 8.07486 15.3899C9.81507 15.3899 11.4129 14.777 12.6703 13.759L17.9256 19.0144C18.0757 19.1645 18.2728 19.24 18.47 19.24C18.6671 19.24 18.8642 19.1645 19.0144 19.0144C19.3155 18.7133 19.3155 18.2266 19.0144 17.9256ZM8.07486 13.8499C4.89009 13.8499 2.2998 11.2596 2.2998 8.07483C2.2998 4.89006 4.89009 2.29976 8.07486 2.29976C11.2596 2.29976 13.8499 4.89006 13.8499 8.07483C13.8499 11.2596 11.2596 13.8499 8.07486 13.8499Z" fill="currentColor"></path>
+                  </svg>
+                </span>
+              </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="top-bar text-13px text-gray-300 border-b border-white/5">
+      <div class="mx-auto max-w-[1870px] px-4 md:px-6 lg:px-8 2xl:px-20">
+        <div class="h-12 flex justify-between items-center py-2 gap-5">
+          <p class="editable text hidden md:block truncate" id="dfkvj878jsjs">Free International Shipping. No Minimum Purchase Required*</p>
+          <div class="flex flex-shrink-0 smx-auto max-w-[1920px]pace-s-5">
+            <nav
+              class="flex relative -mx-2 md:-mx-3 transition-all duration-200 ease-in-out"
+            >
+              <div class="menuItem group cursor-pointer mx-2 md:mx-3">
+                <a class="text-gray-300 sm:text-sm text-xs inline-flex items-center py-2 font-normal relative group-hover:text-skin-primary" href="/wishlist" >Wishlist</a >
+              </div>
+              <div class="menuItem group cursor-pointer mx-2 md:mx-3">
+                <a class="text-gray-300 sm:text-sm text-xs inline-flex items-center py-2 font-normal relative group-hover:text-skin-primary" href="/checkout" >Checkout</a>
+              </div>
+            </nav>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-b border-white/5">
+      <div class="mx-auto max-w-[1870px] px-4 md:px-6 lg:px-8 2xl:px-20">
+        
+        <div class="flex gap-2 items-center  justify-between py-2 md:py-4">
+          <div class="relative flex-shrink-0 lg:hidden">
+            <button @click="menuToggle=!menuToggle"
+              class="border border-skin-base/40 rounded-md focus:outline-none flex-shrink-0 text-sm text-skin-inverted px-2.5 md:px-3 lg:px-[18px] py-2 md:py-2.5 lg:py-3 flex items-center transition-all hover:border-skin-four">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="none" stroke="#ffffff" stroke-width="2" d="M2 19h20M2 5h20M2 12h20"/></svg>
+            </button>
+            <nav v-if="menuToggle==true" id="navbarCollapse" class="absolute left-0 top-full min-w-[288px] mt-3 max-w-[250px] justify-center bg-white px-6 shadow lg:static lg:flex lg:w-full lg:max-w-full lg:justify-end lg:bg-transparent lg:py-0 lg:px-0 lg:shadow-none">
+              <ul class="block items-center lg:flex">
+                {% for menu in main_menu %}
+                <li>
+                  <a href="{{menu.link}}" class="text-dark hover:text-primary flex justify-between py-2 text-base font-medium lg:mx-5 lg:inline-flex lg:py-6 2xl:mx-6"> {{menu.name}} </a>
+                </li>
+                {% endfor %}
+              </ul>
+            </nav>
+          </div>
+          
+          {% if shop.logo %}
+          <a class="inline-flex focus:outline-none logo lg:mx-0" href="/">
+            <div>
+              <img class="bg-white rounded  max-h-[35px] sm:max-h-[50px] object-contain" alt="logo" srcset="" src="{{shop.logo.url}}" decoding="async" data-nimg="fixed"
+                />
+            </div>
+          </a>
+          {% else %}
+          <a class="inline-flex focus:outline-none logo ps-3 md:ps-0 lg:mx-0" href="/">
+            <div style="overflow: hidden;box-sizing: border-box;display: inline-block;position: relative;width: 195px;height: 45px;" class="logo-box">
+              <img class="" alt="logo" srcset="" src="{% static '/ecommerce/logo.png' %}" decoding="async" data-nimg="fixed"
+                style="position: absolute;top: 0;left: 0;bottom: 0;right: 0;box-sizing: border-box;padding: 0;border: none;margin: auto;display: block;width: 0;height: 0;min-width: 100%;max-width: 100%;min-height: 100%;max-height: 100%"/>
+            </div>
+          </a>
+          {% endif %}
+          <div
+            class="w-full transition-all duration-200 ease-in-out hidden lg:flex lg:max-w-[450px] xl:max-w-[650px] 2xl:max-w-[900px] lg:mx-10">
+            <div class="overlay cursor-pointer"></div>
+            <div class="w-full flex flex-col justify-center flex-shrink-0 relative z-30">
+              <div class="flex flex-col mx-auto w-full">
+                <div class="flex w-full relative" novalidate="" role="search">
+                  <label class="flex flex-1 items-center py-0.5">
+                    <input v-model="searchTerm" @keydown.enter="goToUrl('/search_page?search='+searchTerm)" for="top-bar-search" id="top-bar-search"
+                      class="text-heading outline-none w-full h-[45px] ps-5 md:ps-6 pe-14 md:pe-16 bg-skin-full text-skin-base text-sm rounded-full transition-all duration-200 focus:border-skin-primary focus:ring-1 focus:ring-skin-form bg-skin-one"
+                      placeholder="Search the store" aria-label="top-bar-search" autocomplete="off" value=""
+                      name="search" />
+                    </label>
+                    <a :href="'/search_page?search='+searchTerm">
+                      <span class="w-14 md:w-16 h-full absolute top-0 end-0 flex flex-shrink-0 justify-center items-center focus:outline-none">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" class="w-5 h-5 text-skin-base text-opacity-40"><path d="M19.0144 17.9256L13.759 12.6703C14.777 11.4129 15.3899 9.81507 15.3899 8.07486C15.3899 4.04156 12.1081 0.759766 8.07483 0.759766C4.04152 0.759766 0.759766 4.04152 0.759766 8.07483C0.759766 12.1081 4.04156 15.3899 8.07486 15.3899C9.81507 15.3899 11.4129 14.777 12.6703 13.759L17.9256 19.0144C18.0757 19.1645 18.2728 19.24 18.47 19.24C18.6671 19.24 18.8642 19.1645 19.0144 19.0144C19.3155 18.7133 19.3155 18.2266 19.0144 17.9256ZM8.07486 13.8499C4.89009 13.8499 2.2998 11.2596 2.2998 8.07483C2.2998 4.89006 4.89009 2.29976 8.07486 2.29976C11.2596 2.29976 13.8499 4.89006 13.8499 8.07483C13.8499 11.2596 11.2596 13.8499 8.07486 13.8499Z"
+                          fill="currentColor"></path>
+                        </svg>
+                      </span>
+
+                    </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex sm:gap-4 gap-2 lg:max-w-[33%]">
+            <div class="">
+              {% if user.is_authenticated %}
+              <a class="flex" href="/my_account">
+                <div class="cart-button flex justify-center items-center">
+                  <svg width="16" height="16" viewBox="0 0 448 512" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="#FF7E00">
+                    <path fill="#FF7E00"
+                      d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"
+                      class=""></path>
+                  </svg>
+                </div>
+                <button class="text-sm sm:flex items-center hidden text-white font-normal focus:outline-none ms-1" aria-label="Authentication">Account</button>
+              </a>
+              {% else %}
+              <a class="flex" href="/signin">
+                <div class="cart-button">
+                  <svg width="16" height="16" viewBox="0 0 448 512" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="#FF7E00">
+                    <path fill="#FF7E00"
+                      d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"
+                      class=""></path>
+                  </svg>
+                </div>
+                <button class="sm:flex items-center hidden text-sm text-white font-normal focus:outline-none ms-2"
+                  aria-label="Authentication">Signin</button>
+              </a>
+              {% endif %}
+            </div>
+            <a class="" href="/cart">
+              <button
+                class="flex items-center justify-center flex-shrink-0 h-auto focus:outline-none transform "
+                aria-label="cart-button">
+                <div class="flex items-center relative cart-button">
+                  <svg width="18" height="18" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"
+                    class="text-skin-primary">
+                    <g clip-path="url(#clip0)">
+                      <path
+                        d="M19.7999 19.0172L18.5402 4.8319C18.5132 4.51697 18.2478 4.27853 17.9374 4.27853H15.3459C15.31 1.91207 13.3754 0 10.9999 0C8.62447 0 6.68991 1.91207 6.65392 4.27853H4.06251C3.74758 4.27853 3.48664 4.51697 3.45965 4.8319L2.19993 19.0172C2.19993 19.0352 2.19543 19.0532 2.19543 19.0712C2.19543 20.6863 3.6756 22 5.49768 22H16.5022C18.3243 22 19.8044 20.6863 19.8044 19.0712C19.8044 19.0532 19.8044 19.0352 19.7999 19.0172ZM10.9999 1.21472C12.705 1.21472 14.0952 2.58241 14.1312 4.27853H7.86864C7.90464 2.58241 9.29482 1.21472 10.9999 1.21472ZM16.5022 20.7853H5.49768C4.35494 20.7853 3.42815 20.0294 3.41016 19.0982L4.61588 5.49775H6.64942V7.34233C6.64942 7.67975 6.91936 7.94969 7.25678 7.94969C7.59421 7.94969 7.86415 7.67975 7.86415 7.34233V5.49775H14.1312V7.34233C14.1312 7.67975 14.4012 7.94969 14.7386 7.94969C15.076 7.94969 15.3459 7.67975 15.3459 7.34233V5.49775H17.3795L18.5897 19.0982C18.5717 20.0294 17.6404 20.7853 16.5022 20.7853Z"
+                        fill="#FF7E00" stroke="#FF7E00" stroke-width="0.1"></path>
+                    </g>
+                    <defs>
+                      <clipPath id="clip0">
+                        <rect width="22" height="22" fill="white"></rect>
+                      </clipPath>
+                    </defs>
+                  </svg><span
+                    class="cart-counter-badge flex items-center justify-center bg-[#FF7E00] text-skin-inverted absolute -top-0 -start-2.5 rounded-full font-bold">[[store.state.cart.length]]</span>
+                </div>
+                <span class="text-sm text-white font-normal ms-1 sm:flex items-center hidden">My Cart</span>
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="navbar hidden lg:block bg-skin-footer">
+      <div class="mx-auto max-w-[1870px] px-4 md:px-6 lg:px-8 2xl:px-20 relative">
+        <div class="absolute z-20 w-full h-[80vh] bg-slate-500/5 left-0 top-0" @click="categoryView = false" :class="{'hidden':!categoryView}"></div>
+        <div class="flex justify-between items-center">
+          <a class="inline-flex focus:outline-none navbar-logo w-0 opacity-0 transition-all duration-200 ease-in-out" href="/">
+            <div >
+              <img class="sm:h-[70px] h-[40px] object-contain"  alt="Razor" srcset="" src="" decoding="async"  data-nimg="fixed"
+                />
+            </div>
+          </a>
+          <div class="categories-header-button relative me-8 flex-shrink-0 w-72">
+            <button @click="categoryView = !categoryView" class="bg-[#FF7E00] rounded-t min-h-[60px] focus:outline-none w-full font-medium text-white px-[18px] uppercase py-4 flex items-center transition-all hover:border-skin-four">
+              <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" class="text-2xl me-3" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg" >
+                <line x1="3" y1="12" x2="21" y2="12"></line> <line x1="3" y1="6" x2="21" y2="6"></line> <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
+                All Categories
+            </button>
+            <div class="absolute z-30 w-72 lg:w-full " :class="{'hidden':!categoryView}">
+              <div class="max-h-full">
+                <ul class="w-full bg-white border-t-0 border-2 border-skin-primary rounded-b-md category-dropdown-menu">
+                  {% for section in sections %}
+                  <li class="px-4 transition false text-sm hover:bg-slate-100 cursor-pointer hover-me">
+                    <a class="flex items-center w-full py-3 text-start outline-none focus:outline-none focus:ring-0 focus:text-skin-base">
+                      <span class="capitalize">{{section.name}}</span>                      
+                      <span class="ms-auto hidden md:inline-flex">
+                        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" class="text-15px text-skin-base text-opacity-40" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M294.1 256L167 129c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.3 34 0L345 239c9.1 9.1 9.3 23.7.7 33.1L201.1 417c-4.7 4.7-10.9 7-17 7s-12.3-2.3-17-7c-9.4-9.4-9.4-24.6 0-33.9l127-127.1z"></path>
+                        </svg>
+                      </span>
+                    </a>
+                    <div class="dropdownMenu md:block absolute z-10 left-full top-0 w-[800px] bg-white  shadow-md sub-menu">
+                      <ul class="text-xs py-4">
+                        {% for sub in section.category_set.all %}
+                        <li class="px-4 relative transition text-sm hover:bg-slate-100 mb-0.5">
+                          <a class="py-3 flex items-center w-full hover:text-skin-primary text-sm" href="/search_page?category={{sub.id}}">
+                            <span class="capitalize">{{sub}}</span>
+                          </a>                          
+                        </li>
+                        {% endfor %}                      
+                      </ul>
+                    </div>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <nav class="headerMenu w-full flex transition-all duration-200 ease-in-out">
+            {% for menu in main_menu %}
+            <div class="menuItem group py-3 mx-4 xl:mx-5 relative">
+              <a class="uppercase inline-flex items-center text-sm text-white py-2 font-medium relative group-hover:text-skin-primary"href="/page/{{menu.link}}">{{menu.name}}</a>
+            </div>
+            {% endfor %}
+          </nav>
+          <div class="ms-auto flex items-center flex-shrink-0">
+            <div
+              class="navbar-right flex items-center overflow-hidden w-0 opacity-0 transition-all duration-200 ease-in-out"
+            >
+              <button
+                type="button"
+                aria-label="Search Toggle"
+                title="Search toggle"
+                class="outline-none me-6 w-12 md:w-14 h-full flex items-center justify-center transition duration-200 ease-in-out hover:text-heading focus:outline-none"
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  class="w-[22px] h-[22px] text-white"
+                >
+                  <path
+                    d="M19.0144 17.9256L13.759 12.6703C14.777 11.4129 15.3899 9.81507 15.3899 8.07486C15.3899 4.04156 12.1081 0.759766 8.07483 0.759766C4.04152 0.759766 0.759766 4.04152 0.759766 8.07483C0.759766 12.1081 4.04156 15.3899 8.07486 15.3899C9.81507 15.3899 11.4129 14.777 12.6703 13.759L17.9256 19.0144C18.0757 19.1645 18.2728 19.24 18.47 19.24C18.6671 19.24 18.8642 19.1645 19.0144 19.0144C19.3155 18.7133 19.3155 18.2266 19.0144 17.9256ZM8.07486 13.8499C4.89009 13.8499 2.2998 11.2596 2.2998 8.07483C2.2998 4.89006 4.89009 2.29976 8.07486 2.29976C11.2596 2.29976 13.8499 4.89006 13.8499 8.07483C13.8499 11.2596 11.2596 13.8499 8.07486 13.8499Z"
+                    fill="currentColor"
+                  ></path>
+                </svg>
+              </button>
+              <div class="flex-shrink-0 flex items-center">
+                <div class="cart-button">
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 448 512"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="text-skin-primary"
+                  >
+                    <path
+                      fill="#FF7E00"
+                      d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"
+                      class=""
+                    ></path>
+                  </svg>
+                </div>
+                <button class="text-sm text-white font-normal focus:outline-none ms-2" aria-label="Authentication"> My Account</button>
+              </div>
+              <button
+                class="flex items-center justify-center flex-shrink-0 h-auto focus:outline-none transform ms-8"
+                aria-label="cart-button"
+              >
+                <div class="flex items-center relative cart-button">
+                  <svg width="18" height="18" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-skin-primary">
+                    <g clip-path="url(#clip0)">
+                      <path d="M19.7999 19.0172L18.5402 4.8319C18.5132 4.51697 18.2478 4.27853 17.9374 4.27853H15.3459C15.31 1.91207 13.3754 0 10.9999 0C8.62447 0 6.68991 1.91207 6.65392 4.27853H4.06251C3.74758 4.27853 3.48664 4.51697 3.45965 4.8319L2.19993 19.0172C2.19993 19.0352 2.19543 19.0532 2.19543 19.0712C2.19543 20.6863 3.6756 22 5.49768 22H16.5022C18.3243 22 19.8044 20.6863 19.8044 19.0712C19.8044 19.0532 19.8044 19.0352 19.7999 19.0172ZM10.9999 1.21472C12.705 1.21472 14.0952 2.58241 14.1312 4.27853H7.86864C7.90464 2.58241 9.29482 1.21472 10.9999 1.21472ZM16.5022 20.7853H5.49768C4.35494 20.7853 3.42815 20.0294 3.41016 19.0982L4.61588 5.49775H6.64942V7.34233C6.64942 7.67975 6.91936 7.94969 7.25678 7.94969C7.59421 7.94969 7.86415 7.67975 7.86415 7.34233V5.49775H14.1312V7.34233C14.1312 7.67975 14.4012 7.94969 14.7386 7.94969C15.076 7.94969 15.3459 7.67975 15.3459 7.34233V5.49775H17.3795L18.5897 19.0982C18.5717 20.0294 17.6404 20.7853 16.5022 20.7853Z" fill="currentColor" stroke="currentColor" stroke-width="0.1"></path>
+                    </g>
+                    <defs>
+                      <clipPath id="clip0">
+                        <rect width="22" height="22" fill="white"></rect>
+                      </clipPath>
+                    </defs>
+                  </svg>
+                    <span class="cart-counter-badge flex items-center justify-center bg-skin-primary text-skin-inverted absolute -top-0 -start-2.5 rounded-full font-bold">0</span>
+                </div>
+                <span class="text-sm text-white font-normal ms-2">My Cart asdf</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+  </div>
+</header>
+<style scoped>
+  .sub-menu{
+    display: none;
+    margin-top: -30px;
+  }
+  .hover-me:hover .sub-menu{
+    position: absolute;
+      left: 100%;
+      top: auto;      
+      display: block;      
+      width: 100%;
+  }
+  .cart-button {
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    padding: 5px 0;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+  }
+  .cart-button svg {
+    margin: 4px auto;
+  }
+  .cart-counter-badge {
+    min-width: 20px;
+    min-height: 20px;
+    padding: 2px;
+    border-radius: 20px;
+    font-size: 10px;
+  }
+  @media(max-width:500px){
+    .logo-box{
+      width: 160px !important;
+    }
+  }
+</style>
+<script>
+  const { createApp } = Vue
+  const app = createApp({
+    data() {
+      return {
+        category: false,
+        categoryView: false,
+        store: store,
+        menuToggle: false,
+        searchTerm: '',
+      }
+    },
+    delimiters: ['[[', ']]'],
+    methods: {
+      addToCart(item) {
+        this.$store.commit('addToCart',item)
+      },
+      delFromCart(item){
+        this.$store.commit('removeFromCart',item)
+      },
+      closeCartItem(item){
+        this.delFromCart(item)
+        item.close = true
+        this.addToCart(item)
+      },
+      goToCart(){
+        for (let i = 0; i < this.store.state.cart.length; i++) {
+          const item = this.store.state.cart[i];
+          this.closeCartItem(item)
+        }
+        window.location.href = '/cart'
+      },
+      goToUrl(url){
+        window.location.href = url
+      }
+    },
+  })
+  app.use(store)
+  app.mount('#navbar')
+</script>

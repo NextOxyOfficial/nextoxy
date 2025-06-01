@@ -1,0 +1,37 @@
+
+body{
+  font-family: 'Rajdhani', sans-serif;
+}
+
+.bg-primary{
+    background: #ed1d24;
+}
+
+.text-primary{
+    color: #ed1d24;
+}
+
+
+#review-box{
+    display: none;
+  }
+  #review-box.active{
+    display: block !important;
+  }
+  .removeDesc{
+    display: none;
+  }
+  .removeReview{
+    display: none;
+  }
+@media(max-width:425px){
+  .product-detail-info{
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .product-other{
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+

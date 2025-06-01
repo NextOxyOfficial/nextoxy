@@ -1,0 +1,336 @@
+{% extends "onepage6/base.html" %}
+
+{% block content %}
+
+<section class="bg-white pt-8 pb-8 lg:pt-8 lg:pb-8" id="checkout">
+    <div class="container mx-auto">
+      <div class="-mx-4 flex flex-wrap">
+        <div class="w-full px-4 lg:w-7/12">
+            <div class="mb-10 overflow-hidden rounded-lg border border-[#e7e7e7] bg-[#f4f7ff] py-10 px-6 sm:px-10">
+              <h4 class="mb-8 text-lg font-semibold text-black sm:text-2xl lg:text-xl xl:text-2xl">Shipping Information</h4>
+              <div class="my-3 flex flex-wrap gap-2">
+                <div class="flex-1 flex flex-col">
+                    <label for="" class="text-body-color mb-[10px] block text-base font-medium"> First Name </label>
+                    <input v-model="shipping.first_name" type="text" placeholder="John Doe" class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]" />
+                </div>
+                <div class="flex-1 flex flex-col">
+                    <label for="" class="text-body-color mb-[10px] block text-base font-medium"> Last Name </label>
+                    <input v-model="shipping.last_name" type="text" placeholder="John Doe" class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]" />
+                </div>
+              </div>
+              <div class="my-3 flex flex-wrap gap-2">
+                <div class="flex-1 flex flex-col">
+                    <label for="" class="text-body-color mb-[10px] block text-base font-medium"> Phone </label>
+                    <input v-model="shipping.phone" type="text" placeholder="" class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]" />
+                </div>
+                <div class="flex-1 flex flex-col">
+                    <label for="" class="text-body-color mb-[10px] block text-base font-medium"> Email </label>
+                    <input v-model="shipping.email" type="text" placeholder="" class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]" />
+                </div>
+              </div>
+              <div class="my-3 flex flex-wrap gap-2">
+                <div class="flex-1 flex flex-col">
+                    <label for="" class="text-body-color mb-[10px] block text-base font-medium"> Address </label>
+                    <input v-model="shipping.address" type="text" placeholder="" class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]" />
+                </div>
+              </div>
+              <div class="my-3 flex flex-wrap gap-2">
+                <div class="flex-1 flex flex-col">
+                  <label for="" class="text-body-color mb-[10px] block text-base font-medium"> Country </label>
+                  <select v-model="shipping.country" @change="getState" name="" id="" class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]">
+                    <option value="">Select Country</option>
+                    <option :value="country.name" v-for="country in countries">[[country.name]]</option>
+                  </select>
+                </div>
+                <div class="flex-1 flex flex-col">
+                    <label for="" class="text-body-color mb-[10px] block text-base font-medium"> State </label>
+                    <select v-model="shipping.state"  @change="getCity" name="" id="" class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]">
+                      <option value="">Select State</option>
+                      <option :value="state.name" v-for="state in states">[[state.name]]</option>
+                    </select>
+                </div>
+              </div>
+              <div class="my-3 flex flex-wrap gap-2">
+                <div class="flex-1 flex flex-col">
+                  <label for="" class="text-body-color mb-[10px] block text-base font-medium"> City </label>
+                  <select v-model="shipping.city" @change="getDelivery" name="" id="" class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]">
+                    <option value="">Select City</option>
+                    <option :value="city.name" v-for="city in cities">[[city.name]]</option>
+                  </select>
+                </div>
+                <div class="flex-1 flex flex-col">
+                    <label for="" class="text-body-color mb-[10px] block text-base font-medium"> Zip Code </label>
+                    <input v-model="shipping.zip_code" type="text" placeholder="" class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]" />
+                </div>
+              </div>
+              <div class="-mx-3 flex flex-wrap">
+                <div class="w-full px-3">
+                  <div class="mb-8">
+                    <p class="text-body-color text-base font-medium">By clicking “Confirm Payment” I agree to the company's Terms of Service</p>
+                  </div>
+                </div>
+                <!-- payment methods  -->
+                <div class="mb-4">
+                  {{payment_methods}}
+                  {% for method in payment_methods %}
+                  <div class="flex items-center gap-2 cursor-pointer my-2">
+                    <input v-model="method" type="radio" id="id-{{method.id}}" name="payment" value="{{method.id}}">
+                    <label for="id-{{method.id}}" class="cursor-pointer text-lg">
+                      <img src="{{method.plugin.extra_image_1.url}}" alt="" srcset="">
+                    </label>
+                  </div>
+                  {% endfor %}
+                </div>
+                <div class="w-full px-3">
+                  <div>
+                    <button @click="checkout" class="bg-primary inline-flex items-center justify-center rounded-md py-3 px-6 text-center text-sm font-semibold text-white hover:bg-opacity-90">Confirm Payment</button>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+        </div>
+        <div class="w-full px-4 lg:w-5/12">
+          <div class="bg-primary mb-10 overflow-hidden rounded-lg border border-[#e7e7e7] py-10 px-6 sm:px-10 lg:px-8 2xl:px-10">
+            <h4 class="mb-8 text-lg font-semibold text-white sm:text-2xl lg:text-xl xl:text-2xl">Personal Information</h4>
+            <div v-for="product in products" class="mb-8 flex items-center border-b border-dashed border-white border-opacity-30 pb-8">
+              <div class="mr-4 h-[70px] w-full max-w-[70px] overflow-hidden rounded-lg sm:mr-6 sm:max-w-[100px] lg:mr-4 lg:max-w-[80px] xl:mr-6 xl:max-w-[100px]">
+                <img src="https://cdn.tailgrids.com/1.0/assets/images/ecommerce/checkout/checkout-05/image-01.jpg" alt="product" class="h-full w-full object-cover object-center" />
+              </div>
+              <div class="w-full">
+                <p class="mb-1 text-sm font-medium text-white sm:text-base">[[ product.name ]]</p>
+                <p class="text-base font-bold text-white" v-if="product.discounted_price">{{shop.currency}}[[product.discounted_price]] X [[product.quantity]]</p>
+                <p class="text-base font-bold text-white" v-else>{{shop.currency}}[[product.sale_price]] X [[product.quantity]]</p>
+              </div>
+            </div>
+            <div>
+              <p class="flex items-center justify-between text-base text-white">
+                <span class="font-medium">SubTotal:</span>
+                <span class="font-semibold"> {{shop.currency}}[[getSubTotal()]] </span>
+              </p>
+              <p class="flex items-center justify-between text-base text-white" v-if="shipping_charge">
+                <span class="font-medium">Shipping Charge:</span>
+                <span class="font-semibold"> {{shop.currency}}[[shipping_charge.charge]] </span>
+              </p>
+              <p class="flex items-center justify-between text-base text-white">
+                <span class="font-medium">Discount:</span>
+                <span class="font-semibold" v-if="coupon.valid && coupon.valid.type=='fixed'"> {{shop.currency}}[[coupon.valid.amount]] </span>
+                <span class="font-semibold" v-else-if="coupon.valid && coupon.valid.type=='percent'"> [[coupon.valid.amount]] %</span>
+                <span class="font-semibold" v-else> {{shop.currency}} 0.00</span>
+              </p>
+              <p class="flex items-center justify-between text-base text-white border-t pt-1 mt-2 font-bold">
+                <span class="font-medium">Total Amount</span>
+                <span class="font-semibold"> {{shop.currency}}[[getTotal()]] </span>
+              </p>
+              <p class="my-4 text-white font-bold" v-if="shipping_charge">Estimated Delivery time: [[shipping_charge.from]] to [[shipping_charge.to]] days </p>
+            </div>
+          </div>
+          <div class="mb-10 overflow-hidden rounded-lg border border-[#e7e7e7] bg-[#f4f7ff] py-10 px-6 sm:px-10 lg:px-8 2xl:px-10">
+            <div class="mb-6 border-b border-[#e7e7e7] pb-5">
+              <h3 class="mb-2 text-lg font-semibold text-black">Coupon Code</h3>
+              <p class="text-body-color text-sm font-medium">Enter code to get discount instantly</p>
+            </div>
+            <p class="text-rose-700 my-4" v-if="coupon.invalid">Coupon is invalid</p>
+            <p class="text-lime-700 my-4" v-if="coupon.valid">Coupon applied</p>
+            <div class="relative">
+              <input v-model="coupon.code" type="text" placeholder="Coupon code" class="border-form-stroke text-body-color placeholder-body-color focus:border-primary active:border-primary w-full rounded-lg border py-[14px] px-6 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]" />
+              <button @click="applyCoupon" class="bg-primary absolute right-3 top-1/2 mb-3 h-[34px] -translate-y-1/2 rounded px-5 text-sm font-medium text-white transition hover:bg-opacity-90">Apply</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+  
+<script>
+const app = Vue.createApp({
+    data() {
+    return {
+        store: store,
+        products: [],
+        shipping: {
+        first_name: '',
+        last_name: '',
+        email: '',
+        phone: '',
+        address: '',
+        city: '',
+        state: '',
+        zip_code: '',
+        country: '',
+        },
+        shipping_charge: '',
+        countries: [],
+        states: [],
+        cities: [],
+        coupon: {
+        code: '',
+        valid: '',
+        invalid: false,
+        },
+        method: '',
+    }
+    },
+    delimiters: ['[[', ']]'],
+    mounted() {
+    this.getCart()
+    this.getCountries()
+    },
+    methods: {
+    getCountries() {
+        fetch('https://nextoxy.com/api/utils/countries/', {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json'}
+        })
+        .then(response => response.json())
+        .then(data => {
+        this.countries = data;
+        this.shipping.state = ''
+        this.shipping.city = ''
+        })
+        .catch(error => console.error(error));
+    },
+    getState(){
+        fetch('https://nextoxy.com/api/utils/states/?country='+this.shipping.country, {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json'}
+        })
+        .then(response => response.json())
+        .then(data => {
+        this.states = data;
+        this.shipping.city = ''
+        this.getDelivery()
+        })
+        .catch(error => console.error(error));
+    },
+    getCity(){
+        fetch('https://nextoxy.com/api/utils/cities/?state='+this.shipping.state+'&country='+this.shipping.country, {
+        method: 'GET',
+        headers: {'Content-Type': 'application/json'}
+        })
+        .then(response => response.json())
+        .then(data => {
+        this.cities = data;
+        this.getDelivery()
+        })
+        .catch(error => console.error(error));
+    },
+    getCart() {
+      fetch('/api/cart', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(store.state.cart)
+      })
+      .then(response => response.json())
+      .then(data => this.products = data)
+      .catch(error => console.error(error));
+    },
+    getSubTotal() {
+      let total = 0
+      this.products.forEach(product => {
+      if(product.discounted_price){
+          total += product.discounted_price * product.quantity
+      }else{
+          total += product.sale_price * product.quantity
+      }
+      })
+      return total
+    },
+    getTotal() {
+      let total = 0
+      this.products.forEach(product => {
+      if(product.discounted_price){
+          total += product.discounted_price * product.quantity
+      }else{
+          total += product.sale_price * product.quantity
+      }
+      })
+      if(this.coupon.valid){
+      if(this.coupon.valid.type == 'fixed'){
+          total -= this.coupon.valid.amount
+      }else{
+          total -= (total * this.coupon.valid.amount) / 100
+      }
+      }
+      if(this.shipping_charge){
+      total += this.shipping_charge.charge
+      }
+      return total
+    },
+    getDelivery(){
+      var url = '/api/shipping?country='+this.shipping.country+'&state='+this.shipping.state+'&city='+this.shipping.city
+      console.log(url);
+      fetch(url, {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(store.state.cart)
+      })
+      .then(response => response.json())
+      .then(data => {
+      console.log(data);
+      this.shipping_charge = data
+      })
+      return 20
+    },
+    checkout(){
+      let coupon = null
+      if(this.coupon.valid){
+      coupon = this.coupon.code
+      }
+      fetch('/api/checkout?userid='+'{{user.id}}', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          cart: store.state.cart,
+          total: this.getSubTotal(),
+          delivery: this.getDelivery(),
+          shipping: this.shipping,
+          coupon: coupon,
+          method: this.method,
+      })
+      })
+      .then(response => response.json())
+      .then(data => {
+          store.commit('clearCart')
+          window.location.href = data
+      })
+      .catch(error => console.error(error));
+    },
+    applyCoupon(){
+        this.coupon.invalid = false
+        this.coupon.valid = ''
+        fetch('/api/coupon?code='+this.coupon.code, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+        })
+        .then(response => response.json())
+        .then(data => {
+        console.log(data);
+        if (data == 404){
+            this.coupon.invalid = true
+        }else{
+            this.coupon.valid = data
+        }
+        })
+        .catch(error => console.error(error));
+    }
+    },
+})
+app.use(store)
+app.mount('#checkout')
+</script>
+  
+
+{% endblock %}
+
+
+
+

@@ -1,0 +1,140 @@
+<!-- home & kitchen collection -->
+<section class="max-w-[1300px] mx-auto px-[20px] md:px-[40px] mt-12 md:mt-24">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-2 md:gap-0">
+        <div class="flex-1 flex items-center justify-center -z-0">
+            <div class="relative">
+                <div id="theme14-collect-fdgklp9435345" class="editable image ">
+                    <img class="ob images-0 h-[125px] md:h-[200px] xl:h-[280px]  shadow-2xl " src="/static/ecommerce/theme14/img/jewll-collec-2.avif" alt="">
+                </div>
+                <div id="theme14-collect-nlrk934534g34" class="editable image absolute top-12 right-7 md:right-24 ob images-1 transition-all duration-1000 -z-10">
+                    <img class="  h-[65px] md:h-[80px] xl:h-[100px]  " src="/static/ecommerce/theme14/img/jewell-collec.webp" alt="">
+                    <!-- translate-x-20 -translate-y-14 -->
+                    <!--md:translate-x-28 -translate-y-14-->
+                    <!-- lg:translate-x-44 -translate-y-9 -->
+                </div>
+                <div id="theme14-collect-fgop09345345" class="editable image absolute top-10 right-8 md:right-14 -z-10">
+                    <img class="ob images-2  h-[80px] md:h-[120px] xl:h-[160px] transition-all  duration-1000 " src="/static/ecommerce/theme14/img/jewell-collec-4.avif" alt="">
+                    <!-- translate-y-8 translate-x-24 -->
+                    <!--md:translate-x-36 translate-y-12-->
+                    <!-- lg:translate-x-44 translate-y-[6.5rem] -->
+                </div>
+                <div id="theme14-collect-hrpi03945345" class="editable image absolute top-10 right-8 md:right-14 -z-10">
+                    <img class="ob images-3  h-[100px] md:h-[150px] xl:h-[200px] transition-all duration-1000 " src="/static/ecommerce/theme14/img/jewell-collec-5.avif" alt="">
+                    <!-- -translate-x-16 translate-y-5 -->
+                    <!---md:translate-x-16 translate-y-16-->
+                    <!--lg: -translate-x-28 translate-y-24 -->
+                </div>
+                <div id="theme14-collect-gheopik09345" class="editable image absolute top-2 right-8 md:right-14 -z-20">
+                    <img class="ob images-4 w-full h-[90px] md:h-[130px] xl:h-[180px]  transition-all duration-1000" src="/static/ecommerce/theme14/img/jewell-collec-3.avif" alt="">
+                    <!-- -translate-x-20 -translate-y-5 -->
+                    <!--translate-x-20 -translate-y-10-->
+                    <!-- lg:-translate-x-44 -translate-y-16 -->
+                </div>
+                
+            </div>
+
+        </div>
+        <div class="flex-1 pl-0 md:pl-[80px] mt-16 md:mt-0">
+            <p id="theme14-collect-igerlkgjkoi34" style="font-family: Futura;" class="editable text text-[#1c1c1c] text-[14px] md:text-[17px] uppercase tracking-[.2em] mb-[5px]">Winter Collection</p>
+            <h2 id="theme14-collect-h4poi0345g345" style="font-family: ITC;" class="editable text font-bold text-[#1c1c1c] text-[23px] md:text-[35px] mb-[10px] md:mb-[20px]">Jewellery Collection</h2>
+            <p id="theme14-collect-greojo93845345" style="font-family: Futura;" class="editable text text-[#1c1c1c] text-[18px] md:text-[19px] tracking-wide">"Captivating Elegance: Discover the allure of our exquisite jewelry collection."</p>
+            <a id="theme14-collect-wgepi039845345" style="font-family: ITC;" class="editable link py-[8px] px-[20px] md:py-[9px] md:px-[20px] text-[14px] md:text-[16px] text-center bg-black text-white mt-4 md:mt-5 inline-block" href="search_page">Click & Buy</a>
+        </div>
+    </div>
+</section>
+
+
+<!-- home & kitchen item list -->
+<section id="all-product" class="max-w-[1300px] mx-auto px-[20px] md:px-[40px] mt-12 md:mt-24 mb-12 md:mt-24 lg:mt-44">
+    <h2 id="theme14-collect-welknm09234m" style="font-family: ITC;" class="editable text text-[#1c1c1c] font-bold text-[23px] md:text-[31.5px]">
+        All Products
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-12 gap-2 sm:gap-3 md:gap-4 lg:gap-5">
+        {% for prod in all_products  %}
+        <!-- item 1 -->
+        <div class="overflow-hidden bg-cover bg-gray-50 shadow-md relative group">
+            <a href="/details/{{prod.id}}" class=" block">
+                <div id="theme14-collect-oew02342345g2" class="">
+                    {% if prod.productimage_set.first %}
+                    <img src="{{prod.productimage_set.first.image.url}}" alt="product" class="sm:h-[282.5px] w-full object-contain hover:scale-105 transition-all duration-500"/>
+                    {% else %}
+                    <img class="sm:h-[282.5px] w-full object-contain hover:scale-105 transition-all duration-500" src="/static/ecommerce/theme14/img/jewll-collec-2.avif" alt="">
+                    {% endif %}
+                        
+                </div>
+                <p id="theme14-collect-iu298efgoi23" style="font-family: Futura;" class="truncate overflow-hidden w-[282.5px] text-[20px] text-[#1c1d1d] pt-[10px] pb-[6px]">{{prod.name}}</p>
+                {% if prod.discounted_price > 0 %}
+                <div class="flex gap-1">
+                    <p style="font-family: Futura;" class="mb-3 text-[17px] text-[#1c1d1d]">
+                        {{ prod.discounted_price}} {{shop.currency}}
+                    </p>
+                    <p style="font-family: Futura;" class="mb-3 text-[17px] line-through text-orange-400">
+                        {{ prod.sale_price}} {{shop.currency}}
+                    </p>
+                </div>
+                {% else %}
+                <div class="flex">
+                    <p style="font-family: Futura;" class="mb-3 text-[17px]  text-[#1c1d1d]">
+                    {{ prod.sale_price}} {{shop.currency}}
+                    </p>
+                </div>
+                {% endif %}
+            </a> 
+                <!--cart-->
+                <button style="font-family: ITC;" @click="addToCart({{prod.id}})" class="group-hover:scale-105 w-full bg-[#1d1d1d] text-white mt-2.5 text-center font-bold px-[20px] py-[9px] border-[1px] border-[#1d1d1d] transition-all duration-500" v-if="!incart({{prod.id}})">
+                    Add To Cart
+                </button>
+                <a href="/cart" style="font-family: ITC;" class="block w-full mt-2.5 text-center font-bold px-[20px] py-[9px] border-[1px] border-gray-300" v-else>
+                    View Cart
+                </a>
+                <!--wish-->
+                <button @click="addToWish({{prod.id}})" style="font-family: Futura;" class="absolute right-[5px] top-[100px] opacity-0 group-hover:opacity-100 group-hover:top-0 inline-block rounded-full bg-black text-white mt-2.5 text-center px-[9px] py-[9px] border-[1px] border-black transition-all duration-500" >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="currentColor" d="M12 20.325q-.35 0-.713-.125t-.637-.4l-1.725-1.575q-2.65-2.425-4.788-4.813T2 8.15Q2 5.8 3.575 4.225T7.5 2.65q1.325 0 2.5.562t2 1.538q.825-.975 2-1.538t2.5-.562q2.35 0 3.925 1.575T22 8.15q0 2.875-2.125 5.275T15.05 18.25l-1.7 1.55q-.275.275-.637.4t-.713.125ZM11.05 6.75q-.725-1.025-1.55-1.562t-2-.538q-1.5 0-2.5 1t-1 2.5q0 1.3.925 2.763t2.213 2.837q1.287 1.375 2.65 2.575T12 18.3q.85-.775 2.213-1.975t2.65-2.575q1.287-1.375 2.212-2.837T20 8.15q0-1.5-1-2.5t-2.5-1q-1.175 0-2 .537T12.95 6.75q-.175.25-.425.375T12 7.25q-.275 0-.525-.125t-.425-.375Zm.95 4.725Z"/></svg>
+                </button>
+                {% if prod.discounted_price > 0 %}
+                            
+                    {% if prod.discount_type == 'flat' %}
+                        <div class="absolute left-[5px] top-[10px] bg-[#fb317d] text-white px-2 py-5 rounded-full inline-block text-center group-hover:top-[100px] group-hover:opacity-0 transition-all duration-500 font-bold">
+                            <span class="block text-[10px] md:text-[15px]" style="font-family: Futura;">{{shop.currency}} {{prod.discount_amount}} </span>
+                            <span class="block block text-[8px] md:text-[12px]" style="font-family: Futura;"> Less</span>
+                        </div>
+                    {% elif prod.discount_type == 'percentage' %}
+                        <div class="absolute left-[5px] top-[10px] bg-[#fb317d] text-white px-3 py-5 rounded-full inline-block text-center group-hover:top-[100px] group-hover:opacity-0 transition-all duration-500 font-bold">
+                            <span class="block text-[10px] md:text-[15px]" style="font-family: Futura;"> -{{prod.discount_p}}% </span>
+                            <span class="block text-[8px] md:text-[12px]" style="font-family: Futura;">Discount</span>
+                        </div>
+                    {% endif %}    
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="flex items-center justify-center mt-12 md:mt-24">
+        <a id="theme14-allprod-cik834hk23j42" style="font-family: Futura;" href="/search_page" class="editable link inline-block font-bold px-[20px] py-[9px] bg-black text-white text-center">Load More</a>
+    </div>
+</section>
+
+<script>
+  createApp({
+    data() {
+      return {
+        store: store,
+      }
+    },
+    delimiters: ['[[', ']]'],
+    methods: {
+      addToCart(id) {
+        console.log(id)
+        this.$store.commit('addToCart',{"id":id, "quantity":1})
+      },
+      delFromCart(id){
+        this.$store.commit('removeFromCart',{"id":id})
+      },
+      addToWish(id){
+        this.$store.commit('addToWish',{"id":id})
+      },
+      incart(id){
+        return this.$store.state.cart.some((cartItem) => cartItem.id === id)
+      },
+    },
+  }).use(store).mount('#all-product')
+</script>

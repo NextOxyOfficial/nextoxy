@@ -1,0 +1,34 @@
+<section class="bg-white py-6">
+  <div class="container mx-auto px-4">
+    <div class="swiper" id="category-swiper">
+      <div class="swiper-wrapper">
+        {% for sec in sections %}
+        <div class="swiper-slide w-full sm:w-1/2 lg:w-1/6 wow fadeInRight" data-wow-delay="{{forloop.counter}}00ms">
+          <a href="/search_page?section={{sec.id}}" class="group mb-10 block text-center">
+            <div class="mb-5 overflow-hidden rounded-lg">
+              {% if sec.image %}
+              <img src="{{sec.image.url}}" alt="category" class="cat-image w-[240px] h-[168px] m-auto object-cover bg-slate-50 hover:shadow" />
+              {% else %}
+              <img src="/static/ecommerce/no_product.png" alt="category" class="cat-image w-[240px] h-[168px] m-auto object-cover border border-slate-50 hover:shadow" />
+              {% endif %}
+            </div>
+            <h3 class="group-hover:text-primary mb-1 text-md font-semibold text-black md:text-2xl lg:text-xl xl:text-xl">{{sec.name}}</h3>
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-pagination"></div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<style scoped>
+  @media(max-width:425px){
+    .cat-image{
+      width: 100%;
+    }
+  }
+</style>

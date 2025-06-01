@@ -1,0 +1,1 @@
+import{_ as e}from"./B4TR0GKN.js";import{L as o,X as c}from"./BVIp9nla.js";const n={},t={class:"nui-placeload animate-nui-placeload"};function _(a,r){return o(),c("div",t)}const l=e(n,[["render",_]]);export{l as _};

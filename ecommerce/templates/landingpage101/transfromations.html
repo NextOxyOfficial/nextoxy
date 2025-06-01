@@ -1,0 +1,41 @@
+<div
+  class="py-14 bg-[url('/static/services/service-one/transforms.png')]"
+  id="transformation"
+>
+  <div class="container max-w-3xl px-2 md:px-4 mx-auto text-center">
+    <h2
+      class="editable text text-center text-xl md:text-3xl font-bold"
+      id="landing-page-101-75"
+    >
+      Stunning Before and After Landscaping Design Transformations
+    </h2>
+    <button
+      @click.prevent="scrollToSection('appointment')"
+      class="editable text bg-black text-white px-10 py-2 text-sm md:text-lg my-8"
+      id="landing-page-101-76"
+    >
+      Schedule a Consultation
+    </button>
+    <div class="editable image" id="landing-page-101-78">
+      <img
+        src="/static/services/service-one/transformation.png"
+        alt="Transformation"
+      />
+    </div>
+  </div>
+</div>
+<script>
+  Vue.createApp({
+    data() {
+      return {};
+    },
+    methods: {
+      scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: "smooth" });
+        }
+      },
+    },
+  }).mount("#transformation");
+</script>

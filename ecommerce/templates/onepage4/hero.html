@@ -1,0 +1,323 @@
+<div class="flex w-full px-2 mx-auto align-center" style="align-items: center;">
+  <div class="relative w-full min-h-[700px]">
+    <!-- bg image -->
+    <div class="editable image" id="onepage4-hero-wejh324jhn34kj3">
+      <img class="absolute z-[0] min-h-[700px] max-h-[700px] object-cover w-full"
+        src="/static/ecommerce/onepage4/sec1-bg.jpg" alt="">
+    </div>
+
+    <!-- hero content -->
+    <div class="max-w-[1000px]  mx-auto mb-20 relative z-[999] my-6" id="product-checkout">
+      <img class="w-full mb-6 editable image" id="onepage4-hero-gherjhn34jhnjk34" src="/static/ecommerce/onepage4/topbanner.jpg" alt="">
+      <!-- checkout -->
+      <section class="flex md:flex-row flex-col gap-4 justify-between items-start">
+        <section class="pb-8">
+          <div class="flex flex-wrap w-full">
+            <div class="w-full ">
+              <div class="overflow-hidden rounded-lg border border-[#e7e7e7] py-10 px-6 sm:px-10 bg-white w-full">
+                <h1 class="font-semibold text-2xl mb-6"> Customer Information</h1>
+                <div class="my-3 flex sm:flex-row flex-col flex-wrap gap-2">
+                  <div class="flex-1 flex flex-col">
+                    <label for="" class="text-body-color mb-[10px] block text-base font-medium"> First Name </label>
+                    <input v-model="shipping.first_name" type="text" placeholder="John Doe"
+                      class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]" />
+                  </div>
+                  <div class="flex-1 flex flex-col">
+                    <label for="" class="text-body-color mb-[10px] block text-base font-medium"> Last Name </label>
+                    <input v-model="shipping.last_name" type="text" placeholder="John Doe"
+                      class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]" />
+                  </div>
+                </div>
+                <div class="my-3 flex sm:flex-row flex-col flex-wrap gap-2">
+                  <div class="flex-1 flex flex-col">
+                    <label for="" class="text-body-color mb-[10px] block text-base font-medium"> Phone </label>
+                    <input v-model="shipping.phone" type="text" placeholder=""
+                      class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]" />
+                  </div>
+                  <div class="flex-1 flex flex-col">
+                    <label for="" class="text-body-color mb-[10px] block text-base font-medium"> Email </label>
+                    <input v-model="shipping.email" type="text" placeholder=""
+                      class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]" />
+                  </div>
+                </div>
+                <div class="my-3 flex flex-wrap gap-2">
+                  <div class="flex-1 flex flex-col">
+                    <label for="" class="text-body-color mb-[10px] block text-base font-medium"> Address </label>
+                    <input v-model="shipping.address" type="text" placeholder=""
+                      class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]" />
+                  </div>
+                </div>
+                <div class="my-3 flex sm:flex-row flex-col flex-wrap gap-2">
+                  <div class="flex-1 flex flex-col">
+                    <label for="" class="text-body-color mb-[10px] block text-base font-medium"> Country </label>
+                    <select v-model="shipping.country" @change="getState" name="" id=""
+                      class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]">
+                      <option value="">Select Country</option>
+                      <option :value="country.name" v-for="country in countries">[[country.name]]</option>
+                    </select>
+                  </div>
+                  <div class="flex-1 flex flex-col">
+                    <label for="" class="text-body-color mb-[10px] block text-base font-medium"> State </label>
+                    <select v-model="shipping.state" @change="getCity" name="" id=""
+                      class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]">
+                      <option value="">Select State</option>
+                      <option :value="state.name" v-for="state in states">[[state.name]]</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="my-3 flex sm:flex-row flex-col flex-wrap gap-2">
+                  <div class="flex-1 flex flex-col">
+                    <label for="" class="text-body-color mb-[10px] block text-base font-medium"> City </label>
+                    <select v-model="shipping.city" @change="getDelivery" name="" id=""
+                      class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]">
+                      <option value="">Select City</option>
+                      <option :value="city.name" v-for="city in cities">[[city.name]]</option>
+                    </select>
+                  </div>
+                  <div class="flex-1 flex flex-col">
+                    <label for="" class="text-body-color mb-[10px] block text-base font-medium"> Zip Code </label>
+                    <input v-model="shipping.zip_code" type="text" placeholder=""
+                      class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full rounded-lg border py-3 px-5 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]" />
+                  </div>
+                </div>
+                <div class="-mx-3 flex flex-wrap">
+                </div>
+                <div class="mb-4">
+                  {% for method in payment_methods %}
+                  <div class="flex items-center gap-2 cursor-pointer my-2">
+                    <input v-model="method" type="radio" id="id-{{method.id}}" name="payment" value="{{method.id}}">
+                    <label for="id-{{method.id}}" class="cursor-pointer text-lg">
+                      <img class="h-[49px] object-contain" src="{{method.plugin.extra_image_1.url}}" alt="" srcset="">
+                    </label>
+                  </div>
+                  {% endfor %}
+                </div>
+
+                <div class="w-full">
+                  <div>
+                    <button @click="checkout"
+                      class="bg-primary inline-flex items-center justify-center rounded-md py-3 px-6 text-center text-sm font-semibold text-white hover:bg-opacity-90">Confirm
+                      Payment</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="rounded-md mt-4 bg-[#FFF0F0] p-4" v-if="error">
+            <p class="flex items-center text-sm font-medium text-[#BC1C21]">
+              <span class="pr-3">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="10" cy="10" r="10" fill="#BC1C21"></circle>
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M10.0002 5.54922C7.54253 5.54922 5.5502 7.54155 5.5502 9.99922C5.5502 12.4569 7.54253 14.4492 10.0002 14.4492C12.4579 14.4492 14.4502 12.4569 14.4502 9.99922C14.4502 7.54155 12.4579 5.54922 10.0002 5.54922ZM4.4502 9.99922C4.4502 6.93404 6.93502 4.44922 10.0002 4.44922C13.0654 4.44922 15.5502 6.93404 15.5502 9.99922C15.5502 13.0644 13.0654 15.5492 10.0002 15.5492C6.93502 15.5492 4.4502 13.0644 4.4502 9.99922Z"
+                    fill="white"></path>
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M10.0002 7.44922C10.304 7.44922 10.5502 7.69546 10.5502 7.99922V9.99922C10.5502 10.303 10.304 10.5492 10.0002 10.5492C9.69644 10.5492 9.4502 10.303 9.4502 9.99922V7.99922C9.4502 7.69546 9.69644 7.44922 10.0002 7.44922Z"
+                    fill="white"></path>
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M9.4502 11.9992C9.4502 11.6955 9.69644 11.4492 10.0002 11.4492H10.0052C10.309 11.4492 10.5552 11.6955 10.5552 11.9992C10.5552 12.303 10.309 12.5492 10.0052 12.5492H10.0002C9.69644 12.5492 9.4502 12.303 9.4502 11.9992Z"
+                    fill="white"></path>
+                </svg>
+              </span>
+              [[error]]
+            </p>
+          </div>
+          <!-- <p v-else></p> -->
+          <div class="rounded-md bg-[#C4F9E2] p-4 mt-4" v-if="success">
+            <p class="flex items-center text-sm font-medium text-[#004434]">
+              <span class="pr-3">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="10" cy="10" r="10" fill="#00B078"></circle>
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M14.1203 6.78954C14.3865 7.05581 14.3865 7.48751 14.1203 7.75378L9.12026 12.7538C8.85399 13.02 8.42229 13.02 8.15602 12.7538L5.88329 10.4811C5.61703 10.2148 5.61703 9.78308 5.88329 9.51682C6.14956 9.25055 6.58126 9.25055 6.84753 9.51682L8.63814 11.3074L13.156 6.78954C13.4223 6.52328 13.854 6.52328 14.1203 6.78954Z"
+                    fill="white"></path>
+                </svg>
+              </span>
+              [[success]]
+            </p>
+          </div>
+        </section>
+        <!-- product -->
+  
+        <div class="h-[728px] overflow-y-scroll w-full">
+          <div id="prod-container" class="flex flex-col justify-between gap-4 items-center w-full">
+            <div v-for="prod in products" class="relative bg-white items-center overflow-hidden w-full border rounded sm:px-9 px-0 sm:pl-auto pl-6 prod" :class="{'border border-rose-500': prod.selected}">
+              <input class="absolute" type="checkbox" id="" v-model="prod.selected" style="left: 12px; top: 26px; width: 16px; height: 16px; cursor: pointer;">
+              <label :for="prod.id" class=" cursor-pointer max-w-[500px] w-full py-4 px-6">
+                <div class="flex sm:flex-row flex-col gap-2 items-start w-full overflow-hidden !important">
+                  <img class="w-[85px] rounded h-[93px] border object-cover" :src="prod.image" alt="">
+                  <div class="">
+                    <p class="mb-2 w-full font-bold h-[46px] overflow-hidden">[[prod.name]]</p>
+                    <div class="flex sm:flex-row flex-col sm:items-center items-start">
+                      <div class="flex gap-2 items-center">
+                        <div class="mr-3 inline-flex items-center rounded border border-[#e7e7e7] text-base font-medium text-black" >
+                          <span v-if="prod.quantity>1" @click.prevent="prod.quantity--" class="w-[35px] inline-block cursor-pointer select-none py-[7px] text-center"> -</span>
+                          <span v-else class="bg-slate-100 w-[35px] inline-block opacity-50 cursor-pointer select-none py-[7px] text-center"> -</span>
+                          <span class="inline-block py-[7px] px-4 bg-white">[[prod.quantity]]</span>
+                          <span @click.prevent="prod.quantity++" class="w-[35px] inline-block cursor-pointer select-none py-[7px] text-center" > +</span>
+                        </div>
+                      </div>
+                      <p class="mb-2 h-[20px] overflow-hidden italic sm:mt-auto mt-2"><span class="text-xs">{{shop.currency}}</span> <span class="font-bold">[[prod.sale_price]]</span></p>
+                    </div>
+                  </div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+<!-- for product -->
+<script>
+  const { createApp } = Vue
+  const app = createApp({
+    data() {
+      return {
+        store: store,
+        products: [],
+        shipping: {
+          first_name: '',
+          last_name: '',
+          email: '',
+          phone: '',
+          address: '',
+          city: '',
+          state: '',
+          zip_code: '',
+          country: '',
+        },
+        shipping_charge: '',
+        countries: [],
+        states: [],
+        cities: [],
+        coupon: {
+          code: '',
+          valid: '',
+          invalid: false,
+        },
+        success: '',
+        error: '',
+      }
+    },
+    delimiters: ['[[', ']]'],
+    mounted() {
+      this.getProducts()
+      this.getCountries()
+    },
+    methods: {
+      addToCart(id) {
+        console.log(id)
+        this.$store.commit('addToCart',{"id":id, "quantity":1})
+      },
+      getProducts() {
+        fetch('/api/filter_products', {
+          method: 'GET',
+          headers: {'Content-Type': 'application/json'}
+        })
+        .then(response => response.json())
+        .then(data => {
+          this.products = data;
+        })
+        .catch(error => console.error(error));
+      },
+      getCountries() {
+        fetch('https://nextoxy.com/api/utils/countries/', {
+          method: 'GET',
+          headers: {'Content-Type': 'application/json'}
+        })
+        .then(response => response.json())
+        .then(data => {
+          this.countries = data;
+          this.shipping.state = ''
+          this.shipping.city = ''
+        })
+        .catch(error => console.error(error));
+      },
+      getState(){
+        fetch('https://nextoxy.com/api/utils/states/?country='+this.shipping.country, {
+          method: 'GET',
+          headers: {'Content-Type': 'application/json'}
+        })
+        .then(response => response.json())
+        .then(data => {
+          this.states = data;
+          this.shipping.city = ''
+        })
+        .catch(error => console.error(error));
+      },
+      getCity(){
+        fetch('https://nextoxy.com/api/utils/cities/?state='+this.shipping.state+'&country='+this.shipping.country, {
+          method: 'GET',
+          headers: {'Content-Type': 'application/json'}
+        })
+        .then(response => response.json())
+        .then(data => {
+          this.cities = data;
+        })
+        .catch(error => console.error(error));
+      },
+      getTotal(){
+        var total = 0
+        var selected = this.products.filter((prod) => prod.selected);
+        selected.forEach((prod) => {
+          total += prod.sale_price * prod.quantity
+        })
+        return total
+      },
+      checkout(){
+        var selected = this.products.filter((prod) => prod.selected);
+
+        
+        var data = {}
+        data.shipping = this.shipping
+        data.cart = []
+        data.delivery = 0
+        data.total = this.getTotal()
+        data.coupon = ""
+        data.method = ""
+        selected.forEach(item => {
+          var dt = {
+            id: item.id,
+            quantity: item.quantity,
+          }
+          data.cart.push(dt)
+        });
+
+        if (selected.length === 0 || !this.shipping.first_name || !this.shipping.last_name || !this.shipping.email || !this.shipping.phone || !this.shipping.address || !this.shipping.city || !this.shipping.state || !this.shipping.zip_code || !this.shipping.country){
+          this.error = "Please select product and fill in all shipping fields.";
+          setTimeout(() => {
+            this.error = "";
+          }, 3000);
+          return;
+        }else{
+          this.success = "Order completed successfully"
+          setTimeout(() => {
+            this.success = "";
+          }, 4000);
+        }
+
+        fetch('/api/checkout', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+
+          console.log(data);
+        })
+        .catch(error => console.error(error));
+      }
+    },
+  })
+  app.use(store)
+  app.mount('#product-checkout')
+</script>

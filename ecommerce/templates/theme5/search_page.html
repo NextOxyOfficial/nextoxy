@@ -1,0 +1,247 @@
+{% extends "theme5/base.html" %}
+
+{% block content %}
+<script>
+  document.getElementById('navbar').classList.remove('static-mode')
+  document.getElementById('navbar').classList.add('static-mode-bg')
+</script>
+<style scoped>
+    .static-mode-bg{
+      background-color: #ed1d24;
+    }
+    #navbar a{
+        color: white ;
+    }
+    #navbar a:hover{
+        color: black ;
+    }
+</style>
+<section id="search_page" class="my-[140px]">
+    <div class="border-light shadow-card mb-4 border bg-[#f7f8fa] py-2 px-4 sm:px-6 md:px-8 md:py-4">
+      <ul class="container mx-auto px-4 flex items-center">
+        <li class="flex items-center">
+          <a href="javascript:void(0)" class="hover:text-primary flex items-center text-base font-semibold text-black">
+            <span class="pr-2">
+              <svg width="15" height="15" viewBox="0 0 15 15" class="fill-current">
+                <path d="M13.3503 14.6503H10.2162C9.51976 14.6503 8.93937 14.0697 8.93937 13.3729V10.8182C8.93937 10.5627 8.73043 10.3537 8.47505 10.3537H6.54816C6.29279 10.3537 6.08385 10.5627 6.08385 10.8182V13.3497C6.08385 14.0464 5.50346 14.627 4.80699 14.627H1.62646C0.929989 14.627 0.349599 14.0464 0.349599 13.3497V5.24431C0.349599 4.89594 0.535324 4.5708 0.837127 4.385L6.96604 0.506501C7.29106 0.297479 7.73216 0.297479 8.05717 0.506501L14.1861 4.385C14.4879 4.5708 14.6504 4.89594 14.6504 5.24431V13.3265C14.6504 14.0697 14.07 14.6503 13.3503 14.6503ZM6.52495 9.54086H8.45184C9.14831 9.54086 9.7287 10.1215 9.7287 10.8182V13.3497C9.7287 13.6052 9.93764 13.8142 10.193 13.8142H13.3503C13.6057 13.8142 13.8146 13.6052 13.8146 13.3497V5.26754C13.8146 5.19786 13.7682 5.12819 13.7218 5.08174L7.61608 1.20324C7.54643 1.15679 7.45357 1.15679 7.40714 1.20324L1.27822 5.08174C1.20858 5.12819 1.18536 5.19786 1.18536 5.26754V13.3729C1.18536 13.6284 1.3943 13.8374 1.64967 13.8374H4.80699C5.06236 13.8374 5.2713 13.6284 5.2713 13.3729V10.8182C5.24809 10.1215 5.82848 9.54086 6.52495 9.54086Z"></path>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M7.51145 1.55106L13.465 5.33294V13.3497C13.465 13.412 13.4126 13.4644 13.3503 13.4644H10.193C10.1307 13.4644 10.0783 13.412 10.0783 13.3497V10.8182C10.0783 9.92832 9.34138 9.19112 8.45184 9.19112H6.52495C5.63986 9.19112 4.89529 9.92522 4.9217 10.8237V13.3729C4.9217 13.4352 4.86929 13.4877 4.80699 13.4877H1.64967C1.58738 13.4877 1.53496 13.4352 1.53496 13.3729V5.33311L7.51145 1.55106ZM1.27822 5.08174L7.40714 1.20324C7.45357 1.15679 7.54643 1.15679 7.61608 1.20324L13.7218 5.08174C13.7682 5.12819 13.8146 5.19786 13.8146 5.26754V13.3497C13.8146 13.6052 13.6057 13.8142 13.3503 13.8142H10.193C9.93764 13.8142 9.7287 13.6052 9.7287 13.3497V10.8182C9.7287 10.1215 9.14831 9.54086 8.45184 9.54086H6.52495C5.82848 9.54086 5.24809 10.1215 5.2713 10.8182V13.3729C5.2713 13.6284 5.06236 13.8374 4.80699 13.8374H1.64967C1.3943 13.8374 1.18536 13.6284 1.18536 13.3729V5.26754C1.18536 5.19786 1.20858 5.12819 1.27822 5.08174ZM13.3503 15H10.2162C9.32668 15 8.58977 14.2628 8.58977 13.3729V10.8182C8.58977 10.7559 8.53735 10.7035 8.47505 10.7035H6.54816C6.48587 10.7035 6.43345 10.7559 6.43345 10.8182V13.3497C6.43345 14.2396 5.69654 14.9768 4.80699 14.9768H1.62646C0.736911 14.9768 0 14.2396 0 13.3497V5.24431C0 4.77131 0.251303 4.33591 0.651944 4.08836L6.77814 0.211575C7.21781 -0.0705255 7.80541 -0.0705251 8.24508 0.211576C8.24546 0.211821 8.24584 0.212066 8.24622 0.212311L14.3713 4.08838C14.7853 4.34424 15 4.78759 15 5.24431V13.3265C15 14.2587 14.2671 15 13.3503 15ZM14.1861 4.385L8.05717 0.506501C7.73216 0.297479 7.29106 0.297479 6.96604 0.506501L0.837127 4.385C0.535324 4.5708 0.349599 4.89594 0.349599 5.24431V13.3497C0.349599 14.0464 0.929989 14.627 1.62646 14.627H4.80699C5.50346 14.627 6.08385 14.0464 6.08385 13.3497V10.8182C6.08385 10.5627 6.29279 10.3537 6.54816 10.3537H8.47505C8.73043 10.3537 8.93937 10.5627 8.93937 10.8182V13.3729C8.93937 14.0697 9.51976 14.6503 10.2162 14.6503H13.3503C14.07 14.6503 14.6504 14.0697 14.6504 13.3265V5.24431C14.6504 4.89594 14.4879 4.5708 14.1861 4.385Z"></path>
+              </svg>
+            </span>
+            Home
+          </a>
+          <span class="text-body-color px-3"> / </span>
+        </li>
+        <li class="flex items-center">
+          <a href="javascript:void(0)" class="text-body-color hover:text-primary text-base font-semibold"> Project </a>
+          <span class="text-body-color px-3"> / </span>
+        </li>
+        <li class="text-body-color text-base font-semibold">Marketing</li>
+      </ul>
+    </div>
+    <section class="bg-white pt-6 pb-6 lg:pt-6 lg:pb-6">
+      <div class="container mx-auto px-4">
+        <div class="-mx-4 flex">
+          <div class="w-full px-4">
+            <div class="mb-[20px]">
+              <h2 class="mb-3 text-3xl font-semibold text-black sm:text-4xl">Search Page</h2>
+            </div>
+          </div>
+        </div>
+        <div class="-mx-4 flex flex-wrap">
+          <div class="w-full px-4 lg:w-3/4">
+            <div class="rounded-sm py-2">
+              <div class="flex flex-wrap items-center justify-between">
+                <div class="w-full md:w-9/12 lg:w-9/12 xl:w-8/12">
+                  <div class="items-center sm:flex">
+                    <div class="inline-flex items-center md:mb-0 relative">
+                      <div class="px-3 py-3 absolute h-full right-0 top-0 cursor-pointer bg-[#fd393f] z-10 text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 512 512"><path d="M98.9 184.7l1.8 2.1 136 156.5c4.6 5.3 11.5 8.6 19.2 8.6 7.7 0 14.6-3.4 19.2-8.6L411 187.1l2.3-2.6c1.7-2.5 2.7-5.5 2.7-8.7 0-8.7-7.4-15.8-16.6-15.8H112.6c-9.2 0-16.6 7.1-16.6 15.8 0 3.3 1.1 6.4 2.9 8.9z" fill="currentColor"/></svg>
+                      </div>
+                      <div class="relative mr-10 cursor-pointer">
+                        <select class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full appearance-none rounded-sm border py-[10px] pl-4 pr-8 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]">
+                          <option value="">Best Selling</option>
+                          <option value="">Newest Products</option>
+                          <option value="">Oldest Products</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="w-full md:w-3/12 lg:w-3/12 xl:w-4/12">
+                  <div class="flex items-center space-x-4 md:justify-end">
+                    <div class="inline-flex items-center md:mb-0 relative">
+                      <a :href="'/search_page?search='+searchTerm" class="px-3 py-3 absolute h-full right-0 top-0 cursor-pointer bg-[#fd393f] z-10 text-white">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 256 256"><path fill="currentColor" d="m229.66 218.34l-50.07-50.06a88.11 88.11 0 1 0-11.31 11.31l50.06 50.07a8 8 0 0 0 11.32-11.32ZM40 112a72 72 0 1 1 72 72a72.08 72.08 0 0 1-72-72Z"/></svg>
+                      </a>
+                      <div class="relative mr-10">
+                        <input v-model="searchTerm" @keydown.enter="goToUrl('/search_page?search='+searchTerm)" type="text" placeholder="Type Your Search Here" class="border-form-stroke text-body-color focus:border-primary active:border-primary w-full appearance-none rounded-sm border py-[10px] pl-4 pr-8 font-medium outline-none transition disabled:cursor-default disabled:bg-[#F5F7FD]">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-8 flex items-center justify-center rounded-sm py-4">
+              <div class="relative w-full pb-14">
+                {% if products|length < 1 %}
+                <span class="text-2x font-bold block text-black text-opacity-20 sm:text-3xl md:text-4xl w-full text-center py-12"> No Products Found </span>
+                {% else %}
+                <span class="font-bold block text-black text-opacity-50 w-full py-4"> {{products|length}}(s) Products Found </span>
+                {% endif %}
+                <div class="product-grid grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 snap xs:max-w-[400px] mx-auto  h-auto w-full max-w-[300px] transition-all sm:max-w-[540px] md:max-w-[720px] lg:max-w-[960px] xl:max-w-[1140px] 2xl:max-w-[1568px]" x-ref="carousel">
+                  {% for prod in products %}
+                  <div class="stripes w-full h-full overflow-hidden rounded-sm wow fadeInUp" data-wow-delay="{{forloop.counter}}0ms">
+                    <div class="stripe relative group mb-4 border border-[#e5e5e5] p-0">
+                      <a href="/details/{{prod.id}}" class="mb-5 overflow-hidden rounded-md">
+                        <div>
+                          {% if prod.productimage_set.first %}
+                          <img src="{{prod.productimage_set.first.image.url}}" alt="product" class="h-[320px] w-full object-cover"/>
+                          {% else %}
+                          <img src="/static/frontend/images/no_product.png" alt="product" class="h-[320px] w-full object-cover"/>
+                          {% endif %}
+                        </div>
+                        {% if prod.discount_type == 'flat' %}
+                        <span class="bg-primary absolute left-5 top-5 inline-flex items-center justify-center px-3 py-1 text-sm font-semibold text-white rounded"> -{{prod.discount_f}}{{shop.currency}} </span>
+                        {% elif prod.discount_type == 'percentage' %}
+                        <span class="bg-primary absolute left-5 top-5 inline-flex items-center justify-center px-3 py-1 text-sm font-semibold text-white rounded"> -{{prod.discount_p}}% </span>
+                        {% endif %}
+                        {% if prod.highlight != 'none' %}
+                        <span class="bg-primary absolute right-5 top-5 inline-flex items-center justify-center px-3 py-1 text-sm font-semibold text-white rounded uppercase">{{prod.highlight}}</span>
+                        {% endif %}
+
+                        <div class="absolute flex justify-center items-center left-0 top-0 h-full w-full opacity-0 transition-all group-hover:opacity-100" style="background-color: rgba(255, 32, 32, 0.9);">
+                          <button @click="addToCart({{prod.id}})" class="bg-transparrent border border-rose-100/50 mx-4 font-bold text-white w-full py-3 rounded-sm hover:bg-slate-100/50" v-if="!incart({{prod.id}})">
+                            Add to cart
+                          </button>
+                          <button class="bg-transparrent border border-rose-100/50 mx-4 font-bold text-white w-full py-3 rounded-sm hover:bg-slate-100/50" v-else>
+                            In Your Cart
+                          </button>
+                        </div>
+                      </a>
+                    </div>
+                    <div class="text-left">
+                      <div class="flex w-full items-center justify-between text-primary">
+                        <span class="text-body-color text-sm font-semibold"> CATEGORY </span>
+                        <div class="flex text-primary">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"><path fill="currentColor" d="m5.825 22l2.325-7.6L2 10h7.6L12 2l2.4 8H22l-6.15 4.4l2.325 7.6L12 17.3L5.825 22Z"/></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"><path fill="currentColor" d="m5.825 22l2.325-7.6L2 10h7.6L12 2l2.4 8H22l-6.15 4.4l2.325 7.6L12 17.3L5.825 22Z"/></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"><path fill="currentColor" d="m5.825 22l2.325-7.6L2 10h7.6L12 2l2.4 8H22l-6.15 4.4l2.325 7.6L12 17.3L5.825 22Z"/></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"><path fill="currentColor" d="m5.825 22l2.325-7.6L2 10h7.6L12 2l2.4 8H22l-6.15 4.4l2.325 7.6L12 17.3L5.825 22Z"/></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"><path fill="currentColor" d="m5.825 22l2.325-7.6L2 10h7.6L12 2l2.4 8H22l-6.15 4.4l2.325 7.6L12 17.3L5.825 22Z"/></svg>
+                        </div>
+                      </div>
+                      <div class="flex justify-between my-4">
+                        <a href="/details/{{prod.id}}" class="flex-1 overflow-hidden">
+                          <h3 class="hover:text-primary xs:text-xl text-lg font-semibold text-black w-full overflow-hidden truncate"> {{prod.name}} </h3>
+                        </a>
+                        {% if prod.discounted_price > 0 %}
+                        <div class="text-right">
+                          <p class="text-lg font-semibold text-black whitespace-nowrap">
+                            {{shop.currency}} {{ prod.discounted_price}}
+                          </p>
+                          <p class="text-lg font-semibold line-through text-orange-400 whitespace-nowrap">
+                            {{shop.currency}} {{ prod.sale_price}}
+                          </p>
+                        </div>
+                        {% else %}
+                        <p class="text-lg font-semibold text-black whitespace-nowrap">
+                          {{shop.currency}} {{ prod.sale_price}}
+                        </p>
+                        {% endif %}
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="w-full px-4 lg:w-[350px]">
+            <div class="mb-9 rounded-sm py-6 px-8 lg:px-6 xl:px-8">
+              <h3 class="border-b-[2px] border-[#fd393f] pb-4 text-[25px] font-bold text-black">Categories</h3>
+              <ul class="pt-6">
+                {% for section in sections %}
+                <li class="mb-3">
+                  <a href="/search_page?section={{section.id}}" class="text-body-color hover:text-primary block text-base font-semibold"> {{section.name}} </a>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div class="mb-9 rounded-sm py-6 px-8 lg:px-6 xl:px-8">
+              <h3 class="mb-6 border-b-[2px] border-[#fd393f] pb-4 text-[25px] font-bold text-black">Shop By Price</h3>
+              <div class="w-full">
+                <div class="priceSlideOne" id="pricingOne">
+                  <div class="price-range">
+                    <div class="flex justify-between w-full my-2 mt-4">
+                      <input v-model="priceRange.min" type="text" type="number" class="border px-2 py-1 w-[100px] rounded">
+                      <span style="line-height: 35px;">-</span>
+                      <input v-model="priceRange.max" type="text" type="number" class="border px-2 py-1 w-[100px] rounded">
+                    </div>
+                    <div class="price-amount flex items-center justify-between">
+                      <div class="amount-input w-1/2">
+                        <label class="text-body-color mb-2 block text-xs font-medium"> Minimum Price </label>
+                        <span type="text" id="minAmount" class="text-block text-lg font-semibold"></span>
+                      </div>
+                      <div class="amount-input w-1/2 text-right">
+                        <label class="text-body-color mb-2 block text-xs font-medium"> Maximum Price </label>
+                        <span type="text" id="maxAmount" class="text-block text-lg font-semibold"></span>
+                      </div>
+                    </div>
+                    <div class="flex justify-end">
+                      <button @click="filterByPrice" class="btn bg-primary px-4 py-1 text-white rounded float-right clear-left">Apply</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+  <script>
+    createApp({
+    data() {
+      return {
+        store: store,
+        priceRange: {
+          min: 0.00,
+          max: 1000.00
+        },
+        perPage: 16,
+        searchTerm: '',
+      }
+    },
+    delimiters: ['[[', ']]'],
+    methods: {
+      incart(id){
+        return this.$store.state.cart.some((cartItem) => cartItem.id === id)
+      },
+      addToCart(id) {
+        console.log(id)
+        this.$store.commit('addToCart',{"id":id, "quantity":1})
+      },
+      addToWish(id){
+        this.$store.commit('addToWish',{"id":id})
+      },
+      filterByPrice(){
+        window.location.href='/search_page?min='+this.priceRange.min+'&max='+this.priceRange.max
+      },
+      getPerPage(){
+        let current_url = new URL(window.location.href)
+        console.log(123, current_url);
+        if(current_url.href.indexOf('?') > -1){
+          window.location.href = current_url.href+ '&perpage='+this.perPage
+        } else{
+          window.location.href = current_url.href+ '?perpage='+this.perPage
+        }
+      },
+      goToUrl(url){
+        window.location.href = url
+      },
+    }
+  }).use(store).mount('#search_page')
+  </script>
+
+
+{% endblock %}

@@ -1,0 +1,30 @@
+  <section class="bg-white mt-8">
+    <div class="blog2-container">
+
+      <!-- swiper -->
+      <div class="swiper heroSwiper">
+        <div class="swiper-wrapper">
+          {% for post in trending %}
+          <div class="swiper-slide relative overflow-hidden">
+            {% if post.image %}
+            <img class="lg:max-h-[500px] md:min-h-[500px] min-h-[350px] h-full w-full object-cover" src="{{post.image.url}}" alt="">
+            {% endif %}
+            <div class="absolute top-0 z-[1] bg-black/20 w-full h-[500px] h-full"></div>
+            <div class="absolute max-w-[500px] z-[999] md:top-[40%] top-[20%] transform-y-[-40%] left-[10%] overflow-hidden">
+              <h2 class="md:text-3xl text-xl text-white text-shadow" style="text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.657);">{{post.title}}</h2>
+
+              <div class="text-white text-sm leading-[30px] mt-4 text-shadow h-[150px] overflow-hidden" style="text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.657);">
+                {{post.meta|safe}}
+              </div>
+            </div>
+          </div>
+          {%endfor%}
+
+          </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+</section>
+  

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    {% include "blog2/navbar.html" %}
+    {% block content %} 
+    {% endblock content %}
+    {% include "blog2/footer.html" %}
+    <button onclick="topFunction()" id="topScrollBtn" title="Go to top" class="fixed hidden bottom-[20px] right-[30px] z-[999] text-white bg-black cursor-pointer w-[60px] rounded-full h-[60px]">
+        <div class="arrow">
+            <span></span>
+            <span></span>
+        </div>
+    </button>
+</body>
+</html>
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+    body{
+        font-family: 'Kumbh Sans', sans-serif !important;
+    }
+    .btn-primary{
+        background-color: black;
+        padding: 10px 20px;
+        border-radius: 999px;
+        color: #fff;
+        font-size: 14px;
+    }
+    #topScrollBtn  .arrow {
+        position: absolute;
+        top: 45%;
+        left: 45%;
+        transform: rotate(180deg);
+        cursor: pointer;
+    }
+    #topScrollBtn  .arrow span {
+        display: block;
+        width: 15px;
+        height: 15px;
+        border-bottom: 5px solid white;
+        border-right: 5px solid white;
+        transform: rotate(45deg);
+        margin: -10px;
+        animation: topbtnanimate 2s infinite;
+    }
+    #topScrollBtn  .arrow span:nth-child(2) {
+        animation-delay: -0.3s;
+    }
+    .arrow span:nth-child(3) {
+        animation-delay: -0.4s;
+    }
+
+    @keyframes topbtnanimate {
+        0% {
+            opacity: 0;
+            transform: rotate(45deg) translate(-10px, -10px);
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+            transform: rotate(45deg) translate(0px, 0px);
+        }
+    }
+</style>
+
+<script>
+    let topbtnScroll = document.getElementById("topScrollBtn");
+    
+    window.onscroll = function() {scrollFunction()};
+    
+    function scrollFunction() {
+      if (document.body.scrollTop > 40 || document.documentElement.scrollTop > 40) {
+        topbtnScroll.style.display = "block";
+      } else {
+        topbtnScroll.style.display = "none";
+      }
+    }
+    
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+</script>
+    

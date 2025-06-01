@@ -1,0 +1,70 @@
+{% extends "theme7/base.html" %}
+
+{% block content %}
+
+<section class="relative z-10 overflow-hidden bg-white py-6 lg:py-6">
+    <div class="container mx-auto">
+      <div class="flex flex sm:flex-row flex-col flex-wrap lg:justify-between">
+        <div class="">
+          <div class="mb-12 max-w-[570px] lg:mb-0">
+            <span class="text-primary mb-1 block text-base font-semibold editable text" id="contactus-sdlri"> Contact Us </span>
+            <h2 class="text-dark mb-3 text-[32px] font-bold uppercase sm:text-[40px] lg:text-[36px] xl:text-[40px] editable text" id="contactus-sdlrsdfgi">GET IN TOUCH WITH US</h2>
+            <p class="text-body-color mb-4 text-base leading-relaxed editable text" id="contactus-sdlrisadre">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eius tempor incididunt ut labore et dolore magna aliqua. Ut enim adiqua minim veniam quis nostrud exercitation ullamco</p>
+            <div class="mb-2 flex w-full max-w-[370px]">
+              <div class="bg-primary text-primary mr-3 flex h-[40px] w-full max-w-[40px] items-center justify-center overflow-hidden rounded bg-opacity-5 sm:h-[50px] sm:max-w-[50px]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="#ffffff" stroke-width="2" d="M1 22V9.76a2 2 0 0 1 .851-1.636l9.575-6.72a1 1 0 0 1 1.149 0l9.574 6.72A2 2 0 0 1 23 9.76V22a1 1 0 0 1-1 1h-5.333a1 1 0 0 1-1-1v-5.674a1 1 0 0 0-1-1H9.333a1 1 0 0 0-1 1V22a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1z"/></svg>
+              </div>
+              <div class="w-full">
+                <h4 class="text-dark text-xl font-bold editable text" id="contactus-sdlri343">Our Location</h4>
+                <p class="text-body-color text-base">{{shop.street}}, {{shop.city}}, {{shop.state}}, {{shop.zip_code}}, {{shop.country}}</p>
+              </div>
+            </div>
+            <div class="mb-2 flex w-full max-w-[370px]">
+              <div class="bg-primary text-primary mr-3 flex h-[40px] w-full max-w-[40px] items-center justify-center overflow-hidden rounded bg-opacity-5 sm:h-[50px] sm:max-w-[50px]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="#ffffff" stroke-width="2" d="M6.375 2C5 2 3 3.5 2.5 4.5c-.715 1.43-.597 1.99-.125 3.5c.625 2 2.457 5.545 5 8c3.625 3.5 7 5 8.5 5.5s3.125 0 4.125-1s2-2 .875-3.5c-.797-1.063-1.959-2.292-3.375-3c-1.288-.644-2.056-.41-2.5.5c-.246.503-.322 1.466-.5 2c-.225.674-1.125.5-2.125 0C11.418 16.021 9 14 7 11c-1.24-1.859.742-1.87 2-2.5c1-.5 1.31-1.65.5-3C8 3 7.5 2 6.375 2Z"/></svg>
+              </div>
+              <div class="w-full">
+                <h4 class="text-dark text-xl font-bold editable text" id="contactus-sdlri234a">Phone Number</h4>
+                <p class="text-body-color text-base">{{shop.phone}}</p>
+              </div>
+            </div>
+            <div class="mb-2 flex w-full max-w-[370px]">
+              <div class="bg-primary text-primary mr-3 flex h-[40px] w-full max-w-[40px] items-center justify-center overflow-hidden rounded bg-opacity-5 sm:h-[50px] sm:max-w-[50px]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" stroke="#ffffff" stroke-width="2" d="M1 4h22v16H1V4Zm0 1l11 8.5L23 5"/></svg>
+              </div>
+              <div class="w-full">
+                <h4 class="text-dark text-xl font-bold editable text" id="contactus-sdlriqwe">Email Address</h4>
+                <p class="text-body-color text-base">{{shop.mail}}</p>
+              </div>
+            </div>
+          </div>  
+        </div>
+        <div class="max-w-[540px] w-full">
+          <div class="relative rounded-lg bg-white p-4 shadow-lg sm:p-6 w-full">
+            <form method="POST" action="">
+              {% csrf_token %}
+              <div class="mb-2">
+                <input name="name" type="text" placeholder="Your Name" class="text-body-color focus:border-primary w-full rounded border border-[f0f0f0] py-1 px-[14px] text-base outline-none focus-visible:shadow-none" />
+              </div>
+              <div class="mb-2">
+                <input name="email" type="email" placeholder="Your Email" class="text-body-color focus:border-primary w-full rounded border border-[f0f0f0] py-1 px-[14px] text-base outline-none focus-visible:shadow-none" />
+              </div>
+              <div class="mb-2">
+                <input name="phone" type="text" placeholder="Your Phone" class="text-body-color focus:border-primary w-full rounded border border-[f0f0f0] py-1 px-[14px] text-base outline-none focus-visible:shadow-none" />
+              </div>
+              <div class="mb-2">
+                <textarea rows="6" name="message" placeholder="Your Message" class="text-body-color focus:border-primary w-full resize-none rounded border border-[f0f0f0] py-3 px-[14px] text-base outline-none focus-visible:shadow-none"></textarea>
+              </div>
+              {{success}}
+              <div>
+                <button type="submit" class="bg-primary border-primary w-full rounded border p-1 text-white transition hover:bg-opacity-90 editable text" id="contactus-sdlrizxcfgwe">Send Message</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+{% endblock %}

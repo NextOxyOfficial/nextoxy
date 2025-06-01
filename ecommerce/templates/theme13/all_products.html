@@ -1,0 +1,93 @@
+<!-- Blog -->
+<section id="beauty-blog" class="w-screen mt-[36px] md:mt-[40px]">
+    <div class="w-full pt-[33px] pb-[27px] md:pt-[44px] md:pb-[36px]">
+        <div class="max-w-[1600px] px-[15px] md:px-[50px] mx-auto">
+            <h2 id="theme13-blog-4mkl5n38345" style="font-family: 'Playfair Display', serif;" class="editable text text-[24px] font-bold mb-[30px]">All Products</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-1 gap-y-[36px] md:gap-x-4 ">
+                {% for prod in all_products %}
+                    <!-- item 1 -->
+                    <div class="relative overflow-hidden bg-cover group bg-gray-50 shadow-md ">
+                        <a href="/details/{{prod.id}}" class="group block">
+                            
+                            <div id="theme13-allprod-werjnk2j3424tyuftg" class="editable image bg-gray-200">
+                            {% if prod.productimage_set.first %}
+                            <img src="{{prod.productimage_set.first.image.url}}" alt="product" class="w-full h-[250px] rounded-t-md hover:scale-105 transition-all duration-500 object-contain"/>
+                            {% else %}
+                                <img class="w-full h-[250px] rounded-t-md hover:scale-105 transition-all duration-500 object-contain" src="/static/ecommerce/theme13/img/2.webp" alt="">
+                            {% endif %}
+                            </div>
+                            
+                            <div class="p-1 md:p-5 overflow-hidden">
+                                <p id="theme13-allprod-kijwekrjki2j34rty" style="font-family: 'Playfair Display', serif;" class="editable text truncate overflow-hidden font-bold text-[17px]">{{prod.name}}</p>
+                                {% if prod.discounted_price > 0 %}
+                                <h3 style="font-family: 'Montserrat', sans-serif;" class="flex flex-col md:flex-row">
+                                    <span class="pr-3">{{shop.currency}}{{ prod.discounted_price }} </span>
+                                    <span class="text-orange-500 line-through"> {{shop.currency}}{{ prod.sale_price}}  </span>
+                                </h3>
+                                {% else %}
+                                <h3 style="font-family: 'Montserrat', sans-serif;" class="">
+                                    <span class="pr-3">{{shop.currency}}{{prod.sale_price}}</span>
+                                </h3>
+                                {% endif %}
+                            </div>
+                        </a>
+                        <!--cart-->
+                        <button style="font-family: 'Montserrat', sans-serif;" @click="addToCart({{prod.id}})" class="block w-full mt-2 text-center px-[20px] py-[9px] bg-gray-200 border-[1px] border-gray-200 group-hover:scale-105 group-hover:bg-gray-300 transition-all duration-500" v-if="!incart({{prod.id}})">
+                            Add To Cart
+                        </button>
+                        <a href="/cart" style="font-family: 'Montserrat', sans-serif;" class="block bg-[#ffe1e0] group-hover:scale-105 w-full mt-2 text-center px-[20px] py-[9px] border-[1px] border-[#ffe1e0] transition-all duration-500" v-else>
+                            View Cart
+                        </a>
+                        <!--wish-->
+                        <button @click="addToWish({{prod.id}})" style="font-family: 'Montserrat', sans-serif;" class="absolute right-[5px] top-[100px] opacity-0 group-hover:opacity-100 group-hover:top-0 inline-block rounded-full bg-[#ffe1e0] text-black mt-2.5 text-center px-[9px] py-[9px] border-[1px] border-[#ffe1e0] transition-all duration-500" >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 24 24"><path fill="currentColor" d="M12 20.325q-.35 0-.713-.125t-.637-.4l-1.725-1.575q-2.65-2.425-4.788-4.813T2 8.15Q2 5.8 3.575 4.225T7.5 2.65q1.325 0 2.5.562t2 1.538q.825-.975 2-1.538t2.5-.562q2.35 0 3.925 1.575T22 8.15q0 2.875-2.125 5.275T15.05 18.25l-1.7 1.55q-.275.275-.637.4t-.713.125ZM11.05 6.75q-.725-1.025-1.55-1.562t-2-.538q-1.5 0-2.5 1t-1 2.5q0 1.3.925 2.763t2.213 2.837q1.287 1.375 2.65 2.575T12 18.3q.85-.775 2.213-1.975t2.65-2.575q1.287-1.375 2.212-2.837T20 8.15q0-1.5-1-2.5t-2.5-1q-1.175 0-2 .537T12.95 6.75q-.175.25-.425.375T12 7.25q-.275 0-.525-.125t-.425-.375Zm.95 4.725Z"/></svg>
+                        </button>
+                        {% if prod.discounted_price > 0 %}
+                            
+                            {% if prod.discount_type == 'flat' %}
+                                <div class="absolute left-[5px] top-[10px] bg-[#fb317d] text-white px-2 py-5 rounded-full inline-block text-center group-hover:top-[100px] group-hover:opacity-0 transition-all duration-500 font-bold">
+                                    <span class="block text-[10px] md:text-[13px]" style="font-family: 'Montserrat', sans-serif;">{{shop.currency}} {{prod.discount_amount}} </span>
+                                    <span class="block block text-[8px] md:text-[12px]" style="font-family: 'Montserrat', sans-serif;"> Less</span>
+                                </div>
+                            {% elif prod.discount_type == 'percentage' %}
+                                <div class="absolute left-[5px] top-[10px] bg-[#fb317d] text-white px-3 py-5 rounded-full inline-block text-center group-hover:top-[100px] group-hover:opacity-0 transition-all duration-500 font-bold">
+                                    <span class="block text-[10px] md:text-[13px]" style="font-family: 'Montserrat', sans-serif;"> -{{prod.discount_p}}% </span>
+                                    <span class="block text-[8px] md:text-[12px]" style="font-family: 'Montserrat', sans-serif;">Discount</span>
+                                </div>
+                            {% endif %}    
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="w-full flex items-center justify-center mt-[36px]">
+                <a style="font-family: 'Montserrat', sans-serif;" href="/search_page" class="bg-[#ffe1e0] px-[20px] py-[10px] inline-block rounded-md hover:scale-105 transition-all duration-500">Load More</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    createApp({
+      data() {
+        return {
+          store: store,
+        }
+      },
+      delimiters: ['[[', ']]'],
+      methods: {
+        addToCart(id) {
+          console.log(id)
+          this.$store.commit('addToCart',{"id":id, "quantity":1})
+        },
+        delFromCart(id){
+          this.$store.commit('removeFromCart',{"id":id})
+        },
+        addToWish(id){
+          this.$store.commit('addToWish',{"id":id})
+        },
+        incart(id){
+          return this.$store.state.cart.some((cartItem) => cartItem.id === id)
+        },
+      },
+    }).use(store).mount('#beauty-blog')
+  </script>

@@ -1,0 +1,1 @@
+import{_ as o}from"./B4TR0GKN.js";import{L as e,X as n}from"./BVIp9nla.js";const _={},c={class:"nui-dropdown-divider"};function r(t,s){return e(),n("div",c)}const d=o(_,[["render",r]]);export{d as _};

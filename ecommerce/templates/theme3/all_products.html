@@ -1,0 +1,165 @@
+<div class="mx-auto max-w-[1870px] px-4 md:px-6 lg:px-8 2xl:px-20 relative" id="all-product">
+  <div class="relative mb-12">
+    <div class="mb-5 md:mb-6">
+      <div class="mb-0 block-title">
+        <h2 class="text-skin-base text-[20px] xl:text-[20px] font-medium xl:leading-8">
+          <div>All Products</div>
+        </h2>
+      </div>
+    </div>
+    <div class="grid items-center gap-2 min-[425px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 w-full xl:-me-40 2xl:-me-28 4xl:me-0 relative after-item-opacity">
+      {% for prod in all_products %}
+      <div class="wow fadeInUp" data-wow-delay="{{forloop.counter}}00ms">
+        <article
+          class="flex flex-col product-card relative card-image--jump h-full"
+          title="{{prod.name}}"
+        >
+          <div class="relative flex-shrink-0 mt-4">
+            <a href="/details/{{prod.id}}">
+              <div class="card-img-container overflow-hidden relative">
+                <div class="block overflow-hidden relative m-0" style="display: block; overflow: hidden; position: relative; box-sizing: border-box; margin: 0px;">
+                  <div
+                    style="display: block; box-sizing: border-box; padding-top: 86.9565%;"
+                  ></div>
+                  {% if prod.productimage_set.first %}
+                  <img
+                    alt="{{prod.name}}"
+                    src="{{prod.productimage_set.first.image.url}}"
+                    decoding="async"
+                    data-nimg="responsive"
+                    class="object-contain bg-skin-thumbnail shadow"
+                    style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                    sizes="(max-width: 768px) 15vw,10vw"
+                    srcset=" "
+                  />
+                  {% else %}
+                  <img alt="" src="/static/ecommerce/no_product.png" decoding="async" data-nimg="responsive" class="object-cover bg-skin-thumbnail shadow"
+                    style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+                    sizes="(max-width: 768px) 15vw,10vw"
+                    srcset=" "
+                  />
+                  {% endif %}
+                  <div>
+                    {% if prod.discount_type == 'flat' %}
+                    <span class="bg-[#FF7E00] absolute left-5 top-5 inline-flex items-center justify-center px-3 py-1 text-sm font-semibold text-white rounded"> -{{prod.discount_f}}{{shop.currency}} </span>
+                    {% elif prod.discount_type == 'percentage' %}
+                    <span class="bg-[#FF7E00] absolute left-5 top-5 inline-flex items-center justify-center px-3 py-1 text-sm font-semibold text-white rounded"> -{{prod.discount_p}}% </span>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </a>
+            <!-- <div class="w-full h-full absolute top-0 pt-2.5 md:pt-3.5 z-10 -mx-0.5 sm:-mx-1">
+              <button class="buttons--quickview px-4 py-2 rounded-full" aria-label="Quick View Button">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  opacity="1"
+                >
+                  <path
+                    d="M19.0144 17.9256L13.759 12.6703C14.777 11.4129 15.3899 9.81507 15.3899 8.07486C15.3899 4.04156 12.1081 0.759766 8.07483 0.759766C4.04152 0.759766 0.759766 4.04152 0.759766 8.07483C0.759766 12.1081 4.04156 15.3899 8.07486 15.3899C9.81507 15.3899 11.4129 14.777 12.6703 13.759L17.9256 19.0144C18.0757 19.1645 18.2728 19.24 18.47 19.24C18.6671 19.24 18.8642 19.1645 19.0144 19.0144C19.3155 18.7133 19.3155 18.2266 19.0144 17.9256ZM8.07486 13.8499C4.89009 13.8499 2.2998 11.2596 2.2998 8.07483C2.2998 4.89006 4.89009 2.29976 8.07486 2.29976C11.2596 2.29976 13.8499 4.89006 13.8499 8.07483C13.8499 11.2596 11.2596 13.8499 8.07486 13.8499Z"
+                    fill="currentColor"
+                  ></path>
+                </svg>                
+              </button>
+            </div> -->
+          </div>
+          <div class="flex flex-col mb-2 h-full overflow-hidden text-center relative">
+            <!-- <div class="text-sm mt-auto leading-6 text-gray-400 mb-1.5">Common Good</div> -->
+            <div class="prd-block_reviews flex items-center justify-center mt-4">
+              {% if prod.rating >= 1 %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#f8c612" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21L12 17.27z"/></svg>
+              {% else %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#a3a3a3" d="m22 9.24l-7.19-.62L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21L12 17.27L18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27l1-4.28l-3.32-2.88l4.38-.38L12 6.1l1.71 4.04l4.38.38l-3.32 2.88l1 4.28L12 15.4z"/></svg>
+              {% endif %}
+
+              {% if prod.rating >= 2 %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#f8c612" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21L12 17.27z"/></svg>
+              {% else %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#a3a3a3" d="m22 9.24l-7.19-.62L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21L12 17.27L18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27l1-4.28l-3.32-2.88l4.38-.38L12 6.1l1.71 4.04l4.38.38l-3.32 2.88l1 4.28L12 15.4z"/></svg>
+              {% endif %}
+
+              {% if prod.rating >= 3 %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#f8c612" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21L12 17.27z"/></svg>
+              {% else %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#a3a3a3" d="m22 9.24l-7.19-.62L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21L12 17.27L18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27l1-4.28l-3.32-2.88l4.38-.38L12 6.1l1.71 4.04l4.38.38l-3.32 2.88l1 4.28L12 15.4z"/></svg>
+              {% endif %}
+
+              {% if prod.rating >= 4 %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#f8c612" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21L12 17.27z"/></svg>
+              {% else %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#a3a3a3" d="m22 9.24l-7.19-.62L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21L12 17.27L18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27l1-4.28l-3.32-2.88l4.38-.38L12 6.1l1.71 4.04l4.38.38l-3.32 2.88l1 4.28L12 15.4z"/></svg>
+              {% endif %}
+
+              {% if prod.rating >= 5 %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#f8c612" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21L12 17.27z"/></svg>
+              {% else %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="#a3a3a3" d="m22 9.24l-7.19-.62L12 2L9.19 8.63L2 9.24l5.46 4.73L5.82 21L12 17.27L18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27l1-4.28l-3.32-2.88l4.38-.38L12 6.1l1.71 4.04l4.38.38l-3.32 2.88l1 4.28L12 15.4z"/></svg>
+              {% endif %}
+            </div>
+            <a class="text-skin-base mt-4 text-sm leading-5 line-clamp-2 mb-2 hover:text-[#ff7e00]" href="/details/{{prod.id}}">
+              <h3 class="h-6 overflow-hidden truncate">{{prod.name}}</h3>         
+            <div class="space-s-2 mb-4 lg:mb-4">
+              {% if prod.discounted_price > 0 %}
+                <div class="flex gap-1 items-center justify-center">
+                  <p class="mb-3 text-lg font-semibold text-black">
+                    {{shop.currency}}{{ prod.discounted_price}}
+                  </p>
+                  <p class="mb-3 text-lg font-semibold line-through text-orange-400">
+                    {{shop.currency}}{{ prod.sale_price}}
+                  </p>
+                </div>
+                {% else %}
+                <p class="mb-3 text-lg font-semibold text-black">
+                  {{shop.currency}}{{ prod.sale_price}}
+                </p>
+              {% endif %}              
+            </div>
+          </a>
+            <div class="inline-block">
+              <button @click="addToCart({{prod.id}})" class="text-white min-w-[150px] px-4 py-2 bg-[#FF7E00] rounded-full text-skin-inverted text-[13px] items-center justify-center focus:outline-none focus-visible:outline-none" v-if="!incart({{prod.id}})">
+                Add to cart
+              </button>
+              <div class="mb-2" v-else>
+                <a href="/cart" class="text-white min-w-[150px] px-4 py-2 font-semibold  text-[#FF7E00] border-2 border-[#FF7E00] rounded-full text-skin-inverted text-[13px] items-center justify-center focus:outline-none focus-visible:outline-none ">
+                  In Your Cart
+                </a>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <a href="/search_page" class="px-5 py-2 rounded bg-[#FF7E00] text-white mb-12 max-w-max flex m-auto editable text" id="load_more090">Load More Products</a>
+</div>
+
+
+<script>
+  createApp({
+    data() {
+      return {
+        store: store,
+      }
+    },
+    delimiters: ['[[', ']]'],
+    methods: {
+      addToCart(id) {
+        console.log(id)
+        this.$store.commit('addToCart',{"id":id, "quantity":1})
+      },
+      delFromCart(id){
+        this.$store.commit('removeFromCart',{"id":id})
+      },
+      addToWish(id){
+        this.$store.commit('addToWish',{"id":id})
+      },
+      incart(id){
+        return this.$store.state.cart.some((cartItem) => cartItem.id === id)
+      },
+    },
+  }).use(store).mount('#all-product')
+</script>

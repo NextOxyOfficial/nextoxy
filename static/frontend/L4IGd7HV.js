@@ -1,0 +1,1 @@
+import{_ as e}from"./B4TR0GKN.js";import{L as o,X as t,Y as n}from"./BVIp9nla.js";const r={},s={"aria-hidden":"true",viewBox:"0 0 24 24"},_=n("path",{fill:"none",stroke:"currentColor","stroke-linecap":"round","stroke-linejoin":"round","stroke-width":"2",d:"m6 9 6 6 6-6"},null,-1),c=[_];function i(a,d){return o(),t("svg",s,c)}const p=e(r,[["render",i]]);export{p as _};

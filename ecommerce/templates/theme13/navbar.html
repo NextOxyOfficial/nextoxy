@@ -1,0 +1,135 @@
+{% load static %}
+<a class="w-screen py-2.5 bg-black flex justify-center text-sm block overflow-hidden" href="#">
+    <p class="flex items-center gap-1 md:gap-2 text-white text-center text-[13px] font-bold tracking-widest leading-none">
+        <span style="font-family: 'Playfair Display', serif;" class="editable text" id="theme13-nav-wkoli23ol12">FREE SHIPPING ON ORDERS OVER $60</span>
+        {% comment %} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path fill="currentColor" d="m14 18l-1.4-1.45L16.15 13H4v-2h12.15L12.6 7.45L14 6l6 6l-6 6Z"/></svg> {% endcomment %}
+    </p>
+</a> 
+
+<!-- navbar -->
+<section class="w-screen overflow-hidden">
+<nav id="navbar" class="max-w-[1600px] py-[13px] px-[15px] md:py-[20px] md:px-[50px] mx-auto">
+    <div id="" class="flex items-center justify-between gap-2 md:gap-5">
+        
+        <div>
+            <!-- hamburgur -->
+            <div id="toggleMenu" class="flex items-center justify-start flex-1 md:hidden">
+                <div class="w-6 h-0.5 bg-black rounded-full before:content-[''] before:absolute before:w-6 before:h-0.5 before:bg-black before:rounded-full before:-translate-y-2 after:absolute after:w-6 after:h-0.5 after:bg-black after:rounded-full after:translate-y-2"></div>
+            </div>
+    
+            <div class="">
+                {% if shop.logo %}
+                  <a href="/"><img class="max-h-11" src="{{shop.logo.url}}" alt="logo" /></a>
+                  {% else %}
+                  <a href="/"><img src="{% static '/ecommerce/logo.png' %}" alt="logo" class="max-h-[43px]" /></a>
+                  {% endif %}
+            </div>
+        </div>
+        <div>
+            <ul style="font-family: 'Montserrat', sans-serif;" class="hidden flex-1 md:flex items-center justify-start gap-[12px] text-sm font-bold">
+                {% for menu in main_menu %}
+                <li style="font-family: Futura;" class="">
+                  <a href="/page/{{menu.link}}" > {{menu.name}} </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="flex flex-1 items-center gap-2 justify-end">
+            <!--search-->
+            <div class="relative hidden lg:inline-block">
+                <input v-model="searchTerm" @keydown.enter="goToUrl('/search_page?search='+searchTerm)" type="text" placeholder="I'm shopping for..." class=" text-body-color border-[1px] w-full bg-transparent py-3 pl-6 pr-[58px] text-base font-medium outline-none" />
+                <a :href="'/search_page?search='+searchTerm" class="absolute right-0 top-1 h-[45.45px]  py-[7.5px] px-[12px]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 256 256"><path fill="currentColor" d="m229.66 218.34l-50.07-50.06a88.11 88.11 0 1 0-11.31 11.31l50.06 50.07a8 8 0 0 0 11.32-11.32ZM40 112a72 72 0 1 1 72 72a72.08 72.08 0 0 1-72-72Z"/></svg>
+                </a>
+            </div>
+            <!--user-->
+            <a class="  " href="/my_account">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"><path fill="currentColor" d="M12 5.9a2.1 2.1 0 1 1 0 4.2a2.1 2.1 0 0 1 0-4.2m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4s4-1.79 4-4s-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"/></svg>
+            </a>
+            <a href="/wishlist" class="relative   ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"><path fill="currentColor" d="m12 21l-1.45-1.3q-2.525-2.275-4.175-3.925T3.75 12.812Q2.775 11.5 2.388 10.4T2 8.15Q2 5.8 3.575 4.225T7.5 2.65q1.3 0 2.475.55T12 4.75q.85-1 2.025-1.55t2.475-.55q2.35 0 3.925 1.575T22 8.15q0 1.15-.388 2.25t-1.362 2.412q-.975 1.313-2.625 2.963T13.45 19.7L12 21Zm0-2.7q2.4-2.15 3.95-3.688t2.45-2.674q.9-1.138 1.25-2.026T20 8.15q0-1.5-1-2.5t-2.5-1q-1.175 0-2.175.662T12.95 7h-1.9q-.375-1.025-1.375-1.688T7.5 4.65q-1.5 0-2.5 1t-1 2.5q0 .875.35 1.763t1.25 2.025q.9 1.137 2.45 2.675T12 18.3Zm0-6.825Z"/></svg>
+                <span class="bg-[#ffe1e0] w-5 h-5 absolute -top-4 -right-0 flex items-center justify-center rounded-full text-[12px] font-semibold text-black"> [[store.state.wish.length]] </span>
+            </a>
+            <!--cart-->
+            <a href="/cart" @click="cartOpen = !cartOpen" class="relative   ">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 256 256"><path fill="currentColor" d="M96 216a16 16 0 1 1-16-16a16 16 0 0 1 16 16Zm88-16a16 16 0 1 0 16 16a16 16 0 0 0-16-16Zm47.65-125.65l-28.53 92.71A23.89 23.89 0 0 1 180.18 184H84.07A24.11 24.11 0 0 1 61 166.59L24.82 40H8a8 8 0 0 1 0-16h16.82a16.08 16.08 0 0 1 15.39 11.6L48.32 64H224a8 8 0 0 1 7.65 10.35ZM213.17 80H52.89l23.49 82.2a8 8 0 0 0 7.69 5.8h96.11a8 8 0 0 0 7.65-5.65Z"/></svg>
+                <span class="bg-[#ffe1e0] w-5 h-5 absolute -top-4 -right-0 flex items-center justify-center rounded-full text-[12px] font-semibold text-black"> [[store.state.cart.length]] </span>
+            </a>
+        </div>
+    </div>
+    <!--search mobile-->
+    <div class="relative block lg:hidden w-full mt-3 mx-auto">
+        <input v-model="searchTerm" @keydown.enter="goToUrl('/search_page?search='+searchTerm)" type="text" placeholder="I'm shopping for..." class="block text-body-color border-[1px] w-full bg-transparent py-3 px-3 mr-2 text-base font-medium outline-none" />
+        <a :href="'/search_page?search='+searchTerm" class="absolute right-3 top-1 h-[45.45px]  py-[7.5px] px-[12px]">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 256 256"><path fill="currentColor" d="m229.66 218.34l-50.07-50.06a88.11 88.11 0 1 0-11.31 11.31l50.06 50.07a8 8 0 0 0 11.32-11.32ZM40 112a72 72 0 1 1 72 72a72.08 72.08 0 0 1-72-72Z"/></svg>
+        </a>
+    </div>
+</nav>
+</section>
+
+<script>
+  const { createApp } = Vue
+  const app = createApp({
+    data() {
+      return {
+        category: false,
+        store: store,
+        menuToggle: false,
+        searchTerm: '',
+      }
+    },
+    delimiters: ['[[', ']]'],
+    methods: {
+      addToCart(item) {
+        this.$store.commit('addToCart',item)
+      },
+      delFromCart(item){
+        this.$store.commit('removeFromCart',item)
+      },
+      closeCartItem(item){
+        this.delFromCart(item)
+        item.close = true
+        this.addToCart(item)
+      },
+      goToCart(){
+        for (let i = 0; i < this.store.state.cart.length; i++) {
+          const item = this.store.state.cart[i];
+          this.closeCartItem(item)
+        }
+        window.location.href = '/cart'
+      },
+      goToUrl(url){
+        window.location.href = url
+      }
+    },
+  })
+  app.use(store)
+  app.mount('#navbar')
+</script>
+
+{% comment %} <script>
+  window.onscroll = function() {stickyheader()};
+  var header = document.getElementById("navbarmenu");
+  var sticky = header.offsetTop;
+
+  function stickyheader() {
+      if (window.pageYOffset > sticky) {
+      header.classList.add("sticky");
+      } else {
+      header.classList.remove("sticky");
+      }
+  }
+</script> {% endcomment %}
+
+
+<style>
+  #navbarmenu.sticky{
+    position: fixed;
+    z-index: 9999;
+    background-color: #fff;
+    max-width: 100% ;
+    width: 100% ;
+    top: 0px !important;
+  }
+</style>
+

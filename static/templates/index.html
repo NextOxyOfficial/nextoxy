@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>GrapesJS Sample Page</title>
+		<!-- Include GrapesJS CSS -->
+		<link
+			href="https://unpkg.com/grapesjs/dist/css/grapes.min.css"
+			rel="stylesheet"
+		/>
+		<style>
+			body {
+				padding: 0px;
+				margin: 0px;
+			}
+			#gjs {
+				border: none;
+			}
+			/* Theming */
+
+			/* Primary color for the background */
+			.gjs-one-bg {
+				background-color: #fafafa;
+			}
+
+			/* Secondary color for the text color */
+			.gjs-two-color {
+				color: rgba(0, 0, 0, 0.7);
+			}
+
+			/* Tertiary color for the background */
+			.gjs-three-bg {
+				background-color: #8a8a8a;
+				color: white;
+			}
+
+			/* Quaternary color for the text color */
+			.gjs-four-color,
+			.gjs-four-color-h:hover {
+				color: #8a8a8a;
+			}
+		</style>
+	</head>
+	<body>
+		{{blocks}}
+		<!-- GrapesJS Editor Container -->
+		<div id="gjs"></div>
+		<button onclick="myFunction()">Save</button>
+		<button onclick="vanillaToDj()">vanillaToDj</button>
+		<button onclick="djToVanilla()">djToVanilla</button>
+		<!-- Include GrapesJS JS -->
+		<script src="https://unpkg.com/grapesjs"></script>
+
+		<script>
+			// Initialize GrapesJS
+			const editor = grapesjs.init({
+				container: "#gjs",
+				components: "<div>Hello, World!</div>", // Default content
+				storageManager: false, // Disable storage manager for simplicity
+				blockManager: {
+					blocks: [
+						{% for b in blocks %}
+						{
+							id: "{{b.name}} {{b.id}}",
+							category: "{{b.category.name}}",
+							label: "{{b.name}}",
+							attributes: { class: "fa fa-link" }, // You can use HTML/SVG inside labels
+							content: `{{b.html | safe}}`,
+							{% if b.dj%}
+							dj: `{{b.html | safe}}`,
+							{% endif%}
+						},
+						{% endfor %}
+						{
+							id: `link`,
+							category: "Basic",
+							label: "Link",
+							attributes: { class: "fa fa-link" },
+							content: {
+								type: "link",
+								editable: true,
+								droppable: true,
+								draggable: true,
+								style: {
+									display: "inline-block",
+									padding: "5px",
+									"font-size": "16px",
+									color: "#000",
+									"text-decoration": "none",
+								},
+								traits: ["href", "title", "target"],
+								content: "This is a link",
+							},
+						},
+						{
+							id: "section", // id is mandatory
+							label: "<h1>Section</h1>", // You can use HTML/SVG inside labels
+							attributes: { class: "gjs-block-section" },
+							content: `<section>
+			                            <h1>This is a simple title</h1>
+			                            <div>This is just a Lorem text: Lorem ipsum dolor sit amet</div>
+			                        </section>`,
+						},
+						{
+							id: "section test", // id is mandatory
+							label: "<h1>Include test</h1>", // You can use HTML/SVG inside labels
+							attributes: { class: "gjs-block-section" },
+							content: `<section dynamic='test'>
+			                            <h1>dynamic section - test</h1>
+			                        </section>`,
+						},
+					],
+				},
+			});
+			async function myFunction() {
+				await vanillaToDj();
+				await djToVanilla();
+				console.log(editor);
+				console.log(editor.getCss());
+				console.log(editor.getHtml());
+			}
+			function vanillaToDj() {
+				editor.DomComponents.getWrapper()
+					.components()
+					.each(function (component) {
+						var attributes = component.getAttributes();
+						if (attributes.dynamic && attributes.dynamic.length > 0) {
+							var djContent = `<section dynamic="${attributes.dynamic}">\{\{ ${attributes.dynamic} \}\}</section>`;
+							component.replaceWith(djContent);
+						}
+					});
+			}
+			function djToVanilla() {
+				editor.DomComponents.getWrapper()
+					.components()
+					.each(function (component) {
+						var attributes = component.getAttributes();
+						if (attributes.dynamic && attributes.dynamic.length > 0) {
+							var djContent = `<section dynamic="${attributes.dynamic}"> <h1>dynamic section - test</h1> </section>`;
+							component.replaceWith(djContent);
+						}
+					});
+			}
+		</script>
+	</body>
+</html>

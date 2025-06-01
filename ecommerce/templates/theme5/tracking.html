@@ -1,0 +1,191 @@
+{% extends "theme5/base.html" %}
+
+{% block content %}
+
+<section class="bg-white py-20" id="tracking">
+    <div class="container mx-auto px-4">
+      <div class="-mx-4 flex flex-wrap">
+        <div class="w-full px-4 md:w-1/2">
+          <div class="mb-12">
+            <h2 class="text-3xl font-semibold text-black sm:text-4xl editable text" id="tracking-sdlri">
+              Track Your Order
+            </h2>
+            <div class="container mx-auto py-4 flex justify-start gap-2 w-full">
+              <input v-model="searchId" type="text" class="px-4 py-2 border" placeholder="Please Enter Your Order ID ">
+              <a :href="'tracking?tracking='+searchId" class="bg-primary text-white px-4 py-2">Track</a>
+            </div>
+            <p class="text-left w-full text-rose-600 my-3">{{error}}</p>
+          </div>
+        </div>
+        <div class="w-full px-4 md:w-1/2">
+          <div class="mb-12 md:text-right">
+            <h3 class="text-xl font-semibold text-black sm:text-2xl">
+              Order #{{order.id}}
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    {% if order and statuses %}
+    <div class="mb-12 bg-[#f4f7ff] py-12">
+      <div class="container mx-auto px-4 w-full flex flex-wrap gap-2">
+        <div class="flex-1 rounded-md border-[.5px] border-[#e7e7e7] bg-white p-5">
+          <div class="items-center sm:flex">
+            <div class="mb-3 mr-6 h-20 w-full max-w-[80px] sm:mb-0">
+              <img
+                src="https://cdn-tailgrids.b-cdn.net/1.0/assets/images/ecommerce/order-summaries/order-summary-03/image-01.jpg"
+                alt="product"
+                class="h-full w-full object-cover object-center"
+              />
+            </div>
+            <div class="w-full items-center justify-between md:flex">
+              <div class="mb-3 md:mb-0">
+                <a
+                  href="javascript:void(0)"
+                  class="hover:text-primary inline-block text-base font-medium text-black"
+                >
+                  Mist Black Triblend
+                </a>
+                <p class="text-body-color flex text-sm font-medium">
+                  <span class="mr-5"> Color: White </span>
+                  <span class="mr-5"> Size: Medium </span>
+                </p>
+              </div>
+              <div class="flex items-center md:justify-end">
+                <p class="mr-20 text-base font-semibold text-black">Qty: 01</p>
+                <p class="mr-5 text-base font-semibold text-black">{{shop.currency}}120.00</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ul role="list" class="w-full rounded-md border-[.5px] border-[#e7e7e7] bg-white p-5 max-w-[400px]">
+          <li class="w-full p-4 bg-slate-50 mb-3">Order Status</li>
+          {% for status in statuses %}
+          <li>
+            <div class="relative pb-8">
+              <span class="absolute top-4 left-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>
+              <div class="relative flex space-x-3">
+                <div>
+                    <span class="h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white bg-slate-400 text-slate-100">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24">
+                            <path fill="currentColor" fill-rule="evenodd" d="M12 21a9 9 0 1 0 0-18a9 9 0 0 0 0 18zM10.293 9.707a1 1 0 1 1 1.414-1.414l3 3a1 1 0 0 1 0 1.414l-3 3a1 1 0 0 1-1.414-1.414L12.586 12l-2.293-2.293z" clip-rule="evenodd"></path>
+                        </svg>
+                    </span>
+                </div>
+                <div class="w-full">
+                    <div class="flex flex-col md:flex-row w-full justify-between items-start">
+                      <p class="capitalize text-lg text-green-600">{{status.name}}</p>
+                      <p class="whitespace-nowrap text-sm text-gray-500">{{status.date}}</p>
+                    </div>
+                    <p class="font-normal text-sm my-1">{{status.note}}</p>
+                </div>
+              </div>
+            </div>
+          </li>
+          {% endfor %}
+          <li>
+              <div class="relative pb-8">
+                  <div class="relative flex space-x-3">
+                      <div>
+                          <span class="h-8 w-8 rounded-full flex items-center justify-center ring-8 ring-white bg-slate-400">
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" class="h-5 w-5 text-white">
+                                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd"></path>
+                              </svg>
+                          </span>
+                      </div>
+                      <div class="flex min-w-0 flex-1 justify-between space-x-4 pt-1.5">
+                          <div>
+                              <p class="text-sm text-slate-900"> Order Placed <a class="font-medium text-gray-900"></a></p>
+                          </div>
+                          <div class="whitespace-nowrap text-right text-sm text-gray-500"><span>April 01 2023, 08:36 AM</span></div>
+                      </div>
+                  </div>
+              </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="container mx-auto px-4">
+      <div class="-mx-4 flex flex-wrap mt-20">
+        <div class="w-full px-4 sm:w-1/2 lg:w-3/12">
+          <div class="mb-10">
+            <h3 class="mb-4 text-xl font-semibold text-black md:text-2xl">
+              Shipping Method
+            </h3>
+            <p class="text-body-color text-base font-medium">
+              FedEx - Take up to 3 <br />
+              working days.
+            </p>
+          </div>
+        </div>
+        <div class="w-full px-4 sm:w-1/2 lg:w-3/12">
+          <div class="mb-10">
+            <h3 class="mb-4 text-xl font-semibold text-black md:text-2xl">
+              Payment Method
+            </h3>
+            <p class="text-body-color text-base font-medium">
+              Apply Pay Mastercard <br />
+              **** **** **** 5874
+            </p>
+          </div>
+        </div>
+        <div class="w-full px-4 lg:w-6/12">
+          <div
+            class="mr-10 text-right md:ml-auto md:max-w-[370px] lg:max-w-[270px]"
+          >
+            <p class="mb-4 flex justify-between text-base font-medium text-black">
+              <span> Subtotal </span>
+              <span> {{shop.currency}}{{order.subtotal}} </span>
+            </p>
+            <p class="mb-4 flex justify-between text-base font-medium text-black">
+              <span> Shipping Cost (+) </span>
+              <span> {{shop.currency}}{{order.shipping}} </span>
+            </p>
+            <p
+              class="mt-2 mb-4 flex justify-between border-t border-[#e7e7e7] pt-6 text-base font-medium text-black"
+            >
+              <span> Total Payable </span>
+              <span> {{shop.currency}}{{order.total}} </span>
+            </p>
+            <a href="/search_page"
+              class="flex w-full items-center justify-center rounded-md bg-black py-[10px] px-10 text-center text-base font-semibold text-white hover:bg-opacity-90"
+            >
+              Continue Shopping
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="container mx-auto px-4">
+      <div class="flex flex-col items-center justify-center min-h-screen">
+        <div class="text-center">
+          <h1 class="text-4xl font-bold text-black">Order Not Found</h1>
+          <p class="text-base text-body-color mt-4">
+            Sorry, we couldn't find the order you're looking for.
+          </p>
+          <a
+            href="/"
+            class="inline-block mt-8 px-6 py-3 text-base font-semibold text-white bg-black rounded-md hover:bg-opacity-90"
+          >
+            Continue Shopping
+          </a>
+        </div>
+      </div> -->
+      
+    {% endif %}
+  </section>
+
+  <script>
+    createApp({
+      data() {
+        return {
+          searchId: '',
+        }
+      },
+    }).mount('#tracking')
+  </script>
+  
+
+
+{% endblock %}

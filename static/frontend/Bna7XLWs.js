@@ -1,0 +1,1 @@
+import{l as e,L as s,X as o,Y as t}from"./BVIp9nla.js";const a=t("section",{class:"mx-auto w-full max-w-7xl px-4 pt-32"},"Hello Resources",-1),c=[a],p=e({__name:"resources",setup(n){return(l,r)=>(s(),o("div",null,c))}});export{p as default};
